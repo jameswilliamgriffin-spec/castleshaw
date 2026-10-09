@@ -1,0 +1,12 @@
+Final pass before handover. You reviewed this Castleshaw Centre homepage (version 2) earlier; since then:
+- The hero's primary action is now "Enquire about a visit", with "Build a visit plan" secondary.
+- The illustration-to-film threshold is shorter, and only the horizon ridge is traced in chalk.
+- The film is now final 1080p, colour-graded warmer, and chained as one continuous move: drawing, real hills, birch wood, wellies in a puddle, into the reflection, kayak on the reservoir, a dissolve to a fire stove (landing on the centre's own real photo), and dusk with a lit cottage.
+- The postbag heading is now "Back at school, they wrote to us". An AI-video disclosure line is in the final panel.
+- The mobile control bar is tidied.
+Screenshots of the production build are attached (desktop and mobile).
+
+Please give a short final review (under 350 words):
+1. Updated scores (Design, Usability, Creativity, Content).
+2. The three most valuable remaining fixes that could be done in under an hour each, with exactly what to change.
+3. Anything that looks broken, misaligned or low-contrast in these screenshots specifically.

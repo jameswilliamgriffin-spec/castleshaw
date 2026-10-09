@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+# large, regenerable film working files (finals/ are kept so the film can be rebuilt)
+v2/video-src/drafts/
+v2/video-src/masters/
+v2/video-src/h.txt

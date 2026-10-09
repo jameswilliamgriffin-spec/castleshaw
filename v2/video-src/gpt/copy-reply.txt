@@ -1,0 +1,142 @@
+Reading additional input from stdin...
+OpenAI Codex v0.160.0
+--------
+workdir: /private/tmp/claude-502/-Users-James-Desktop-Castle-Shaw/99290bff-05b4-46c2-9775-e0fb34e1995b/scratchpad
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: low
+reasoning summaries: none
+session id: 01a11d96-4dbb-7bf3-9e59-69f87bae7821
+--------
+user
+You are a senior copywriter helping on a homepage concept for the Castleshaw Centre, a council-run outdoor and environmental education centre in Delph, Oldham, at the edge of the Peak District (South Pennines). Audience: primary and secondary school teachers booking trips, youth group leaders, families. They offer ghyll scrambling, climbing, trekking, orienteering, kayaking and canoeing on reservoirs, bushcraft and campfires, environmental education (habitats, river studies, mapwork), Roman history days, and self-catering accommodation for small groups. Real testimonial lines include "One of the highlights was jumping in puddles!" and "Best day Ever!".
+
+The page: an illustrated top half (flat brand illustration of sky, hills, reservoir, matching their logo). Then a scroll moment where the illustrated hills peel apart and turn into real film footage. Then a 6-chapter scroll film: Hills, Woods, Mud, Water, Fire, Dusk, ending in an enquiry call to action (phone 0161 770 8595).
+
+Write in British English, plain, warm, specific, a bit dry. No marketing cliches (no "unleash", "adventure awaits", "unforgettable", "immerse"). Sentence case. No exclamation marks except inside quotes.
+
+Give me:
+1. Eight options for the 2-line headline at the moment the illustration turns into real footage (currently: "Enough drawings. / This is the real valley."). Short.
+2. Four options for the one-line hint under it telling people they can scroll back up to rewind.
+3. For each of the 6 chapters, two options for a short heading (max 5 words) that fits the content placed there: Hills = where we are; Woods = plan your visit; Mud = puddle quote; Water = kayaking and canoeing; Fire = thank-you letters and drawings from children; Dusk = stay the night and get in touch.
+4. Three options for the main hero headline (currently "Out here, the Pennines are the classroom.").
+Mark your single favourite in each group with a star and say why in one line.
+codex
+### 1. When the illustration becomes film
+
+1. ★ A valley on paper.  
+   A valley under your boots.
+
+2. That’s the drawing.  
+   Here’s the place.
+
+3. The hills look tidy here.  
+   They’re muddier in person.
+
+4. From drawn hills  
+   to actual mud.
+
+5. Enough drawing.  
+   Let’s go outside.
+
+6. Same hills.  
+   A little less flat.
+
+7. Here’s Castleshaw.  
+   With the weather left in.
+
+8. The picture ends.  
+   The valley carries on.
+
+★ **Why:** It makes the transition tangible and brings the visitor into the landscape.
+
+### 2. The rewind hint
+
+1. ★ Scroll back up to rewind.
+2. Back up the page, back through the film.
+3. Scroll up to see it again.
+4. To wind it back, scroll up.
+
+★ **Why:** Clear enough to understand without interrupting the moment.
+
+### 3. The six chapters
+
+| Chapter | Option one | Option two | Why the favourite works |
+|---|---|---|---|
+| **Hills — where we are** | ★ In Delph, above Oldham | At the Pennines’ edge | Names the place and gives a useful sense of its setting. |
+| **Woods — plan your visit** | ★ Bring your class or group | Let’s plan your visit | Speaks directly to the people organising the trip. |
+| **Mud — puddle quote** | ★ Puddles got a mention | A good day for puddles | The dry understatement lets the children’s enthusiasm do the work. |
+| **Water — kayaking and canoeing** | ★ Kayaks, canoes and reservoir water | A day on the water | Names what’s offered and where it happens. |
+| **Fire — children’s letters and drawings** | ★ They sent us these | Thanks, in felt tip | Introduces the children’s work simply, without praising it on their behalf. |
+| **Dusk — accommodation and contact** | ★ Stay the night. Get in touch. | Room for a longer visit | Gives both practical next steps plainly. |
+
+For **Mud**, I’d keep the real line immediately below the heading: “One of the highlights was jumping in puddles!”
+
+### 4. The main hero headline
+
+1. ★ Out here, the Pennines are the classroom.
+2. A school day with hills in it.
+3. Come outside. There’s plenty to learn.
+
+★ **Why:** The current line is the strongest: it names the landscape and makes the centre’s educational purpose clear.
+tokens used
+6,071
+### 1. When the illustration becomes film
+
+1. ★ A valley on paper.  
+   A valley under your boots.
+
+2. That’s the drawing.  
+   Here’s the place.
+
+3. The hills look tidy here.  
+   They’re muddier in person.
+
+4. From drawn hills  
+   to actual mud.
+
+5. Enough drawing.  
+   Let’s go outside.
+
+6. Same hills.  
+   A little less flat.
+
+7. Here’s Castleshaw.  
+   With the weather left in.
+
+8. The picture ends.  
+   The valley carries on.
+
+★ **Why:** It makes the transition tangible and brings the visitor into the landscape.
+
+### 2. The rewind hint
+
+1. ★ Scroll back up to rewind.
+2. Back up the page, back through the film.
+3. Scroll up to see it again.
+4. To wind it back, scroll up.
+
+★ **Why:** Clear enough to understand without interrupting the moment.
+
+### 3. The six chapters
+
+| Chapter | Option one | Option two | Why the favourite works |
+|---|---|---|---|
+| **Hills — where we are** | ★ In Delph, above Oldham | At the Pennines’ edge | Names the place and gives a useful sense of its setting. |
+| **Woods — plan your visit** | ★ Bring your class or group | Let’s plan your visit | Speaks directly to the people organising the trip. |
+| **Mud — puddle quote** | ★ Puddles got a mention | A good day for puddles | The dry understatement lets the children’s enthusiasm do the work. |
+| **Water — kayaking and canoeing** | ★ Kayaks, canoes and reservoir water | A day on the water | Names what’s offered and where it happens. |
+| **Fire — children’s letters and drawings** | ★ They sent us these | Thanks, in felt tip | Introduces the children’s work simply, without praising it on their behalf. |
+| **Dusk — accommodation and contact** | ★ Stay the night. Get in touch. | Room for a longer visit | Gives both practical next steps plainly. |
+
+For **Mud**, I’d keep the real line immediately below the heading: “One of the highlights was jumping in puddles!”
+
+### 4. The main hero headline
+
+1. ★ Out here, the Pennines are the classroom.
+2. A school day with hills in it.
+3. Come outside. There’s plenty to learn.
+
+★ **Why:** The current line is the strongest: it names the landscape and makes the centre’s educational purpose clear.
