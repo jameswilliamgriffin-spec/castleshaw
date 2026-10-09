@@ -26,6 +26,12 @@ npm run preview
 
 `npm run build` writes everything to `dist/`. `npm run preview` serves that build at http://localhost:4175, so you can check `/`, `/v1/` and `/v2/` exactly as they will be uploaded.
 
+## Deploy on Vercel
+
+1. In Vercel, choose **Add New → Project** and import `jameswilliamgriffin-spec/castleshaw`.
+2. Leave the settings as detected. `vercel.json` already sets the Vite framework, `npm run build` and the `dist` output.
+3. Deploy. `/`, `/v1/` and `/v2/` all work, and `/v1` and `/v2` redirect to the slashed URLs.
+
 ## Upload
 
 Upload the **contents of `dist/`** to any static host (Netlify, Vercel, GitHub Pages, S3, or plain FTP to a web server). There is no server code.
