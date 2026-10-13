@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { PHONE, PHONE_HREF, FACEBOOK, NAV_GROUPS, navHref } from '../data'
-import { ridge } from '../lib'
+import { ridge, ROOT } from '../lib'
 import { WaterGL } from './Shaders'
 
 export function Contact({ msg, setMsg }) {
@@ -45,7 +45,7 @@ export function Footer() {
     <footer className="ft">
       <div className="ft-top">
         <div className="ft-id">
-          <span className="ft-logo"><img src="../shared/images/logo.jpg" alt="Castleshaw Centre" width="200" height="129" /></span>
+          <span className="ft-logo"><img src={`${ROOT}shared/images/logo.jpg`} alt="Castleshaw Centre" width="200" height="129" /></span>
           <p>Oldham&rsquo;s Outdoor and Environmental Education service, at the edge of the Peak District National Park.</p>
           <p className="ft-cred">AALA licence L71687 for climbing, watersports and trekking. LOtC Quality Badge 101040.</p>
         </div>
@@ -64,7 +64,7 @@ export function Footer() {
       </div>
       <div className="ft-bottom">
         <p>Homepage design concept. Photographs, drawings and quoted words belong to the Castleshaw Centre and the people who sent them. The film was made with AI video from our own illustration and photographs.</p>
-        <p className="ft-links"><a href={navHref('Privacy Notice')}>Privacy notice</a><a href="../">All versions</a></p>
+        <p className="ft-links"><a href={navHref('Privacy Notice')}>Privacy notice</a><a href={ROOT}>All versions</a></p>
       </div>
     </footer>
   )

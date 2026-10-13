@@ -13,6 +13,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         v1: resolve(__dirname, 'v1/index.html'),
         v2: resolve(__dirname, 'v2/index.html'),
+        v2advice: resolve(__dirname, 'v2/advice-and-guidance/index.html'),
       },
     },
   },

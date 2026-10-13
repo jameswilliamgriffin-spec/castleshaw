@@ -1,3 +1,5 @@
+import { ADVICE } from './lib'
+
 const B = 'https://www.castleshawcentre.com'
 
 export const PHONE = '0161 770 8595'
@@ -7,6 +9,7 @@ export const W3W = 'cherubs.campfires.liked'
 
 export const NAV_MAIN = [
   ['What we do', `${B}/what-we-do.html`],
+  ['Visits advice', ADVICE],
   ['Where we are', `${B}/where-we-are.html`],
   ['The Team', `${B}/the-team.html`],
   ['Accreditation', `${B}/accreditation.html`],
@@ -20,7 +23,8 @@ export const NAV_ALL = [
   ['The Team', `${B}/the-team.html`],
   ['Accreditation', `${B}/accreditation.html`],
   ['Testimonials', `${B}/testimonials.html`],
-  ['Advice and Guidance', `${B}/advice-and-guidance.html`],
+  ['Educational visits advice', ADVICE],
+  ['Visits advice', ADVICE],
   ['Information for Group Leaders', `${B}/information-for-group-leaders.html`],
   ['Resources for Teachers', `${B}/resources-for-teachers.html`],
   ['Image Gallery: Hall of Fame', `${B}/image-gallery--hall-of-fame.html`],
@@ -123,7 +127,7 @@ export const POSTBAG = [
 
 // Grouped for the menu and footer (v2): the same pages as NAV_ALL, sorted by what people come for
 export const NAV_GROUPS = [
-  ['Plan a visit', ['What we do', 'Where we are', 'Information for Group Leaders', 'Advice and Guidance', 'Resources for Teachers', 'Holiday Activities 2026', 'Things to do']],
+  ['Plan a visit', ['What we do', 'Where we are', 'Educational visits advice', 'Information for Group Leaders', 'Resources for Teachers', 'Holiday Activities 2026', 'Things to do']],
   ['About the centre', ['The Team', 'Accreditation', 'Testimonials', 'Image Gallery: Hall of Fame', 'News', 'Centre History', 'Back in the day', 'Nick Price 1958-2016']],
 ]
 export const navHref = (t) => (NAV_ALL.find(([n]) => n === t) || [])[1]

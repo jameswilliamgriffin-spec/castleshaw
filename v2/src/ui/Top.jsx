@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { NAV_MAIN, PHONE, PHONE_HREF, FACEBOOK, NAV_GROUPS, navHref } from '../data'
 import Button from './Button'
-import { fine, reduced, goTo } from '../lib'
+import { fine, reduced, goTo, ROOT, HOME } from '../lib'
 
 // A dot that trails the pointer and grows a word over things you can act on.
 export function Cursor() {
@@ -40,7 +40,7 @@ export function Header({ open, setOpen, count }) {
   }, [])
   return (
     <header className={`hd hd-${open ? 'open' : state}`}>
-      <a href="./" className="hd-logo"><img src="../shared/images/logo.jpg" alt="Castleshaw Centre home" width="200" height="129" /></a>
+      <a href={HOME} className="hd-logo"><img src={`${ROOT}shared/images/logo.jpg`} alt="Castleshaw Centre home" width="200" height="129" /></a>
       <nav aria-label="Main" className="hd-nav">
         {NAV_MAIN.map(([t, h]) => <a key={t} href={h}>{t}</a>)}
       </nav>
@@ -80,7 +80,7 @@ export function Menu({ open, close }) {
           {NAV_GROUPS.map(([g, items], gi) => (
             <nav key={g} className="mn-group" aria-label={g} style={{ '--i': gi + 5 }}>
               <h2>{g}</h2>
-              <ul>{items.filter((t) => !NAV_MAIN.some(([m]) => m === t)).map((t) => <li key={t}><a href={navHref(t)} onClick={close}>{t}</a></li>)}</ul>
+              <ul>{items.filter((t) => !NAV_MAIN.some(([, h]) => h === navHref(t))).map((t) => <li key={t}><a href={navHref(t)} onClick={close}>{t}</a></li>)}</ul>
             </nav>
           ))}
         </div>
