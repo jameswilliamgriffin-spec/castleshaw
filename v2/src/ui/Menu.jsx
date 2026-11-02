@@ -1,24 +1,8 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { NAV_SECTIONS, PHONE, PHONE_HREF, FACEBOOK, PRIVACY, CONTACT, ADDRESS } from '../data'
 import { goTo, reduced } from '../lib'
+import { Squiggle, Contours } from './Squiggle'
 import './menu.css'
-
-// Three loose, hand-drawn underlines, handed out in turn so neighbours never match.
-const SQUIGGLES = [
-  'M2 9 C 35 2, 65 13, 105 7 S 180 3, 220 9 S 280 11, 298 5',
-  'M2 6 C 28 12, 72 2, 112 8 S 176 12, 214 6 S 274 3, 298 9',
-  'M2 10 C 44 4, 70 5, 108 9 S 168 13, 206 7 S 262 2, 298 7',
-]
-
-// Faint contour lines, a nod to the valley. Drawn once.
-const CONTOURS = Array.from({ length: 9 }, (_, k) => {
-  const pts = []
-  for (let x = -40; x <= 1480; x += 40) {
-    const y = 470 + k * 52 - 150 * Math.sin((x / 1440) * Math.PI * 0.95 + k * 0.16) * (1 - k * 0.07) + 18 * Math.sin(x / 110 + k * 1.3)
-    pts.push(`${x} ${y.toFixed(1)}`)
-  }
-  return 'M' + pts.join(' L')
-})
 
 const NARROW = '(max-width: 899px)'
 const FOCUSABLE = 'a[href], button:not([disabled])'
@@ -37,11 +21,7 @@ function useNarrow() {
 // Child pages with any nested ones kept under their parent ("Around the valley" under "Where we are").
 const tree = (children) => children.filter((c) => !c.parent).map((c) => ({ ...c, kids: children.filter((k) => k.parent === c.key) }))
 
-const Squiggle = ({ i }) => (
-  <svg className="mn-sq" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true">
-    <path d={SQUIGGLES[i % SQUIGGLES.length]} pathLength="1" vectorEffect="non-scaling-stroke" />
-  </svg>
-)
+const MenuSquiggle = ({ i }) => <Squiggle i={i} className="mn-sq" />
 
 const Arrow = () => (
   <svg className="mn-arr" viewBox="0 0 20 12" aria-hidden="true"><path d="M1 6h17M13 1.5 18 6l-5 4.5" /></svg>
@@ -107,9 +87,7 @@ export default function Menu({ open, close, current }) {
       onScroll={(e) => e.currentTarget.classList.toggle('mn-scrolled', e.currentTarget.scrollTop > 8)}
     >
       <div className="mn-cap" aria-hidden="true" />
-      <svg className="mn-contours" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        {CONTOURS.map((d) => <path key={d} d={d} />)}
-      </svg>
+      <Contours className="contours mn-contours" />
 
       <nav className="mn-nav" aria-label="Site sections">
         {NAV_SECTIONS.map((s, i) => {
@@ -117,7 +95,7 @@ export default function Menu({ open, close, current }) {
           const on = narrow ? expanded === i : active === i
           const here = current === s.key
           const panelId = `mn-panel-${s.key}`
-          const word = <span className="mn-word">{s.title}<Squiggle i={i} /></span>
+          const word = <span className="mn-word">{s.title}<MenuSquiggle i={i} /></span>
           const kids = tree(s.children)
           return (
             <Fragment key={s.key}>

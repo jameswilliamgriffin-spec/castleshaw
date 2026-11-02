@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react'
 import { PAGES } from '../../site.mjs'
 import { href, PHONE, PHONE_HREF, EMAIL, CONTACT } from '../../data'
 import { ROOT, HOME, ridge } from '../../lib'
+import { Squiggle, Contours, useReveal } from '../Squiggle'
 
 export const img = (name) => `${ROOT}shared/images/site/${name}.jpg`
 export const ill = (name) => `${ROOT}shared/images/illustrations/${name}.jpg`
@@ -296,19 +297,26 @@ export function Btn({ href: h, children, tone = 'ink', onClick }) {
   return <a className={`ib ib-${tone}`} href={h} onClick={onClick}>{children}</a>
 }
 
+// The closing call to action on inner pages: the phone is the hero, enquiry and email beside it.
 export function CtaBand({ title = 'Talk to us about your visit', text, primary, secondary }) {
+  const ref = useReveal()
   return (
-    <section className="cta">
+    <section className="cta" ref={ref}>
+      <Contours flip />
       <div className="cta-inner">
-        <h2>{title}</h2>
-        {text && <p>{text}</p>}
-        <div className="cta-row">
-          <a className="cta-tel" href={PHONE_HREF}>{PHONE}</a>
-          <span className="cta-or">or</span>
-          {primary || <Btn href={CONTACT} tone="moss">Send an enquiry</Btn>}
-          {secondary}
+        <div className="cta-copy rv">
+          <h2>{title}</h2>
+          {text && <p>{text}</p>}
         </div>
-        <p className="cta-mail">Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+        <div className="cta-act rv" style={{ '--k': 3 }}>
+          <a className="cta-tel" href={PHONE_HREF}>{PHONE}</a>
+          <div className="cta-row">
+            <span className="cta-or">or</span>
+            {primary || <Btn href={CONTACT} tone="moss">Send an enquiry</Btn>}
+            {secondary}
+          </div>
+          <p className="cta-mail">Email <a className="sq-host" href={`mailto:${EMAIL}`}>{EMAIL}<Squiggle i={2} /></a></p>
+        </div>
       </div>
     </section>
   )

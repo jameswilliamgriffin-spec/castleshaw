@@ -2,19 +2,19 @@
    On phones the sections become an accordion. The header (logo, Enquire, close) sits above it. */
 
 .mn {
-  --mn-ink: #0a2a3c;
-  --mn-ink-2: #0f3a52;
-  --mn-text: #fff;
-  --mn-soft: rgba(255, 255, 255, .86);
-  --mn-muted: rgba(255, 255, 255, .7);
-  --mn-line: rgba(255, 255, 255, .13);
-  --mn-accent: var(--moss);
-  --mn-eyebrow: #b9d46a;
+  --mn-ink: var(--cs-ink);
+  --mn-ink-2: var(--cs-ink-2);
+  --mn-text: var(--cs-text);
+  --mn-soft: var(--cs-soft);
+  --mn-muted: var(--cs-muted);
+  --mn-line: var(--cs-line);
+  --mn-accent: var(--cs-accent);
+  --mn-eyebrow: var(--cs-eyebrow);
   --mn-dim: .4;
   --mn-pad: var(--g); /* the header's gutter, so the menu lines up with the logo and close button */
   --mn-gap: clamp(16px, 2vw, 32px);
-  --mn-reveal: cubic-bezier(.76, 0, .24, 1);
-  --mn-out: cubic-bezier(.22, 1, .36, 1);
+  --mn-reveal: var(--cs-reveal);
+  --mn-out: var(--cs-out);
   --mn-x: calc(100% - var(--g) - 1.4rem); /* the burger's centre */
   --mn-y: 2.3rem;
   --focus: var(--sky);
@@ -26,14 +26,13 @@
   color: var(--mn-text);
   background:
     radial-gradient(90% 70% at 85% 0%, rgba(26, 80, 108, .55), transparent 70%),
-    linear-gradient(170deg, var(--mn-ink-2) 0%, var(--mn-ink) 55%, #08222f 100%);
+    linear-gradient(170deg, var(--mn-ink-2) 0%, var(--mn-ink) 55%, var(--cs-ink-deep) 100%);
   clip-path: circle(0 at var(--mn-x) var(--mn-y));
   visibility: hidden;
   transition: clip-path .35s var(--mn-reveal), visibility 0s .35s;
 }
 .mn-open { clip-path: circle(150% at var(--mn-x) var(--mn-y)); visibility: visible; transition: clip-path .6s var(--mn-reveal); }
 
-.mn-contours { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; fill: none; stroke: #fff; stroke-width: 1; opacity: .045; }
 .mn-nav, .mn-foot { position: relative; }
 /* When the menu scrolls (phones, short screens), a frosted band keeps the logo and close button clear. */
 .mn-cap { position: sticky; top: 0; z-index: 2; flex: none; height: 4.6rem; margin: 0 calc(-1 * var(--mn-pad)) -4.6rem; background: rgba(9, 36, 52, .78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--mn-line); opacity: 0; transition: opacity .3s; pointer-events: none; }

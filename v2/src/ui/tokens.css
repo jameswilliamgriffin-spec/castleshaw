@@ -1,0 +1,37 @@
+/* Shared tokens for the dark navy parts of the site: the menu, the CTA band and the footer. */
+:root {
+  --cs-ink: #0a2a3c;
+  --cs-ink-2: #0f3a52;      /* a step lighter: the CTA band, the top of the menu */
+  --cs-ink-deep: #08222f;   /* a step darker: the footer */
+  --cs-text: #fff;
+  --cs-soft: rgba(255, 255, 255, .86);
+  --cs-link: rgba(255, 255, 255, .8);
+  --cs-muted: rgba(255, 255, 255, .7);
+  --cs-line: rgba(255, 255, 255, .13);
+  --cs-accent: var(--moss);
+  --cs-eyebrow: #b9d46a;
+  --cs-gap: clamp(24px, 2.2vw, 32px);
+  --cs-radius: 1rem;
+  --cs-pill: 99px;
+  --cs-reveal: cubic-bezier(.76, 0, .24, 1);
+  --cs-out: cubic-bezier(.22, 1, .36, 1);
+  --cs-fast: 200ms;
+  --cs-draw: 450ms;
+}
+
+/* The hand-drawn underline. Its host needs position: relative. */
+.sq { position: absolute; left: 0; bottom: -.32em; width: 100%; height: .28em; overflow: visible; pointer-events: none; fill: none; stroke: var(--cs-accent); stroke-width: clamp(2px, .12em, 6px); stroke-linecap: round; stroke-linejoin: round; }
+.sq path { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; transition: stroke-dashoffset var(--cs-fast) ease-in, opacity var(--cs-fast) ease-in; }
+.sq-host:hover .sq path, .sq-host:focus-visible .sq path { stroke-dashoffset: 0; opacity: 1; transition: stroke-dashoffset var(--cs-draw) var(--cs-out), opacity 100ms; }
+
+/* The faint valley contours behind navy panels. */
+.contours { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; fill: none; stroke: #fff; stroke-width: 1; opacity: .045; }
+
+/* Content that rises in once when scrolled into view (see useReveal). */
+.rv { opacity: 0; transform: translateY(14px); transition: opacity 500ms var(--cs-out), transform 500ms var(--cs-out); transition-delay: calc(var(--k, 0) * 40ms); }
+.is-in .rv, .rv.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sq path, .sq-host:hover .sq path, .sq-host:focus-visible .sq path { transition: none; }
+  .rv { transform: none; transition: opacity 300ms ease; transition-delay: 0s; }
+}

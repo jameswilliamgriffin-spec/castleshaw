@@ -1,6 +1,8 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { PHONE, PHONE_HREF, FACEBOOK, NAV_SECTIONS, PRIVACY, CONTACT, EMAIL, ADDRESS, INCIDENT, INCIDENT_HREF } from '../data'
-import { ridge, ROOT } from '../lib'
+import { ridge, ROOT, HOME, reduced } from '../lib'
+import { Squiggle, useReveal } from './Squiggle'
+import './footer.css'
 import { WaterGL } from './Shaders'
 
 export function Contact({ msg, setMsg }) {
@@ -40,33 +42,91 @@ export function Contact({ msg, setMsg }) {
   )
 }
 
+const FT_NARROW = '(max-width: 699px)'
+function useFooterNarrow() {
+  const [narrow, setNarrow] = useState(() => matchMedia(FT_NARROW).matches)
+  useEffect(() => {
+    const m = matchMedia(FT_NARROW)
+    const on = () => setNarrow(m.matches)
+    m.addEventListener('change', on)
+    return () => m.removeEventListener('change', on)
+  }, [])
+  return narrow
+}
+
+const FtArrow = () => <svg className="ft-arr" viewBox="0 0 20 12" aria-hidden="true"><path d="M1 6h17M13 1.5 18 6l-5 4.5" /></svg>
+
+// A footer link: arrow slides in, the hand-drawn underline draws beneath.
+function FtLink({ href, children, i, rel, out }) {
+  return <a className="ft-a sq-host" href={href} rel={rel}><FtArrow /><span className="ft-a-t">{children}<Squiggle i={i} /></span>{out && <span className="ft-out" aria-hidden="true">&#8599;</span>}</a>
+}
+
+const toTop = () => {
+  if (window.__lenis) window.__lenis.scrollTo(0, { immediate: reduced() })
+  else window.scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' })
+  document.querySelector('.hd-logo')?.focus({ preventScroll: true })
+}
+
 export function Footer() {
+  const ref = useReveal()
+  const narrow = useFooterNarrow()
+  const [open, setOpen] = useState(-1)
+  const groups = NAV_SECTIONS.filter((x) => x.children.length)
   return (
-    <footer className="ft">
-      <div className="ft-top">
-        <div className="ft-id">
-          <span className="ft-logo"><img src={`${ROOT}shared/images/logo.jpg`} alt="Castleshaw Centre" width="200" height="129" /></span>
-          <p>Oldham Council&rsquo;s Outdoor and Environmental Education service, at the edge of the Peak District National Park.</p>
-          <p className="ft-cred">LOtC Quality Badge 101040. Licensed by AALA for climbing, watersports and trekking. Adventuremark accredited.</p>
+    <footer className="ft" ref={ref}>
+      <div className="ft-wrap">
+        <div className="ft-brand rv" style={{ '--k': 0 }}>
+          <a className="ft-logo" href={HOME}><img src={`${ROOT}shared/images/logo.jpg`} alt="Castleshaw Centre home" width="200" height="129" /></a>
+          <p className="ft-desc">Oldham Council&rsquo;s Outdoor and Environmental Education service, at the edge of the Peak District National Park.</p>
+
+          <div className="ft-touch" aria-labelledby="ft-touch-h" role="group">
+            <h2 className="ft-h" id="ft-touch-h">Get in touch</h2>
+            <a className="ft-tel" href={PHONE_HREF}>{PHONE}</a>
+            <a className="ft-mail sq-host" href={`mailto:${EMAIL}`}><span className="ft-a-t">{EMAIL}<Squiggle i={1} /></span></a>
+            <address className="ft-addr">{ADDRESS.slice(0, 2).join(', ')}<br />{ADDRESS.slice(2).join(' ')}</address>
+            <FtLink href={FACEBOOK} rel="noopener" i={2} out>Facebook</FtLink>
+            <p className="ft-sos"><span className="ft-dot" aria-hidden="true" /><span>24/7 critical incident line for visits: <a href={INCIDENT_HREF}>{INCIDENT}</a></span></p>
+          </div>
         </div>
-        <div className="ft-contact">
-          <h2>Get in touch</h2>
-          <a className="ft-tel" href={PHONE_HREF}>{PHONE}</a>
-          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
-          <address>{ADDRESS.map((l, i) => <span key={l}>{l}{i < ADDRESS.length - 1 && <br />}</span>)}</address>
-          <p className="ft-sos">24/7 critical incident line for visits: <a href={INCIDENT_HREF}>{INCIDENT}</a></p>
-          <a href={FACEBOOK} rel="noopener">Facebook</a>
+
+        <div className="ft-groups">
+          {groups.map((x, gi) => {
+            const id = `ft-h-${x.key}`, panel = `ft-p-${x.key}`, on = open === gi
+            return (
+              <nav key={x.key} className={`ft-group rv${on ? ' is-open' : ''}`} aria-labelledby={id} style={{ '--k': gi + 1 }}>
+                <h2 className="ft-h" id={id}>
+                  {narrow ? (
+                    <button type="button" className="ft-tog" aria-expanded={on} aria-controls={panel} onClick={() => setOpen(on ? -1 : gi)}>
+                      {x.long}<svg className="ft-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                    </button>
+                  ) : <a href={x.href}>{x.long}</a>}
+                </h2>
+                <div className="ft-panel" id={panel}>
+                  <ul>
+                    {narrow && <li><FtLink href={x.href} i={0}>Overview</FtLink></li>}
+                    {x.children.map((c, ci) => <li key={c.key}><FtLink href={c.href} i={ci}>{c.title}</FtLink></li>)}
+                  </ul>
+                </div>
+              </nav>
+            )
+          })}
         </div>
-        {NAV_SECTIONS.filter((x) => x.children.length).map((x) => (
-          <nav key={x.key} className="ft-group" aria-label={x.long}>
-            <h2><a href={x.href}>{x.long}</a></h2>
-            <ul>{x.children.map((c) => <li key={c.key}><a href={c.href}>{c.title}</a></li>)}</ul>
-          </nav>
-        ))}
       </div>
-      <div className="ft-bottom">
-        <p>Homepage design concept. Photographs, drawings and quoted words belong to the Castleshaw Centre and the people who sent them. Illustrations and the homepage film were made with AI, from our own illustration and photographs.</p>
-        <p className="ft-links"><a href={NAV_SECTIONS.find((x) => x.key === 'stay').href}>Stay and hire</a><a href={CONTACT}>Contact</a><a href={PRIVACY}>Privacy notice</a><a href={ROOT}>All versions</a></p>
+
+      <div className="ft-bar rv" style={{ '--k': 5 }}>
+        <p className="ft-cred">LOtC Quality Badge 101040. Licensed by AALA for climbing, watersports and trekking. Adventuremark accredited.</p>
+        <p className="ft-note">Homepage design concept. Photographs, drawings and quoted words belong to the Castleshaw Centre and the people who sent them. Illustrations and the homepage film were made with AI, from our own illustration and photographs.</p>
+        <div className="ft-row">
+          <span className="ft-copy">&copy; Oldham Council {new Date().getFullYear()}</span>
+          <ul className="ft-small">
+            <li><a href={NAV_SECTIONS.find((x) => x.key === 'stay').href}>Stay and hire</a></li>
+            <li><a href={CONTACT}>Contact</a></li>
+            <li><a href={PRIVACY}>Privacy notice</a></li>
+            <li><a href={FACEBOOK} rel="noopener">Facebook</a></li>
+            <li><a href={ROOT}>All versions</a></li>
+          </ul>
+          <button type="button" className="ft-top" onClick={toTop}>Back to top <svg viewBox="0 0 12 16" aria-hidden="true"><path d="M6 15V2M1.5 6.5 6 2l4.5 4.5" /></svg></button>
+        </div>
       </div>
     </footer>
   )
