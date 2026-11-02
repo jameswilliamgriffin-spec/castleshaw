@@ -3,8 +3,11 @@ import gsap from 'gsap'
 
 // Each page declares where it sits: <script>window.__ROOT = '../'; window.__HOME = './'</script>
 // ROOT is the site root (chooser, shared images); HOME is the v2 homepage.
-export const ROOT = (typeof window !== 'undefined' && window.__ROOT) || '../'
-export const HOME = (typeof window !== 'undefined' && window.__HOME) || './'
+// Both are made absolute, so links stay right when an inner page swaps to another
+// page in its section without reloading (see inner.jsx).
+const abs = (p) => (typeof window !== 'undefined' ? new URL(p, location.href).href : p)
+export const ROOT = abs((typeof window !== 'undefined' && window.__ROOT) || '../')
+export const HOME = abs((typeof window !== 'undefined' && window.__HOME) || './')
 export const ADVICE = HOME + 'advice-and-guidance/'
 
 export const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches
