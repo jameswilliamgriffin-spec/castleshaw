@@ -21,8 +21,8 @@
 .ph-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-top: 1.8rem; }
 .ph-art { margin: 0; align-self: center; }
 .ph-art img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.ph-art-arch { aspect-ratio: 4 / 4.4; max-height: 30rem; border-radius: 999px 999px 1.2rem 1.2rem; overflow: hidden; box-shadow: 0 30px 60px -40px rgba(10, 42, 60, .6); }
-.ph-art-soft { aspect-ratio: 4 / 3; border-radius: 1.4rem; overflow: hidden; box-shadow: 0 30px 60px -40px rgba(10, 42, 60, .6); }
+.ph-shp { width: 100%; max-width: 28rem; justify-self: center; }
+.ph-shp-soft { max-width: 36rem; }
 .ph-art-ill { border-radius: 1.4rem; overflow: hidden; }
 .ph-ridge { position: absolute; left: 0; bottom: -1px; width: 100%; height: 4.2rem; fill: var(--chalk); }
 @media (min-width: 960px) {
@@ -124,8 +124,7 @@
 /* activity list */
 .alist { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem 3rem; }
 .aitem { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.2rem; align-items: start; }
-.aitem-img { display: block; aspect-ratio: 1; border-radius: 999px 999px .8rem .8rem; overflow: hidden; background: var(--sky); }
-.aitem-img img { width: 100%; height: 100%; object-fit: cover; }
+.aitem-img { display: block; margin: 0; }
 .aitem h3 { margin: .3rem 0 .35rem; }
 .aitem p { font-size: .98rem; }
 @media (min-width: 900px) { .alist { grid-template-columns: 1fr 1fr; } .aitem { grid-template-columns: 9rem 1fr; } }
@@ -152,9 +151,8 @@
 /* people */
 .people { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 2rem 1.5rem; }
 .people li { display: grid; gap: .15rem; }
-.people-img { display: block; aspect-ratio: 4 / 5; border-radius: 999px 999px 1rem 1rem; overflow: hidden; background: var(--sky-pale); margin-bottom: .7rem; }
-.people-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
-.people-none { display: block; width: 100%; height: 100%; background: linear-gradient(180deg, var(--sky) 55%, var(--sage) 55%); }
+.people-img { display: block; margin: 0 0 .7rem; }
+.people-none { aspect-ratio: 4 / 5; background: linear-gradient(180deg, var(--sky) 55%, var(--sage) 55%); -webkit-clip-path: var(--shape-blob-5); clip-path: var(--shape-blob-5); }
 .people strong { font: 720 1.15rem var(--disp); }
 .people-role { font: 560 .92rem var(--disp); color: var(--deep); }
 .people-extra { font-size: .9rem; margin-top: .3rem; }
@@ -346,12 +344,11 @@ dl.meta dd { margin: 0; }
 .tl-imgs img { object-position: 50% 20%; }
 [id] { scroll-margin-top: 6rem; }
 .split-art { width: 100%; max-width: 32rem; justify-self: center; }
-.split-art img { object-position: 50% 25%; }
 .split-arch img { aspect-ratio: 4 / 4.4; }
 .ph-art img { object-position: 50% 30%; }
 @media (max-width: 959px) {
   .ph-art { width: 100%; max-width: 30rem; }
-  .ph-art-arch { aspect-ratio: 4 / 3.6; }
+  .ph-shp .shp-stage { aspect-ratio: 4 / 3.8; }
 }
 
 /* Swapping between pages in a section: the header and link bar hold still while the page crossfades. */

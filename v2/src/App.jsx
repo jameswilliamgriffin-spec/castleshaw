@@ -9,6 +9,8 @@ import Journey from './ui/Journey'
 import Loader from './ui/Loader'
 import { Footer } from './ui/Contact'
 import { reduced, goTo } from './lib'
+import './ui/shape/shapes'
+import './ui/shape/shapes.css'
 
 export default function App() {
   const [menu, setMenu] = useState(false)

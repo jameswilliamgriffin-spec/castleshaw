@@ -111,7 +111,9 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .rg-mid { height: 70%; fill: var(--moss); z-index: 2; }
 .rg-near { height: 42%; fill: #dbe9a8; z-index: 3; }
 .wins { position: absolute; inset: 0; z-index: 1; }
-.win { position: absolute; aspect-ratio: 3 / 4; border-radius: 999px 999px 0 0; overflow: hidden; }
+.win { position: absolute; aspect-ratio: 3 / 4; overflow: hidden; -webkit-clip-path: var(--shape-blob-2); clip-path: var(--shape-blob-2); }
+.win-2 { -webkit-clip-path: var(--shape-blob-9); clip-path: var(--shape-blob-9); }
+.win-3 { -webkit-clip-path: var(--shape-blob-7); clip-path: var(--shape-blob-7); }
 .win img { width: 100%; height: 100%; object-fit: cover; }
 .win-1 { left: 6%; bottom: 26%; width: 27vw; }
 .win-2 { left: 38%; bottom: 14%; width: 30vw; }
@@ -139,7 +141,12 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .acts-dots li.on::before { transform: scale(1.4); }
 .acts-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--g) 1.2rem; scrollbar-width: thin; }
 .act { flex: none; width: 84vw; scroll-snap-align: center; display: grid; gap: 1.2rem; align-content: start; }
-.act-img { aspect-ratio: 4 / 5; border-radius: 999px 999px 1.2rem 1.2rem; overflow: hidden; background: var(--ink); }
+.act-img { aspect-ratio: 4 / 5; overflow: hidden; background: var(--ink); -webkit-clip-path: var(--act-shape, var(--shape-blob-5)); clip-path: var(--act-shape, var(--shape-blob-5)); }
+.act:nth-child(6n+2) { --act-shape: var(--shape-blob-3); }
+.act:nth-child(6n+3) { --act-shape: var(--shape-blob-8); }
+.act:nth-child(6n+4) { --act-shape: var(--shape-blob-1); }
+.act:nth-child(6n+5) { --act-shape: var(--shape-blob-6); }
+.act:nth-child(6n) { --act-shape: var(--shape-blob-9); }
 .act-img .media { position: relative; width: 116%; height: 100%; margin-left: -8%; }
 .media img, .media .gl { position: absolute; inset: 0; width: 100%; height: 100%; }
 .media img { object-fit: cover; }
@@ -205,13 +212,18 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .opt-on span { background: var(--ink); color: var(--chalk); }
 .opt:focus-within span { outline: 3px solid var(--focus); outline-offset: 3px; }
 .pl-opts-img { grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); }
-.opt-img { border-radius: 999px 999px 1rem 1rem; overflow: hidden; aspect-ratio: 3 / 4; background: var(--ink); box-shadow: 0 0 0 0 var(--c); transition: box-shadow .3s; }
-.opt-img img { width: 100%; height: 100%; object-fit: cover; opacity: .75; transition: opacity .3s, transform .6s var(--out); }
-.opt-img span { position: absolute; left: .5rem; right: .5rem; bottom: .5rem; padding: .45rem .6rem; border: 0; border-radius: .7rem; background: #fff; color: var(--ink); font-size: .95rem; text-align: center; }
+/* Option photos in organic shapes; the chosen one gets a ring that follows its outline. */
+.opt-img { --opt-shape: var(--shape-blob-1); aspect-ratio: 3 / 4; transition: filter .3s; }
+.opt-img:nth-child(5n+2) { --opt-shape: var(--shape-blob-6); }
+.opt-img:nth-child(5n+3) { --opt-shape: var(--shape-blob-3); }
+.opt-img:nth-child(5n+4) { --opt-shape: var(--shape-blob-9); }
+.opt-img:nth-child(5n) { --opt-shape: var(--shape-blob-5); }
+.opt-img img { width: 100%; height: 100%; object-fit: cover; -webkit-clip-path: var(--opt-shape); clip-path: var(--opt-shape); filter: saturate(.8) brightness(.82); transition: filter .3s, transform .6s var(--out); }
+.opt-img span { position: absolute; left: 14%; right: 14%; bottom: 9%; padding: .45rem .6rem; border: 0; border-radius: .7rem; background: #fff; color: var(--ink); font-size: .95rem; text-align: center; }
 .opt-img:hover span { transform: none; }
 .opt-img:hover img { transform: scale(1.06); }
-.opt-img.opt-on { box-shadow: 0 0 0 5px var(--c); }
-.opt-img.opt-on img { opacity: 1; }
+.opt-img.opt-on { filter: drop-shadow(4px 0 0 var(--c)) drop-shadow(-4px 0 0 var(--c)) drop-shadow(0 4px 0 var(--c)) drop-shadow(0 -4px 0 var(--c)); }
+.opt-img.opt-on img { filter: none; }
 .opt-img.opt-on span { background: var(--ink); color: var(--chalk); }
 .pl-res ul { display: grid; gap: .8rem; }
 .pl-res li { display: grid; grid-template-columns: 4.2rem 1fr; gap: 1rem; align-items: center; animation: stage .6s var(--out) both; animation-delay: calc(var(--i) * .08s); }

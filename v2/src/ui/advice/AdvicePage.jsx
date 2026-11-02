@@ -8,6 +8,7 @@ import Button from '../Button'
 import { reduced, ROOT } from '../../lib'
 import { PHONE, PHONE_HREF, href } from '../../data'
 import { SubNav, LinkList, TBC } from '../inner/blocks'
+import ShapedImage from '../shape/ShapedImage'
 
 const IMG = `${ROOT}shared/images/`
 const EMAIL = 'castleshaw.centre@oldham.gov.uk'
@@ -171,8 +172,8 @@ export default function AdvicePage() {
             </div>
           </div>
           <div className="av-hero-art">
-            <figure className="av-arch av-arch-a"><img src={`${IMG}land-ghyll.jpg`} alt="Young people in helmets scrambling up a moorland stream with an instructor nearby" width="600" height="800" /></figure>
-            <figure className="av-arch av-arch-b"><img src={`${IMG}water-consent.jpg`} alt="A young kayaker in a buoyancy aid and helmet wading out of a reservoir" width="600" height="800" /></figure>
+            <ShapedImage className="av-arch av-arch-a" src={`${IMG}land-ghyll.jpg`} alt="Young people in helmets scrambling up a moorland stream with an instructor nearby" width={600} height={800} aspect="3/4" shape="blob-2" backdrop="offset" accent="lime" offset="tl" pos="45% 50%" priority shadow />
+            <ShapedImage className="av-arch av-arch-b" src={`${IMG}water-consent.jpg`} alt="A young kayaker in a buoyancy aid and helmet wading out of a reservoir" width={600} height={800} aspect="3/4" shape="blob-7" pos="50% 40%" priority shadow />
             <a className="av-sos" href={INCIDENT_HREF}><span className="av-pulse" aria-hidden="true" /><span><small>24/7 critical incident line</small>{INCIDENT}</span></a>
           </div>
         </section>
@@ -271,13 +272,13 @@ export default function AdvicePage() {
           </div>
           <div className="av-people-grid">
             <article className="av-person">
-              <figure><img src={`${IMG}team/rod-steele.jpg`} alt="Rod Steele, smiling, holding a canoe paddle on a river" loading="lazy" /></figure>
+              <ShapedImage className="av-person-img" src={`${IMG}team/rod-steele.jpg`} alt="Rod Steele, smiling, holding a canoe paddle on a river" shape="blob-6" aspect="4/5" width={800} height={1000} pos="50% 30%" />
               <h3>Rod Steele</h3>
               <p className="av-role">Senior tutor and adviser</p>
               <ul><li>Institute of Outdoor Learning accredited practitioner</li><li>IOSH</li><li>Level 4 canoe and kayak coach</li><li>Mountain bike leader</li><li>Outdoor Education Advisers&rsquo; Panel member</li></ul>
             </article>
             <article className="av-person">
-              <figure><img src={`${IMG}team/joseph-myhill.jpg`} alt="Joseph Myhill, smiling, in a red jacket and woolly hat outdoors" loading="lazy" /></figure>
+              <ShapedImage className="av-person-img" src={`${IMG}team/joseph-myhill.jpg`} alt="Joseph Myhill, smiling, in a red jacket and woolly hat outdoors" shape="blob-3" aspect="4/5" width={800} height={1000} pos="50% 30%" />
               <h3>Joseph Myhill</h3>
               <p className="av-role">Centre manager and adviser</p>
               <ul><li>Duke of Edinburgh&rsquo;s Award assessor and supervisor</li><li>Former DofE manager</li><li>Paddlesport leader</li><li>Outdoor Education Advisers&rsquo; Panel member</li></ul>

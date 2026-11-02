@@ -1,0 +1,15 @@
+<!doctype html>
+<!-- Shape lab: a dev-only page (npm run dev, then /v2/shape-lab/). It is not a build input, so it is never deployed. -->
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Shape lab | Castleshaw Centre</title>
+  <script>
+    if (!/\/$|\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash)
+    window.__ROOT = '../../'; window.__HOME = '../'
+  </script>
+</head>
+<body><div id="root"></div><script type="module" src="../src/shapelab.jsx"></script></body>
+</html>

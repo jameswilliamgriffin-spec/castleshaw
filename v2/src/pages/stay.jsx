@@ -9,7 +9,7 @@ export function Stay({ path }) {
         path={path}
         title="Stay and hire"
         lead="A warm stone building at the top of the Castleshaw Valley, with beds for 38, a big lounge, a classroom, a yurt and a camping field. Book it with our activities, or on its own and run your own programme."
-        image={{ src: img('stay-front'), alt: 'The front of the Castleshaw Centre, a long stone building beside the lane' }}
+        image={{ src: img('stay-front'), alt: 'The front of the Castleshaw Centre, a long stone building beside the lane', shape: 'arch' }}
         actions={<><Btn href={CONTACT}>Check availability</Btn><a className="ib ib-line" href="#facilities">Facilities</a></>}
       />
       <Band>

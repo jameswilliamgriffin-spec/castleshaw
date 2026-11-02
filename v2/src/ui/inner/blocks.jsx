@@ -6,6 +6,14 @@ import { PAGES } from '../../site.mjs'
 import { href, PHONE, PHONE_HREF, EMAIL, CONTACT } from '../../data'
 import { ROOT, HOME, ridge } from '../../lib'
 import { Squiggle, Contours, useReveal } from '../Squiggle'
+import ShapedImage from '../shape/ShapedImage'
+import { BLOBS, pick } from '../shape/shapes'
+
+// Shapes are chosen per photo, so a page always looks the same, and hero and split
+// shapes come from different sets so neighbours never match. Set image.shape to override.
+const HERO_SHAPES = ['blob-2', 'blob-5', 'blob-7', 'blob-9', 'blob-1']
+const SPLIT_SHAPES = ['blob-3', 'blob-4', 'blob-6', 'blob-8']
+const ACCENTS = ['lime', 'pale-blue', 'navy']
 
 export const img = (name) => `${ROOT}shared/images/site/${name}.jpg`
 export const ill = (name) => `${ROOT}shared/images/illustrations/${name}.jpg`
@@ -80,11 +88,16 @@ export function Hero({ path, title, lead, children, image, illustration, tone = 
           {children}
           {actions && <div className="ph-actions">{actions}</div>}
         </div>
-        {image && (
-          <figure className={`ph-art ph-art-${image.shape || 'arch'}`}>
-            <img src={image.src} alt={image.alt} width="1200" height="900" fetchPriority="high" />
-          </figure>
-        )}
+        {image && (image.shape === 'soft' ? (
+          <ShapedImage className="ph-art ph-shp ph-shp-soft" src={image.src} alt={image.alt} shape="soft" aspect="4/3" shadow priority pos={image.pos} />
+        ) : (
+          <ShapedImage
+            className="ph-art ph-shp" src={image.src} alt={image.alt} priority shadow
+            shape={image.shape || pick(image.src, HERO_SHAPES)} backdrop="offset"
+            accent={image.accent || pick(image.src, ACCENTS, 7)} offset={pick(image.src, ['br', 'bl'], 3)}
+            float={pick(image.src, ['circle', 'squiggle', 'blob'], 11)} aspect="4/4.4" pos={image.pos || '50% 35%'}
+          />
+        ))}
         {illustration && (
           <figure className="ph-art ph-art-ill">
             <img src={illustration.src} alt={illustration.alt || ''} width="1536" height="1024" fetchPriority="high" />
@@ -114,10 +127,21 @@ export function Intro({ heading, children, aside }) {
 export function Split({ image, reverse, heading, children, shape = 'arch', caption }) {
   return (
     <div className={`split${reverse ? ' split-rev' : ''}`}>
-      <figure className={`split-art split-${shape}`}>
-        <img src={image.src} alt={image.alt} loading="lazy" width="1200" height="900" />
-        {caption && <figcaption>{caption}</figcaption>}
-      </figure>
+      {shape === 'ill' ? (
+        <figure className="split-art split-ill">
+          <img src={image.src} alt={image.alt} loading="lazy" width="1200" height="900" />
+          {caption && <figcaption>{caption}</figcaption>}
+        </figure>
+      ) : shape === 'soft' ? (
+        <ShapedImage className="split-art" src={image.src} alt={image.alt} shape="soft" aspect="4/3" pos={image.pos} caption={caption} />
+      ) : (
+        <ShapedImage
+          className="split-art" src={image.src} alt={image.alt} caption={caption} pos={image.pos || '50% 35%'}
+          shape={image.shape || (shape !== 'arch' ? shape : pick(image.src, SPLIT_SHAPES))}
+          backdrop={image.backdrop || pick(image.src, ['ring', 'none', 'dots', 'offset'], 5)}
+          accent={pick(image.src, ACCENTS, 13)} offset={reverse ? 'bl' : 'br'} aspect="4/4.4"
+        />
+      )}
       <div className="split-copy">
         {heading && <h2 className="h2i">{heading}</h2>}
         {children}
@@ -170,9 +194,9 @@ export function TileLinks({ items, feature = true }) {
 export function ActivityList({ items }) {
   return (
     <ul className="alist">
-      {items.map((a) => (
+      {items.map((a, i) => (
         <li key={a.name} className="aitem">
-          {a.img && <span className="aitem-img"><img src={a.img} alt={a.alt || ''} loading="lazy" /></span>}
+          {a.img && <ShapedImage className="aitem-img" src={a.img} alt={a.alt || ''} shape={BLOBS[(i * 4 + 2) % BLOBS.length]} aspect="1/1" width={600} height={600} />}
           <div><h3>{a.name}</h3><p>{a.text}</p></div>
         </li>
       ))}
@@ -206,9 +230,11 @@ export function Quotes({ items }) {
 export function People({ items }) {
   return (
     <ul className="people">
-      {items.map((p) => (
+      {items.map((p, i) => (
         <li key={p.name}>
-          <span className="people-img">{p.img ? <img src={p.img} alt={p.alt || `${p.name}`} loading="lazy" /> : <span className="people-none" aria-hidden="true" />}</span>
+          {p.img
+            ? <ShapedImage className="people-img" src={p.img} alt={p.alt || p.name} shape={BLOBS[(i * 2 + 5) % BLOBS.length]} aspect="4/5" width={800} height={1000} pos="50% 25%" />
+            : <span className="people-img people-none" aria-hidden="true" />}
           <strong>{p.name}</strong>
           {p.role && <span className="people-role">{p.role}</span>}
           {p.extra && <span className="people-extra">{p.extra}</span>}

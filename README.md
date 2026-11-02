@@ -64,6 +64,7 @@ The site map lives in one file, `v2/src/site.mjs`: sections, pages, titles and m
 - The advice landing page (`/v2/advice-and-guidance/`) keeps its own entry and motion. Every other inner page is deliberately calm: no film, smooth scrolling or custom cursor, only hover feedback.
 - Anything the centre has not yet confirmed is shown with an amber **To confirm** marker (`<TBC>` in the code). The full list is in `content/OPEN-QUESTIONS.md`.
 - Forms are concept forms. They show a confirmation but send nothing.
+- Images use organic shapes from `v2/src/ui/shape/` (`<ShapedImage />`, with tokens such as `--shape-blob-3`). To compare every shape, backdrop and accent, run `npm run dev` and open `/v2/shape-lab/`. That page is dev-only and is never built or deployed.
 
 ## Version 2: how the film works
 
