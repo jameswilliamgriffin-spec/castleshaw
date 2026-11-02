@@ -7,6 +7,7 @@ One project that builds into one static folder:
 | `/` | Version chooser: logo, one-line intro, and two choices with preview thumbnails |
 | `/v1/` | Version 1: the illustrated homepage, unchanged apart from asset paths and an "All versions" link |
 | `/v2/` | Version 2: the same illustrated top half, then the hills come alive as a scroll-scrubbed film |
+| `/v2/<section>/…` | Version 2 inner pages: 33 pages in six sections (see below) |
 
 ## Run it locally
 
@@ -48,7 +49,21 @@ v2/video-src/               film source material, drafts, masters and scripts (n
 public/shared/images/       photos and logo, used by both versions
 public/shared/thumbs/       chooser thumbnails
 public/v2/video/            v2 only: frame sequences, posters, ambience, PROMPTS.md
+public/shared/images/site/  photos from the current castleshawcentre.com, renamed by subject
+public/shared/images/illustrations/  AI illustrations in the logo's flat style (inner pages)
+content/                    the site structure proposal and OPEN-QUESTIONS.md
 ```
+
+## Version 2 inner pages
+
+The site map lives in one file, `v2/src/site.mjs`: sections, pages, titles and meta descriptions. The menu, footer, breadcrumbs and section navigation all read from it.
+
+- `scripts/gen-pages.mjs` writes an `index.html` for every page in the map. It runs automatically before `dev` and `build`, so add a page to `site.mjs`, never by hand.
+- `v2/src/inner.jsx` maps each path to its component in `v2/src/pages/`.
+- The building blocks (hero, bands, splits, quotes, forms and so on) are in `v2/src/ui/inner/blocks.jsx`, styled by `v2/src/inner.css`.
+- The advice landing page (`/v2/advice-and-guidance/`) keeps its own entry and motion. Every other inner page is deliberately calm: no film, smooth scrolling or custom cursor, only hover feedback.
+- Anything the centre has not yet confirmed is shown with an amber **To confirm** marker (`<TBC>` in the code). The full list is in `content/OPEN-QUESTIONS.md`.
+- Forms are concept forms. They show a confirmation but send nothing.
 
 ## Version 2: how the film works
 

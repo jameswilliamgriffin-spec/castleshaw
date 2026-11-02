@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import gsap from 'gsap'
-import { POSTBAG, QUOTES } from '../data'
+import { POSTBAG, QUOTES, href } from '../data'
 import { reduced } from '../lib'
 
 // A pile of thank-you post. Take the top one off and it goes to the bottom of the pile.
@@ -37,7 +37,7 @@ export default function Postbag() {
           </button>
           <span className="pb-n" aria-live="polite">{order[0] + 1} of {n}</span>
         </div>
-        <p className="pb-links"><a href="https://www.castleshawcentre.com/image-gallery--hall-of-fame.html">See the Hall of Fame</a><a href="https://www.castleshawcentre.com/testimonials.html">Read all testimonials</a></p>
+        <p className="pb-links"><a href={href('about/what-people-say/') + '#hall-of-fame'}>See the Hall of Fame</a><a href={href('about/what-people-say/')}>Read all testimonials</a></p>
       </div>
       <div className="pb-pile" ref={pile} onPointerDown={down} onPointerUp={up} data-cue="Swipe">
         {order.slice(0, 4).reverse().map((idx, k, arr) => {

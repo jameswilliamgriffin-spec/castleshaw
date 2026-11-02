@@ -205,3 +205,10 @@ html:not(.motion) .av-chain-cta { opacity: 1; transform: none; pointer-events: a
 .av-check:nth-child(even) { transform: none; }
 .av-next { margin: 0; font-size: .9rem; color: rgba(255, 255, 255, .85); }
 .vf-head { padding-right: 6.8rem; }
+
+/* section page list and links, shared with the inner pages */
+.av-subnav { background: transparent; padding-top: 1.5rem; }
+.av-more { padding: clamp(4rem, 8vw, 6.5rem) var(--g); background: var(--chalk); }
+.av-more > * { max-width: 84rem; margin-inline: auto; }
+.av-more .av-h2 { margin-bottom: 2rem; }
+.av-subnav .subnav { margin-top: 0; }

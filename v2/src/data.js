@@ -1,76 +1,57 @@
-import { ADVICE } from './lib'
-
-const B = 'https://www.castleshawcentre.com'
+import { HOME } from './lib'
+import { SECTIONS } from './site.mjs'
 
 export const PHONE = '0161 770 8595'
 export const PHONE_HREF = 'tel:+441617708595'
 export const FACEBOOK = 'https://www.facebook.com/castleshawcentre'
 export const W3W = 'cherubs.campfires.liked'
 
-export const NAV_MAIN = [
-  ['What we do', `${B}/what-we-do.html`],
-  ['Visits advice', ADVICE],
-  ['Where we are', `${B}/where-we-are.html`],
-  ['The Team', `${B}/the-team.html`],
-  ['Accreditation', `${B}/accreditation.html`],
-  ['Testimonials', `${B}/testimonials.html`],
-]
+export const EMAIL = 'castleshaw.centre@oldham.gov.uk'
+export const INCIDENT = '0161 633 1803'
+export const INCIDENT_HREF = 'tel:+441616331803'
+export const ADDRESS = ['Waterworks Road', 'Delph', 'Oldham', 'OL3 5LZ']
 
-export const NAV_ALL = [
-  ['Welcome', './'],
-  ['Where we are', `${B}/where-we-are.html`],
-  ['What we do', `${B}/what-we-do.html`],
-  ['The Team', `${B}/the-team.html`],
-  ['Accreditation', `${B}/accreditation.html`],
-  ['Testimonials', `${B}/testimonials.html`],
-  ['Educational visits advice', ADVICE],
-  ['Visits advice', ADVICE],
-  ['Information for Group Leaders', `${B}/information-for-group-leaders.html`],
-  ['Resources for Teachers', `${B}/resources-for-teachers.html`],
-  ['Image Gallery: Hall of Fame', `${B}/image-gallery--hall-of-fame.html`],
-  ['News', `${B}/news.html`],
-  ['Holiday Activities 2026', `${B}/holiday-activities-2026.html`],
-  ['Things to do', `${B}/things-to-do.html`],
-  ['Nick Price 1958-2016', `${B}/nick-price-1958-2016.html`],
-  ['Back in the day', `${B}/back-in-the-day.html`],
-  ['Centre History', `${B}/centre-history.html`],
-  ['Privacy Notice', `${B}/privacy-notice.html`],
-]
+// Navigation, built from the site map in site.mjs. Links are relative to the current page.
+export const href = (path) => HOME + path
+export const NAV_MAIN = SECTIONS.map((s) => [s.title, href(s.path)])
+export const NAV_SECTIONS = SECTIONS.map((s) => ({ ...s, href: href(s.path), children: s.children.map((c) => ({ ...c, href: href(c.path) })) }))
+export const PRIVACY = href('privacy/')
+export const CONTACT = href('contact/')
 
 // accent = the tone the page takes on; on = readable text colour on that tone
 export const AREAS = [
   {
-    id: 'land', title: 'Adventures on land', short: 'Land',
+    id: 'land', page: 'activities/adventure-on-land/', title: 'Adventures on land', short: 'Land',
     img: '../shared/images/land-ghyll.jpg', pos: '50% 40%',
     accent: '#8dba08', on: '#14221a', tint: '#dbe9a8',
     text: 'Ghyll scrambling up Pennine streams, climbing, trekking and orienteering. Real hills, proper kit, and a team who know every wet rock.',
   },
   {
-    id: 'water', title: 'Adventures in the water', short: 'Water',
+    id: 'water', page: 'activities/adventure-on-water/', title: 'Adventures in the water', short: 'Water',
     img: '../shared/images/water-consent.jpg', pos: '50% 45%',
     accent: '#0480bc', on: '#ffffff', tint: '#bfe4f7',
     text: 'Kayaking and canoeing on reservoir water. Wet suits, buoyancy aids, and a fair chance of getting wet whichever way up you finish.',
   },
   {
-    id: 'bushcraft', title: 'Bushcraft', short: 'Bushcraft',
+    id: 'bushcraft', page: 'activities/bushcraft/', title: 'Bushcraft', short: 'Bushcraft',
     img: '../shared/images/bushcraft-marshmallows.jpg', pos: '50% 50%',
     accent: '#e5832c', on: '#14221a', tint: '#f6d9b6',
     text: 'Light a fire, keep it going, and toast something over it. Sticks, knots and shelter-building for anyone who likes mud on their knees.',
   },
   {
-    id: 'environment', title: 'Environmental Education', short: 'Environment',
+    id: 'environment', page: 'activities/environmental-education/', title: 'Environmental Education', short: 'Environment',
     img: '../shared/images/environmental-education.jpg', pos: '50% 60%',
     accent: '#c1d284', on: '#14221a', tint: '#e6edc4',
     text: 'Habitats, river studies and mapwork on real ground. Children come back to school able to talk about what they found.',
   },
   {
-    id: 'roman', title: 'Roman History Specialists', short: 'Romans',
+    id: 'roman', page: 'activities/roman-history/', title: 'Roman History Specialists', short: 'Romans',
     img: '../shared/images/roman-session.jpg', pos: '45% 40%',
     accent: '#b7342b', on: '#ffffff', tint: '#efc8c2',
     text: 'Helmets on, shields up, wooden swords out. A Roman day on the moor, with the Pennine hills standing in for the edge of the empire.',
   },
   {
-    id: 'stay', title: 'Accommodation, catering and venue hire', short: 'Stay',
+    id: 'stay', page: 'stay/', title: 'Accommodation, catering and venue hire', short: 'Stay',
     img: '../shared/images/centre-building.jpg', pos: '40% 40%',
     accent: '#bfe4f7', on: '#14221a', tint: '#e3f2fa',
     text: 'Self-catering accommodation for small groups, a hall with AV and IT facilities, and meals if you would rather someone else did the cooking.',
@@ -124,10 +105,3 @@ export const POSTBAG = [
   { k: 'q', i: 5 },
   { k: 'img', src: '../shared/images/gallery/g-2127949.jpg', alt: 'A drawing of a green hill with a gateway and the word Castleshaw' },
 ]
-
-// Grouped for the menu and footer (v2): the same pages as NAV_ALL, sorted by what people come for
-export const NAV_GROUPS = [
-  ['Plan a visit', ['What we do', 'Where we are', 'Educational visits advice', 'Information for Group Leaders', 'Resources for Teachers', 'Holiday Activities 2026', 'Things to do']],
-  ['About the centre', ['The Team', 'Accreditation', 'Testimonials', 'Image Gallery: Hall of Fame', 'News', 'Centre History', 'Back in the day', 'Nick Price 1958-2016']],
-]
-export const navHref = (t) => (NAV_ALL.find(([n]) => n === t) || [])[1]

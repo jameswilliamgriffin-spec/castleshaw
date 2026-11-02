@@ -6,13 +6,14 @@ import { Cursor, Header, Menu } from '../Top'
 import { Footer } from '../Contact'
 import Button from '../Button'
 import { reduced, ROOT } from '../../lib'
-import { PHONE, PHONE_HREF } from '../../data'
+import { PHONE, PHONE_HREF, href } from '../../data'
+import { SubNav, LinkList, TBC } from '../inner/blocks'
 
 const IMG = `${ROOT}shared/images/`
 const EMAIL = 'castleshaw.centre@oldham.gov.uk'
 const INCIDENT = '0161 633 1803'
 const INCIDENT_HREF = 'tel:+441616331803'
-const TRAINING_DATES = 'https://www.castleshawcentre.com/training-course-dates.html'
+const TRAINING_DATES = href('advice-and-guidance/training/')
 
 // The four checks every visit passes through, in order.
 const STEPS = [
@@ -39,7 +40,7 @@ const INCLUDED = [
 const TRAINING = [
   ['Educational Visits Coordinator (EVC)', 'One day', 'For new EVCs and the staff who support them, in line with DfE guidance. One free place a year comes with the service.'],
   ['Visit Leader training', 'Three hours, or two twilight sessions', 'For staff leading and supporting visits, following the OEAP framework.'],
-  ['Management of Visit Emergencies (MoVE)', 'Half day', 'For senior leaders who would run the response if something goes wrong on a visit.'],
+  ['Management of Visit Emergencies (MoVE)', <TBC key="l">Length</TBC>, 'For senior leaders who would run the response if something goes wrong on a visit.'],
   ['First Aid for group leaders (ITC)', 'Two days', 'HSE-approved. Meets most national governing body requirements.'],
   ['Minibus Driver Awareness (MiDAS)', 'Three hours', 'Theory course, at Castleshaw or at your school.'],
 ]
@@ -181,10 +182,12 @@ export default function AdvicePage() {
           <dl>
             <div><dt>20+ years</dt><dd>supporting visits in Oldham and beyond</dd></div>
             <div><dt>10 days</dt><dd>to review a visit, usually less</dd></div>
-            <div><dt>24/7</dt><dd>critical incident line, every day of term</dd></div>
+            <div><dt>24/7</dt><dd>critical incident line for visits</dd></div>
             <div><dt>1 free</dt><dd>EVC training place a year, per school</dd></div>
           </dl>
         </section>
+
+        <div className="inner av-subnav"><SubNav path="advice-and-guidance/" /></div>
 
         <Chain />
 
@@ -256,6 +259,7 @@ export default function AdvicePage() {
             <h2 id="sos-h">If something goes wrong on a visit, call us. Day or night.</h2>
             <a className="av-sos-num" href={INCIDENT_HREF}><span className="av-pulse" aria-hidden="true" />{INCIDENT}</a>
             <p>Our 24/7 critical incident line supports you with managing the incident, contacting families and dealing with the media. For everyday advice in school hours, call <a href={PHONE_HREF}>{PHONE}</a>.</p>
+            <p><TBC>Whether the line is staffed all year or in term time only</TBC> <a href={href('advice-and-guidance/emergency-support/')}>More about emergency support</a></p>
           </div>
         </section>
 
@@ -299,6 +303,21 @@ export default function AdvicePage() {
           </ul>
         </section>
 
+        {/* the rest of the section */}
+        <section className="inner av-more" aria-labelledby="more-h">
+          <h2 id="more-h" className="av-h2">More about the service</h2>
+          <LinkList items={[
+            { title: 'How it works', href: href('advice-and-guidance/how-it-works/'), text: 'From plan to sign-off on Evolve, and which visits come to us' },
+            { title: 'The service agreement', href: href('advice-and-guidance/service-agreement/'), text: 'Everything included, packages and the formal document' },
+            { title: 'Who it\u2019s for', href: href('advice-and-guidance/who-its-for/'), text: 'Maintained schools, academies, trusts, colleges and youth services' },
+            { title: 'Training', href: href('advice-and-guidance/training/'), text: 'EVC, Visit Leader, MoVE, first aid and MiDAS' },
+            { title: 'Emergency support', href: href('advice-and-guidance/emergency-support/'), text: 'What happens when you call the critical incident line' },
+            { title: 'Guidance and resources', href: href('advice-and-guidance/guidance-and-resources/'), text: 'National guidance, policies and templates' },
+            { title: 'Our advisers', href: href('advice-and-guidance/our-advisers/'), text: 'Rod Steele and Joseph Myhill' },
+            { title: 'Questions', href: href('advice-and-guidance/questions/'), text: 'What schools and business managers ask us' },
+          ]} />
+        </section>
+
         {/* why + join */}
         <section className="av-join" id="quote" aria-labelledby="join-h">
           <div className="av-join-why">
@@ -308,7 +327,7 @@ export default function AdvicePage() {
               <li><strong>Established.</strong> Running for more than 20 years.</li>
               <li><strong>Local.</strong> Close enough to come to you in person.</li>
               <li><strong>Practising.</strong> Our advisers still lead visits every week.</li>
-              <li><strong>Inspected.</strong> LOtC Quality Badge 101040. Licensed by AALA (HSE), licence <span className="av-tbc">[AALA licence number]</span>.</li>
+              <li><strong>Inspected.</strong> LOtC Quality Badge 101040. Licensed by AALA (HSE), licence <TBC>AALA licence number</TBC>.</li>
               <li><strong>Rated outstanding.</strong> By most schools in our annual survey.</li>
             </ul>
             <figure className="av-quote av-quote-sm">

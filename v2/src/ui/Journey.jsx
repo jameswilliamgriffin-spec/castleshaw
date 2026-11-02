@@ -4,7 +4,7 @@ import TH from '../threshold.json'
 import { Film, filmSource, prefersStills } from '../film'
 import Planner from './Planner'
 import Postbag from './Postbag'
-import { PHONE, PHONE_HREF, FACEBOOK, QUOTES } from '../data'
+import { PHONE, PHONE_HREF, FACEBOOK, QUOTES, href } from '../data'
 
 // The six chapters of the film, in scroll order. `side` is where the words sit.
 const CH = [
@@ -206,7 +206,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
             <p className="j-lead">Kayaking and canoeing on reservoir water in the hills above Delph.</p>
             <p>First timers start close to the bank, getting a feel for the boat, the paddle and the cold. By the end of the session most groups are racing, rafting up together, or trying to stand up in a canoe without falling in. A few manage it.</p>
             <p>Every water session runs under our AALA licence for watersports (L71687) and is led by our own instructors, with the boats, paddles and buoyancy aids provided. Bring a full change of clothes and a towel, and something warm for afterwards.</p>
-            <a className="j-more" href="https://www.castleshawcentre.com/information-for-group-leaders.html">Information for group leaders</a>
+            <a className="j-more" href={href('activities/adventure-on-water/')}>More about adventure on water</a>
           </div>
         </div>
 

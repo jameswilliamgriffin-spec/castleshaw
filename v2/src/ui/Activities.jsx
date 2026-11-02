@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { AREAS } from '../data'
+import { AREAS, href } from '../data'
 import { RippleImage } from './Shaders'
 
 // Six activity areas on a horizontal track. On wide screens vertical scroll drives it;
@@ -65,6 +65,7 @@ export default function Activities({ picks, toggle }) {
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path className="kp" d="M12 5v14M5 12h14" /><path className="kc" d="M5 12.5l4.5 4.5L19 7.5" /></svg>
                   <span>{picked ? 'In your plan' : 'Add to your plan'}</span>
                 </button>
+                {x.page && <a className="act-more" href={href(x.page)}>More about {x.short.toLowerCase()}</a>}
               </div>
             </article>
           )

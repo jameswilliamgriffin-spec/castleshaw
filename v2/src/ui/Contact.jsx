@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { PHONE, PHONE_HREF, FACEBOOK, NAV_GROUPS, navHref } from '../data'
+import { PHONE, PHONE_HREF, FACEBOOK, NAV_SECTIONS, PRIVACY, CONTACT, EMAIL, ADDRESS, INCIDENT, INCIDENT_HREF } from '../data'
 import { ridge, ROOT } from '../lib'
 import { WaterGL } from './Shaders'
 
@@ -46,25 +46,27 @@ export function Footer() {
       <div className="ft-top">
         <div className="ft-id">
           <span className="ft-logo"><img src={`${ROOT}shared/images/logo.jpg`} alt="Castleshaw Centre" width="200" height="129" /></span>
-          <p>Oldham&rsquo;s Outdoor and Environmental Education service, at the edge of the Peak District National Park.</p>
-          <p className="ft-cred">AALA licence L71687 for climbing, watersports and trekking. LOtC Quality Badge 101040.</p>
+          <p>Oldham Council&rsquo;s Outdoor and Environmental Education service, at the edge of the Peak District National Park.</p>
+          <p className="ft-cred">LOtC Quality Badge 101040. Licensed by AALA for climbing, watersports and trekking. Adventuremark accredited.</p>
         </div>
         <div className="ft-contact">
           <h2>Get in touch</h2>
           <a className="ft-tel" href={PHONE_HREF}>{PHONE}</a>
-          <address>Waterworks Road<br />Delph, Oldham<br />OL3 5LZ</address>
+          <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          <address>{ADDRESS.map((l, i) => <span key={l}>{l}{i < ADDRESS.length - 1 && <br />}</span>)}</address>
+          <p className="ft-sos">24/7 critical incident line for visits: <a href={INCIDENT_HREF}>{INCIDENT}</a></p>
           <a href={FACEBOOK} rel="noopener">Facebook</a>
         </div>
-        {NAV_GROUPS.map(([g, items]) => (
-          <nav key={g} className="ft-group" aria-label={g}>
-            <h2>{g}</h2>
-            <ul>{items.map((t) => <li key={t}><a href={navHref(t)}>{t}</a></li>)}</ul>
+        {NAV_SECTIONS.filter((x) => x.children.length).map((x) => (
+          <nav key={x.key} className="ft-group" aria-label={x.long}>
+            <h2><a href={x.href}>{x.long}</a></h2>
+            <ul>{x.children.map((c) => <li key={c.key}><a href={c.href}>{c.title}</a></li>)}</ul>
           </nav>
         ))}
       </div>
       <div className="ft-bottom">
-        <p>Homepage design concept. Photographs, drawings and quoted words belong to the Castleshaw Centre and the people who sent them. The film was made with AI video from our own illustration and photographs.</p>
-        <p className="ft-links"><a href={navHref('Privacy Notice')}>Privacy notice</a><a href={ROOT}>All versions</a></p>
+        <p>Homepage design concept. Photographs, drawings and quoted words belong to the Castleshaw Centre and the people who sent them. Illustrations and the homepage film were made with AI, from our own illustration and photographs.</p>
+        <p className="ft-links"><a href={NAV_SECTIONS.find((x) => x.key === 'stay').href}>Stay and hire</a><a href={CONTACT}>Contact</a><a href={PRIVACY}>Privacy notice</a><a href={ROOT}>All versions</a></p>
       </div>
     </footer>
   )
