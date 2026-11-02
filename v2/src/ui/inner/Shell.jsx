@@ -14,7 +14,7 @@ export default function Shell({ path, children }) {
     <>
       <a className="skip" href="#main">Skip to content</a>
       <Header open={menu} setOpen={setMenu} count={0} current={page?.section} />
-      <Menu open={menu} close={close} />
+      <Menu open={menu} close={close} current={page?.section} />
       <main id="main" className="inner">
         {children}
       </main>

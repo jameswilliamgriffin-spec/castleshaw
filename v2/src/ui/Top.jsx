@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { NAV_MAIN, NAV_SECTIONS, PHONE, PHONE_HREF, FACEBOOK, PRIVACY, CONTACT, ADDRESS } from '../data'
+import { NAV_MAIN, NAV_SECTIONS, PHONE, PHONE_HREF, CONTACT } from '../data'
 import Button from './Button'
 import { fine, reduced, goTo, ROOT, HOME } from '../lib'
 
@@ -57,46 +57,4 @@ export function Header({ open, setOpen, count, current }) {
   )
 }
 
-export function Menu({ open, close }) {
-  const ref = useRef(null)
-  useEffect(() => {
-    if (!open) return
-    window.__lenis?.stop()
-    const k = (e) => e.key === 'Escape' && close()
-    addEventListener('keydown', k)
-    setTimeout(() => ref.current?.querySelector('a')?.focus(), 80)
-    return () => { removeEventListener('keydown', k); window.__lenis?.start() }
-  }, [open, close])
-  const enquire = (e) => { close(); if (document.getElementById('contact')) { e.preventDefault(); setTimeout(() => goTo('contact'), 450) } }
-  return (
-    <div id="menu" ref={ref} className={`mn${open ? ' mn-open' : ''}`} role="dialog" aria-modal="true" aria-label="Site menu" inert={!open}>
-      <div className="mn-bands" aria-hidden="true"><i /><i /><i /><i /></div>
-      <div className="mn-grid">
-        <nav className="mn-main" aria-label="Main pages">
-          <ul>
-            {NAV_MAIN.map(([t, h], i) => (
-              <li key={t} style={{ '--i': i }}><a href={h} onClick={close}><span>{t}</span></a></li>
-            ))}
-          </ul>
-        </nav>
-        <div className="mn-side">
-          {NAV_SECTIONS.filter((s) => s.children.length).map((s, gi) => (
-            <nav key={s.key} className="mn-group" aria-label={s.long} style={{ '--i': gi + 5 }}>
-              <h2><a href={s.href} onClick={close}>{s.long}</a></h2>
-              <ul>{s.children.map((c) => <li key={c.key} className={c.parent ? 'mn-sub' : ''}><a href={c.href} onClick={close}>{c.title}</a></li>)}</ul>
-            </nav>
-          ))}
-        </div>
-        <div className="mn-contact" style={{ '--i': 8 }}>
-          <a className="mn-tel" href={PHONE_HREF}>{PHONE}</a>
-          <p>{ADDRESS.join(', ')}</p>
-          <div className="mn-actions">
-            <a className="mn-enq" href={CONTACT} onClick={enquire}>Send an enquiry</a>
-            <a href={FACEBOOK} rel="noopener">Facebook</a>
-            <a href={PRIVACY}>Privacy</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+export { default as Menu } from './Menu'
