@@ -153,7 +153,12 @@ export function OnThisPage({ items }) {
       if (vis[0]) setOn(vis[0].target.id)
     }, { rootMargin: '-30% 0px -60% 0px' })
     els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
+    // above the first section, the first item is the current one
+    let raf = 0
+    const top = () => { raf = 0; if (els[0] && els[0].getBoundingClientRect().top > innerHeight * 0.4) setOn(items[0].id) }
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(top) }
+    addEventListener('scroll', onScroll, { passive: true })
+    return () => { io.disconnect(); removeEventListener('scroll', onScroll); cancelAnimationFrame(raf) }
   }, [items])
   return (
     <nav className="otp" aria-label="On this page">
