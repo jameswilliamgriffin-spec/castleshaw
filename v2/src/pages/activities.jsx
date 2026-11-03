@@ -55,10 +55,6 @@ export function Hub({ path }) {
           ['LOtC', 'Quality Badge for learning outside the classroom'],
         ]} />
       </Band>
-      <Band tone="ink">
-        <SectionHead title="What schools say" />
-        <Quote big text="Absolutely brilliant. Most children would not have got this opportunity with their families." by="Freehold, Year 6 activity residential" />
-      </Band>
       <Band>
         <SectionHead title="Who it’s for" />
         <div className="cols cols-3">
@@ -78,6 +74,10 @@ export function Hub({ path }) {
             <Ticks items={['Away days for staff teams', 'Youth service residentials', 'The Oldham Linked Schools project', <a key="s" href={href('stay/')}>Accommodation only, if you run your own programme</a>]} />
           </div>
         </div>
+      </Band>
+      <Band tone="ink">
+        <SectionHead title="What schools say" />
+        <Quote big text="Absolutely brilliant. Most children would not have got this opportunity with their families." by="Freehold, Year 6 activity residential" />
       </Band>
       <AdviceNote />
       <CtaBand title="Tell us who is coming and what you would like to do" text="Once we have agreed a programme, we email the group leader a quotation and booking form." />
