@@ -144,6 +144,7 @@ export function Water({ path }) {
         image={{ src: img('water-kayak-green'), alt: 'A young paddler in a helmet and buoyancy aid kayaking across a reservoir' }}
       />
       <Band>
+        <SectionHead eyebrow="Adventure on water" title="What you can do" />
         <ActivityList items={[
           { name: 'Sit-on-top kayaking', img: img('water-kayak-kids'), text: 'Stable, open kayaks that are hard to tip and easy to climb back on. A good first time on the water.' },
           { name: 'Flat water kayaking', img: img('water-kayak-stand'), text: 'Learning to steer, turn and stop on calm water, with games to build confidence.' },
@@ -158,17 +159,19 @@ export function Water({ path }) {
         <Split reverse image={{ src: img('water-jump'), alt: 'A young person in a helmet and buoyancy aid leaping from a kayak into the reservoir' }} heading="Assume you will get wet">
           <p>Because we are up in the Pennines, it is often cooler and breezier than in the valleys, even on sunny days. Bring old clothes, but avoid cotton such as T-shirts and jeans, which feel cold when wet.</p>
           <Ticks items={['A full change of clothes, including footwear and underwear', 'A towel', 'Extra warm layers: fleece, coat, hat and gloves', 'Sun hat and sun cream if it’s sunny']} />
-          <p><a href={at('plan-your-visit') + '#what-to-bring'}>All kit lists</a></p>
+          <p><SqLink href={at('plan-your-visit') + '#what-to-bring'}>All kit lists</SqLink></p>
         </Split>
       </Band>
       <Band>
-        <AtAGlance ages="Suitable ages, and any swimming requirement" />
-        <div className="cols cols-2">
-          <Callout title="Paddlesport awards" tone="sky"><p>Groups can work towards British Canoeing awards, from Paddle Start to Discover and Explore. <a href={href('courses-and-clubs/outdoor-awards/')}>Outdoor awards</a></p></Callout>
-          <Callout title="Where we paddle" tone="sky"><p><TBC>Which reservoirs and rivers are used for each activity</TBC></p></Callout>
-        </div>
+        <AtAGlance ages="Suitable ages, and any swimming requirement" bring={
+          <div>
+            <Callout title="Paddlesport awards" tone="sky"><p>Groups can work towards British Canoeing awards, from Paddle Start to Discover and Explore. <a href={href('courses-and-clubs/outdoor-awards/')}>Outdoor awards</a></p></Callout>
+            <Callout title="Where we paddle" tone="sky"><p><TBC>Which reservoirs and rivers are used for each activity</TBC></p></Callout>
+          </div>
+        } />
       </Band>
       <Band tone="paper">
+        <SectionHead title="What parents say" />
         <Quote big text="Thank you for taking our daughter on a wonderful kayaking adventure. These photos are truly super." by="A parent, after the Summer Holiday Club" />
       </Band>
       <AdviceNote />
