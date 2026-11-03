@@ -1,6 +1,6 @@
 // The v2 site map: one source of truth for the menu, footer, breadcrumbs, section
 // navigation, page generation (scripts/gen-pages.mjs) and the build (vite.config.js).
-// Paths are relative to /v2/ and always end in a slash.
+// Paths are relative to the site root and always end in a slash.
 
 export const SECTIONS = [
   {

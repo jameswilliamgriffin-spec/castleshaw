@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Turn the stitched master film into scrub-ready assets for /v2.
 #   usage: ./build_film.sh master.mp4 [fps]
-# Output (in site/public/v2/video):
+# Output (in site/public/video):
 #   frames/desktop/f0001.webp...  1600px wide WebP sequence
 #   frames/mobile/f0001.webp...    800px wide WebP sequence
 #   frames/*/manifest.json         frame count + naming
@@ -9,7 +9,7 @@
 #   film-1080.mp4, film-720.mp4    all-keyframe H.264 masters (kept as fallbacks/archive)
 set -euo pipefail
 IN="$1"; FPS="${2:-12}"
-OUT="$(cd "$(dirname "$0")/../../public" && pwd)/v2/video"
+OUT="$(cd "$(dirname "$0")/../../public" && pwd)/video"
 TMP="$(mktemp -d)"
 mkdir -p "$OUT/frames/desktop" "$OUT/frames/mobile" "$OUT/posters"
 rm -f "$OUT"/frames/*/f*.webp

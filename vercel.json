@@ -16,7 +16,7 @@
       ]
     },
     {
-      "source": "/v2/video/frames/(.*)",
+      "source": "/video/frames/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -27,178 +27,183 @@
   ],
   "redirects": [
     {
-      "source": "/",
-      "destination": "/v2/",
-      "permanent": false
-    },
-    {
-      "source": "/v1",
-      "destination": "/v2/",
-      "permanent": true
-    },
-    {
-      "source": "/v1/:path*",
-      "destination": "/v2/",
-      "permanent": true
-    },
-    {
       "source": "/advice-and-guidance.html",
-      "destination": "/v2/advice-and-guidance/",
+      "destination": "/advice-and-guidance/",
       "permanent": true
     },
     {
       "source": "/what-we-do.html",
-      "destination": "/v2/activities/",
+      "destination": "/activities/",
       "permanent": true
     },
     {
       "source": "/where-we-are.html",
-      "destination": "/v2/about/where-we-are/",
+      "destination": "/about/where-we-are/",
       "permanent": true
     },
     {
       "source": "/things-to-do.html",
-      "destination": "/v2/about/where-we-are/around-the-valley/",
+      "destination": "/about/where-we-are/around-the-valley/",
       "permanent": true
     },
     {
       "source": "/the-team.html",
-      "destination": "/v2/about/our-team/",
+      "destination": "/about/our-team/",
       "permanent": true
     },
     {
       "source": "/who-we-are.html",
-      "destination": "/v2/about/our-team/",
+      "destination": "/about/our-team/",
       "permanent": true
     },
     {
       "source": "/accreditation.html",
-      "destination": "/v2/about/accreditation/",
+      "destination": "/about/accreditation/",
       "permanent": true
     },
     {
       "source": "/testimonials.html",
-      "destination": "/v2/about/what-people-say/",
+      "destination": "/about/what-people-say/",
       "permanent": true
     },
     {
       "source": "/feedback.html",
-      "destination": "/v2/about/what-people-say/",
+      "destination": "/about/what-people-say/",
       "permanent": true
     },
     {
       "source": "/image-gallery--hall-of-fame.html",
-      "destination": "/v2/about/what-people-say/",
+      "destination": "/about/what-people-say/",
       "permanent": true
     },
     {
       "source": "/centre-history.html",
-      "destination": "/v2/about/history/",
+      "destination": "/about/history/",
       "permanent": true
     },
     {
       "source": "/back-in-the-day.html",
-      "destination": "/v2/about/history/",
+      "destination": "/about/history/",
       "permanent": true
     },
     {
       "source": "/nick-price-1958-2016.html",
-      "destination": "/v2/about/history/",
+      "destination": "/about/history/",
       "permanent": true
     },
     {
       "source": "/news.html",
-      "destination": "/v2/about/news/",
+      "destination": "/about/news/",
       "permanent": true
     },
     {
       "source": "/blog.html",
-      "destination": "/v2/about/news/",
+      "destination": "/about/news/",
       "permanent": true
     },
     {
       "source": "/information-for-group-leaders.html",
-      "destination": "/v2/activities/plan-your-visit/",
+      "destination": "/activities/plan-your-visit/",
       "permanent": true
     },
     {
       "source": "/resources-for-teachers.html",
-      "destination": "/v2/activities/plan-your-visit/",
+      "destination": "/activities/plan-your-visit/",
       "permanent": true
     },
     {
       "source": "/booking-a-visit.html",
-      "destination": "/v2/activities/plan-your-visit/",
+      "destination": "/activities/plan-your-visit/",
       "permanent": true
     },
     {
       "source": "/what-to-bring.html",
-      "destination": "/v2/activities/plan-your-visit/",
+      "destination": "/activities/plan-your-visit/",
       "permanent": true
     },
     {
       "source": "/holiday-activities-2026.html",
-      "destination": "/v2/courses-and-clubs/holiday-clubs/",
+      "destination": "/courses-and-clubs/holiday-clubs/",
       "permanent": true
     },
     {
       "source": "/activity-courses.html",
-      "destination": "/v2/courses-and-clubs/activity-courses/",
+      "destination": "/courses-and-clubs/activity-courses/",
       "permanent": true
     },
     {
       "source": "/training-courses.html",
-      "destination": "/v2/advice-and-guidance/training/",
+      "destination": "/advice-and-guidance/training/",
       "permanent": true
     },
     {
       "source": "/training-course-dates.html",
-      "destination": "/v2/advice-and-guidance/training/",
+      "destination": "/advice-and-guidance/training/",
       "permanent": true
     },
     {
       "source": "/duke-of-edinburghs-award.html",
-      "destination": "/v2/courses-and-clubs/outdoor-awards/",
+      "destination": "/courses-and-clubs/outdoor-awards/",
       "permanent": true
     },
     {
       "source": "/accommodation-only.html",
-      "destination": "/v2/stay/",
+      "destination": "/stay/",
       "permanent": true
     },
     {
       "source": "/adventurous-activities.html",
-      "destination": "/v2/activities/adventure-on-land/",
+      "destination": "/activities/adventure-on-land/",
       "permanent": true
     },
     {
       "source": "/team-building-activities.html",
-      "destination": "/v2/activities/team-building/",
+      "destination": "/activities/team-building/",
       "permanent": true
     },
     {
       "source": "/primary-science.html",
-      "destination": "/v2/activities/environmental-education/",
+      "destination": "/activities/environmental-education/",
       "permanent": true
     },
     {
       "source": "/primary-geography.html",
-      "destination": "/v2/activities/environmental-education/",
+      "destination": "/activities/environmental-education/",
       "permanent": true
     },
     {
       "source": "/primary-history.html",
-      "destination": "/v2/activities/roman-history/",
+      "destination": "/activities/roman-history/",
       "permanent": true
     },
     {
       "source": "/secondary-pe--sport.html",
-      "destination": "/v2/courses-and-clubs/outdoor-awards/",
+      "destination": "/courses-and-clubs/outdoor-awards/",
       "permanent": true
     },
     {
       "source": "/privacy-notice.html",
-      "destination": "/v2/privacy/",
+      "destination": "/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/v2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/v2/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/v1",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/v1/:path*",
+      "destination": "/",
       "permanent": true
     }
   ]

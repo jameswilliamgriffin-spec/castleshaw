@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import gsap from 'gsap'
 
 // Each page declares where it sits: <script>window.__ROOT = '../'; window.__HOME = './'</script>
-// ROOT is the site root (chooser, shared images); HOME is the v2 homepage.
+// ROOT is where shared/ lives and HOME is the homepage; both are the site root.
 // Both are made absolute, so links stay right when an inner page swaps to another
 // page in its section without reloading (see inner.jsx).
 const abs = (p) => (typeof window !== 'undefined' ? new URL(p, location.href).href : p)
-export const ROOT = abs((typeof window !== 'undefined' && window.__ROOT) || '../')
+export const ROOT = abs((typeof window !== 'undefined' && window.__ROOT) || './')
 export const HOME = abs((typeof window !== 'undefined' && window.__HOME) || './')
 export const ADVICE = HOME + 'advice-and-guidance/'
 

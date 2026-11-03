@@ -4,11 +4,12 @@ One project that builds into one static folder:
 
 | URL | What it is |
 |---|---|
-| `/` | Redirects to `/v2/` (Vercel redirect in `vercel.json`, with a fallback page for other hosts) |
-| `/v2/` | The homepage: the illustrated top half, then the hills come alive as a scroll-scrubbed film |
-| `/v2/<section>/…` | The inner pages: 33 pages in six sections (see below) |
+| `/` | The homepage: the illustrated top half, then the hills come alive as a scroll-scrubbed film |
+| `/<section>/…` | The inner pages: 33 pages in six sections (see below) |
 
-Version 1 and the version chooser are retired: they are no longer built or deployed, and `/v1/` redirects to `/v2/`. The Version 1 source stays in `v1/` for reference.
+The source lives in `v2/` (Vite's root), but the site is served from the root: `v2/stay/` builds to `/stay/`. Old `/v2/...` links redirect to the same page at the root (`vercel.json`).
+
+Version 1 and the version chooser are retired: they are no longer built or deployed, and `/v1/` redirects to the homepage. The Version 1 source stays in `v1/` for reference.
 
 ## Run it locally
 
@@ -17,7 +18,7 @@ npm install
 npm run dev
 ```
 
-The dev server runs at http://localhost:5175. Open `/` or `/v2/` from there.
+The dev server runs at http://localhost:5175. The homepage is at `/` and inner pages at `/<section>/…`.
 
 ## Build and check the upload
 
@@ -32,23 +33,22 @@ npm run preview
 
 1. In Vercel, choose **Add New → Project** and import `jameswilliamgriffin-spec/castleshaw`.
 2. Leave the settings as detected. `vercel.json` already sets the Vite framework, `npm run build` and the `dist` output.
-3. Deploy. `/` and `/v1/` redirect to `/v2/`, and `/v2` redirects to the slashed URL.
+3. Deploy. The homepage is at `/`; `/v2/...` and `/v1/...` redirect to the right page at the root.
 
 ## Upload
 
 Upload the **contents of `dist/`** to any static host (Netlify, Vercel, GitHub Pages, S3, or plain FTP to a web server). There is no server code.
 
-Every URL is relative (Vite `base: './'`), so it works at a domain root or in a subfolder such as `example.com/castleshaw/`. Link with the trailing slash: `/v2/` rather than `/v2`. Each page also redirects to the slashed URL itself.
+Every URL is relative (Vite `base: './'`), so it works at a domain root or in a subfolder such as `example.com/castleshaw/`. Link with the trailing slash: `/stay/` rather than `/stay`. Each page also redirects to the slashed URL itself.
 
 ## Folder layout
 
 ```
-index.html                  redirect from / to /v2/
 v1/                         Version 1 (React), retired: kept for reference, not built
-v2/                         Version 2 (React): index.html and src/
+v2/                         the site's source (Vite root): index.html, src/ and the generated page entries
 v2/video-src/               film source material, drafts, masters and scripts (not uploaded)
 public/shared/images/       photos and logo, used by both versions
-public/v2/video/            v2 only: frame sequences, posters, ambience, PROMPTS.md
+public/video/               the homepage film: frame sequences, posters, ambience, PROMPTS.md
 public/shared/images/site/  photos from the current castleshawcentre.com, renamed by subject
 public/shared/images/illustrations/  AI illustrations in the logo's flat style (inner pages)
 content/                    the site structure proposal and OPEN-QUESTIONS.md
@@ -61,10 +61,10 @@ The site map lives in one file, `v2/src/site.mjs`: sections, pages, titles and m
 - `scripts/gen-pages.mjs` writes an `index.html` for every page in the map. It runs automatically before `dev` and `build`, so add a page to `site.mjs`, never by hand.
 - `v2/src/inner.jsx` maps each path to its component in `v2/src/pages/`.
 - The building blocks (hero, bands, splits, quotes, forms and so on) are in `v2/src/ui/inner/blocks.jsx`, styled by `v2/src/inner.css`.
-- The advice landing page (`/v2/advice-and-guidance/`) keeps its own entry and motion. Every other inner page is deliberately calm: no film, smooth scrolling or custom cursor, only hover feedback.
+- The advice landing page (`/advice-and-guidance/`) keeps its own entry and motion. Every other inner page is deliberately calm: no film, smooth scrolling or custom cursor, only hover feedback.
 - Anything the centre has not yet confirmed is shown with an amber **To confirm** marker (`<TBC>` in the code). The full list is in `content/OPEN-QUESTIONS.md`.
 - Forms are concept forms. They show a confirmation but send nothing.
-- Images use organic shapes from `v2/src/ui/shape/` (`<ShapedImage />`, with tokens such as `--shape-blob-3`). To compare every shape, backdrop and accent, run `npm run dev` and open `/v2/shape-lab/`. That page is dev-only and is never built or deployed.
+- Images use organic shapes from `v2/src/ui/shape/` (`<ShapedImage />`, with tokens such as `--shape-blob-3`). To compare every shape, backdrop and accent, run `npm run dev` and open `/shape-lab/`. That page is dev-only and is never built or deployed.
 
 ## Version 2: how the film works
 
@@ -87,12 +87,12 @@ cd v2/video-src
 ./build_film.sh masters/castleshaw-film.mp4 12
 ```
 
-This regenerates `public/v2/video/frames/*`, the manifests and the chapter posters from a stitched master.
+This regenerates `public/video/frames/*`, the manifests and the chapter posters from a stitched master.
 
 ## Notes
 
 - The Version 2 enquiry form is a concept only and does not send. The phone number is real.
-- Every film prompt and its clip is logged in `public/v2/video/PROMPTS.md`.
+- Every film prompt and its clip is logged in `public/video/PROMPTS.md`.
 - The ChatGPT suggestions taken and rejected are logged in `v2/video-src/gpt/DECISIONS.md`.
 
 ## Measured (production build)

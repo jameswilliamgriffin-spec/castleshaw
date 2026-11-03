@@ -24,7 +24,7 @@ The rebuilt advice section (landing page, homepage band, "For schools" tag in th
    - phone tapped
    - email tapped
    - quote button clicked
-5. **The domain.** The 301 redirects from the old `.html` pages are in `vercel.json`. They only take effect once castleshawcentre.com points at the new site. At launch they also need re-pointing from `/v2/...` to the final paths.
+5. **The domain.** The 301 redirects from the old `.html` pages are in `vercel.json`. They only take effect once castleshawcentre.com points at the new site. They already point at the final paths (the site is served from the root; old `/v2/...` links redirect there).
 
 ### Content to confirm or supply
 

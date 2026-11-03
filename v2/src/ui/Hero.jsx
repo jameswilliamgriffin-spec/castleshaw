@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import gsap from 'gsap'
 import Button from './Button'
 import ScrollCue from './ScrollCue'
-import { ridge, reduced, fine, goTo } from '../lib'
+import { ridge, reduced, fine, goTo, ROOT } from '../lib'
 import { SkyGL } from './Shaders'
 
 // set line by line on wide screens so no word is left on its own
@@ -96,7 +96,7 @@ export default function Hero() {
             <div className="win-par">
               <div className="win-float" style={drift[i]}>
                 <div className="win-mask" style={{ '--clip': `var(--shape-${w.shape})` }}>
-                  <img src={`../shared/images/${w.src}`} alt={w.alt} width="600" height="800" style={{ objectPosition: w.pos }} />
+                  <img src={`${ROOT}shared/images/${w.src}`} alt={w.alt} width="600" height="800" style={{ objectPosition: w.pos }} />
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { reduced } from '../lib'
+import { reduced, ROOT } from '../lib'
 
 // A short, purposeful intro: the logo's bands draw in while the fonts, hero photos and the
 // first frames of the film load, so the drawing-to-film moment further down is seamless.
@@ -24,7 +24,7 @@ export default function Loader() {
     const work = (async () => {
       const dir = matchMedia('(max-width: 760px)').matches ? 'mobile' : 'desktop'
       const base = new URL(`./video/frames/${dir}/`, document.baseURI).href
-      const imgs = ['land-ghyll', 'water-consent', 'environmental-education', 'logo'].map((n) => `../shared/images/${n}.jpg`)
+      const imgs = ['land-ghyll', 'water-consent', 'environmental-education', 'logo'].map((n) => `${ROOT}shared/images/${n}.jpg`)
       let frames = []
       try {
         const m = await (await fetch(base + 'manifest.json')).json()

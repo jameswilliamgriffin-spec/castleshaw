@@ -45,7 +45,7 @@ for (const p of PAGES) {
   if (CUSTOM_ENTRY.has(p.path)) continue
   const depth = p.path.split('/').filter(Boolean).length
   const home = '../'.repeat(depth)
-  const root = home + '../'
+  const root = home // shared/ sits at the site root, beside the homepage
   const title = `${TITLES[p.path] || p.long || p.title} | Castleshaw Centre`
   const desc = DESCRIPTIONS[p.path] || 'The Castleshaw Centre, Delph, Oldham.'
   const html = `<!doctype html>
