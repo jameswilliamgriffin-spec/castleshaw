@@ -518,3 +518,5 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 @media (min-width: 800px) and (max-width: 1199px) { .qs > .q:nth-child(3):last-child { grid-column: 1 / -1; } }
 /* section-head leads keep the text measure inside full-width bands */
 .inner .shead-lead { max-width: 40rem; }
+/* narrow bands stay narrow after the shared .band > * width */
+.band.band-narrow > * { max-width: 60rem; }
