@@ -1,5 +1,5 @@
 // Contact and the privacy notice.
-import { PageTop, Band, SectionHead, SqLink, Intro, Downloads, Callout, EnquiryForm, TBC, img, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, SqLink, Downloads, Callout, EnquiryForm, TBC, img, OLD } from '../ui/inner/blocks'
 import { href, PHONE, PHONE_HREF, EMAIL, INCIDENT, INCIDENT_HREF, ADDRESS, W3W, FACEBOOK } from '../data'
 
 export function Contact({ path }) {
@@ -50,15 +50,20 @@ export function Privacy({ path }) {
   return (
     <>
       <PageTop path={path} title="Privacy notice" lead="How Oldham Council's young people's services, including the Castleshaw Centre, use your information." />
-      <Band narrow>
-        <Intro heading="The privacy notice">
-          <p>The Castleshaw Centre is part of Oldham Council. The Council&rsquo;s privacy notice for young people&rsquo;s services explains what information we collect, why, how long we keep it and your rights.</p>
-        </Intro>
-        <Downloads items={[{ title: 'Young people’s services privacy notice (version 2.2, August 2023)', href: OLD + 'young_peoples_services_pn_v2.2_august_2023.docx', meta: 'Word document, 103 KB' }]} />
-        <TBC block>The privacy notice as a web page, so it can be read without downloading a Word document, plus a cookie statement and an accessibility statement for the new site.</TBC>
-        <Callout title="Questions about your data" tone="sky">
-          <p>Contact us on <a href={PHONE_HREF}>{PHONE}</a> or <a href={`mailto:${EMAIL}`}>{EMAIL}</a>, or contact Oldham Council&rsquo;s data protection officer.</p>
-        </Callout>
+      <Band>
+        {/* one left-aligned reading column (46rem), lined up with the h1; .band-narrow's cap is overridden in inner.css */}
+        <div>
+          <div style={{ maxWidth: '46rem', display: 'flex', flexDirection: 'column', gap: 'var(--s-4)' }}>
+            <SectionHead title="The privacy notice">
+              <p>The Castleshaw Centre is part of Oldham Council. The Council&rsquo;s privacy notice for young people&rsquo;s services explains what information we collect, why, how long we keep it and your rights.</p>
+            </SectionHead>
+            <Downloads items={[{ title: 'Young people’s services privacy notice (version 2.2, August 2023)', href: OLD + 'young_peoples_services_pn_v2.2_august_2023.docx', meta: 'Word document, 103 KB' }]} />
+            <TBC block>The privacy notice as a web page, so it can be read without downloading a Word document, plus a cookie statement and an accessibility statement for the new site.</TBC>
+            <Callout title="Questions about your data" tone="sky">
+              <p>Contact us on <a href={PHONE_HREF}>{PHONE}</a> or <a href={`mailto:${EMAIL}`}>{EMAIL}</a>, or contact Oldham Council&rsquo;s data protection officer.</p>
+            </Callout>
+          </div>
+        </div>
       </Band>
     </>
   )
