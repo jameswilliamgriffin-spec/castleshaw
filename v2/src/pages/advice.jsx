@@ -1,7 +1,7 @@
 // Educational visits advice and guidance: the sub-pages behind the advice landing.
 // Facts come from the centre's 2025 service leaflet and the client's answers;
 // anything not yet confirmed is marked with <TBC>.
-import { PageTop, Band, ImageBreak, SectionHead, SqLink, Intro, Split, Ticks, Ledger, Steps, Faq, LinkList, People, Callout, CtaBand, Quote as Pull, Btn, TBC, img, gen, shared, Breadcrumbs, SubNav } from '../ui/inner/blocks'
+import { PageTop, Band, ImageBreak, SectionHead, SqLink, Intro, Split, Ticks, Ledger, Steps, Faq, LinkList, People, Callout, CtaBand, Quote as Pull, Btn, TBC, img, gen, shared, Breadcrumbs, SubNav, TopicCard } from '../ui/inner/blocks'
 import ShapedImage from '../ui/shape/ShapedImage'
 import { Squiggle, useReveal } from '../ui/Squiggle'
 import LeadForm from '../ui/advice/LeadForm'
@@ -60,10 +60,10 @@ export function How({ path }) {
           <p>We review the whole visit, not just the risk assessment. The question is simple: has this been organised safely and sensibly, in line with national guidance?</p>
         </Intro>
         <div className="cols cols-2">
-          <div className="icard"><h3>Planning</h3><p>Clear aims, a realistic itinerary, and a plan B for the weather.</p></div>
-          <div className="icard"><h3>Risk management</h3><p>The significant risks spotted, and sensibly managed rather than buried in paperwork.</p></div>
-          <div className="icard"><h3>Arrangements</h3><p>Transport, accommodation, providers, consent, medical needs and what happens in an emergency.</p></div>
-          <div className="icard"><h3>Staffing</h3><p>Enough adults, with the right experience and qualifications for the group and the activities.</p></div>
+          <TopicCard title="Planning" open><p>Clear aims, a realistic itinerary, and a plan B for the weather.</p></TopicCard>
+          <TopicCard title="Risk management"><p>The significant risks spotted, and sensibly managed rather than buried in paperwork.</p></TopicCard>
+          <TopicCard title="Arrangements"><p>Transport, accommodation, providers, consent, medical needs and what happens in an emergency.</p></TopicCard>
+          <TopicCard title="Staffing"><p>Enough adults, with the right experience and qualifications for the group and the activities.</p></TopicCard>
         </div>
       </Band>
 
