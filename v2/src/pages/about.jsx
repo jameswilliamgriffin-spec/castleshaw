@@ -119,7 +119,7 @@ export function Team({ path }) {
         image={{ src: img('team-joseph-2'), alt: 'Joseph Myhill, centre manager, smiling beside a mountain lake' }}
       />
       <Band>
-        <Intro heading="Staff" />
+        <SectionHead eyebrow="About the centre" title="Staff" />
         <People items={[
           { name: 'Joseph Myhill', role: 'Centre manager', img: img('team-joseph-2'), alt: 'Joseph Myhill' },
           { name: 'Rod Steele', role: 'Senior tutor', img: shared('team/rod-steele'), alt: 'Rod Steele' },
@@ -128,7 +128,7 @@ export function Team({ path }) {
         ]} />
       </Band>
       <Band tone="sky">
-        <Intro heading="Part-time staff" />
+        <SectionHead title="Part-time staff" />
         <People items={[
           { name: 'Guy Fox-Kelly', img: img('team-guy-fk'), alt: 'Guy Fox-Kelly' },
           { name: 'Gill Howarth', img: img('team-gill'), alt: 'Gill Howarth' },
@@ -139,10 +139,11 @@ export function Team({ path }) {
         ]} />
         <TBC block>That this team list is current, and a line on each person&rsquo;s role and specialisms.</TBC>
       </Band>
-      <Band>
-        <Callout title="Educational visits advisers">
-          <p>Rod and Joseph also run Oldham&rsquo;s educational visits advice service. <a href={href('advice-and-guidance/our-advisers/')}>Our advisers</a></p>
-        </Callout>
+      <Band tone="sage">
+        <SectionHead title="Educational visits advisers">
+          <p>Rod and Joseph also run Oldham&rsquo;s educational visits advice service.</p>
+          <p><SqLink href={href('advice-and-guidance/our-advisers/')}>Our advisers</SqLink></p>
+        </SectionHead>
       </Band>
       <CtaBand />
     </>
