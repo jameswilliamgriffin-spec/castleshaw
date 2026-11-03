@@ -56,7 +56,7 @@ img, video { max-width: 100%; }
 
   /* text: 16px for anything that is a sentence; 13px for short labels */
   :root:root .kit-note, :root:root .kit ul, :root:root .kit-bring li, :root:root .kit-avoid li, :root:root .kit h4, :root:root .lf-privacy, :root:root .lf-privacy a, :root:root .lf-check span, :root:root .lf-field label, :root:root .form-note, :root:root .form label span, :root:root .form label em, :root:root .tbc, :root:root .tbc-block p, :root:root .ticks li, :root:root .icard li, :root:root dd, :root:root .al-inspect figcaption, :root:root .al-inspect-meta, :root:root .al-sos, :root:root .al-by, :root:root .al-role, :root:root .al-talk p, :root:root .people-role, :root:root .q figcaption, :root:root .card figcaption, :root:root .card-q figcaption, :root:root .split-art figcaption, :root:root .gallery figcaption, :root:root .tl-imgs figcaption, :root:root blockquote cite, :root:root .news time, :root:root .dl small, :root:root .dl a span, :root:root .cta-mail, :root:root .sp-nav button, :root:root .at-tab, :root:root .j-small, :root:root .j-form label span, :root:root .pl-count, :root:root .acts-count, :root:root .act-more { font-size: 1rem; }
-  :root:root .tbc-tag, :root:root .shead-eyebrow, :root:root .al-eyebrow, :root:root .al-kicker, :root:root .adb-kicker, :root:root .sp-step, :root:root dt { font-size: .8125rem; }
+  :root:root .tbc-tag, :root:root .shead-eyebrow, :root:root .al-eyebrow, :root:root .al-kicker, :root:root .adb-kicker, :root:root .sp-step, :root:root dt:not(.ledger dt) { font-size: .8125rem; }
 
   /* inner-page hero: the photo is a supporting picture, not the whole first screen */
   :root:root .ph { padding-top: calc(var(--hd-h) + var(--safe-t) + 1.6rem); padding-bottom: 4.2rem; }
@@ -113,6 +113,8 @@ img, video { max-width: 100%; }
 }
 
 @media (max-width: 599px) {
+  /* hub tiles: a shorter photo, so six tiles don't run to two thousand pixels */
+  :root:root .tiles .tile-img { aspect-ratio: 16 / 9; }
   :root { --g: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); }
   /* portraits stay two to a row, even at 320 */
   :root:root .people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
