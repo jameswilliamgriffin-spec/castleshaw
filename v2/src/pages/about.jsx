@@ -104,7 +104,6 @@ export function Valley({ path }) {
           <p>Most routes cross farmland, so please be considerate, keep dogs on leads and take your litter home. Routes shared by the public, such as those on <a href="https://www.outdooractive.com/en/search/?q=castleshaw" rel="noopener">outdooractive</a>, are not checked by us.</p>
         </SectionHead>
       </Band>
-      <CtaBand title="Planning a visit?" />
     </>
   )
 }
