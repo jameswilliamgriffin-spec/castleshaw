@@ -104,6 +104,9 @@ img, video { max-width: 100%; }
   :root:root :is(.kit, .tcard)[open] summary::after { transform: translateY(15%) rotate(-135deg); }
   :root:root .kit[open], :root:root .tcard[open] { padding-bottom: 1.4rem; }
   :root:root .cols:has(> .tcard), :root:root .courses:has(> .tcard) { gap: .75rem; }
+  /* a link on its own in a card paragraph: a 44px tap area without moving the text */
+  :root:root .icard > p > a:only-child { position: relative; }
+  :root:root .icard > p > a:only-child::after { content: ''; position: absolute; inset: -.7rem -.3rem; }
   /* course details: the short labels sit on the same line as their values */
   :root:root dl.meta div { align-items: baseline; }
   :root:root .kits { gap: .75rem; }
