@@ -176,7 +176,7 @@ export function Who({ path }) {
 
 /* ------------------------------------------------------------------ training */
 const COURSES = [
-  { id: 'evc', name: 'Educational Visits Coordinator (EVC)', length: 'One day', who: 'New EVCs and the staff who support them', text: 'Follows DfE guidance on the role of the EVC. One free place a year comes with the service.', extra: <TBC>How often EVCs should refresh their training</TBC> },
+  { id: 'evc', name: 'Educational Visits Coordinator (EVC)', length: 'One day', who: 'New EVCs and the staff who support them', text: 'Follows DfE guidance on the role of the EVC. One free place a year comes with the service.', extra: <TBC block>How often EVCs should refresh their training</TBC> },
   { id: 'visit-leader', name: 'Visit Leader training', length: 'Three hours, or two twilight sessions', who: 'Staff leading and supporting visits', text: 'Follows the OEAP framework, at Castleshaw or at your school.' },
   { id: 'move', name: 'Management of Visit Emergencies (MoVE)', length: 'To confirm', who: 'Senior leaders', text: 'The national OEAP programme for the people who would lead the response if something went wrong on a visit.' },
   { id: 'heads', name: 'Head teacher and governor sessions', length: 'To confirm', who: 'Head teachers and governors', text: 'Your responsibilities for approving visits, and what a good visits policy looks like.' },
@@ -194,6 +194,7 @@ export function Training({ path }) {
         image={{ src: img('advice-owc'), alt: 'A group of leaders walking together along a lane' }}
       />
       <Band>
+        <SectionHead title="Our courses" />
         <ul className="courses">
           {COURSES.map((c) => (
             <li key={c.id} id={c.id} className="icard course">
@@ -203,7 +204,7 @@ export function Training({ path }) {
                 <div><dt>For</dt><dd>{c.who}</dd></div>
               </dl>
               <p>{c.text}</p>
-              {c.extra && <p>{c.extra}</p>}
+              {c.extra}
             </li>
           ))}
         </ul>
@@ -216,6 +217,7 @@ export function Training({ path }) {
         <p>To book a place or arrange training at your school, call <a href={PHONE_HREF}>{PHONE}</a> or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
       </Band>
       <Band>
+        <SectionHead title="Other training we run" />
         <Callout title="Outdoor qualifications for leaders">
           <p>We also run British Canoeing, Duke of Edinburgh expedition and Countryside Leader training. <a href={href('courses-and-clubs/outdoor-awards/')}>Outdoor awards</a></p>
         </Callout>
