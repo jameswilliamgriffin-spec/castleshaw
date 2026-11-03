@@ -535,3 +535,5 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 @media (min-width: 700px) { .tl-imgs { grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); } }
 @media (min-width: 1100px) { .tl-imgs { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); } }
 .tl-imgs:has(> figure:only-child) { grid-template-columns: minmax(0, 22rem); }
+/* news at tablet width: photo beside the story, date above */
+@media (min-width: 600px) and (max-width: 899px) { .news li { grid-template-columns: 1fr 14rem; } .news time { grid-column: 1 / -1; } }
