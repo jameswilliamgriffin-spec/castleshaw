@@ -335,6 +335,7 @@ export function Questions({ path }) {
     <>
       <PageTop path={path} title="Questions" lead="What schools and business managers usually ask us." />
       <Band narrow>
+        <SectionHead title="Frequently asked questions" />
         <Faq items={[
           { q: 'What does it cost?', a: <p>Prices depend on the size and type of your establishment. <a href={QUOTE}>Contact us for a quote</a>. <TBC>Packages and price bands</TBC></p> },
           { q: 'Who can join?', a: 'Any school, college, academy or youth service, in Oldham or beyond.' },
