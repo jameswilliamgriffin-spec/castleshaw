@@ -9,7 +9,7 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | 2: Shared layer | Done, approved | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
 | 3: Homepage and signature interactions | Done, approved | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
 | 4: Pilot internal page | Done (Plan your visit), awaiting feedback | Kit lists as tap-to-open sections on phones; "On this page" label on phones; footer and CTA links 44px at all touch sizes. |
-| 5: Remaining pages | Not started | |
+| 5: Remaining pages | Batch 1 (Activities) in progress | |
 | 6: Site-wide QA | Not started | |
 
 ## Phase 2 results (inner pages, 390 unless stated)
@@ -33,9 +33,13 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 
 | Page | Status | Commit | Notes |
 |---|---|---|---|
+| Activities hub (batch 1) | Done, no page change | — | Shared fixes it found: ledger figures had shrunk to 13px (fixed); hub tiles 16:9 on phones. "Who it's for" cards are long on phones (no shared tap-to-open block for cards yet). |
+| Adventure on land (batch 1) | Done, no page change | — | Shared fixes it found: At a glance values level at 768; activity thumbnails 64px below 375px; What to bring box padding 24px under 600px. |
 | Plan your visit (pilot) | Done | see git log (`mobile: plan-your-visit`) | 390: 11,525px → 9,775px. No overflow, no targets under 44px, headings in order, no console errors at 320/360/390/430/768/844×390; works at 200% text zoom; keyboard opens the kit lists; desktop unchanged (7,551px, lists open). No hero CTA added (content rule): the page's booking CTA stays at the end. |
 
 ## Decisions and notes
+
+- **Optional desktop fix (not made):** at 1440 the three "At a glance" values on Land, Water and Bushcraft don't sit level (one is 51px higher). `align-content: start` on `.glance > div` fixes it; it is applied below 900px only, to leave desktop unchanged.
 
 - The small floating accent beside some hero photos is picked from a hash of the image address, so it changed shape when the site moved from `/v2/` to `/` (earlier commit). Decorative only; left as is.
 

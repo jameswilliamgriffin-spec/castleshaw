@@ -103,16 +103,22 @@ img, video { max-width: 100%; }
   :root:root .kit[open] summary::after { transform: translateY(15%) rotate(-135deg); }
   :root:root .kit[open] { padding-bottom: 1.4rem; }
   :root:root .kits { gap: .75rem; }
+  /* "At a glance": values sit level across the columns */
+  :root:root .glance > div { align-content: start; }
 }
 
 /* the smallest phones: the Call button keeps its number on one line */
 @media (max-width: 374px) {
+  /* activity lists: a smaller thumbnail so the text isn't three words a line */
+  :root:root .aitem { grid-template-columns: 4rem 1fr; gap: .9rem; }
   :root:root .j-call { margin-left: 0; white-space: nowrap; font-size: .9375rem; }
   /* the hero line "the classroom." stays together */
   :root:root .hero-h { font-size: min(9.4vw, 14svh); }
 }
 
 @media (max-width: 599px) {
+  /* "At a glance": the What to bring box keeps a usable text column */
+  :root:root .glance-wrap .callout { padding: var(--s-3); }
   /* hub tiles: a shorter photo, so six tiles don't run to two thousand pixels */
   :root:root .tiles .tile-img { aspect-ratio: 16 / 9; }
   :root { --g: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); }
