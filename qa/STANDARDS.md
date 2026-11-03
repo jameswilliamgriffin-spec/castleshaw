@@ -87,6 +87,14 @@ Paragraphs are capped at a 40rem measure and `text-wrap: pretty`; headings use `
 - **Scroll prompt:** `ScrollCue`. It's built into every inner hero (idle-only, desktop); add it elsewhere only where the next content isn't visible.
 - **One primary CTA per page:** the closing `CtaBand`, plus at most one hero action.
 
+## Section headings (from pilot feedback)
+
+- **Every section has a visible h2.** Use `SectionHead` (eyebrow optional, title, optional lead).
+- **New headings:** where the original content had no heading, add a short, plain, descriptive one in sentence case, five words at most, that only names what's already there. Examples: "What you can do", "At a glance", "What schools say", "Gallery", "Useful downloads".
+- **Don't use headings to add claims or marketing copy.**
+- **Hidden headings:** only for sections that are purely visual and self-explanatory, such as a single big quote band. Even then, prefer a visible heading.
+- **Eyebrows:** at most one per section, naming the page or theme (for example "Adventure on land").
+
 ## Accessibility
 
 - **Structure:** one h1, and headings in order (h2 before any h3).

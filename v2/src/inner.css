@@ -488,3 +488,6 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 .qs > .q { height: 100%; }
 /* split photos on phones: in proportion with the hero photo */
 @media (max-width: 899px) { .split-art.shp { max-width: min(20rem, 80vw); } .split-art.shp .shp-float { display: none; } }
+
+/* the "At a glance" heading spans the facts and the side note */
+.glance-wrap > .glance-h { grid-column: 1 / -1; }

@@ -1,6 +1,6 @@
 // Activities and school visits. Copy is drawn from the centre's own pages
 // (adventurous activities, curriculum, team building, booking, kit lists, testimonials).
-import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, Btn, TBC, img, shared, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, Btn, TBC, img, shared, OLD } from '../ui/inner/blocks'
 import { href, PHONE, PHONE_HREF } from '../data'
 
 const at = (k) => href(`activities/${k}/`)
@@ -9,7 +9,7 @@ const at = (k) => href(`activities/${k}/`)
 function AtAGlance({ ages = 'Suitable ages', length = 'Session lengths (half or full day)', price = 'Prices', bring }) {
   return (
     <div className="glance-wrap">
-      <h2 className="sr-only">At a glance</h2>
+      <h2 className="h2i glance-h">At a glance</h2>
       <dl className="glance">
         <div><dt>Who it suits</dt><dd><TBC>{ages}</TBC></dd></div>
         <div><dt>How long</dt><dd><TBC>{length}</TBC></dd></div>
@@ -93,7 +93,7 @@ export function Land({ path }) {
         image={{ src: img('land-ghyll-waterfall'), alt: 'A group in red waterproofs and helmets on the rocks beside a moorland waterfall' }}
       />
       <Band>
-        <h2 className="sr-only">Activities on land</h2>
+        <SectionHead eyebrow="Adventure on land" title="What you can do" />
         <ActivityList items={[
           { name: 'Ghyll scrambling', img: img('land-ghyll-2'), text: 'Climbing up the bed of a moorland stream, through pools and over boulders. You will get wet. Inspectors who watched a session at Dovestone Reservoir called it "an excellent session with a good mix of adventure allied to educational content".' },
           { name: 'Rock climbing', img: img('land-climb-crag'), text: 'On our climbing tower, built in 2007, and on local gritstone for groups ready for real rock.' },
@@ -120,7 +120,7 @@ export function Land({ path }) {
         } />
       </Band>
       <Band tone="paper">
-        <h2 className="sr-only">What schools say</h2>
+        <SectionHead title="What schools say" />
         <Quotes items={[
           { text: 'Excellent activities which build on skills, progressing children to end the day being able to read maps and complete orienteering successfully.', by: 'Mills Hill Primary, Year 5 orienteering' },
           { text: 'Excellent teaching of all learning objectives. Everything well planned and delivered.', by: 'St Edward’s, Years 3 and 4 orienteering' },
