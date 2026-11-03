@@ -1,6 +1,6 @@
 # Castleshaw v2: design standard for internal pages
 
-Derived from the homepage (`/v2/`), the menu and the footer. Token names are the real ones in `v2/src/styles.css` `:root` and `v2/src/ui/tokens.css`. Items marked **(proposed)** don't exist yet and are added in Phase 1.
+Derived from the homepage (`/v2/`), the menu and the footer. Token names are the real ones in `v2/src/styles.css` `:root` and `v2/src/ui/tokens.css`. Every token below now exists. The Phase 1 shared layer lives in `ui/tokens.css`, the end of `inner.css` and `ui/inner/blocks.jsx`.
 
 ## Colour
 
@@ -14,7 +14,7 @@ Derived from the homepage (`/v2/`), the menu and the footer. Token names are the
 | Chalk: page background | `--chalk` | #fbfdf8 |
 | Navy family (menu, CTA, footer) | `--cs-ink`, `--cs-ink-2`, `--cs-ink-deep` | #0a2a3c, #0f3a52, #08222f |
 | On navy: text, soft, muted, hairline, eyebrow | `--cs-text`, `--cs-soft`, `--cs-muted`, `--cs-line`, `--cs-eyebrow` | #fff, 86% white, 70% white, 13% white, #b9d46a |
-| Small labels on light backgrounds (AA) | `--label` **(proposed)** | #036796 |
+| Small labels on light backgrounds (AA) | `--label` | #036796 |
 
 Section tones are chalk, `--sky-pale`, sage-pale `#eef3dc`, paper `#fffaf0`, and navy for at most one band per page plus the closing CTA. Text is always `--ink` on light and `--cs-text`/`--cs-soft` on navy. Never use opacity to dim text.
 
@@ -23,7 +23,7 @@ Section tones are chalk, `--sky-pale`, sage-pale `#eef3dc`, paper `#fffaf0`, and
 - **Fonts:** display `--disp` (Bricolage Grotesque Variable, with metric-matched fallback), headings at `font-variation-settings: 'wdth' 76–84`; body `--text` (Literata Variable, with metric-matched fallback).
 - **Serif or sans:** serif is for descriptive copy (paragraphs, quotes); sans is for all interface text (nav, buttons, labels, meta, card titles).
 
-| Step | Token **(proposed)** | Value | Use |
+| Step | Token | Value | Use |
 |---|---|---|---|
 | Display | `--t-h1` | `clamp(2.75rem, 6.4vw, 5.6rem)/.95`, weight 770, tracking −.032em | Page h1 (homepage hero 8.6rem) |
 | H2 | `--t-h2` | `clamp(2.1rem, 4.4vw, 3.8rem)/1`, weight 750, wdth 80 | Section headings (homepage `.h2` reaches 5.2rem) |
@@ -38,9 +38,9 @@ Paragraphs are capped at a 40rem measure and `text-wrap: pretty`; headings use `
 ## Space and layout
 
 - **Gutter:** `--g: clamp(1rem, 4vw, 3.5rem)`.
-- **Container:** `--wrap: 84rem` **(proposed)**; narrow `60rem`; text measure `40rem`.
+- **Container:** `--wrap: 84rem`; narrow `60rem`; text measure `40rem`.
 - **Spacing scale (proposed):** `--s-1 .5rem`, `--s-2 1rem`, `--s-3 1.5rem`, `--s-4 2rem`, `--s-5 3rem`, `--s-6 4.5rem`.
-- **Section padding:** `--s-section: clamp(4rem, 8vw, 7rem)` **(proposed)**. The same on every band, top and bottom, and never collapsed between bands. Consecutive bands of the same tone are merged into one band instead.
+- **Section padding:** `--s-section: clamp(4rem, 8vw, 7rem)`. The same on every band, top and bottom, and never collapsed between bands. Consecutive bands of the same tone are merged into one band instead.
 - **Inside a section:** heading block to content `--s-5`; between groups `--s-5`; card grid gaps `--s-3` (desktop `2rem 2.5rem`).
 - **Flow spacing:** any element following a paragraph or list gets `--s-2` (`.flow > * + *`). Lists and paragraphs never touch.
 - **Grids:**
@@ -51,7 +51,7 @@ Paragraphs are capped at a 40rem measure and `text-wrap: pretty`; headings use `
 
 ## Motion
 
-- **Easing:** one curve for interface motion, `--ease` **(proposed)** = `var(--out)` `cubic-bezier(.16, 1, .3, 1)`. `--cs-out` maps to it. Clip reveals keep `--cs-reveal`.
+- **Easing:** one curve for interface motion, `--ease` = `var(--out)` `cubic-bezier(.16, 1, .3, 1)`. `--cs-out` maps to it. Clip reveals keep `--cs-reveal`.
 - **Durations:** hover and focus 200ms (`--cs-fast`); draw-in 450ms (`--cs-draw`); scroll reveal 500–600ms; stagger 40–60ms.
 - **Rules:**
   - Animate `transform` and `opacity` only, and reveal once.
@@ -76,12 +76,15 @@ Paragraphs are capped at a 40rem measure and `text-wrap: pretty`; headings use `
   - Always set `aspect-ratio`, `object-fit: cover`, and an `object-position` per image where the subject sits off-centre.
   - Organic masks via `ShapedImage`: at most one backdrop per section, at most one floating accent per viewport.
   - No more than one arch per page (only the Stay hero uses one).
-  - Grids of photos are soft rectangles (radius 1rem) with uniform ratios, with no masonry gaps.
-- **Scroll reveal:** `.rv` and `useReveal` on section heads and grids, once only.
+  - Photo grids (`Gallery`) are an even 2-column (phone) or 4-column grid of 4:3 soft rectangles (radius 1rem). Drawings in `#hall-of-fame` are shown whole at 3:4.
+  - On phones the hero photo is at most `min(22rem, 76vw)` with no floating accent. `People` sits two to a row.
+- **Scroll reveal:** every `Band` reveals its contents once, automatically. Use `.rv` and `useReveal` only for custom blocks.
+- **Section heads:** `SectionHead` (eyebrow, h2, lead). Use it to give card rows and lists a real h2, which fixes heading skips.
+- **Key links:** `SqLink` (squiggle underline plus nudging arrow) for a section's "More about…" or next-step link. At most one per section.
 - **Accordion:** `Faq` (`details`/`summary`) for FAQ-style and long optional content.
 - **Section page links** (`SubNav`): pills at least 44px tall on touch, with a fade showing the row scrolls.
-- **In-page navigation:** long pages (four or more sections) get a sticky "On this page" row.
-- **Scroll prompt:** `ScrollCue`, where the next content isn't visible.
+- **In-page navigation:** long pages (four or more sections) get `OnThisPage items={[{ id, label }]}`, a sticky row that marks the section in view. Sections need `id`s.
+- **Scroll prompt:** `ScrollCue`. It's built into every inner hero (idle-only, desktop); add it elsewhere only where the next content isn't visible.
 - **One primary CTA per page:** the closing `CtaBand`, plus at most one hero action.
 
 ## Accessibility

@@ -1,11 +1,12 @@
 // Building blocks for the v2 inner pages. Calm by design: no scroll effects,
 // only hover feedback. Shared look with the homepage: Bricolage + Literata,
 // the logo palette, arch-shaped photos and a Pennine ridge line.
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { PAGES } from '../../site.mjs'
 import { href, PHONE, PHONE_HREF, EMAIL, CONTACT } from '../../data'
 import { ROOT, HOME, ridge } from '../../lib'
 import { Squiggle, Contours, useReveal } from '../Squiggle'
+import ScrollCue from '../ScrollCue'
 import ShapedImage from '../shape/ShapedImage'
 import { BLOBS, pick } from '../shape/shapes'
 
@@ -107,13 +108,59 @@ export function Hero({ path, title, lead, children, image, illustration, tone = 
         )}
       </div>
       <svg className="ph-ridge" viewBox="0 0 1600 140" preserveAspectRatio="none" aria-hidden="true"><path d={d} /></svg>
+      <ScrollCue className="cue-ph" label="Keep scrolling" />
     </header>
   )
 }
 
 /* ---------- layout ---------- */
+// A section of the page. Its contents rise in once, the first time it scrolls into view.
 export function Band({ tone = 'chalk', id, children, className = '', narrow }) {
-  return <section id={id} className={`band band-${tone}${narrow ? ' band-narrow' : ''} ${className}`}>{children}</section>
+  const ref = useRef(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!('IntersectionObserver' in window)) { el.classList.add('is-in'); return }
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.classList.add('is-in'); io.disconnect() } }, { rootMargin: '0px 0px -8% 0px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+  return <section ref={ref} id={id} className={`band band-${tone}${narrow ? ' band-narrow' : ''} ${className}`}>{children}</section>
+}
+
+// A section's heading block: optional eyebrow, the h2, an optional lead.
+export function SectionHead({ eyebrow, title, children, id }) {
+  return (
+    <div className="shead">
+      {eyebrow && <p className="shead-eyebrow">{eyebrow}</p>}
+      <h2 className="h2i" id={id}>{title}</h2>
+      {children && <div className="shead-lead">{children}</div>}
+    </div>
+  )
+}
+
+// A key text link with the hand-drawn underline and a nudging arrow.
+export function SqLink({ href: h, children, i = 0, rel }) {
+  return <a className="sql sq-host" href={h} rel={rel}><span className="sql-t">{children}<Squiggle i={i} /></span><span className="sql-arr" aria-hidden="true">&rarr;</span></a>
+}
+
+// "On this page": a sticky row of links to a long page's sections, marking the one in view.
+export function OnThisPage({ items }) {
+  const [on, setOn] = useState(items[0]?.id)
+  useEffect(() => {
+    const els = items.map((x) => document.getElementById(x.id)).filter(Boolean)
+    const io = new IntersectionObserver((es) => {
+      const vis = es.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
+      if (vis[0]) setOn(vis[0].target.id)
+    }, { rootMargin: '-30% 0px -60% 0px' })
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [items])
+  return (
+    <nav className="otp" aria-label="On this page">
+      <span className="otp-label">On this page</span>
+      <ul>{items.map((x) => <li key={x.id}><a href={`#${x.id}`} aria-current={on === x.id ? 'location' : undefined}>{x.label}</a></li>)}</ul>
+    </nav>
+  )
 }
 
 export function Intro({ heading, children, aside }) {

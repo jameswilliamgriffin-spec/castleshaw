@@ -2,7 +2,6 @@ import { useCallback, useState } from 'react'
 import { Header, Menu } from '../Top'
 import { Footer } from '../Contact'
 import { PAGES } from '../../site.mjs'
-import { ROOT } from '../../lib'
 
 // The calm frame for every inner page: header, section pages, content, footer.
 // No smooth-scroll library, custom cursor or scroll effects here, unlike the homepage.
@@ -19,7 +18,6 @@ export default function Shell({ path, children }) {
         {children}
       </main>
       <Footer />
-      <a className="versions" href={ROOT}>All versions</a>
     </>
   )
 }
