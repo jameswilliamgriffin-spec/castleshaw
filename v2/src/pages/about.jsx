@@ -273,6 +273,7 @@ export function History({ path }) {
         image={{ src: img('history-postcard'), alt: 'An old postcard of the stone building behind a tree, captioned Oldham Poor Children’s Holiday Home', shape: 'soft' }}
       />
       <Band>
+        <SectionHead eyebrow="About the centre" title="Timeline" />
         <Timeline items={[
           {
             years: '1895 to 1916', title: 'Oldham Poor Children’s Holiday Association',
@@ -318,9 +319,9 @@ export function History({ path }) {
         ]} />
       </Band>
       <Band tone="sky" id="back-in-the-day">
-        <Intro heading="Back in the day">
+        <SectionHead title="Back in the day">
           <p>Photographs from the centre&rsquo;s archive.</p>
-        </Intro>
+        </SectionHead>
         <Gallery images={[
           { src: img('arch-1960-class'), alt: 'A 1960s classroom with pupils at desks and a teacher at the blackboard' },
           { src: img('arch-bonfire'), alt: 'A black and white photograph of children round a bonfire' },
