@@ -1,6 +1,6 @@
 // Activities and school visits. Copy is drawn from the centre's own pages
 // (adventurous activities, curriculum, team building, booking, kit lists, testimonials).
-import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, Btn, TBC, img, shared, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, Btn, TBC, img, shared, OLD } from '../ui/inner/blocks'
 import { href, PHONE, PHONE_HREF } from '../data'
 
 const at = (k) => href(`activities/${k}/`)
@@ -71,6 +71,7 @@ export function Hub({ path }) {
       <Band tone="ink">
         <Quote big text="Absolutely brilliant. Most children would not have got this opportunity with their families." by="Freehold, Year 6 activity residential" />
       </Band>
+      <AdviceNote />
       <CtaBand title="Tell us who is coming and what you would like to do" text="Once we have agreed a programme, we email the group leader a quotation and booking form." />
     </>
   )
@@ -118,6 +119,7 @@ export function Land({ path }) {
           { text: 'All children made friends and shared their interests with the other school. Rod was fantastic at encouraging the children to try new and unfamiliar activities.', by: 'Coppice Primary, Year 2' },
         ]} />
       </Band>
+      <AdviceNote />
       <CtaBand title="Plan an adventure day or residential" />
     </>
   )
@@ -161,6 +163,7 @@ export function Water({ path }) {
       <Band tone="paper">
         <Quote big text="Thank you for taking our daughter on a wonderful kayaking adventure. These photos are truly super." by="A parent, after the Summer Holiday Club" />
       </Band>
+      <AdviceNote />
       <CtaBand title="Book a day on the water" />
     </>
   )
@@ -194,6 +197,7 @@ export function Bushcraft({ path }) {
       <Band>
         <AtAGlance ages="Suitable ages" />
       </Band>
+      <AdviceNote />
       <CtaBand title="Add bushcraft to your visit" />
     </>
   )
@@ -268,6 +272,7 @@ export function Environment({ path }) {
         <Downloads items={RESOURCES} />
         <p><a href={at('plan-your-visit') + '#resources'}>More resources and useful links</a></p>
       </Band>
+      <AdviceNote />
       <CtaBand title="Plan a field study day" />
     </>
   )
@@ -326,6 +331,7 @@ export function History({ path }) {
           { text: 'Well organised, fantastic activities, brilliant teachers. Very interactive and friendly staff.', by: 'Islamiyah Girls High School, Blackburn, Year 7 Romans' },
         ]} />
       </Band>
+      <AdviceNote />
       <CtaBand title="Book a history day" />
     </>
   )
@@ -371,6 +377,7 @@ export function Team({ path }) {
       <Band tone="ink">
         <Quote big text="Our aims were to build relationships and get to know each other. The course was really effective. It was nice to see students laughing together all day." by="Royton and Crompton, Year 7 team building" />
       </Band>
+      <AdviceNote />
       <CtaBand title="Plan a team building day" />
     </>
   )

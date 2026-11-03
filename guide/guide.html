@@ -1,0 +1,289 @@
+<!doctype html>
+<!-- Source for the PDF guide. Edit this, then run: npm run guide
+     Output: public/shared/docs/castleshaw-educational-visits-guide.pdf (and guide-cover.png).
+     Amber "To confirm" marks are placeholders listed in content/OPEN-QUESTIONS.md. -->
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<title>Planning safe educational visits: a guide for schools and settings | Castleshaw Centre, Oldham Council</title>
+<meta name="author" content="Castleshaw Centre, Oldham Council" />
+<meta name="subject" content="Educational visits advice and guidance" />
+<style>
+  @font-face { font-family: 'Bricolage'; src: url('../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wdth-normal.woff2') format('woff2'); font-weight: 200 800; font-stretch: 75% 100%; }
+  @font-face { font-family: 'Literata'; src: url('../node_modules/@fontsource-variable/literata/files/literata-latin-wght-normal.woff2') format('woff2'); font-weight: 200 900; }
+  :root { --ink: #0a2a3c; --deep: #034a6e; --water: #0480bc; --sky: #bfe4f7; --sky-pale: #e4f3fb; --moss: #8dba08; --sage: #c1d284; --chalk: #fbfdf8; --line: rgba(10, 42, 60, .16); --amber: #c0841c; }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 400 10.5pt/1.55 'Literata', Georgia, serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  h1, h2, h3, .sans { font-family: 'Bricolage', Arial, sans-serif; }
+  .page { position: relative; width: 210mm; height: 297mm; padding: 22mm 20mm 24mm; overflow: hidden; page-break-after: always; break-after: page; background: var(--chalk); }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+  .foot { position: absolute; left: 20mm; right: 20mm; bottom: 12mm; display: flex; justify-content: space-between; padding-top: 3mm; border-top: 0.5pt solid var(--line); font: 500 7.5pt 'Bricolage', sans-serif; color: #4b6473; }
+  .kicker { margin: 0 0 3mm; font: 650 7.5pt 'Bricolage', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--water); }
+  h2 { margin: 0 0 5mm; font-size: 26pt; line-height: 1.02; font-weight: 760; font-stretch: 80%; letter-spacing: -.02em; }
+  h3 { margin: 0 0 1.5mm; font-size: 12pt; font-weight: 720; }
+  p { margin: 0 0 3mm; }
+  .lead { font-size: 12pt; line-height: 1.5; max-width: 150mm; }
+  .tbc { display: inline; padding: 0 1.2mm; border: 0.8pt dashed var(--amber); border-radius: 1mm; background: #fff7e6; color: #6b4300; font: 600 8.5pt 'Bricolage', sans-serif; }
+  .tbc::before { content: 'To confirm: '; font-weight: 750; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm 10mm; }
+  .card { padding: 5mm 6mm; border-radius: 3mm; background: #fff; box-shadow: inset 0 0 0 0.6pt var(--line); }
+  ul.ticks { list-style: none; margin: 0; padding: 0; }
+  ul.ticks li { position: relative; padding-left: 6mm; margin-bottom: 1.8mm; }
+  ul.ticks li::before { content: ''; position: absolute; left: .6mm; top: 1.6mm; width: 2.6mm; height: 1.5mm; border-left: 1.4pt solid var(--moss); border-bottom: 1.4pt solid var(--moss); transform: rotate(-45deg); }
+  .photo { border-radius: 3mm; overflow: hidden; }
+  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .note { font: 500 7pt 'Bricolage', sans-serif; color: #4b6473; }
+
+  /* cover */
+  .cover { padding: 0; background: var(--ink); color: #fff; }
+  .cover .photo { position: absolute; inset: 0 0 auto; height: 168mm; border-radius: 0; }
+  .cover .photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,42,60,0) 55%, rgba(10,42,60,1) 100%); }
+  .cover-body { position: absolute; left: 20mm; right: 20mm; bottom: 26mm; }
+  .cover .kicker { color: #b9d46a; }
+  .cover h1 { margin: 0; font-size: 44pt; line-height: .95; font-weight: 770; font-stretch: 76%; letter-spacing: -.03em; }
+  .cover .sub { margin-top: 5mm; font: 500 15pt 'Bricolage', sans-serif; color: rgba(255,255,255,.86); }
+  .cover .by { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 16mm; padding-top: 5mm; border-top: 0.6pt solid rgba(255,255,255,.2); font: 500 9pt 'Bricolage', sans-serif; color: rgba(255,255,255,.75); }
+  .cover .logo { width: 30mm; padding: 2mm; border-radius: 2mm; background: #fff; }
+  .cover .gen { position: absolute; right: 6mm; top: 6mm; z-index: 2; font: 500 6pt 'Bricolage', sans-serif; color: rgba(255,255,255,.75); }
+
+  /* steps */
+  .steps { list-style: none; margin: 6mm 0 0; padding: 0; counter-reset: s; }
+  .steps li { position: relative; padding: 0 0 6mm 16mm; counter-increment: s; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: -1mm; width: 10mm; height: 10mm; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font: 750 11pt 'Bricolage', sans-serif; }
+  .steps li::after { content: ''; position: absolute; left: 4.8mm; top: 10mm; bottom: 0; width: 0.8pt; background: var(--moss); }
+  .steps li:last-child::after { display: none; }
+
+  /* checklist */
+  .check { list-style: none; margin: 0; padding: 0; }
+  .check li { display: flex; gap: 3mm; padding: 2.4mm 0; border-bottom: 0.5pt solid var(--line); }
+  .check li::before { content: ''; flex: none; width: 4mm; height: 4mm; margin-top: .6mm; border: 1pt solid var(--ink); border-radius: .8mm; }
+  .check h3 { margin: 4mm 0 1mm; font-size: 10pt; color: var(--water); text-transform: uppercase; letter-spacing: .1em; }
+
+  .sos { margin-top: 6mm; padding: 8mm; border-radius: 3mm; background: var(--ink); color: #fff; }
+  .sos .num { font: 760 30pt/1 'Bricolage', sans-serif; font-stretch: 80%; color: var(--moss); }
+  .save { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .save .card { border: 1pt dashed var(--ink); box-shadow: none; }
+  .people { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; margin-top: 4mm; }
+  .people img { width: 100%; height: 52mm; object-fit: cover; object-position: 50% 30%; border-radius: 3mm; }
+  .contact { margin-top: 8mm; padding: 8mm; border-radius: 3mm; background: var(--sky-pale); }
+  .contact .num { font: 760 22pt 'Bricolage', sans-serif; font-stretch: 80%; }
+  table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+  th, td { padding: 2.4mm 2mm; border-bottom: 0.5pt solid var(--line); text-align: left; vertical-align: top; }
+  th { font: 650 8pt 'Bricolage', sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--water); }
+</style>
+</head>
+<body>
+
+<!-- 1 cover -->
+<section class="page cover">
+  <div class="photo"><img src="img/boots.jpg" alt="" /></div>
+  <span class="gen">Placeholder photograph (AI-generated)</span>
+  <div class="cover-body">
+    <p class="kicker">Educational visits advice and guidance</p>
+    <h1>Planning safe educational visits</h1>
+    <p class="sub">A guide for schools and settings</p>
+    <div class="by">
+      <span>Castleshaw Centre, Oldham Council<br />2026 edition <span class="tbc">edition date and version</span></span>
+      <img class="logo" src="img/logo.jpg" alt="Castleshaw Centre" />
+    </div>
+  </div>
+</section>
+
+<!-- 2 about -->
+<section class="page">
+  <p class="kicker">About this guide</p>
+  <h2>Safe visits, signed off by people who run them</h2>
+  <p class="lead">Planning a trip is a lot of work, and getting it right matters. This guide explains how educational visits are planned, checked and approved, what our advisers look for, and what to do if something goes wrong.</p>
+  <p>It is written for head teachers, Educational Visits Coordinators (EVCs), business managers, visit leaders and governors in schools, colleges, academies, trusts and youth services.</p>
+  <div class="cols" style="margin-top:10mm">
+    <div class="card">
+      <h3>Why it matters</h3>
+      <p>Employers are responsible for the health and safety of staff and young people on educational visits, under the Health and Safety at Work Act. National guidance from the Outdoor Education Advisers&rsquo; Panel (OEAP) recommends that employers have access to competent advice, and most use a specialist adviser to approve higher-risk visits.</p>
+    </div>
+    <div class="card">
+      <h3>Who we are</h3>
+      <p>The Educational Visits Advice and Guidance Service is run by Oldham Council&rsquo;s advisers at the Castleshaw Centre in Delph. It has supported visits for more than 20 years, and any school, college, academy or youth service can join, in Oldham or beyond.</p>
+    </div>
+  </div>
+  <div class="cols" style="margin-top:8mm">
+    <div><h3>In this guide</h3>
+      <ul class="ticks"><li>How sign-off works</li><li>Which visits need approval</li><li>What we look at</li><li>A pre-submission checklist</li></ul></div>
+    <div><h3>&nbsp;</h3>
+      <ul class="ticks"><li>What the service includes</li><li>Training for your staff</li><li>If something goes wrong</li><li>Your advisers, and how to join</li></ul></div>
+  </div>
+  <div class="foot"><span>Planning safe educational visits</span><span>2</span></div>
+</section>
+
+<!-- 3 how sign-off works -->
+<section class="page">
+  <p class="kicker">How it works</p>
+  <h2>Four sets of hands. Ours are the last.</h2>
+  <p class="lead">Every visit is planned on Evolve, the online system schools use to plan, check and approve visits. It keeps the itinerary, risk management, staffing, consent and contacts in one place, so everyone in the chain sees the same plan.</p>
+  <ol class="steps">
+    <li><h3>The visit leader plans the visit on Evolve</h3><p>The itinerary, risk management, staffing, transport and any activity providers, all in one place.</p></li>
+    <li><h3>Your EVC checks it</h3><p>Your Educational Visits Coordinator, a senior member of staff, reviews the plan first and sends it back if anything is missing.</p></li>
+    <li><h3>Your head teacher approves it</h3><p>Or the head of your service, for colleges, youth and community settings.</p></li>
+    <li><h3>A Castleshaw adviser signs it off</h3><p>For adventurous, residential and overseas visits, we review the whole visit against Oldham Council policy, OEAP National Guidance and legislation, usually within 10 working days.</p></li>
+  </ol>
+  <div class="photo" style="height:62mm;margin-top:2mm"><img src="img/compass.jpg" alt="" style="object-position:50% 50%" /></div>
+  <p class="note" style="margin-top:2mm">Placeholder photograph (AI-generated).</p>
+  <div class="foot"><span>Planning safe educational visits</span><span>3</span></div>
+</section>
+
+<!-- 4 which visits -->
+<section class="page">
+  <p class="kicker">Which visits need approval</p>
+  <h2>Not every trip comes to us</h2>
+  <p class="lead">Your EVC and head teacher approve lower-risk visits within your own setting. Under the service, our advisers approve the visits that carry most risk.</p>
+  <table style="margin-top:6mm">
+    <thead><tr><th style="width:38%">Type of visit</th><th>Who approves</th><th style="width:30%">Submit</th></tr></thead>
+    <tbody>
+      <tr><td><strong class="sans">Adventurous activities</strong><br />such as climbing, watersports and trekking</td><td>Visit leader, EVC, head, then a Castleshaw adviser</td><td>At least 10 working days before <span class="tbc">recommended lead time</span></td></tr>
+      <tr><td><strong class="sans">Residential visits</strong></td><td>Visit leader, EVC, head, then a Castleshaw adviser</td><td><span class="tbc">recommended lead time</span></td></tr>
+      <tr><td><strong class="sans">Overseas visits</strong></td><td>Visit leader, EVC, head, then a Castleshaw adviser</td><td><span class="tbc">recommended lead time</span></td></tr>
+      <tr><td><strong class="sans">Other local and day visits</strong></td><td>Visit leader, EVC and head, within your setting</td><td>Following your own visits policy</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:6mm"><span class="tbc">whether any other visit types need adviser approval, for example visits near water</span></p>
+  <div class="card" style="margin-top:8mm">
+    <h3>Using activity providers</h3>
+    <p>Check that providers of adventurous activities hold an Adventure Activities Licence (AALA) where one is required, or the Learning Outside the Classroom Quality Badge, and include their details in your Evolve form. Our advisers can help you check.</p>
+  </div>
+  <div class="foot"><span>Planning safe educational visits</span><span>4</span></div>
+</section>
+
+<!-- 5 what we look at -->
+<section class="page">
+  <p class="kicker">What we look at</p>
+  <h2>The whole visit, not just the risk assessment</h2>
+  <p class="lead">The question is simple: has this been organised safely and sensibly, in line with national guidance?</p>
+  <div class="cols" style="margin-top:6mm">
+    <div class="card"><h3>Planning</h3><p>Clear aims, a realistic itinerary, and a plan B for the weather.</p></div>
+    <div class="card"><h3>Risk management</h3><p>The significant risks spotted, and sensibly managed rather than buried in paperwork.</p></div>
+    <div class="card"><h3>Arrangements</h3><p>Transport, accommodation, providers, consent, medical needs and what happens in an emergency.</p></div>
+    <div class="card"><h3>Staffing</h3><p>Enough adults, with the right experience and qualifications for the group and the activities.</p></div>
+  </div>
+  <div class="photo" style="height:70mm;margin-top:8mm"><img src="img/hands.jpg" alt="" style="object-position:50% 40%" /></div>
+  <p class="note" style="margin-top:2mm">Placeholder photograph (AI-generated).</p>
+  <div class="card" style="margin-top:6mm;background:#eef3dc;box-shadow:none">
+    <h3>If a visit isn&rsquo;t ready yet</h3>
+    <p>We don&rsquo;t just say no. We send the plan back with clear advice on what to change and why, and we&rsquo;re happy to talk it through on the phone. Most visits are approved once those changes are made.</p>
+  </div>
+  <div class="foot"><span>Planning safe educational visits</span><span>5</span></div>
+</section>
+
+<!-- 6 checklist -->
+<section class="page">
+  <p class="kicker">Before you submit</p>
+  <h2>Pre-submission checklist</h2>
+  <p>Print this page and work through it before the visit goes to your EVC. <span class="tbc">draft checklist, to be agreed with the advisers</span></p>
+  <h3>Planning</h3>
+  <ul class="check">
+    <li>The visit has clear aims, linked to learning or development</li>
+    <li>The itinerary is realistic, with timings and travel</li>
+    <li>There is a plan B for bad weather or a cancelled activity</li>
+  </ul>
+  <h3>Risk management</h3>
+  <ul class="check">
+    <li>Significant risks are identified, with sensible control measures</li>
+    <li>Activity providers&rsquo; licences or accreditation are checked and recorded</li>
+  </ul>
+  <h3>Arrangements</h3>
+  <ul class="check">
+    <li>Transport, accommodation and insurance are booked and recorded</li>
+    <li>Parental consent and medical information are collected</li>
+    <li>Emergency contacts are agreed, including the 24/7 critical incident line</li>
+  </ul>
+  <h3>Staffing</h3>
+  <ul class="check">
+    <li>Staffing ratios suit the group, the activities and the setting</li>
+    <li>Leaders have the experience and qualifications the activities need</li>
+    <li>Everyone knows their role, including in an emergency</li>
+  </ul>
+  <div class="foot"><span>Planning safe educational visits</span><span>6</span></div>
+</section>
+
+<!-- 7 what's included -->
+<section class="page">
+  <p class="kicker">What&rsquo;s included</p>
+  <h2>One annual agreement</h2>
+  <p class="lead">One annual Service Level Agreement covers advice, approval, Evolve, policy support, training and a 24/7 critical incident line.</p>
+  <div class="cols" style="margin-top:6mm">
+    <div class="card"><h3>Advice and approval</h3><ul class="ticks"><li>Ongoing advice on any educational visit</li><li>Visit forms reviewed within 10 working days</li><li>Approval of adventurous, residential and overseas visits</li><li>An advice line during school hours</li><li>Visits to your school to help with planning and monitoring</li></ul></div>
+    <div class="card"><h3>Evolve</h3><ul class="ticks"><li>Use of the Evolve visit management system</li><li>Set-up, support and training for every user</li><li>Help linking your MIS to Evolve (Evolve+) <span class="tbc">included or optional</span></li></ul></div>
+    <div class="card"><h3>Policy and updates</h3><ul class="ticks"><li>Guidance, policies and template documents</li><li>Updates on local policy, national guidance and legislation</li><li>Representation at regional and national meetings</li></ul></div>
+    <div class="card"><h3>Training and support</h3><ul class="ticks"><li>One free EVC course place a year</li><li>Subsidised visit leader and extra EVC training</li><li>Sessions for head teachers and governors</li><li>A 24/7 critical incident line</li></ul></div>
+  </div>
+  <div class="card" style="margin-top:8mm">
+    <h3>What it costs</h3>
+    <p>Prices depend on the size and type of your establishment. Contact us for a quote. <span class="tbc">packages, price bands and agreement year</span></p>
+  </div>
+  <div class="foot"><span>Planning safe educational visits</span><span>7</span></div>
+</section>
+
+<!-- 8 training -->
+<section class="page">
+  <p class="kicker">Training</p>
+  <h2>Courses for everyone in the chain</h2>
+  <p class="lead">At the Castleshaw Centre, or at your school for groups. Members get one free EVC place a year and subsidised places on other courses.</p>
+  <table style="margin-top:6mm">
+    <thead><tr><th style="width:40%">Course</th><th style="width:22%">Length</th><th>For</th></tr></thead>
+    <tbody>
+      <tr><td><strong class="sans">Educational Visits Coordinator (EVC)</strong></td><td>One day</td><td>New EVCs and the staff who support them, following DfE guidance</td></tr>
+      <tr><td><strong class="sans">Visit Leader training</strong></td><td>Three hours, or two twilight sessions</td><td>Staff leading and supporting visits, following the OEAP framework</td></tr>
+      <tr><td><strong class="sans">Management of Visit Emergencies (MoVE)</strong></td><td><span class="tbc">length</span></td><td>Senior leaders who would lead the response to an incident</td></tr>
+      <tr><td><strong class="sans">Head teacher and governor sessions</strong></td><td><span class="tbc">length</span></td><td>Head teachers and governors approving visits and setting policy</td></tr>
+      <tr><td><strong class="sans">First Aid for group leaders (ITC)</strong></td><td>Two days</td><td>Anyone leading groups outdoors. HSE approved</td></tr>
+      <tr><td><strong class="sans">Minibus Driver Awareness (MiDAS)</strong></td><td>Three hours</td><td>Staff who drive minibuses. Theory, at the centre or your school</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:6mm"><span class="tbc">current course dates and member and non-member prices</span></p>
+  <div class="photo" style="height:62mm;margin-top:6mm"><img src="img/owc.jpg" alt="" style="object-position:50% 45%" /></div>
+  <div class="foot"><span>Planning safe educational visits</span><span>8</span></div>
+</section>
+
+<!-- 9 if something goes wrong -->
+<section class="page">
+  <p class="kicker">Emergency support</p>
+  <h2>If something goes wrong on a visit, call us</h2>
+  <p class="lead">Members of the service have a 24/7 critical incident line. An experienced adviser answers, helps you take stock and stays with you until the situation is under control.</p>
+  <div class="sos">
+    <p class="sans" style="margin:0 0 2mm;color:#b9d46a;font-weight:650;letter-spacing:.1em;text-transform:uppercase;font-size:7.5pt">24/7 critical incident line</p>
+    <p class="num">0161 633 1803</p>
+    <p style="margin:3mm 0 0;color:rgba(255,255,255,.86)">For everyday advice in school hours, call 0161 770 8595. <span class="tbc" style="background:rgba(255,226,168,.14);color:#ffe2a8;border-color:#ffcf73">whether the line is staffed all year or in term time only</span></p>
+  </div>
+  <div class="cols" style="margin-top:8mm">
+    <div><h3>What we do</h3><ul class="ticks"><li>Help the visit leader manage the incident on the ground</li><li>Support your senior leaders</li><li>Help contact families</li><li>Help deal with the media</li><li>Link with the Council&rsquo;s emergency arrangements</li></ul></div>
+    <div><h3>Be ready</h3><p>Management of Visit Emergencies (MoVE) training prepares senior leaders to run the response at school. Add the incident line to every visit&rsquo;s emergency contacts and to each leader&rsquo;s phone.</p></div>
+  </div>
+  <div class="save">
+    <div class="card"><p class="sans" style="margin:0;font-size:8pt;color:#4b6473">Cut out and keep</p><p class="sans" style="margin:1mm 0 0;font-weight:720">24/7 critical incident line</p><p class="sans" style="margin:0;font-size:16pt;font-weight:760">0161 633 1803</p></div>
+    <div class="card"><p class="sans" style="margin:0;font-size:8pt;color:#4b6473">Cut out and keep</p><p class="sans" style="margin:1mm 0 0;font-weight:720">24/7 critical incident line</p><p class="sans" style="margin:0;font-size:16pt;font-weight:760">0161 633 1803</p></div>
+  </div>
+  <div class="foot"><span>Planning safe educational visits</span><span>9</span></div>
+</section>
+
+<!-- 10 advisers and joining -->
+<section class="page">
+  <p class="kicker">Your advisers</p>
+  <h2>Advisers who still do the job</h2>
+  <p>Our advisers aren&rsquo;t desk-based. They still lead groups outdoors every week, so their advice comes from doing the job as well as knowing the guidance.</p>
+  <div class="people">
+    <div><img src="img/rod.jpg" alt="Rod Steele" /><h3 style="margin-top:3mm">Rod Steele</h3><p class="sans" style="color:var(--water);font-weight:600;font-size:9pt">Senior tutor and adviser</p><p style="font-size:9pt">Institute for Outdoor Learning accredited practitioner. IOSH. Level 4 canoe and kayak coach. Mountain bike leader. OEAP member.</p></div>
+    <div><img src="img/joseph.jpg" alt="Joseph Myhill" /><h3 style="margin-top:3mm">Joseph Myhill</h3><p class="sans" style="color:var(--water);font-weight:600;font-size:9pt">Centre manager and adviser</p><p style="font-size:9pt">Duke of Edinburgh&rsquo;s Award assessor and supervisor. Former DofE manager. Paddlesport leader. OEAP member.</p></div>
+  </div>
+  <p style="font-size:9pt">LOtC Quality Badge 101040. Licensed by AALA for climbing, watersports and trekking, licence <span class="tbc">number</span>. Adventuremark accredited.</p>
+  <div class="contact">
+    <p class="kicker" style="margin-bottom:2mm">How to join</p>
+    <h3 style="font-size:16pt">Any school, college, academy or youth service can join</h3>
+    <p>Tell us a little about your setting and we will send you a quote.</p>
+    <p class="num" style="margin:3mm 0 1mm">0161 770 8595</p>
+    <p class="sans" style="margin:0">castleshaw.centre@oldham.gov.uk</p>
+    <p class="sans" style="margin:1mm 0 0">Castleshaw Centre, Waterworks Road, Delph, Oldham OL3 5LZ</p>
+  </div>
+  <div class="foot"><span>Oldham Council&rsquo;s Outdoor and Environmental Education service</span><span>10</span></div>
+</section>
+</body>
+</html>

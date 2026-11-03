@@ -75,7 +75,18 @@ export const PAGES = [
   ...EXTRA.map((e) => ({ ...e, section: e.key })),
 ]
 
-export const CUSTOM_ENTRY = new Set(['advice-and-guidance/'])
+// Pages with their own entry file instead of a generated one (none at present).
+export const CUSTOM_ENTRY = new Set()
+
+// Page titles that need more than the menu label, for search results.
+export const TITLES = {
+  'advice-and-guidance/': 'Educational visits advice and guidance for schools, Oldham',
+}
+
+// The hero image each page should preload.
+export const PRELOAD = {
+  'advice-and-guidance/': 'shared/images/generated/boots-gritstone.webp',
+}
 
 export const DESCRIPTIONS = {
   'activities/': 'Adventurous activities, environmental education, bushcraft, Roman history and team building days for schools and groups at the Castleshaw Centre, Delph.',
@@ -86,6 +97,7 @@ export const DESCRIPTIONS = {
   'activities/roman-history/': 'Roman fort days, the Industrial Revolution, Victorian Delph and local history trails.',
   'activities/team-building/': 'Team building for primary classes, secondary groups and adult away days.',
   'activities/plan-your-visit/': 'Booking, what to bring, information for group leaders and free resources for teachers.',
+  'advice-and-guidance/': 'Educational visit sign-off, Evolve, EVC training and a 24/7 critical incident line for schools, academies, trusts, colleges and youth services, from Oldham Council’s advisers at the Castleshaw Centre.',
   'advice-and-guidance/how-it-works/': 'How visits are planned on Evolve and signed off by our advisers.',
   'advice-and-guidance/service-agreement/': 'What the Educational Visits Advice and Guidance Service Level Agreement includes.',
   'advice-and-guidance/who-its-for/': 'The advice service for maintained schools, academies, trusts, colleges and youth services.',

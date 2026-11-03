@@ -6,7 +6,7 @@ import '@fontsource-variable/literata/index.css'
 import './styles.css'
 import './inner.css'
 import Shell from './ui/inner/Shell'
-import { PAGES, DESCRIPTIONS } from './site.mjs'
+import { PAGES, DESCRIPTIONS, TITLES } from './site.mjs'
 import { HOME, reduced } from './lib'
 import * as activities from './pages/activities'
 import * as advice from './pages/advice'
@@ -25,6 +25,7 @@ const REGISTRY = {
   'activities/roman-history/': activities.History,
   'activities/team-building/': activities.Team,
   'activities/plan-your-visit/': activities.Plan,
+  'advice-and-guidance/': advice.Landing,
   'advice-and-guidance/how-it-works/': advice.How,
   'advice-and-guidance/service-agreement/': advice.Agreement,
   'advice-and-guidance/who-its-for/': advice.Who,
@@ -68,7 +69,7 @@ function pathOf(url) {
 function setHead(path) {
   const page = PAGES.find((p) => p.path === path)
   if (!page) return
-  document.title = `${page.long || page.title} | Castleshaw Centre`
+  document.title = `${TITLES[path] || page.long || page.title} | Castleshaw Centre`
   document.querySelector('meta[name="description"]')?.setAttribute('content', DESCRIPTIONS[path] || '')
   window.__PAGE = path
 }

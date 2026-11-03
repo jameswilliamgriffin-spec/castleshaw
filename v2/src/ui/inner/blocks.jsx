@@ -19,6 +19,8 @@ export const img = (name) => `${ROOT}shared/images/site/${name}.jpg`
 export const ill = (name) => `${ROOT}shared/images/illustrations/${name}.jpg`
 export const gal = (name) => `${ROOT}shared/images/gallery/${name}.jpg`
 export const shared = (name) => `${ROOT}shared/images/${name}.jpg`
+// AI-generated documentary photos (placeholders until real photography; see generated/README.md).
+export const gen = (name) => `${ROOT}shared/images/generated/${name}.webp`
 export const OLD = 'https://www.castleshawcentre.com/uploads/2/5/9/4/25941639/'
 
 /* ---------- "To confirm" marker: an honest blank, with what belongs there ---------- */
@@ -345,6 +347,18 @@ export function CtaBand({ title = 'Talk to us about your visit', text, primary, 
         </div>
       </div>
     </section>
+  )
+}
+
+// A pointer to the educational visits advice service, for pages where teachers are planning trips.
+export function AdviceNote() {
+  return (
+    <aside className="adv-note" aria-label="Educational visits advice">
+      <div className="adv-note-in">
+        <p><strong>Planning a visit somewhere else?</strong> Oldham Council&rsquo;s educational visits advisers, based here at Castleshaw, check and sign off visits anywhere, and run a 24/7 critical incident line.</p>
+        <a className="adv-note-link" href={`${href('advice-and-guidance/')}`}>Educational visits advice <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </aside>
   )
 }
 

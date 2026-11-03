@@ -525,3 +525,9 @@ html.is-loading { overflow: hidden; }
 .act-more:hover { color: var(--deep); }
 /* footer: contact plus four section columns */
 .hd-nav a[aria-current] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .4em; text-decoration-color: var(--moss); }
+
+/* "For schools" tag on the Visits advice nav item */
+.hd-nav .hd-advice { display: inline-flex; align-items: center; gap: .45rem; }
+.hd-tag { padding: .12rem .45rem; border-radius: 99px; background: var(--moss); color: var(--ink); font: 700 .66rem/1.3 var(--disp); letter-spacing: .04em; text-transform: uppercase; }
+.hd-solid .hd-tag, .hd-top .hd-tag { background: var(--moss); }
+@media (max-width: 1199px) { .hd-tag { display: none; } }

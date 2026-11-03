@@ -1,0 +1,20 @@
+/* Homepage band for the educational visits advice service. */
+.adb { position: relative; z-index: 2; padding: clamp(4.5rem, 9vw, 8rem) var(--g); background: var(--chalk); }
+.adb-in { display: grid; gap: 3rem clamp(2rem, 6vw, 6rem); max-width: 84rem; margin: 0 auto; align-items: center; }
+@media (min-width: 900px) { .adb-in { grid-template-columns: 7fr 4fr; } }
+.adb-copy > * { opacity: 0; transform: translateY(14px); transition: opacity 600ms var(--cs-out), transform 600ms var(--cs-out); }
+.adb.is-in .adb-copy > * { opacity: 1; transform: none; }
+.adb.is-in .adb-copy > :nth-child(2) { transition-delay: 60ms; }
+.adb.is-in .adb-copy > :nth-child(n+3) { transition-delay: 120ms; }
+.adb-kicker { margin: 0; font: 650 .8rem var(--disp); letter-spacing: .12em; text-transform: uppercase; color: #036796; }
+.adb-h { margin: .8rem 0 0; max-width: 16ch; font: 760 clamp(2.2rem, 5vw, 4.2rem)/1 var(--disp); font-variation-settings: 'wdth' 80, 'opsz' 96; letter-spacing: -.03em; text-wrap: balance; }
+.adb-copy > p:not(.adb-kicker) { max-width: 36rem; margin-top: 1.3rem; font-size: 1.12rem; }
+.adb-points { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: .55rem; font: 600 1.02rem var(--disp); }
+.adb-points li { position: relative; padding-left: 1.7rem; }
+.adb-points li::before { content: ''; position: absolute; left: .2rem; top: .45em; width: .7rem; height: .4rem; border-left: 2.5px solid var(--moss); border-bottom: 2.5px solid var(--moss); transform: rotate(-45deg); }
+.adb-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; margin-top: 2rem; }
+.adb-btn { display: inline-flex; align-items: center; min-height: 3.2rem; padding: 0 1.5rem; border-radius: var(--cs-pill); background: var(--ink); color: #fff; font: 680 1.02rem var(--disp); text-decoration: none; transition: background-color var(--cs-fast), transform 300ms var(--cs-out); }
+.adb-btn:hover, .adb-btn:focus-visible { background: var(--deep); transform: translateY(-2px); }
+.adb-link { font: 650 1.02rem var(--disp); color: var(--ink); text-decoration-color: var(--moss); text-decoration-thickness: 2px; text-underline-offset: .3em; }
+.adb-img { width: 100%; max-width: 26rem; justify-self: center; }
+@media (prefers-reduced-motion: reduce) { .adb-copy > * { transform: none; transition: opacity 300ms; } }
