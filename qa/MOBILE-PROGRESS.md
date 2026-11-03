@@ -9,7 +9,7 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | 2: Shared layer | Done, approved | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
 | 3: Homepage and signature interactions | Done, approved | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
 | 4: Pilot internal page | Done (Plan your visit), awaiting feedback | Kit lists as tap-to-open sections on phones; "On this page" label on phones; footer and CTA links 44px at all touch sizes. |
-| 5: Remaining pages | Batch 1 (Activities) done, awaiting go-ahead | |
+| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 done, awaiting go-ahead | |
 | 6: Site-wide QA | Not started | |
 
 ## Phase 2 results (inner pages, 390 unless stated)
@@ -38,9 +38,17 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | Adventure on water (batch 1) | Done, no page change | — | Shared fix it found: "To confirm" boxes stack their label above the text under 900px (390: 6,852 → 6,585px). |
 | Bushcraft (batch 1) | Done, no page change | — | Two activity images (Campcraft, Woodland skills) have empty alt text (valid, treated as decorative); adding alt text would be new copy: for the client. |
 | Environmental education (batch 1) | Done | `mobile: environmental-education` | User approved tap-to-open topic cards and swipeable galleries on phones. The 10 topic cards are now `TopicCard`s ("Countryside adventures" stays open); 390: 10,772 → 7,850px. Desktop unchanged (7,103px). |
+| Roman and local history (batch 2) | Done | db15537 | The four Local history cards are `TopicCard`s ("The Industrial Revolution" stays open). Desktop unchanged. |
+| Team building (batch 2) | Done, no page change | — | Its only card group has three cards (below the four-card threshold); all checks clean; desktop 5,243px. |
+| How it works (batch 2) | Done | 0295052 | The four "What we look at" cards are `TopicCard`s ("Planning" stays open; Risk management is the alternative). Steps and the two Evolve cards unchanged. 390: 7,566 → 7,178px; desktop unchanged (5,752px). |
+| Service agreement (batch 2) | Done | ddaff60 | Of the six "What's included" cards, four are `TopicCard`s ("Advice and approval" stays open); Training and Emergency support hold links, so they stay plain (mixed rhythm on phones: decision for the user). Phone numbers no longer split at 320 (non-breaking spaces). 390: 7,286 → 6,559px; desktop unchanged (4,794px). |
+| Who it's for (batch 2) | Done | 815da7d, 3271751 | The four "Who can join" cards are `TopicCard`s ("Oldham maintained schools" stays open). They are link targets from the advice landing page's audience tabs, so `TopicCard` now takes an `id` and a link to the card opens it (shared change, 815da7d). 390: 5,895 → 5,076px; desktop unchanged (4,251px). |
+| Shared: three-photo galleries (batch 2) | Done | 214d18a | At 600–899px a gallery of exactly three photos sits three across, not two and one. |
 | Plan your visit (pilot) | Done | see git log (`mobile: plan-your-visit`) | 390: 11,525px → 9,775px. No overflow, no targets under 44px, headings in order, no console errors at 320/360/390/430/768/844×390; works at 200% text zoom; keyboard opens the kit lists; desktop unchanged (7,551px, lists open). No hero CTA added (content rule): the page's booking CTA stays at the end. |
 
 ## Decisions and notes
+
+- **Open (batch 2):** on Service agreement, Training and Emergency support stay as open cards among the collapsed rows because they hold links. They could become `TopicCard`s if the rule allows a trailing "more" link. How it works keeps Planning open (Risk management is the alternative).
 
 - **Optional desktop fix (not made):** at 1440 the three "At a glance" values on Land, Water and Bushcraft don't sit level (one is 51px higher). `align-content: start` on `.glance > div` fixes it; it is applied below 900px only, to leave desktop unchanged.
 
