@@ -5,3 +5,7 @@ dist/
 v2/video-src/drafts/
 v2/video-src/masters/
 v2/video-src/h.txt
+
+# QA screenshots (large, regenerable)
+qa/before/**/*.jpg
+qa/after/**/*.jpg
