@@ -354,7 +354,6 @@ dl.meta dd { margin: 0; }
 /* Swapping between pages in a section: the header and link bar hold still while the page crossfades. */
 .hd { view-transition-name: header; }
 .subnav { view-transition-name: subnav; }
-.versions { view-transition-name: versions; }
 ::view-transition-old(root) { animation: vt-out .22s ease both; }
 ::view-transition-new(root) { animation: vt-in .5s var(--out) both; }
 @keyframes vt-out { to { opacity: 0; } }

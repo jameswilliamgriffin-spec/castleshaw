@@ -45,7 +45,6 @@ export default function App() {
         <Journey picks={picks} toggle={toggle} onEnquire={(t) => { setMsg(t); goTo('contact') }} msg={msg} setMsg={setMsg} />
       </main>
       <Footer />
-      <a className="versions" href="../">All versions<span className="sr-only"> (you are viewing Version 2)</span></a>
     </>
   )
 }

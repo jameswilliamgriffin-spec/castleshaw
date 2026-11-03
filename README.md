@@ -1,13 +1,14 @@
-# Castleshaw Centre: homepage concepts
+# Castleshaw Centre website
 
 One project that builds into one static folder:
 
 | URL | What it is |
 |---|---|
-| `/` | Version chooser: logo, one-line intro, and two choices with preview thumbnails |
-| `/v1/` | Version 1: the illustrated homepage, unchanged apart from asset paths and an "All versions" link |
-| `/v2/` | Version 2: the same illustrated top half, then the hills come alive as a scroll-scrubbed film |
-| `/v2/<section>/…` | Version 2 inner pages: 33 pages in six sections (see below) |
+| `/` | Redirects to `/v2/` (Vercel redirect in `vercel.json`, with a fallback page for other hosts) |
+| `/v2/` | The homepage: the illustrated top half, then the hills come alive as a scroll-scrubbed film |
+| `/v2/<section>/…` | The inner pages: 33 pages in six sections (see below) |
+
+Version 1 and the version chooser are retired: they are no longer built or deployed, and `/v1/` redirects to `/v2/`. The Version 1 source stays in `v1/` for reference.
 
 ## Run it locally
 
@@ -16,7 +17,7 @@ npm install
 npm run dev
 ```
 
-The dev server runs at http://localhost:5175. Open `/`, `/v1/` or `/v2/` from there.
+The dev server runs at http://localhost:5175. Open `/` or `/v2/` from there.
 
 ## Build and check the upload
 
@@ -25,29 +26,28 @@ npm run build
 npm run preview
 ```
 
-`npm run build` writes everything to `dist/`. `npm run preview` serves that build at http://localhost:4175, so you can check `/`, `/v1/` and `/v2/` exactly as they will be uploaded.
+`npm run build` writes everything to `dist/`. `npm run preview` serves that build at http://localhost:4175, so you can check the site exactly as it will be uploaded.
 
 ## Deploy on Vercel
 
 1. In Vercel, choose **Add New → Project** and import `jameswilliamgriffin-spec/castleshaw`.
 2. Leave the settings as detected. `vercel.json` already sets the Vite framework, `npm run build` and the `dist` output.
-3. Deploy. `/`, `/v1/` and `/v2/` all work, and `/v1` and `/v2` redirect to the slashed URLs.
+3. Deploy. `/` and `/v1/` redirect to `/v2/`, and `/v2` redirects to the slashed URL.
 
 ## Upload
 
 Upload the **contents of `dist/`** to any static host (Netlify, Vercel, GitHub Pages, S3, or plain FTP to a web server). There is no server code.
 
-Every URL is relative (Vite `base: './'`), so it works at a domain root or in a subfolder such as `example.com/castleshaw/`. If you link to a version, use the trailing slash: `/v2/` rather than `/v2`. Each version page also redirects to the slashed URL itself.
+Every URL is relative (Vite `base: './'`), so it works at a domain root or in a subfolder such as `example.com/castleshaw/`. Link with the trailing slash: `/v2/` rather than `/v2`. Each page also redirects to the slashed URL itself.
 
 ## Folder layout
 
 ```
-index.html, chooser/        the version chooser (plain HTML and CSS, no framework)
-v1/                         Version 1 (React): index.html and src/
+index.html                  redirect from / to /v2/
+v1/                         Version 1 (React), retired: kept for reference, not built
 v2/                         Version 2 (React): index.html and src/
 v2/video-src/               film source material, drafts, masters and scripts (not uploaded)
 public/shared/images/       photos and logo, used by both versions
-public/shared/thumbs/       chooser thumbnails
 public/v2/video/            v2 only: frame sequences, posters, ambience, PROMPTS.md
 public/shared/images/site/  photos from the current castleshawcentre.com, renamed by subject
 public/shared/images/illustrations/  AI illustrations in the logo's flat style (inner pages)
@@ -71,7 +71,7 @@ The site map lives in one file, `v2/src/site.mjs`: sections, pages, titles and m
 - **Scrubbing technique:** a WebP frame sequence painted to a `<canvas>`, rather than seeking a `<video>` element. Setting `video.currentTime` from scroll is unreliable in Safari and Firefox even with all-keyframe encodes, and it can only seek as fast as the decoder allows. Frames give exact, instant, reversible scrubbing in every browser.
 - **Film source:** six 5-second Seedance 2.5 clips (via Runway), each starting on the previous clip's last frame. The first frame is the page's own drawing, and chapter 5 lands on the centre's own marshmallow photo. Stitched and graded by `v2/video-src/stitch.sh`.
 - **Frame sizes:** 1600px wide on desktop and 800px on mobile, at 12 frames per second, which is plenty when the scroll is the clock.
-- **Loading:** frames load progressively (every 16th, then every 8th, 4th, 2nd, then all), starting only when the reader gets within about one and a half screens of the film. The top of the page and the chooser stay light.
+- **Loading:** frames load progressively (every 16th, then every 8th, 4th, 2nd, then all), starting only when the reader gets within about one and a half screens of the film. The top of the page stays light.
 - **Smoothing:** GSAP's ticker eases toward the target frame, and Lenis smooths the scroll itself.
 - **Fallbacks:**
   - With reduced motion, Save-Data or a 2G connection, the film becomes six still posters that cross-fade by chapter, with no scrubbing.

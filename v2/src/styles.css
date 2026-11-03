@@ -277,9 +277,6 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; transition-delay: 0s !important; }
 }
 
-/* link back to the version chooser */
-.versions { position: fixed; z-index: 850; left: 1rem; bottom: 1rem; padding: .45rem .9rem; border-radius: 99px; background: var(--chalk); color: var(--ink); box-shadow: 0 0 0 1.5px var(--ink); font: 650 .85rem var(--disp); text-decoration: none; transition: transform .4s var(--out), background-color .25s; }
-.versions:hover { background: var(--moss); transform: translateY(-2px); }
 
 /* ======================= v2: the film ======================= */
 .journey { position: relative; background: var(--ink); color: #fff; --focus: var(--sky); }
@@ -364,7 +361,6 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 @media (max-width: 600px) {
   .j-controls { justify-content: stretch; }
   .j-call { flex: 1; justify-content: center; margin-left: 6.4rem; }
-  .versions { font-size: .78rem; padding: .4rem .7rem; bottom: 1.15rem; }
   .trail svg { width: 6.5rem; }
   .trail { top: 4.9rem; }
 }

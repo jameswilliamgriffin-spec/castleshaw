@@ -123,7 +123,6 @@ export function Footer() {
             <li><a href={CONTACT}>Contact</a></li>
             <li><a href={PRIVACY}>Privacy notice</a></li>
             <li><a href={FACEBOOK} rel="noopener">Facebook</a></li>
-            <li><a href={ROOT}>All versions</a></li>
           </ul>
           <button type="button" className="ft-top" onClick={toTop}>Back to top <svg viewBox="0 0 12 16" aria-hidden="true"><path d="M6 15V2M1.5 6.5 6 2l4.5 4.5" /></svg></button>
         </div>

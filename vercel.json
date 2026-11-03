@@ -27,6 +27,21 @@
   ],
   "redirects": [
     {
+      "source": "/",
+      "destination": "/v2/",
+      "permanent": false
+    },
+    {
+      "source": "/v1",
+      "destination": "/v2/",
+      "permanent": true
+    },
+    {
+      "source": "/v1/:path*",
+      "destination": "/v2/",
+      "permanent": true
+    },
+    {
       "source": "/advice-and-guidance.html",
       "destination": "/v2/advice-and-guidance/",
       "permanent": true
