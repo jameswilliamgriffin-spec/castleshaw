@@ -382,6 +382,7 @@ export function Team({ path }) {
         image={{ src: img('team-rope'), alt: 'A group pulling together on a rope among the trees' }}
       />
       <Band>
+        <SectionHead eyebrow="Team building" title="Who it’s for" />
         <div className="cols cols-3">
           <div className="icard"><h3>Primary classes</h3><p>The emphasis is on activity and fun. Usually a half day of team games that encourage co-operation and mixing, then a half day of focused work in small groups, linked to curriculum targets such as mapwork or habitats.</p></div>
           <div className="icard"><h3>Secondary groups</h3><p>Smaller groups and the plan, do and review model. Initiative tests, high ropes, orienteering or raft building, with a review and ideas for improvement between each task. It suits the PSHE curriculum well:</p><Ticks items={['Personal action planning', 'Emotional wellbeing and healthy lifestyles', 'Relationships and behaviour in the workplace', 'Personal safety']} /></div>
@@ -399,6 +400,7 @@ export function Team({ path }) {
         ]} />
       </Band>
       <Band>
+        <SectionHead title="Gallery" />
         <Gallery images={[
           { src: img('team-high-ropes'), alt: 'Two people on a high ropes course in the trees' },
           { src: img('team-blocks'), alt: 'Pupils stacking large foam blocks on the field' },
@@ -409,6 +411,7 @@ export function Team({ path }) {
         ]} />
       </Band>
       <Band tone="ink">
+        <SectionHead title="What schools say" />
         <Quote big text="Our aims were to build relationships and get to know each other. The course was really effective. It was nice to see students laughing together all day." by="Royton and Crompton, Year 7 team building" />
       </Band>
       <AdviceNote />
