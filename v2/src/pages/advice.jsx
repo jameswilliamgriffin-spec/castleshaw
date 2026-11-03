@@ -413,6 +413,10 @@ function Placeholder({ children }) {
   return <span className="tbc-tag al-ph">{children}</span>
 }
 
+// 44px touch targets for the phone links and email in the incident band and final panel.
+const LAND_TAP = { display: 'inline-flex', alignItems: 'center', minHeight: '44px' }
+const LAND_SQ = { position: 'relative' }
+
 export function Landing({ path }) {
   const edge = useMemo(() => ridge(3.3, { h: 140, base: 0.55, amp: 0.2 }), [])
   return (
@@ -517,7 +521,7 @@ export function Landing({ path }) {
         <Reveal className="al-sos-in">
           <p className="al-kicker al-kicker-light">Emergency support</p>
           <h2 id="sos-h">If something goes wrong on a visit, call us. Day or night.</h2>
-          <a className="al-sos-num" href={INCIDENT_HREF} onClick={() => track('Phone tapped', { place: 'incident-band' })}>{INCIDENT}</a>
+          <a className="al-sos-num" style={LAND_TAP} href={INCIDENT_HREF} onClick={() => track('Phone tapped', { place: 'incident-band' })}>{INCIDENT}</a>
           <p>An experienced adviser helps you manage the incident, contact families and deal with the media. For everyday advice in school hours, call <a href={PHONE_HREF}>{PHONE}</a>.</p>
           <p><TBC>Whether the line is staffed all year, or in term time only</TBC></p>
         </Reveal>
@@ -590,8 +594,8 @@ export function Landing({ path }) {
             </a>
             <div className="al-talk">
               <p>Rather talk it through?</p>
-              <a className="al-talk-tel" href={PHONE_HREF} onClick={() => track('Phone tapped', { place: 'final' })}>{PHONE}</a>
-              <a className="sq-host al-talk-mail" href={`mailto:${EMAIL}`} onClick={() => track('Email tapped', { place: 'final' })}>{EMAIL}<Squiggle i={2} /></a>
+              <a className="al-talk-tel" style={LAND_TAP} href={PHONE_HREF} onClick={() => track('Phone tapped', { place: 'final' })}>{PHONE}</a>
+              <a className="sq-host al-talk-mail" style={LAND_TAP} href={`mailto:${EMAIL}`} onClick={() => track('Email tapped', { place: 'final' })}><span style={LAND_SQ}>{EMAIL}<Squiggle i={2} /></span></a>
             </div>
           </div>
           <LeadForm source="advice-landing" />
