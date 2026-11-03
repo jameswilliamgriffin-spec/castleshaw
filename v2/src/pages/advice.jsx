@@ -346,7 +346,7 @@ export function Questions({ path }) {
           { q: 'Can a trust buy for all its schools?', a: <p><TBC>Whether whole-trust agreements are offered</TBC></p> },
           { q: 'How long does approval take?', a: 'We review visit forms within 10 working days, and usually sooner. Submit visits in good time, especially residentials and overseas visits.' },
           { q: 'What happens if a visit isn’t approved?', a: 'We send it back with clear advice on what to change and why, and we’re happy to talk it through. Most visits are approved once the changes are made.' },
-          { q: 'What happens out of hours?', a: <p>Our critical incident line is for emergencies on a visit: <a href={INCIDENT_HREF}>{INCIDENT}</a>. For everyday advice, call {PHONE} in school hours. <TBC>Cover outside term time</TBC></p> },
+          { q: 'What happens out of hours?', a: <p>Our critical incident line is for emergencies on a visit: <a href={INCIDENT_HREF}>{INCIDENT.replace(/ /g, ' ')}</a>. For everyday advice, call {PHONE.replace(/ /g, ' ')} in school hours. <TBC>Cover outside term time</TBC></p> },
           { q: 'Can you train our staff at our school?', a: 'Yes. Visit Leader training and MiDAS theory can run at your school, and other courses can be arranged for groups.' },
           { q: 'Do you only approve visits to Castleshaw?', a: 'No. We advise on and approve visits anywhere, from a local museum to an overseas expedition.' },
         ]} />
