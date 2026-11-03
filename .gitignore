@@ -15,3 +15,5 @@ qa/lighthouse/
 assets/generated/**/_sheet.jpg
 assets/generated/_*.jpg
 dist-before/
+qa/mobile-before/**/*.jpg
+qa/mobile-after/**/*.jpg
