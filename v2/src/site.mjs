@@ -85,7 +85,7 @@ export const TITLES = {
 
 // The hero image each page should preload.
 export const PRELOAD = {
-  'advice-and-guidance/': 'shared/images/generated/boots-gritstone.webp',
+  'advice-and-guidance/': { slot: 'advice-landing-hero' },
 }
 
 export const DESCRIPTIONS = {

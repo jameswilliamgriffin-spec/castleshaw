@@ -1,0 +1,324 @@
+{
+  "_about": "Imagery manifest. 'images' lists each source picture (source: generated or real); scripts/imagery.py builds its responsive files and fills in w, h and widths. 'slots' maps each place on the site to an image, its alt text and its crop. To swap an image, change the slot's 'image' (or point an image's 'from' at a real photograph) and rerun the script. Generated images are listed in assets/generated/REGISTER.md.",
+  "images": {
+    "g01-moor-stream": {
+      "source": "generated",
+      "from": "assets/generated/raw/g01-moor-stream.png",
+      "w": 1536,
+      "h": 1024,
+      "widths": [
+        480,
+        768,
+        1200,
+        1536
+      ]
+    },
+    "g02-peat-puddle": {
+      "source": "generated",
+      "from": "assets/generated/raw/g02-peat-puddle.png",
+      "w": 1024,
+      "h": 1536,
+      "widths": [
+        480,
+        768,
+        1024
+      ]
+    },
+    "g03-lichen-gritstone": {
+      "source": "generated",
+      "from": "assets/generated/raw/g03-lichen-gritstone.png",
+      "w": 1024,
+      "h": 1536,
+      "widths": [
+        480,
+        768,
+        1024
+      ]
+    },
+    "g04-moor-mist": {
+      "source": "generated",
+      "from": "assets/generated/raw/g04-moor-mist.png",
+      "w": 1536,
+      "h": 1024,
+      "widths": [
+        480,
+        768,
+        1200,
+        1536
+      ]
+    },
+    "g05-bilberry-heather": {
+      "source": "generated",
+      "from": "assets/generated/raw/g05-bilberry-heather.png",
+      "w": 1254,
+      "h": 1254,
+      "widths": [
+        480,
+        768,
+        1200,
+        1254
+      ]
+    },
+    "g06-wall-wool": {
+      "source": "generated",
+      "from": "assets/generated/raw/g06-wall-wool.png",
+      "w": 1024,
+      "h": 1536,
+      "widths": [
+        480,
+        768,
+        1024
+      ]
+    },
+    "g07-reservoir-ripples": {
+      "source": "generated",
+      "from": "assets/generated/raw/g07-reservoir-ripples.png",
+      "w": 1536,
+      "h": 1024,
+      "widths": [
+        480,
+        768,
+        1200,
+        1536
+      ]
+    },
+    "g08-cotton-grass": {
+      "source": "generated",
+      "from": "assets/generated/raw/g08-cotton-grass.png",
+      "w": 1024,
+      "h": 1536,
+      "widths": [
+        480,
+        768,
+        1024
+      ]
+    },
+    "g09-heather-rain": {
+      "source": "generated",
+      "from": "assets/generated/raw/g09-heather-rain.png",
+      "w": 1536,
+      "h": 1024,
+      "widths": [
+        480,
+        768,
+        1200,
+        1536
+      ]
+    },
+    "g10-embers": {
+      "source": "generated",
+      "from": "assets/generated/raw/g10-embers.png",
+      "w": 1536,
+      "h": 1024,
+      "widths": [
+        480,
+        768,
+        1200,
+        1536
+      ]
+    },
+    "g11-mud-track": {
+      "source": "generated",
+      "from": "assets/generated/raw/g11-mud-track.png",
+      "w": 1536,
+      "h": 1024,
+      "widths": [
+        480,
+        768,
+        1200,
+        1536
+      ]
+    },
+    "g12-lamplight-stone": {
+      "source": "generated",
+      "from": "assets/generated/raw/g12-lamplight-stone.png",
+      "w": 1536,
+      "h": 1024,
+      "widths": [
+        480,
+        768,
+        1200,
+        1536
+      ]
+    },
+    "g13-grass-backlit": {
+      "source": "generated",
+      "from": "assets/generated/raw/g13-grass-backlit.png",
+      "w": 1536,
+      "h": 1024,
+      "widths": [
+        480,
+        768,
+        1200,
+        1536
+      ]
+    },
+    "r-sec-pond": {
+      "source": "real",
+      "from": "public/shared/images/site/sec-pond.jpg",
+      "w": 1066,
+      "h": 800,
+      "widths": [
+        480,
+        768,
+        1066
+      ]
+    },
+    "r-roman-stone-1": {
+      "source": "real",
+      "from": "public/shared/images/site/roman-stone-1.jpg",
+      "w": 855,
+      "h": 800,
+      "widths": [
+        480,
+        768,
+        855
+      ]
+    },
+    "r-roman-stone-2": {
+      "source": "real",
+      "from": "public/shared/images/site/roman-stone-2.jpg",
+      "w": 814,
+      "h": 800,
+      "widths": [
+        480,
+        768,
+        814
+      ]
+    },
+    "r-roman-stone-3": {
+      "source": "real",
+      "from": "public/shared/images/site/roman-stone-3.jpg",
+      "w": 791,
+      "h": 800,
+      "widths": [
+        480,
+        768,
+        791
+      ]
+    },
+    "r-water-kayaks": {
+      "source": "real",
+      "from": "public/shared/images/site/water-kayaks.jpg",
+      "w": 1066,
+      "h": 800,
+      "widths": [
+        480,
+        768,
+        1066
+      ]
+    }
+  },
+  "slots": {
+    "advice-landing-hero": {
+      "image": "g01-moor-stream",
+      "alt": "",
+      "pos": "38% 62%",
+      "posMobile": "34% 62%",
+      "sizes": "(min-width: 900px) 32rem, 88vw"
+    },
+    "advice-landing-who": {
+      "image": "g02-peat-puddle",
+      "alt": "",
+      "pos": "50% 50%",
+      "sizes": "(min-width: 900px) 34vw, 100vw"
+    },
+    "advice-landing-whole-visit": {
+      "image": "g03-lichen-gritstone",
+      "alt": "",
+      "pos": "50% 50%",
+      "sizes": "(min-width: 900px) 34vw, 100vw"
+    },
+    "advice-how-hero": {
+      "image": "g05-bilberry-heather",
+      "alt": "",
+      "pos": "45% 50%"
+    },
+    "advice-how-break": {
+      "image": "g04-moor-mist",
+      "alt": "",
+      "pos": "60% 45%",
+      "posMobile": "70% 50%"
+    },
+    "advice-agreement-hero": {
+      "image": "g06-wall-wool",
+      "alt": "",
+      "pos": "55% 40%"
+    },
+    "advice-agreement-break": {
+      "image": "g07-reservoir-ripples",
+      "alt": "",
+      "pos": "50% 50%"
+    },
+    "advice-who-hero": {
+      "image": "g08-cotton-grass",
+      "alt": "",
+      "pos": "45% 35%"
+    },
+    "advice-advisers-quote": {
+      "image": "g04-moor-mist",
+      "alt": "",
+      "pos": "80% 40%",
+      "posMobile": "75% 40%"
+    },
+    "activities-hub-quote": {
+      "image": "g13-grass-backlit",
+      "alt": "",
+      "pos": "75% 50%",
+      "posMobile": "80% 50%"
+    },
+    "activities-team-quote": {
+      "image": "g09-heather-rain",
+      "alt": "",
+      "pos": "80% 50%",
+      "posMobile": "85% 50%"
+    },
+    "activities-bushcraft-break": {
+      "image": "g10-embers",
+      "alt": "",
+      "pos": "55% 62%",
+      "posMobile": "60% 65%"
+    },
+    "activities-env-break": {
+      "image": "r-sec-pond",
+      "alt": "A moorland pond reflecting the sky and the hills around it",
+      "pos": "50% 55%"
+    },
+    "activities-roman-break": {
+      "images": [
+        "r-roman-stone-1",
+        "r-roman-stone-2",
+        "r-roman-stone-3"
+      ],
+      "alt": [
+        "A carved stone with a circular pattern",
+        "A carved stone with a leaf-like pattern",
+        "A carved stone with a triple spiral pattern"
+      ],
+      "pos": "50% 50%"
+    },
+    "activities-plan-break": {
+      "image": "g11-mud-track",
+      "alt": "",
+      "pos": "60% 70%",
+      "posMobile": "62% 72%"
+    },
+    "stay-evening-break": {
+      "image": "g12-lamplight-stone",
+      "alt": "",
+      "pos": "40% 40%",
+      "posMobile": "30% 45%"
+    },
+    "courses-hub-hero": {
+      "image": "r-water-kayaks",
+      "alt": "Young people paddling kayaks on a reservoir among the hills",
+      "pos": "50% 55%"
+    },
+    "courses-clubs-quote": {
+      "image": "g13-grass-backlit",
+      "alt": "",
+      "pos": "70% 50%",
+      "posMobile": "78% 50%"
+    }
+  }
+}

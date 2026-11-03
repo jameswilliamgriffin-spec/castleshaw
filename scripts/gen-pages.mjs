@@ -2,7 +2,7 @@
 // Each entry sets its depth (so every URL stays relative) and names its page;
 // one shared script (v2/src/inner.jsx) renders whichever page it is.
 // Runs automatically before `npm run dev` and `npm run build`.
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { PAGES, CUSTOM_ENTRY, DESCRIPTIONS, TITLES, PRELOAD } from '../v2/src/site.mjs'
@@ -10,6 +10,16 @@ import { FAQ } from '../v2/src/content/advice.mjs'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const v2 = resolve(here, '../v2')
+const IMAGERY = JSON.parse(readFileSync(resolve(v2, 'src/content/imagery.json'), 'utf8'))
+// A page's LCP image, preloaded: a plain path, or { slot } naming an imagery slot (preloads its AVIF srcset).
+function preload(path, root) {
+  const v = PRELOAD[path]
+  if (!v) return ''
+  if (typeof v === 'string') return `\n  <link rel="preload" as="image" href="${root}${v}" fetchpriority="high" />`
+  const s = IMAGERY.slots[v.slot], im = IMAGERY.images[s.image]
+  const set = im.widths.map((w) => `${root}shared/images/gen/${s.image}-${w}.avif ${w}w`).join(', ')
+  return `\n  <link rel="preload" as="image" type="image/avif" imagesrcset="${set}" imagesizes="${s.sizes || '100vw'}" fetchpriority="high" />`
+}
 // Structured data for search engines, where a page has something worth describing.
 function structured(path) {
   if (path !== 'advice-and-guidance/') return ''
@@ -46,7 +56,7 @@ for (const p of PAGES) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}" />
-  <link rel="icon" href="${root}shared/images/logo.jpg" />${PRELOAD[p.path] ? `\n  <link rel="preload" as="image" href="${root}${PRELOAD[p.path]}" fetchpriority="high" />` : ''}${structured(p.path)}
+  <link rel="icon" href="${root}shared/images/logo.jpg" />${preload(p.path, root)}${structured(p.path)}
   <script>
     if (!/\\/$|\\.html$/.test(location.pathname)) location.replace(location.pathname + '/' + location.search + location.hash)
     window.__ROOT = '${root}'; window.__HOME = '${home}'; window.__PAGE = '${p.path}'

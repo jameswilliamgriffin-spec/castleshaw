@@ -47,3 +47,8 @@
   .sq path, .sq-host:hover .sq path, .sq-host:focus-visible .sq path { transition: none; }
   .rv { transform: none; transition: opacity 300ms ease; transition-delay: 0s; }
 }
+
+/* imagery slots (ui/inner/Slot.jsx): crop set per image, with its own crop on phones */
+.slot-img { object-position: var(--pos, 50% 50%); }
+@media (max-width: 599px) { .slot-img { object-position: var(--pos-m, var(--pos, 50% 50%)); } }
+picture.slot, picture:has(> .shp-img) { display: contents; }

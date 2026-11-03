@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import { SHAPES } from './shapes'
 import { Squiggle, useReveal } from '../Squiggle'
 import { reduced } from '../../lib'
+import { SlotImg } from '../inner/Slot'
 import './shapes.css'
 
 const FLOATS = ['circle', 'blob', 'squiggle']
@@ -13,11 +14,13 @@ const FLOATS = ['circle', 'blob', 'squiggle']
 //   offset    'br' | 'bl' | 'tr' | 'tl', where the backdrop peeks out
 //   float     true, or 'circle' | 'blob' | 'squiggle', for a floating accent
 //   aspect    '4/5', '1/1', '16/10' …
+// picture: a manifest slot (slot() in ui/inner/Slot.jsx), drawn as a responsive <picture>.
 export default function ShapedImage({
   src, alt = '', shape = 'blob-1', backdrop = 'none', accent = 'lime', offset = 'br',
   float = false, floatAt, aspect = '4/5', pos, shadow = false, depth = false,
-  priority = false, width = 1200, height = 1500, className = '', style, caption,
+  priority = false, width = 1200, height = 1500, className = '', style, caption, picture,
 }) {
+  if (picture) src = picture.src
   const ref = useReveal()
   const floatRef = useRef(null)
   const name = SHAPES[shape] ? shape : 'blob-1'
@@ -74,7 +77,9 @@ export default function ShapedImage({
         )}
         <span className="shp-lift">
           <span className="shp-mask" style={{ '--clip': clip }}>
-            <img className="shp-img" src={src} alt={alt} width={width} height={height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : undefined} decoding="async" style={pos ? { objectPosition: pos } : undefined} />
+            {picture
+              ? <picture><SlotImg s={picture} priority={priority} className="shp-img" /></picture>
+              : <img className="shp-img" src={src} alt={alt} width={width} height={height} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : undefined} decoding="async" style={pos ? { objectPosition: pos } : undefined} />}
           </span>
         </span>
         {floatKind && (

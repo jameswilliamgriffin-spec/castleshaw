@@ -5,6 +5,7 @@ import { PageTop, Band, SectionHead, SqLink, Intro, Split, Ticks, Ledger, Steps,
 import ShapedImage from '../ui/shape/ShapedImage'
 import { Squiggle, useReveal } from '../ui/Squiggle'
 import LeadForm from '../ui/advice/LeadForm'
+import { Picture, slot } from '../ui/inner/Slot'
 import { AudienceTabs, Stepper, StickyQuote } from '../ui/advice/parts'
 import { PROOF, STEPS, CHECKS, INCLUDED, AUDIENCES, FAQ, GUIDE } from '../content/advice.mjs'
 import { ROOT, ridge } from '../lib'
@@ -437,8 +438,8 @@ export function Landing({ path }) {
             <p className="al-sos"><span className="al-dot" aria-hidden="true" />Members&rsquo; 24/7 critical incident line <a href={INCIDENT_HREF} onClick={() => track('Phone tapped', { place: 'hero-incident' })}>{INCIDENT}</a></p>
           </div>
           <ShapedImage
-            className="al-hero-img" src={gen('boots-gritstone')} alt="Walking boots on wet gritstone beside a moorland stream"
-            shape="blob-9" backdrop="offset" accent="lime" offset="bl" aspect="4/4.5" pos="28% 60%" width={1586} height={992} priority shadow
+            className="al-hero-img" picture={slot('advice-landing-hero')}
+            shape="blob-9" backdrop="offset" accent="lime" offset="bl" aspect="4/4.5" priority shadow
           />
         </div>
         <svg className="ph-ridge" viewBox="0 0 1600 140" preserveAspectRatio="none" aria-hidden="true"><path d={edge} /></svg>
@@ -459,7 +460,7 @@ export function Landing({ path }) {
             <p className="al-sub">Employers are responsible for the safety of staff and young people on visits, and national guidance recommends access to competent advice. That&rsquo;s us.</p>
             <AudienceTabs items={AUDIENCES} renderPanel={(t) => (<><p>{t.body}</p>{t.tbc && <p><TBC>{t.tbc}</TBC></p>}<p><a href={av('who-its-for/') + '#' + ({ maintained: 'oldham-schools', trusts: 'academies', youth: 'colleges-youth', beyond: 'beyond-oldham' })[t.key]}>More about {t.title.toLowerCase()}</a></p></>)} />
           </div>
-          <figure className="al-photo al-photo-tall"><img src={gen('wellies-puddle')} alt="Wellington boots stepping into a muddy puddle on a farm track" width="1122" height="1402" loading="lazy" style={{ objectPosition: '50% 70%' }} /></figure>
+          <figure className="al-photo al-photo-tall"><Picture slot="advice-landing-who" /></figure>
         </Reveal>
       </Band>
 
@@ -476,7 +477,7 @@ export function Landing({ path }) {
       {/* what we look at */}
       <Band id="what-we-check">
         <Reveal className="al-checks">
-          <figure className="al-photo al-photo-tall"><img src={gen('hands-carabiner')} alt="Hands checking a locked carabiner on a climbing rope" width="1122" height="1402" loading="lazy" /></figure>
+          <figure className="al-photo al-photo-tall"><Picture slot="advice-landing-whole-visit" /></figure>
           <div>
             <p className="al-kicker">What we look at</p>
             <h2 className="h2i">The whole visit, not just the risk assessment</h2>
