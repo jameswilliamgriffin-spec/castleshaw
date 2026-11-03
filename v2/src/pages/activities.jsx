@@ -345,10 +345,10 @@ export function History({ path }) {
       <Band tone="sky" id="local-history">
         <SectionHead title="Local history" />
         <div className="cols cols-2">
-          <div className="icard"><h3>The Industrial Revolution</h3><p><strong>Weavers&rsquo; cottages to steam mills.</strong> Follow a route from a hamlet of weavers&rsquo; cottages, past the remains of water-powered mills, to the large steam mills in Diggle. Handle a spinning wheel and carding brushes, watch mills at work on video and try some weaving.</p></div>
-          <div className="icard"><h3>Local history trails</h3><p><strong>The John Buckley Trail</strong> follows the births, schooling, marriages, working lives and deaths of a Castleshaw Valley family, using period maps, old photographs, census information and grave rubbings.</p><p><strong>Travel the ancient highways</strong> along the pack horse trail, the Roman road and the turnpike, with the canals and railways if you want them.</p></div>
-          <div className="icard"><h3>Victorian Delph</h3><p>An exploration of Delph, searching for clues of how it grew in the Victorian era.</p></div>
-          <div className="icard"><h3>The Victorian Experience</h3><p>A winter course, mostly indoors. Come in mock Victorian dress for bread baking and butter making, a lesson in a Victorian classroom, a public meeting on the 1880s plans for the Castleshaw reservoirs, traditional games, and wash day the hard way with a dolly tub, posser and scrubbing board.</p></div>
+          <TopicCard title="The Industrial Revolution" open><p><strong>Weavers&rsquo; cottages to steam mills.</strong> Follow a route from a hamlet of weavers&rsquo; cottages, past the remains of water-powered mills, to the large steam mills in Diggle. Handle a spinning wheel and carding brushes, watch mills at work on video and try some weaving.</p></TopicCard>
+          <TopicCard title="Local history trails"><p><strong>The John Buckley Trail</strong> follows the births, schooling, marriages, working lives and deaths of a Castleshaw Valley family, using period maps, old photographs, census information and grave rubbings.</p><p><strong>Travel the ancient highways</strong> along the pack horse trail, the Roman road and the turnpike, with the canals and railways if you want them.</p></TopicCard>
+          <TopicCard title="Victorian Delph"><p>An exploration of Delph, searching for clues of how it grew in the Victorian era.</p></TopicCard>
+          <TopicCard title="The Victorian Experience"><p>A winter course, mostly indoors. Come in mock Victorian dress for bread baking and butter making, a lesson in a Victorian classroom, a public meeting on the 1880s plans for the Castleshaw reservoirs, traditional games, and wash day the hard way with a dolly tub, posser and scrubbing board.</p></TopicCard>
         </div>
       </Band>
 
