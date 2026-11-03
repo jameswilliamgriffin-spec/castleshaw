@@ -262,7 +262,7 @@ export function Gallery({ images, id }) {
   return (
     <ul className="gallery" id={id}>
       {images.map((g) => (
-        <li key={g.src}><figure><img src={g.src} alt={g.alt} loading="lazy" />{g.caption && <figcaption>{g.caption}</figcaption>}</figure></li>
+        <li key={g.src}><figure><img src={g.src} alt={g.alt} loading="lazy" className={g.fit === 'contain' ? 'fit-contain' : undefined} style={g.pos ? { objectPosition: g.pos } : undefined} />{g.caption && <figcaption>{g.caption}</figcaption>}</figure></li>
       ))}
     </ul>
   )
@@ -307,7 +307,7 @@ export function Timeline({ items }) {
           <div className="tl-body">
             <h3>{e.title}</h3>
             {e.body}
-            {e.images && <div className="tl-imgs">{e.images.map((g) => <figure key={g.src}><img src={g.src} alt={g.alt} loading="lazy" />{g.caption && <figcaption>{g.caption}</figcaption>}</figure>)}</div>}
+            {e.images && <div className="tl-imgs">{e.images.map((g) => <figure key={g.src}><img src={g.src} alt={g.alt} loading="lazy" className={g.fit === 'contain' ? 'fit-contain' : undefined} style={g.pos ? { objectPosition: g.pos } : undefined} />{g.caption && <figcaption>{g.caption}</figcaption>}</figure>)}</div>}
           </div>
         </li>
       ))}

@@ -332,7 +332,7 @@ export function History({ path }) {
         </Split>
         <Gallery images={[
           { src: img('roman-formation'), alt: 'Pupils marching in a Roman shield formation on the field' },
-          { src: img('roman-auxiliary'), alt: 'An illustration of a Roman auxiliary soldier with a spear and shield' },
+          { src: img('roman-auxiliary'), alt: 'An illustration of a Roman auxiliary soldier with a spear and shield', fit: 'contain' },
           { src: shared('roman-session'), alt: 'Smiling children in plumed Roman helmets holding wooden swords' },
         ]} />
       </Band>
