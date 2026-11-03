@@ -89,7 +89,8 @@ export function Valley({ path }) {
         image={{ src: img('valley-obelisk'), alt: 'A group resting at the foot of the war memorial obelisk on the moor' }}
       />
       <Band>
-        <div className="cols cols-2">
+        <SectionHead eyebrow="Where we are" title="Routes and places to visit" />
+        <div className="cols cols-3">
           <div className="icard"><h3>Castleshaw Roman Fort</h3><p>The remains of the fort are a short walk from the centre. There are information boards at the site, and more from the Friends of Castleshaw Roman Forts.</p><p><a href="http://www.castleshawarchaeology.co.uk/" rel="noopener">Castleshaw archaeology</a></p></div>
           <div className="icard"><h3>The Castleshaw Quest</h3><p>An adventure walk for younger walkers around the lower Castleshaw reservoir.</p></div>
           <div className="icard"><h3>The Saddleworth Walk</h3><p>For the more adventurous, a 10 to 12km walk from Delph, through the centre&rsquo;s grounds, up to the top of the Pennines and down into the Diggle valley. It isn&rsquo;t quite circular: allow 2km back to Delph along the Delph Donkey bridleway or through Dobcross.</p><p><a href="https://www.discoveringbritain.org/content/discoveringbritain/walk%20booklets/Saddleworth%20walk%20-%20written%20guide.pdf" rel="noopener">Route guide (Discovering Britain)</a></p></div>
@@ -99,10 +100,11 @@ export function Valley({ path }) {
         </div>
       </Band>
       <Band tone="sky">
-        <Callout title="Out walking?" tone="sky">
+        <SectionHead title="Out walking?">
           <p>Most routes cross farmland, so please be considerate, keep dogs on leads and take your litter home. Routes shared by the public, such as those on <a href="https://www.outdooractive.com/en/search/?q=castleshaw" rel="noopener">outdooractive</a>, are not checked by us.</p>
-        </Callout>
+        </SectionHead>
       </Band>
+      <CtaBand title="Planning a visit?" />
     </>
   )
 }
