@@ -540,3 +540,5 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 /* portraits in a row render at the same size */
 .people > li { min-width: 0; }
 .people-img { width: 100%; }
+/* kit lists: body-size text and a little more air on wide screens */
+@media (min-width: 1100px) { .kit { padding: 1.8rem 2rem 2rem; } .kit ul { font-size: 1rem; gap: .5rem; } .kits { gap: var(--s-4); } }

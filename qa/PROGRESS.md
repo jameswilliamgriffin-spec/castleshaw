@@ -13,7 +13,8 @@ Screenshots: `qa/before/<page>/`, `qa/after/<page>/` (each has a `_compare.jpg`:
 | 3: Batch 1 (Activities) | Done, approved | see below |
 | 3: Batch 2 (Plan, Activities hub) | Done, approved | see below |
 | 3: Batch 3 (Stay, Courses and clubs, About, Contact, Privacy, two Advice pages) | Done | see below |
-| 3: Batch 4 (deferred: Outdoor awards, eight Advice pages) | Done, awaiting go-ahead for Phase 4 | see below |
+| 3: Batch 4 (deferred: Outdoor awards, eight Advice pages) | Done | see below |
+| 4: Site-wide QA | Done | see "Phase 4 results" |
 
 ## Pages
 
@@ -68,6 +69,14 @@ Outdoor awards (Courses and clubs), plus Advice pages Who it's for, Training, Em
 - **Section headings (pilot feedback):** hidden headings replaced with visible `SectionHead`s throughout (rule in `STANDARDS.md`).
 - **Shared fixes from batch 1:** `.cols-3` is two columns at 900–1099px (`7ae1e91`); `OnThisPage` resets to the first item above the first section (`7ae1e91`); galleries of three show three columns from 900px, and `Gallery` images take optional `fit: 'contain'` and `pos` (`f591667`, used for the Roman auxiliary drawing); big quotes keep their size and galleries of six sit as 3 + 3 (batch 1 close). Batch 2: a callout after a band's link or download list gets group spacing (`11f29ae`); the advice note gets top padding after a tinted or navy band; ledger figures are bigger from 1100px.
 - **Shared fixes made during the pilot** (`inner.css`): 44px tap targets for key links on touch screens; equal-height quote cards; split photos sized for phones.
+
+## Phase 4 results
+
+- **Links:** crawled 34 pages from the homepage; every internal link and in-page anchor resolves and no page logs a console error. All 33 inner routes and the homepage are in the production build. External links: 25 of 29 return 200; Facebook, Field Studies Council and Moors for the Future refuse automated requests (likely fine in a browser); `https://www.lotcqualitybadge.org.uk/` has a certificate that doesn't match the www address (from the original content; check with the client).
+- **Header, menu, footer:** checked on four pages at 1440, 1024, 768 and 390. Menu opens, moves focus in, keeps Tab inside, closes on Escape and returns focus; no sideways scroll; nothing fixed covers content. Fixed: menu and footer links had 18–35px tap targets on phones; they now have 44px tap areas on touch screens (`06f7824`).
+- **Lighthouse** (mobile, production build; after fixes): homepage 64/100/100/92 (perf/a11y/best/SEO), Adventure on land 72/100/100/92, Advice landing 85/100/100/92, Stay 81/100/100/92, What people say 68/100/100/92. Fixed: fonts are now preloaded on v2 pages, which removed a 0.175 layout shift on the Advice landing (heading reflowed when the web font arrived) and lifted performance; the homepage sound button now has an accessible name (`ded25d4`).
+- **Not changed (for decision):** homepage load time is held back by its intro animation (by design); images could be served as WebP/AVIF (about 1 MB saved on the homepage) but that's a build change; SEO loses points for the missing `robots.txt` (decide whether the concept should be indexable); History timeline eras could get in-page links (needs ids in the shared `Timeline`); "To confirm" boxes could align to card bottoms (site-wide `.icard` change).
+- **Also tidied:** kit lists use body-size text at 1100px and up.
 
 ## How to resume
 
