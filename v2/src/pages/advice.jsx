@@ -104,7 +104,8 @@ export function Agreement({ path }) {
         actions={<Btn href={QUOTE}>Contact us for a quote</Btn>}
       />
       <Band>
-        <div className="cols cols-2">
+        <SectionHead title="What&rsquo;s included" />
+        <div className="cols cols-3">
           <div className="icard"><h3>Advice and approval</h3><Ticks items={['Ongoing advice on any educational visit', 'Visit forms reviewed within 10 working days', 'Approval of adventurous activities, residentials and overseas visits', `An advice line during school hours: ${PHONE}`, 'Visits to your school to help with planning and monitoring', 'In-person support for complex visits']} /></div>
           <div className="icard"><h3>Evolve</h3><Ticks items={['Use of the Evolve visit management system', 'Support and training for every user', 'Help linking your MIS to Evolve (Evolve+)']} /><p><TBC>Whether Evolve+ is included or an optional upgrade</TBC></p></div>
           <div className="icard"><h3>Policy and updates</h3><Ticks items={['Guidance, policies and template documents', 'Updates on local policy, national guidance and legislation', 'Representation at national and regional meetings']} /></div>
@@ -121,9 +122,10 @@ export function Agreement({ path }) {
         <TBC block>Packages and pricing: whether the agreement is priced per establishment, per pupil or in bands, whether trusts can buy for all their schools, and when the agreement year runs (April or September).</TBC>
         <div className="cols cols-3">
           {['Primary schools', 'Secondary schools and colleges', 'Trusts, youth and community services'].map((t) => (
-            <div className="icard" key={t}><h3>{t}</h3><p><TBC>What is included and the price band</TBC></p><p><a href={QUOTE}>Ask for a quote</a></p></div>
+            <div className="icard" key={t}><h3>{t}</h3><TBC block>What is included and the price band</TBC></div>
           ))}
         </div>
+        <p><SqLink href={QUOTE}>Ask for a quote</SqLink></p>
       </Band>
 
       <Band>
