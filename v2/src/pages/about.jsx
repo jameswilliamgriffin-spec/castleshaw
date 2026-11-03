@@ -1,5 +1,5 @@
 // About the Castleshaw Centre: place, people, standards, reputation and 130 years of history.
-import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Intro, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
 import { href, ADDRESS, W3W, FACEBOOK } from '../data'
 
 const ab = (k = '') => href(`about/${k}`)
@@ -16,6 +16,7 @@ export function Hub({ path }) {
         image={{ src: img('history-building-now'), alt: 'The Castleshaw Centre today, a stone building behind a green field' }}
       />
       <Band>
+        <SectionHead eyebrow="About the centre" title="At a glance" />
         <Ledger items={[
           ['1895', 'the year the first Oldham children came to stay'],
           ['10,000', 'visitors of all ages every year'],
@@ -24,6 +25,7 @@ export function Hub({ path }) {
         ]} />
       </Band>
       <Band tone="sky">
+        <SectionHead title="More about us" />
         <TileLinks items={[
           { title: 'Where we are', href: ab('where-we-are/'), img: img('valley-reservoir'), text: 'In the South Pennines, at the edge of the Peak District, six miles from Oldham.' },
           { title: 'Our team', href: ab('our-team/'), img: img('team-matt'), text: 'Tutors, advisers and the people who keep the centre running.' },
