@@ -378,7 +378,7 @@ function QuotePage({ path }) {
             </SectionHead>
             <div style={QUOTE_GROUP}>
               <a className="contact-big" href={PHONE_HREF} style={QUOTE_TAP}>{PHONE}</a>
-              <p style={{ marginTop: '.5rem' }}><a href={`mailto:${EMAIL}`} style={QUOTE_TAP}>{EMAIL}</a></p>
+              <p style={{ marginTop: '.5rem' }}><a href={`mailto:${EMAIL}`} style={{ ...QUOTE_TAP, overflowWrap: 'anywhere' }}>{EMAIL}</a></p>
             </div>
             <div style={QUOTE_GROUP}>
               <Callout title="Already a member?" tone="sky"><p><TBC>Evolve login address</TBC></p></Callout>
@@ -392,7 +392,11 @@ function QuotePage({ path }) {
               </li>
             </ul>
           </div>
-          <LeadForm source="get-a-quote" />
+          {/* min-width 0 lets the form shrink with its column: at 200% text zoom the role
+              select's longest option otherwise widens the form past the screen on phones. */}
+          <div style={{ minWidth: 0 }}>
+            <LeadForm source="get-a-quote" />
+          </div>
         </div>
       </Band>
     </>
