@@ -1,6 +1,6 @@
 // Activities and school visits. Copy is drawn from the centre's own pages
 // (adventurous activities, curriculum, team building, booking, kit lists, testimonials).
-import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, Btn, TBC, img, shared, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, OnThisPage, Btn, TBC, img, shared, OLD } from '../ui/inner/blocks'
 import { href, PHONE, PHONE_HREF } from '../data'
 
 const at = (k) => href(`activities/${k}/`)
@@ -228,12 +228,19 @@ export function Environment({ path }) {
       >
         <p>We hold the Learning Outside the Classroom Quality Badge and are an Ambassador Centre for the Peak District National Park.</p>
       </PageTop>
+      <OnThisPage items={[
+        { id: 'primary-science', label: 'Primary science' },
+        { id: 'primary-geography', label: 'Primary geography' },
+        { id: 'secondary', label: 'Secondary field studies' },
+        { id: 'what-schools-say', label: 'What schools say' },
+        { id: 'resources', label: 'Free resources' },
+      ]} />
 
       <Band id="primary-science">
-        <Intro heading="Primary science">
+        <SectionHead eyebrow="Environmental education" title="Primary science">
           <p>A selection of our most popular science days. Each one can be tailored to your class.</p>
-        </Intro>
-        <div className="cols cols-2">
+        </SectionHead>
+        <div className="cols cols-3">
           <div className="icard"><h3>Countryside adventures</h3><p>For Reception and Year 1: the sights, sounds and smells of the countryside, in safety.</p><Ticks items={['Meet the centre’s animals', 'Observe farm animals nearby', 'Discover animal homes', 'Explore plants and trees', 'Investigate minibeasts']} /></div>
           <div className="icard"><h3>Life processes and living things</h3><p>At KS1, observing the local environment, with games to reinforce life cycles, parts of a plant and simple classification.</p><p>At KS2, day courses on any of the topics below, or a combination.</p></div>
           <div className="icard"><h3>Green plants</h3><p>Plant life cycles through field study, photosynthesis and reproduction through games and working models, and identifying trees in detail to earn a tree passport.</p></div>
@@ -254,9 +261,9 @@ export function Environment({ path }) {
       </Band>
 
       <Band tone="sky" id="primary-geography">
-        <Intro heading="Primary geography">
+        <SectionHead title="Primary geography">
           <p>Our most popular geography days, at a number of levels to suit your class.</p>
-        </Intro>
+        </SectionHead>
         <div className="cols cols-2">
           <div className="icard"><h3>Contrasting localities</h3><Ticks items={['Villages and valleys: walk from the Castleshaw Valley over or along Harrop Edge into Diggle, and compare the two (or compare with Oldham)', 'The Castleshaw Valley: compare your school’s area with a rural one. A less strenuous option, with lunch indoors if you need it', 'The village of Delph: a walk down the valley and an exploration of a classic Pennine village']} /></div>
           <div className="icard"><h3>Rivers and landscapes</h3><p>Follow the valley from the source of a stream as it changes, looking at erosion, transportation and deposition, rock formation and the work of glaciers.</p><p>Wellington boots are essential, and we provide them. This is very much a hands-on and feet-in experience.</p></div>
@@ -272,7 +279,8 @@ export function Environment({ path }) {
         </Split>
       </Band>
 
-      <Band tone="paper">
+      <Band tone="paper" id="what-schools-say">
+        <SectionHead title="What schools say" />
         <Quotes items={[
           { text: 'It was a great day and the children learnt a lot about their local area, which they will now be able to incorporate into their work and lessons for the rest of the term.', by: 'Hodge Clough Primary, Year 5 contrasting localities' },
           { text: 'Real life experiences, such as today, help the children to understand when we go on to learn about other animals and their habitats.', by: 'St Matthew’s C of E, Year 1' },
@@ -280,10 +288,10 @@ export function Environment({ path }) {
         ]} />
       </Band>
 
-      <Band>
-        <Intro heading="Free resources for teachers"><p>Use these to prepare for your visit, or to follow up back at school.</p></Intro>
+      <Band id="resources">
+        <SectionHead title="Free resources for teachers"><p>Use these to prepare for your visit, or to follow up back at school.</p></SectionHead>
         <Downloads items={RESOURCES} />
-        <p><a href={at('plan-your-visit') + '#resources'}>More resources and useful links</a></p>
+        <p><SqLink href={at('plan-your-visit') + '#resources'}>More resources and useful links</SqLink></p>
       </Band>
       <AdviceNote />
       <CtaBand title="Plan a field study day" />
