@@ -318,6 +318,13 @@ export function History({ path }) {
         lead="A Roman fort a few minutes' walk away, weavers' cottages and mills down the valley, and a Victorian village at the bottom of it. History here is something you can walk to."
         image={{ src: img('roman-shields'), alt: 'Children in Roman helmets with red shields and wooden swords' }}
       />
+      <OnThisPage items={[
+        { id: 'romans', label: 'Romans' },
+        { id: 'local-history', label: 'Local history' },
+        { id: 'secondary-groups', label: 'For secondary groups' },
+        { id: 'what-schools-say', label: 'What schools say' },
+      ]} />
+
       <Band id="romans">
         <Split image={{ src: img('roman-fort-aerial'), alt: 'An aerial photograph showing the outline of the Roman fort in the fields of the Castleshaw Valley' }} shape="soft" heading="Romans: life at a frontier fort">
           <p>We are a few minutes&rsquo; walk from the site of a Roman fort on the old road from Chester to York. A visit to the fort and its remains combines with activities at the centre:</p>
@@ -329,7 +336,9 @@ export function History({ path }) {
           { src: shared('roman-session'), alt: 'Smiling children in plumed Roman helmets holding wooden swords' },
         ]} />
       </Band>
-      <Band tone="sky">
+
+      <Band tone="sky" id="local-history">
+        <SectionHead title="Local history" />
         <div className="cols cols-2">
           <div className="icard"><h3>The Industrial Revolution</h3><p><strong>Weavers&rsquo; cottages to steam mills.</strong> Follow a route from a hamlet of weavers&rsquo; cottages, past the remains of water-powered mills, to the large steam mills in Diggle. Handle a spinning wheel and carding brushes, watch mills at work on video and try some weaving.</p></div>
           <div className="icard"><h3>Local history trails</h3><p><strong>The John Buckley Trail</strong> follows the births, schooling, marriages, working lives and deaths of a Castleshaw Valley family, using period maps, old photographs, census information and grave rubbings.</p><p><strong>Travel the ancient highways</strong> along the pack horse trail, the Roman road and the turnpike, with the canals and railways if you want them.</p></div>
@@ -337,16 +346,20 @@ export function History({ path }) {
           <div className="icard"><h3>The Victorian Experience</h3><p>A winter course, mostly indoors. Come in mock Victorian dress for bread baking and butter making, a lesson in a Victorian classroom, a public meeting on the 1880s plans for the Castleshaw reservoirs, traditional games, and wash day the hard way with a dolly tub, posser and scrubbing board.</p></div>
         </div>
       </Band>
-      <Band>
+
+      <Band id="secondary-groups">
         <Split reverse image={{ src: img('history-victorian-day'), alt: 'A class dressed in Victorian costume outside' }} heading="For secondary groups">
-          <p>The valley holds an archaeological timeline from the Bronze Age through the Romans and the Middle Ages to the Industrial Revolution and the Victorians. <a href={at('environmental-education') + '#secondary'}>Secondary field studies</a></p>
+          <p>The valley holds an archaeological timeline from the Bronze Age through the Romans and the Middle Ages to the Industrial Revolution and the Victorians.</p>
+          <p><SqLink href={at('environmental-education') + '#secondary'}>Secondary field studies</SqLink></p>
           <LinkList items={[
             { title: 'Castleshaw archaeology', href: 'http://www.castleshawarchaeology.co.uk/', text: 'The Roman forts and other research in the valley' },
             { title: 'Historic maps', href: 'https://maps.nls.uk/', text: 'National Library of Scotland map archive' },
           ]} />
         </Split>
       </Band>
-      <Band tone="paper">
+
+      <Band tone="paper" id="what-schools-say">
+        <SectionHead title="What schools say" />
         <Quotes items={[
           { text: 'We had a great day and the pupils learned about the Romans in the Oldham context. The children loved it. The day helped them connect with the topic.', by: 'St Martin’s C of E Primary, Year 4 Romans' },
           { text: 'Well organised, fantastic activities, brilliant teachers. Very interactive and friendly staff.', by: 'Islamiyah Girls High School, Blackburn, Year 7 Romans' },
