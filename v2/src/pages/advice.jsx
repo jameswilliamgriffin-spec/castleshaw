@@ -198,26 +198,25 @@ export function Training({ path }) {
       />
       <Band>
         <SectionHead title="Our courses" />
-        <ul className="courses">
+        <div className="courses">
           {COURSES.map((c) => (
-            <li key={c.id} id={c.id} className="icard course">
-              <h3>{c.name}</h3>
+            <TopicCard key={c.id} id={c.id} title={c.name} open={c.id === 'evc'}>
               <dl className="meta">
                 <div><dt>Length</dt><dd>{c.length === 'To confirm' ? <TBC>Length</TBC> : c.length}</dd></div>
                 <div><dt>For</dt><dd>{c.who}</dd></div>
               </dl>
               <p>{c.text}</p>
               {c.extra}
-            </li>
+            </TopicCard>
           ))}
-        </ul>
+        </div>
       </Band>
       <Band tone="sky" id="dates">
         <Intro heading="Course dates and prices">
           <p>Members of the service get one free EVC place a year and subsidised places on other courses.</p>
         </Intro>
         <TBC block>Upcoming course dates, and prices for members and non-members. The last published date was an EVC course on 6 November 2025.</TBC>
-        <p>To book a place or arrange training at your school, call <a href={PHONE_HREF}>{PHONE}</a> or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+        <p>To book a place or arrange training at your school, call <a href={PHONE_HREF}>{PHONE.replace(/ /g, '\u00a0')}</a> or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
       </Band>
       <Band>
         <SectionHead title="Other training we run" />
