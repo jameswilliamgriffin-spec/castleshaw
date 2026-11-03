@@ -1,5 +1,5 @@
 // Courses and holiday clubs: for young people, families and outdoor leaders.
-import { PageTop, Band, Intro, Split, Ticks, TileLinks, ActivityList, Gallery, Quote, Quotes, Callout, CtaBand, Btn, TBC, img, ill } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Intro, Split, Ticks, TileLinks, ActivityList, Gallery, Quote, Quotes, Callout, CtaBand, Btn, TBC, img, ill } from '../ui/inner/blocks'
 import { href, FACEBOOK } from '../data'
 
 const cc = (k) => href(`courses-and-clubs/${k}/`)
@@ -16,6 +16,7 @@ export function Hub({ path }) {
         illustration={{ src: ill('courses-camp'), alt: 'An illustration of a tent, a canoe, a campfire and a climbing helmet in the valley' }}
       />
       <Band>
+        <SectionHead eyebrow="Courses and clubs" title="What we run" />
         <TileLinks items={[
           { title: 'Holiday clubs', href: cc('holiday-clubs'), img: img('club-smiles'), text: 'Free Holiday Activities and Food clubs for eligible Oldham families, and a paid summer club.' },
           { title: 'Activity courses', href: cc('activity-courses'), img: img('course-wall'), text: 'Short summer courses in canoeing, kayaking, climbing and more.' },
@@ -23,6 +24,7 @@ export function Hub({ path }) {
         ]} />
       </Band>
       <Band tone="paper">
+        <SectionHead title="What parents say" />
         <Quotes items={[
           { text: 'Best day ever!', by: 'A parent, after the Summer Holiday Club' },
           { text: 'Thank you for taking our daughter on a wonderful kayaking adventure. These photos are truly super.', by: 'A parent, after the Summer Holiday Club' },
