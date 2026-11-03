@@ -170,3 +170,10 @@
   .mn-panel, .mn-panel.is-on { transition: visibility 0s; }
   .mn-pm::before, .mn-pm::after, .mn-arr, .mn-kids a > span { transition: none; }
 }
+
+/* touch: every menu link has a 44px tap area; the text doesn't move */
+@media (pointer: coarse) {
+  .mn-kids { row-gap: 21px; }
+  .mn-tel, .mn-enq, .mn-small a { position: relative; }
+  .mn-link::after, .mn-kids a::after, .mn-tel::after, .mn-enq::after, .mn-small a::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 44px; margin-top: -22px; }
+}

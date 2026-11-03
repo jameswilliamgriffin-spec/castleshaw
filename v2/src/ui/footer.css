@@ -105,3 +105,9 @@
 .ft-sos a { display: block; margin-top: .1rem; font-size: .9rem; }
 .ft-out { margin-left: .35rem; color: var(--cs-accent); font-size: .85em; transition: transform var(--cs-fast) var(--cs-out); }
 .ft-a:hover .ft-out, .ft-a:focus-visible .ft-out { transform: translate(2px, -2px); }
+
+/* touch: contact links in the footer have a 44px tap area */
+@media (pointer: coarse) {
+  .ft-sos a { position: relative; }
+  .ft-mail::after, .ft-sos a::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 44px; margin-top: -22px; }
+}
