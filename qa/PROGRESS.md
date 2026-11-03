@@ -13,7 +13,7 @@ Screenshots: `qa/before/<page>/`, `qa/after/<page>/` (each has a `_compare.jpg`:
 | 3: Batch 1 (Activities) | Done, approved | see below |
 | 3: Batch 2 (Plan, Activities hub) | Done, approved | see below |
 | 3: Batch 3 (Stay, Courses and clubs, About, Contact, Privacy, two Advice pages) | Done | see below |
-| 3: Batch 4 (deferred: Outdoor awards, eight Advice pages) | In progress | see below |
+| 3: Batch 4 (deferred: Outdoor awards, eight Advice pages) | Done, awaiting go-ahead for Phase 4 | see below |
 
 ## Pages
 
@@ -41,6 +41,15 @@ Screenshots: `qa/before/<page>/`, `qa/after/<page>/` (each has a `_compare.jpg`:
 | News | Done | `77a941c` | |
 | Contact | Done | `64e31c6` | Form unchanged. |
 | Privacy | Done | `0ecea5c` | Uses an inline 46rem wrapper; could move to a shared reading-column class. |
+| Outdoor awards | Done (batch 4) | `b69bd1a` | Has `OnThisPage`. |
+| Who it's for (Advice) | Done (batch 4) | `de23712` | "Who can join" heading. |
+| Training (Advice) | Done (batch 4) | `e8961ff` | "Our courses", "Other training we run". |
+| Emergency support (Advice) | Done (batch 4) | `0cc81e5` | Incident number unchanged; 44px+ tap at all widths. |
+| Guidance and resources (Advice) | Done (batch 4) | `8f7e5ea` | Short page (content gap). |
+| Our advisers (Advice) | Done (batch 4) | `7c5c362` | Quote band heading outweighs the one-word quote (matches other quote bands). |
+| Questions (Advice) | Done (batch 4) | `20fe596` | FAQ rows 62px; keyboard OK. |
+| Get a quote (Advice) | Done (batch 4) | `60e6708` | Form unchanged. Optional: sticky side column (not done). |
+| Advice landing | Done (batch 4) | `0c7574a` | Tap targets only (no redesign). Stats strip under the hero has no h2, by choice. |
 | Activities hub | Done (batch 2) | `ac3077f` + lead fix | No `OnThisPage` (hub; tiles and subnav already navigate). Subagent moved the quote band; the lead put it back (section order is content) and fixed the spacing in shared CSS instead. |
 | Team building | Done (batch 1) | `2f43347` | No `OnThisPage` (four short sections, like Land). Two quote sections now: the Oldham band and "What schools say". |
 
@@ -51,6 +60,7 @@ Outdoor awards (Courses and clubs), plus Advice pages Who it's for, Training, Em
 ## Decisions and notes
 
 - **Batch 3 shared fixes:** exactly three cards or tiles stay in one row at mid widths; quote grids adapt to two, three or five quotes; a single download is full width; section-head leads capped at 40rem; narrow bands restored; small people grids without empty tracks; galleries of five or ten in rows of five; timeline photos two to a row on phones; news photo beside the story at tablet width.
+- **For Phase 4:** card internals (aligning To confirm boxes to card bottoms) would need `.icard` as a flex column site-wide; kit list text at 1440 is dense; About History could link timeline eras (needs ids in the shared `Timeline`).
 - **No added blocks:** subagents may not add CTAs or reorder sections (both count as content).
 
 - **Hidden section headings:** to fix heading order without adding visible copy, sections with no visible heading get a visually hidden h2 ("Activities on land", "At a glance", "What schools say"). Screen readers announce them; the visible page is unchanged.
