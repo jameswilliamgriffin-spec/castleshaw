@@ -249,10 +249,11 @@ export function Emergency({ path }) {
         </Intro>
       </Band>
       <Band tone="sky">
+        <SectionHead title="Advice and preparation" />
         <div className="cols cols-3">
           <div className="icard"><h3>Everyday advice</h3><p>For questions that aren&rsquo;t emergencies, call the advice line in school hours.</p><p><a href={PHONE_HREF}>{PHONE}</a></p></div>
           <div className="icard"><h3>Be ready</h3><p>Management of Visit Emergencies (MoVE) training prepares senior leaders to run the response at school.</p><p><a href={av('training/') + '#move'}>About MoVE</a></p></div>
-          <div className="icard"><h3>Save the number</h3><p>Add the critical incident line to every visit&rsquo;s emergency contacts and to each leader&rsquo;s phone.</p><p><TBC>A printable card for visit leaders</TBC></p></div>
+          <div className="icard"><h3>Save the number</h3><p>Add the critical incident line to every visit&rsquo;s emergency contacts and to each leader&rsquo;s phone.</p><TBC block>A printable card for visit leaders</TBC></div>
         </div>
       </Band>
       <QuoteCta title="Have someone to call" text="The critical incident line is part of the service agreement." />
