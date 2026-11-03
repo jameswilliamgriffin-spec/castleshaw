@@ -285,8 +285,8 @@ export function Resources({ path }) {
       <Band tone="sky">
         <Intro heading="For members">
           <p>Members receive Oldham&rsquo;s visits policy, template documents and updates on local policy, national guidance and legislation.</p>
+          <TBC block>Which policies and templates can be shared publicly, and which are for members only (for example the visits policy, risk management templates, consent forms and emergency procedures).</TBC>
         </Intro>
-        <TBC block>Which policies and templates can be shared publicly, and which are for members only (for example the visits policy, risk management templates, consent forms and emergency procedures).</TBC>
       </Band>
       <QuoteCta />
     </>
