@@ -355,6 +355,10 @@ export function Questions({ path }) {
 }
 
 /* ------------------------------------------------------------------ quote */
+// Top padding tracks the form card's own padding, so the h2 lines up with the form's heading.
+const QUOTE_SIDE = { paddingTop: 'clamp(0rem, 3vw, 2.4rem)' }
+const QUOTE_GROUP = { marginTop: 'var(--s-4)' }
+const QUOTE_TAP = { display: 'inline-flex', alignItems: 'center', minHeight: '44px' }
 function QuotePage({ path }) {
   return (
     <>
@@ -365,13 +369,26 @@ function QuotePage({ path }) {
       />
       <Band>
         <div className="contact-grid">
-          <div className="contact-side">
-            <h2 className="h2i">Talk to an adviser</h2>
-            <p>Call in school hours, or email us any time.</p>
-            <a className="contact-big" href={PHONE_HREF}>{PHONE}</a>
-            <p><a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
-            <Callout title="Already a member?" tone="sky"><p><TBC>Evolve login address</TBC></p></Callout>
-            <p><a href={`${ROOT}${GUIDE.href}`} download onClick={() => track('Guide downloaded', { place: 'get-a-quote' })}>Download the guide: {GUIDE.title} (PDF)</a></p>
+          {/* Side column: three groups (talk, members, guide) spaced as groups, top-aligned with the form. */}
+          <div className="contact-side" style={QUOTE_SIDE}>
+            <SectionHead title="Talk to an adviser">
+              <p>Call in school hours, or email us any time.</p>
+            </SectionHead>
+            <div style={QUOTE_GROUP}>
+              <a className="contact-big" href={PHONE_HREF} style={QUOTE_TAP}>{PHONE}</a>
+              <p style={{ marginTop: '.5rem' }}><a href={`mailto:${EMAIL}`} style={QUOTE_TAP}>{EMAIL}</a></p>
+            </div>
+            <div style={QUOTE_GROUP}>
+              <Callout title="Already a member?" tone="sky"><p><TBC>Evolve login address</TBC></p></Callout>
+            </div>
+            <ul className="dl" style={QUOTE_GROUP}>
+              <li>
+                <a href={`${ROOT}${GUIDE.href}`} download onClick={() => track('Guide downloaded', { place: 'get-a-quote' })}>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" /></svg>
+                  <span><strong>Download the guide: {GUIDE.title} (PDF)</strong></span>
+                </a>
+              </li>
+            </ul>
           </div>
           <LeadForm source="get-a-quote" />
         </div>
