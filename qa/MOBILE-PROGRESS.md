@@ -37,7 +37,7 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | Adventure on land (batch 1) | Done, no page change | — | Shared fixes it found: At a glance values level at 768; activity thumbnails 64px below 375px; What to bring box padding 24px under 600px. |
 | Adventure on water (batch 1) | Done, no page change | — | Shared fix it found: "To confirm" boxes stack their label above the text under 900px (390: 6,852 → 6,585px). |
 | Bushcraft (batch 1) | Done, no page change | — | Two activity images (Campcraft, Woodland skills) have empty alt text (valid, treated as decorative); adding alt text would be new copy: for the client. |
-| Environmental education (batch 1) | Done, no page change | — | Long because of 10 topic cards and an 8-photo gallery. Proposed shared patterns (decision needed): tap-to-open topic cards on phones; swipeable gallery row on phones. |
+| Environmental education (batch 1) | Done | `mobile: environmental-education` | User approved tap-to-open topic cards and swipeable galleries on phones. The 10 topic cards are now `TopicCard`s ("Countryside adventures" stays open); 390: 10,772 → 7,850px. Desktop unchanged (7,103px). |
 | Plan your visit (pilot) | Done | see git log (`mobile: plan-your-visit`) | 390: 11,525px → 9,775px. No overflow, no targets under 44px, headings in order, no console errors at 320/360/390/430/768/844×390; works at 200% text zoom; keyboard opens the kit lists; desktop unchanged (7,551px, lists open). No hero CTA added (content rule): the page's booking CTA stays at the end. |
 
 ## Decisions and notes

@@ -1,6 +1,6 @@
 // Activities and school visits. Copy is drawn from the centre's own pages
 // (adventurous activities, curriculum, team building, booking, kit lists, testimonials).
-import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, OnThisPage, Btn, TBC, img, shared, OLD, ImageBreak } from '../ui/inner/blocks'
+import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, OnThisPage, Btn, TBC, img, shared, OLD, ImageBreak, TopicCard } from '../ui/inner/blocks'
 import { href, PHONE, PHONE_HREF } from '../data'
 
 const at = (k) => href(`activities/${k}/`)
@@ -245,12 +245,12 @@ export function Environment({ path }) {
           <p>A selection of our most popular science days. Each one can be tailored to your class.</p>
         </SectionHead>
         <div className="cols cols-3">
-          <div className="icard"><h3>Countryside adventures</h3><p>For Reception and Year 1: the sights, sounds and smells of the countryside, in safety.</p><Ticks items={['Meet the centre’s animals', 'Observe farm animals nearby', 'Discover animal homes', 'Explore plants and trees', 'Investigate minibeasts']} /></div>
-          <div className="icard"><h3>Life processes and living things</h3><p>At KS1, observing the local environment, with games to reinforce life cycles, parts of a plant and simple classification.</p><p>At KS2, day courses on any of the topics below, or a combination.</p></div>
-          <div className="icard"><h3>Green plants</h3><p>Plant life cycles through field study, photosynthesis and reproduction through games and working models, and identifying trees in detail to earn a tree passport.</p></div>
-          <div className="icard"><h3>Water habitats</h3><p>Pond and stream dipping, adaptations, and identification using keys. Compare a stream with a pond, or study pollution by comparing a Castleshaw stream with the River Tame below Delph.</p></div>
-          <div className="icard"><h3>Land habitats</h3><p>Migration, hibernation and populations depending on the season, food chains and webs, and finding and classifying minibeasts. Combines well with water habitats.</p></div>
-          <div className="icard"><h3>Materials</h3><p>The variety of natural materials in the Castleshaw Valley, and how they can be used.</p></div>
+          <TopicCard title="Countryside adventures" open><p>For Reception and Year 1: the sights, sounds and smells of the countryside, in safety.</p><Ticks items={['Meet the centre’s animals', 'Observe farm animals nearby', 'Discover animal homes', 'Explore plants and trees', 'Investigate minibeasts']} /></TopicCard>
+          <TopicCard title="Life processes and living things"><p>At KS1, observing the local environment, with games to reinforce life cycles, parts of a plant and simple classification.</p><p>At KS2, day courses on any of the topics below, or a combination.</p></TopicCard>
+          <TopicCard title="Green plants"><p>Plant life cycles through field study, photosynthesis and reproduction through games and working models, and identifying trees in detail to earn a tree passport.</p></TopicCard>
+          <TopicCard title="Water habitats"><p>Pond and stream dipping, adaptations, and identification using keys. Compare a stream with a pond, or study pollution by comparing a Castleshaw stream with the River Tame below Delph.</p></TopicCard>
+          <TopicCard title="Land habitats"><p>Migration, hibernation and populations depending on the season, food chains and webs, and finding and classifying minibeasts. Combines well with water habitats.</p></TopicCard>
+          <TopicCard title="Materials"><p>The variety of natural materials in the Castleshaw Valley, and how they can be used.</p></TopicCard>
         </div>
         <Gallery images={[
           { src: img('env-pond-tray'), alt: 'Pupils examining a tray of pond water' },
@@ -269,10 +269,10 @@ export function Environment({ path }) {
           <p>Our most popular geography days, at a number of levels to suit your class.</p>
         </SectionHead>
         <div className="cols cols-2">
-          <div className="icard"><h3>Contrasting localities</h3><Ticks items={['Villages and valleys: walk from the Castleshaw Valley over or along Harrop Edge into Diggle, and compare the two (or compare with Oldham)', 'The Castleshaw Valley: compare your school’s area with a rural one. A less strenuous option, with lunch indoors if you need it', 'The village of Delph: a walk down the valley and an exploration of a classic Pennine village']} /></div>
-          <div className="icard"><h3>Rivers and landscapes</h3><p>Follow the valley from the source of a stream as it changes, looking at erosion, transportation and deposition, rock formation and the work of glaciers.</p><p>Wellington boots are essential, and we provide them. This is very much a hands-on and feet-in experience.</p></div>
-          <div className="icard"><h3>Mapwork</h3><Ticks items={['Introducing maps: what is a map, and a guided map walk', 'Making maps of the centre and its grounds', 'Compasses and a simple compass course', 'Four-figure grid references, distance, direction and following routes']} /></div>
-          <div className="icard"><h3>Environmental issues</h3><p><strong>The Delph Bypass Game.</strong> A town planner proposes a bypass around Delph. Pupils walk the route, then debate it as residents, business owners and campaigners.</p><p><strong>Wind turbine debate.</strong> Visit peat moorland and weigh the impact of turbines on wildlife, residents and the view against the need for renewable energy.</p></div>
+          <TopicCard title="Contrasting localities"><Ticks items={['Villages and valleys: walk from the Castleshaw Valley over or along Harrop Edge into Diggle, and compare the two (or compare with Oldham)', 'The Castleshaw Valley: compare your school’s area with a rural one. A less strenuous option, with lunch indoors if you need it', 'The village of Delph: a walk down the valley and an exploration of a classic Pennine village']} /></TopicCard>
+          <TopicCard title="Rivers and landscapes"><p>Follow the valley from the source of a stream as it changes, looking at erosion, transportation and deposition, rock formation and the work of glaciers.</p><p>Wellington boots are essential, and we provide them. This is very much a hands-on and feet-in experience.</p></TopicCard>
+          <TopicCard title="Mapwork"><Ticks items={['Introducing maps: what is a map, and a guided map walk', 'Making maps of the centre and its grounds', 'Compasses and a simple compass course', 'Four-figure grid references, distance, direction and following routes']} /></TopicCard>
+          <TopicCard title="Environmental issues"><p><strong>The Delph Bypass Game.</strong> A town planner proposes a bypass around Delph. Pupils walk the route, then debate it as residents, business owners and campaigners.</p><p><strong>Wind turbine debate.</strong> Visit peat moorland and weigh the impact of turbines on wildlife, residents and the view against the need for renewable energy.</p></TopicCard>
         </div>
       </Band>
 
