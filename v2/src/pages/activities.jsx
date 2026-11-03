@@ -191,22 +191,24 @@ export function Bushcraft({ path }) {
         image={{ src: shared('bushcraft-marshmallows'), alt: 'Hands holding hazel sticks with marshmallows over a small fire in a metal stove' }}
       />
       <Band>
+        <SectionHead eyebrow="Bushcraft" title="What you can do" />
         <ActivityList items={[
           { name: 'Shelter building', img: img('bushcraft-tipi'), alt: 'A tipi shelter in the grounds', text: 'Working out how to stay dry with what the woods provide.' },
           { name: 'Fire lighting and cooking', img: img('team-chiron'), alt: 'An instructor blowing a tinder bundle into flame', text: 'Lighting a fire safely, keeping it going, and cooking on it.' },
           { name: 'Campcraft', img: img('award-dofe-camp'), text: 'Pitching tents and setting up camp, a natural first step towards Duke of Edinburgh expeditions.' },
           { name: 'Woodland skills', img: img('bushcraft-tools'), text: 'Working with natural materials. We also run woodland skills training for adults.' },
         ]} />
-        <TBC block>The full bushcraft programme: which activities suit which ages, and whether tool use is included.</TBC>
       </Band>
       <Band tone="sage">
-        <Intro heading="Qualified bushcraft instructors">
-          <p>Our tutor Matt completed his NCFE Level 2 Bushcraft Instructor Award in 2023, and with Chiron leads bushcraft sessions for school groups, youth groups and our holiday clubs.</p>
-          <p><a href={href('about/our-team/')}>Meet the team</a></p>
-        </Intro>
-      </Band>
-      <Band>
-        <AtAGlance ages="Suitable ages" />
+        <AtAGlance ages="Suitable ages" bring={
+          <div>
+            <Callout title="Qualified bushcraft instructors" tone="sky">
+              <p>Our tutor Matt completed his NCFE Level 2 Bushcraft Instructor Award in 2023, and with Chiron leads bushcraft sessions for school groups, youth groups and our holiday clubs.</p>
+              <p><SqLink href={href('about/our-team/')}>Meet the team</SqLink></p>
+            </Callout>
+            <TBC block>The full bushcraft programme: which activities suit which ages, and whether tool use is included.</TBC>
+          </div>
+        } />
       </Band>
       <AdviceNote />
       <CtaBand title="Add bushcraft to your visit" />
