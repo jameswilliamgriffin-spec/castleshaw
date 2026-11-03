@@ -98,6 +98,7 @@ export function ActivityCourses({ path }) {
         image={{ src: img('course-caving'), alt: 'Three young cavers in helmets and red overalls grinning in the cave' }}
       />
       <Band>
+        <SectionHead eyebrow="Activity courses" title="What you can do" />
         <ActivityList items={[
           { name: 'Canoeing and kayaking', img: img('water-canoe-pair'), text: 'Building skills over several sessions, on calm water and beyond.' },
           { name: 'Climbing', img: img('course-wall'), text: 'On the climbing tower and local crags.' },
@@ -111,6 +112,7 @@ export function ActivityCourses({ path }) {
         </Intro>
       </Band>
       <Band>
+        <SectionHead title="Groups and what to bring" />
         <div className="cols cols-2">
           <Callout title="A course for your group">
             <p>If you are part of a group and would like a course organised just for you, contact the office for a quotation.</p>
