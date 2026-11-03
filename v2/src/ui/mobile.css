@@ -144,3 +144,8 @@ img, video { max-width: 100%; }
   :root:root .ph-shp, :root:root .ph-shp-soft { max-width: min(15rem, 30vw); }
   :root:root .ph-h1 { font-size: clamp(2rem, 5.2vw, 2.8rem); }
 }
+
+/* small tablets: a gallery of exactly three photos sits three across, not two and one */
+@media (min-width: 600px) and (max-width: 899px) {
+  :root:root .gallery:has(> li:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
