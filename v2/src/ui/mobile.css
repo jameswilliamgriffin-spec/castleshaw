@@ -69,6 +69,32 @@ img, video { max-width: 100%; }
   :root:root .lf-check { min-height: 2.75rem; display: flex; align-items: center; gap: .75rem; }
 }
 
+/* ---------- homepage on phones and small tablets ---------- */
+@media (max-width: 899px) {
+  /* "Six ways": 44px chips, 8px apart; links with a 44px hit area */
+  :root:root .acts-chip { min-height: 2.75rem; }
+  :root:root .acts-legend { gap: .5rem; }
+  :root:root .act-more, :root:root .adb-link, :root:root .j-more, :root:root .pb-links a, :root:root .j-tel { display: inline-flex; align-items: center; min-height: 2.75rem; }
+  /* the hero link keeps its underline under the text, with a 44px tap area around it */
+  :root:root .hero-tel { position: relative; }
+  :root:root .hero-tel::after { content: ''; position: absolute; inset: -.7rem -.3rem; }
+  :root:root .pb-links { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
+  :root:root .pl .txt { min-width: 2.75rem; min-height: 2.75rem; }
+  /* Call and Sound: 44px, clear of the home bar */
+  :root:root .j-call, :root:root .j-sound { height: 2.75rem; }
+  :root:root .j-controls { bottom: calc(.75rem + var(--safe-b)); }
+  /* the scroll prompt is a hint, not a feature */
+  :root:root .cue-down svg { height: 2rem; }
+  :root:root .cue { font-size: .78rem; }
+}
+
+/* the smallest phones: the Call button keeps its number on one line */
+@media (max-width: 374px) {
+  :root:root .j-call { margin-left: 0; white-space: nowrap; font-size: .9375rem; }
+  /* the hero line "the classroom." stays together */
+  :root:root .hero-h { font-size: min(9.4vw, 14svh); }
+}
+
 @media (max-width: 599px) {
   :root { --g: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); }
   /* portraits stay two to a row, even at 320 */

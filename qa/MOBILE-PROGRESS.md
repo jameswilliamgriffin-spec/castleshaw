@@ -6,8 +6,8 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 |---|---|---|
 | 0: Setup | Done | Vite + React; source `v2/` (Vite root), served from `/`. Dev `npm run dev` (5175), build `npm run build`, preview `npm run preview` (4175). Testing with the Playwright MCP and Chrome DevTools emulation (touch, DPR, CPU and network throttling); nothing to install. |
 | 1: Audit | Done, approved | 34 pages, 6 viewports; 14 shared root causes. |
-| 2: Shared layer | Done, awaiting approval | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
-| 3: Homepage and signature interactions | Not started | |
+| 2: Shared layer | Done, approved | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
+| 3: Homepage and signature interactions | Done, awaiting feedback | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
 | 4: Pilot internal page | Not started | |
 | 5: Remaining pages | Not started | |
 | 6: Site-wide QA | Not started | |
@@ -20,6 +20,14 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 - Landscape (844×390): inner heroes are copy beside a small photo; header 56px; Stay's first section moves from the third screen to the second.
 - No horizontal scroll at any width; desktop (1440) pixel-identical on Plan your visit and Stay; Holiday clubs and the homepage differ only in animated accents.
 - Not yet done (Phase 3, homepage): journey controls covering content, "Six ways" chips, homepage targets, journey performance, homepage card images without dimensions.
+
+## Phase 3 results (homepage)
+
+- Planner panel: at 320, 509 of 627px could be seen → all 635px; in landscape 331 of 573px → all 582px. Testimonial stack: at 320, 509 of 833px → all 876px; in landscape 331 of 818px → all 842px.
+- The contact form's Send button and message field are no longer covered (the bar tucks away over the contact panel and while typing).
+- Homepage tap targets under 44px at 390: 21 → 0 (the hero link uses an invisible 44px hit area around its underline).
+- Journey frame time on a 4×-throttled phone (DPR 3): 16.7ms median (60fps), 95th percentile 18.5ms portrait and 33ms landscape, with or without the new loop; the 30fps reading in Phase 1 did not reproduce in controlled runs (cold and warm). The loop now does less work per frame and has an automatic stills fallback for phones that really are slow.
+- Swipe on the testimonial stack works with a real touch (1 of 12 → 2 of 12).
 
 ## Decisions and notes
 

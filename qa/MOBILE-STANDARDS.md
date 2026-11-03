@@ -95,3 +95,12 @@ Long strings (emails, URLs, what3words) get `overflow-wrap: anywhere`.
 - The build places that file in a stylesheet shared by every page, which loads *before* each page's own CSS, so rules inside its media queries are prefixed with `:root:root` to win on specificity rather than order. Keep that prefix on any rule added there.
 - Hover effects are gated with `@media (hover: hover)` in every stylesheet (`scripts/gate-hover.py` did it mechanically; run it again after adding `:hover` rules).
 - `--hd-h` is the header height (4.6rem desktop, 4rem phones, 3.5rem landscape phones); the sticky row and anchor offsets follow it. `--g` (the gutter) never sits under a notch; the viewport uses `viewport-fit=cover`.
+
+## Signature interactions (from Phase 3)
+
+- **Sticky panels taller than the screen** (planner, testimonial stack) get a negative `top`, so they scroll normally until their bottom sits just above the Call bar and only then stick: every part stays reachable. Panels that fit keep their CSS `top` (desktop unchanged). `Journey.jsx` sets this with a ResizeObserver.
+- **The Call and Sound bar** steps aside while a field has focus and whenever the contact panel (which shows its own number) is on screen. Scrolling text passes under it through a dark fade; nothing interactive is ever beneath it.
+- **The journey** recomputes only after a scroll or resize, peels the drawing only while it is moving, draws the film at 1.25× pixel density on touch screens (1.5× elsewhere), and on a touch phone that stays slower than about 30fps while scrolling it switches itself to stills (crossfaded posters).
+- **"Six ways":** native horizontal scroll with snap on phones (unchanged), 44px chips 8px apart, the active chip kept in view.
+- **Testimonial stack:** swipe with `touch-action: pan-y` (vertical scroll stays with the page) and a reset on `pointercancel`.
+- **Hero headline** keeps "the classroom." together at every phone width.

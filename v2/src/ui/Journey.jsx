@@ -38,10 +38,35 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
   const [sent, setSent] = useState(false)
   const base = new URL('./video', document.baseURI).href.replace(/\/$/, '')
   const [inView, setInView] = useState(false)
+  const [tucked, setTucked] = useState(false)
   useEffect(() => {
+    const el = root.current
     const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { rootMargin: '-40% 0px -40% 0px' })
-    io.observe(root.current)
-    return () => io.disconnect()
+    io.observe(el)
+    // the Call and Sound bar steps aside while a field is in use, and over the contact panel
+    let typing = false, contact = false
+    const sync = () => setTucked(typing || contact)
+    const fin = (e) => { if (e.target.matches('input, textarea, select')) { typing = true; sync() } }
+    const fout = () => { typing = false; sync() }
+    el.addEventListener('focusin', fin); el.addEventListener('focusout', fout)
+    const cio = new IntersectionObserver(([e]) => { contact = e.isIntersecting; sync() }, { rootMargin: '0px 0px -30% 0px' })
+    const c = el.querySelector('.j-contact'); if (c) cio.observe(c)
+    // a sticky panel taller than the room above the bar sticks by its bottom edge, so all of it can be reached
+    const panels = [...el.querySelectorAll('.j-panel-plan, .j-panel-post')]
+    const bar = el.querySelector('.j-controls')
+    const fit = () => {
+      const dock = bar ? Math.max(16, innerHeight - bar.getBoundingClientRect().top + 12) : 16
+      for (const p of panels) {
+        p.style.top = ''
+        const top = parseFloat(getComputedStyle(p).top) || 0
+        p.style.top = p.offsetHeight > innerHeight - dock - top ? `${Math.round(innerHeight - dock - p.offsetHeight)}px` : ''
+      }
+    }
+    fit()
+    const ro = new ResizeObserver(fit)
+    panels.forEach((p) => ro.observe(p))
+    addEventListener('resize', fit)
+    return () => { io.disconnect(); cio.disconnect(); ro.disconnect(); removeEventListener('resize', fit); el.removeEventListener('focusin', fin); el.removeEventListener('focusout', fout) }
   }, [])
 
   useEffect(() => {
@@ -65,11 +90,12 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
         if (!alive) return
         film = new Film(canvas.current, manifest, `${base}/frames/${dir}`)
         film.load()
+        film.resize()
       } catch { /* no frames: posters remain */ }
     }, { rootMargin: '150% 0px' })
     io.observe(el)
 
-    let last = -1
+    let last = -1, lastT = -1
     const clamp = (v) => Math.min(1, Math.max(0, v))
     const update = () => {
       const vh = innerHeight
@@ -88,7 +114,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
       // Underneath, frame one of the film is the same drawing, so nothing jumps:
       // the film itself is what turns the shapes into real hills.
       const ease = (a, b) => { const x = clamp((t - a) / (b - a)); return x * x * (3 - 2 * x) }
-      for (const l of layers) {
+      if (t !== lastT) { lastT = t; for (const l of layers) {
         const k = l.dataset.layer
         const [a, b, dx, dy] = PEEL[k]
         const e = ease(a, b)
@@ -100,7 +126,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
         const [a] = PEEL[o.dataset.line]
         o.style.opacity = String(Math.min(ease(a, a + 0.12), 1 - ease(0.7, 0.95)) * 0.9)
       }
-      el.style.setProperty('--thr', t.toFixed(3))
+      el.style.setProperty('--thr', t.toFixed(3)) }
       const per = 1 / CH.length
       const p = seg === 0 ? ease(0.28, 1) * per * MORPH
         : seg === 1 ? per * MORPH + lp * per * (1 - MORPH)
@@ -116,11 +142,33 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
     let near = false
     const nearIO = new IntersectionObserver(([e]) => { near = e.isIntersecting; if (near) update() }, { rootMargin: '50% 0px' })
     nearIO.observe(el)
-    const tick = () => { if (!near) return; update(); if (film) { film.resize(); film.tick() } }
+    // recompute only after the page has scrolled or resized; the film still eases between frames
+    let dirty = true
+    const mark = () => { dirty = true }
+    addEventListener('scroll', mark, { passive: true })
+    // on a touch phone that can't keep up (slower than about 30fps while scrolling), fall back to stills
+    const coarse = matchMedia('(pointer: coarse)').matches
+    let prev = 0
+    const dts = []
+    const tick = () => {
+      if (!near) return
+      const now = performance.now()
+      if (dirty) {
+        dirty = false; update()
+        if (coarse && film?.ready && prev && dts.length < 120) {
+          dts.push(now - prev)
+          if (dts.length === 120 && [...dts].sort((a, b) => a - b)[60] > 34) { film = null; setStills(true) }
+        }
+      }
+      prev = now
+      film?.tick()
+    }
     gsap.ticker.add(tick)
-    const rs = () => film?.resize()
+    const rs = () => { dirty = true; film?.resize() }
     addEventListener('resize', rs)
-    return () => { alive = false; io.disconnect(); nearIO.disconnect(); gsap.ticker.remove(tick); removeEventListener('resize', rs) }
+    const ro = new ResizeObserver(rs)
+    ro.observe(canvas.current)
+    return () => { alive = false; io.disconnect(); nearIO.disconnect(); gsap.ticker.remove(tick); removeEventListener('resize', rs); removeEventListener('scroll', mark); ro.disconnect() }
   }, [base])
 
   useEffect(() => { // ambient sound: user-started only, follows the toggle
@@ -160,7 +208,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
         </div>
       </div>
 
-      <div className={`j-controls${inView ? ' is-on' : ''}`}>
+      <div className={`j-controls${inView && !tucked ? ' is-on' : ''}`}>
         <a className="j-call" href={PHONE_HREF} data-cue="Call">Call {PHONE}</a>
         {hasAudio && !stills && (
           <button type="button" className="j-sound" aria-label="Sound" aria-pressed={sound} onClick={() => setSound(!sound)} data-cue={sound ? 'Mute' : 'Listen'}>

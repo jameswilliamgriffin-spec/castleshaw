@@ -60,7 +60,8 @@ export class Film {
   }
 
   resize() {
-    const dpr = Math.min(devicePixelRatio || 1, 1.5)
+    // 1.25 on touch phones, 1.5 elsewhere: the frames are photographs, so the extra pixels cost more than they show
+    const dpr = Math.min(devicePixelRatio || 1, matchMedia('(pointer: coarse)').matches ? 1.25 : 1.5)
     const w = Math.round(this.cv.clientWidth * dpr), h = Math.round(this.cv.clientHeight * dpr)
     if (w && h && (this.cv.width !== w || this.cv.height !== h)) { this.cv.width = w; this.cv.height = h; this.drawn = -1 }
   }

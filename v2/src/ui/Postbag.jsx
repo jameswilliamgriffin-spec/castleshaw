@@ -39,7 +39,7 @@ export default function Postbag() {
         </div>
         <p className="pb-links"><a href={href('about/what-people-say/') + '#hall-of-fame'}>See the Hall of Fame</a><a href={href('about/what-people-say/')}>Read all testimonials</a></p>
       </div>
-      <div className="pb-pile" ref={pile} onPointerDown={down} onPointerUp={up} data-cue="Swipe">
+      <div className="pb-pile" ref={pile} onPointerDown={down} onPointerUp={up} onPointerCancel={() => { start.current = null }} data-cue="Swipe">
         {order.slice(0, 4).reverse().map((idx, k, arr) => {
           const item = POSTBAG[idx], depth = arr.length - 1 - k, isTop = depth === 0
           const rot = [-1.5, 3, -4, 2.5][idx % 4]
