@@ -512,3 +512,7 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 /* three tiles sit in one row from 900px; two quotes share the full width */
 @media (min-width: 900px) and (max-width: 1099px) { .tiles:has(> li:nth-child(3):last-child) { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 1200px) { .qs:has(> :nth-child(2):last-child) { grid-template-columns: repeat(2, 1fr); } }
+/* a single download takes the full width */
+.dl:has(> li:only-child) { grid-template-columns: 1fr; }
+/* three quotes in a two-column grid: the third spans the row */
+@media (min-width: 800px) and (max-width: 1199px) { .qs > .q:nth-child(3):last-child { grid-column: 1 / -1; } }
