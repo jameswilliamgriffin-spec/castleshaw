@@ -1,5 +1,5 @@
 // Contact and the privacy notice.
-import { PageTop, Band, Intro, Downloads, Callout, EnquiryForm, TBC, img, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, SqLink, Intro, Downloads, Callout, EnquiryForm, TBC, img, OLD } from '../ui/inner/blocks'
 import { href, PHONE, PHONE_HREF, EMAIL, INCIDENT, INCIDENT_HREF, ADDRESS, W3W, FACEBOOK } from '../data'
 
 export function Contact({ path }) {
@@ -12,6 +12,7 @@ export function Contact({ path }) {
         image={{ src: img('stay-front'), alt: 'The front of the Castleshaw Centre beside the lane', shape: 'soft' }}
       />
       <Band id="contact">
+        <SectionHead title="Ways to get in touch" />
         <div className="contact-grid">
           <div>
             <a className="contact-big" href={PHONE_HREF}>{PHONE}</a>
@@ -23,7 +24,7 @@ export function Contact({ path }) {
               <li><strong>Facebook</strong><a href={FACEBOOK} rel="noopener">Castleshaw Centre on Facebook</a></li>
               <li><strong>24/7 critical incident line</strong>For members of the educational visits advice service with an emergency on a visit: <a href={INCIDENT_HREF}>{INCIDENT}</a></li>
             </ul>
-            <p><a href={href('about/where-we-are/')}>How to find us</a></p>
+            <p><SqLink href={href('about/where-we-are/')}>How to find us</SqLink></p>
           </div>
           <EnquiryForm
             title="Send an enquiry"
