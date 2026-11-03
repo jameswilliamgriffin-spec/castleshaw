@@ -9,7 +9,7 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | 2: Shared layer | Done, approved | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
 | 3: Homepage and signature interactions | Done, approved | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
 | 4: Pilot internal page | Done (Plan your visit), awaiting feedback | Kit lists as tap-to-open sections on phones; "On this page" label on phones; footer and CTA links 44px at all touch sizes. |
-| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 done, awaiting go-ahead | |
+| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 approved; batch 3 (Advice) in progress, paused by the user | |
 | 6: Site-wide QA | Not started | |
 
 ## Phase 2 results (inner pages, 390 unless stated)
@@ -59,3 +59,12 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 ## How to resume
 
 Run `npm run build && npm run preview` in `site/` (port 4175). Measure with `qa/mobile-audit.js` (Playwright MCP `browser_run_code_unsafe` with `filename`; first navigate to `http://localhost:4175/#["route/", ...]` to pass the routes). Continue from the first phase not marked Done.
+
+## Paused (batch 3)
+
+- Done: Training (a3dc006), Emergency support (no change), Guidance and resources (no change), Our advisers (no page change; shared people fix 8bb16f5), Questions (d6acbc0), Get a quote (7580676). Shared fixes 3a4a4d1, 8f4bea3, 8bb16f5.
+- **Found:** `qa/mobile-check.js` measured overflow against `innerWidth`, which grows under mobile emulation when content overflows, so earlier "200% zoom: no overflow" results were not reliable. Fixed (it now measures against the device width). New `qa/overflow-sweep.js` (every page, 320/390/768 and 200% text at 320/390) and `qa/heights.js` (page heights, to prove a shared change leaves normal text alone).
+- **In progress, committed as WIP:** large-text fixes in `mobile.css` (words break instead of widening columns on phones; the header's button steps aside when the header can't fit it; `.contact-grid` children can shrink; form error text 16px; error-summary links 44px). Heights at normal text size unchanged on 32 of 34 pages; Advice landing at 320 +416px (its 35px overflow now wraps) and Stay at 320 +28px (to check).
+- **Still overflowing at 200% text:** the activities pages' `.adv-note-link` span; the homepage Call/Sound bar (`.j-controls`); Training's `dd`/`.tbc` at 320; Advice landing's `.tbc-tag` and `.qbar`.
+- **Left in batch 3:** Advice landing (`export function Landing`; it overflows 35px at 320 from `.al-person` at normal size).
+- **Resume:** `npm run build && npm run preview` in `site/`; run `qa/overflow-sweep.js`, fix the remaining items above, check `qa/heights.js` against the values before; then the Advice landing subagent; then the batch 3 sheets and stop.

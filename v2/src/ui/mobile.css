@@ -17,6 +17,9 @@ img, video { max-width: 100%; }
 :where(a, button, summary, label, input, select, textarea, [role='button'], [role='tab']) { touch-action: manipulation; }
 :where(.subnav a, .otp a, .ft-mail, .ft-sos a, .cta-mail a, .contact-big, address, .j-contact-info) { overflow-wrap: anywhere; }
 
+/* single-column grids may shrink below their content's natural width (long emails, long select options) */
+:root:root .contact-grid > * { min-width: 0; }
+
 /* the header sits below the status bar and the notch */
 :root:root .hd { height: calc(var(--hd-h) + var(--safe-t)); padding-top: var(--safe-t); }
 :root:root .mn-cap { height: calc(var(--hd-h) + var(--safe-t)); margin-bottom: calc(-1 * (var(--hd-h) + var(--safe-t))); }
@@ -55,7 +58,7 @@ img, video { max-width: 100%; }
   :root:root .ft-h, :root:root .ft-tog { font-size: .8125rem; }
 
   /* text: 16px for anything that is a sentence; 13px for short labels */
-  :root:root .kit-note, :root:root .kit ul, :root:root .kit-bring li, :root:root .kit-avoid li, :root:root .kit h4, :root:root .lf-privacy, :root:root .lf-privacy a, :root:root .lf-check span, :root:root .lf-field label, :root:root .form-note, :root:root .form label span, :root:root .form label em, :root:root .tbc, :root:root .tbc-block p, :root:root .ticks li, :root:root .icard li, :root:root dd, :root:root .al-inspect figcaption, :root:root .al-inspect-meta, :root:root .al-sos, :root:root .al-by, :root:root .al-role, :root:root .al-talk p, :root:root .people-role, :root:root .q figcaption, :root:root .card figcaption, :root:root .card-q figcaption, :root:root .split-art figcaption, :root:root .gallery figcaption, :root:root .tl-imgs figcaption, :root:root blockquote cite, :root:root .news time, :root:root .dl small, :root:root .dl a span, :root:root .cta-mail, :root:root .sp-nav button, :root:root .at-tab, :root:root .j-small, :root:root .j-form label span, :root:root .pl-count, :root:root .acts-count, :root:root .act-more { font-size: 1rem; }
+  :root:root .kit-note, :root:root .kit ul, :root:root .kit-bring li, :root:root .kit-avoid li, :root:root .kit h4, :root:root .lf-privacy, :root:root .lf-privacy a, :root:root .lf-err, :root:root .lf-check span, :root:root .lf-field label, :root:root .form-note, :root:root .form label span, :root:root .form label em, :root:root .tbc, :root:root .tbc-block p, :root:root .ticks li, :root:root .icard li, :root:root dd, :root:root .al-inspect figcaption, :root:root .al-inspect-meta, :root:root .al-sos, :root:root .al-by, :root:root .al-role, :root:root .al-talk p, :root:root .people-role, :root:root .q figcaption, :root:root .card figcaption, :root:root .card-q figcaption, :root:root .split-art figcaption, :root:root .gallery figcaption, :root:root .tl-imgs figcaption, :root:root blockquote cite, :root:root .news time, :root:root .dl small, :root:root .dl a span, :root:root .cta-mail, :root:root .sp-nav button, :root:root .at-tab, :root:root .j-small, :root:root .j-form label span, :root:root .pl-count, :root:root .acts-count, :root:root .act-more { font-size: 1rem; }
   :root:root .tbc-tag, :root:root .shead-eyebrow, :root:root .al-eyebrow, :root:root .al-kicker, :root:root .adb-kicker, :root:root .sp-step, :root:root dt:not(.ledger dt) { font-size: .8125rem; }
 
   /* inner-page hero: the photo is a supporting picture, not the whole first screen */
@@ -69,6 +72,20 @@ img, video { max-width: 100%; }
   /* form checkboxes (not the planner's option cards) */
   :root:root .lf-check input[type='checkbox'], :root:root .form input[type='checkbox'] { width: 1.5rem; height: 1.5rem; flex: none; }
   :root:root .lf-check { min-height: 2.75rem; display: flex; align-items: center; gap: .75rem; }
+  /* error summary links: 44px rows */
+  :root:root .lf-summary a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+}
+
+/* ---------- large text (200% text size) on phones ---------- */
+@media (max-width: 899px) {
+  /* a word wider than its column breaks instead of widening the column (it only happens at large text sizes) */
+  :root:root :is(main, footer) { overflow-wrap: anywhere; }
+  /* header: the logo keeps its size; the header's quote button steps aside when the header can't fit it (the menu has it too) */
+  :root:root .hd { container-type: inline-size; }
+  :root:root .hd-logo { flex: none; }
+}
+@container (max-width: 18.5rem) {
+  :root:root .hd > .b { display: none; }
 }
 
 /* ---------- homepage on phones and small tablets ---------- */
