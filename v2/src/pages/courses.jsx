@@ -1,5 +1,5 @@
 // Courses and holiday clubs: for young people, families and outdoor leaders.
-import { PageTop, Band, SectionHead, Intro, Split, Ticks, TileLinks, ActivityList, Gallery, Quote, Quotes, Callout, CtaBand, Btn, TBC, img, ill } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Intro, Split, Ticks, TileLinks, ActivityList, Gallery, Quote, Quotes, Callout, CtaBand, OnThisPage, Btn, TBC, img, ill } from '../ui/inner/blocks'
 import { href, FACEBOOK } from '../data'
 
 const cc = (k) => href(`courses-and-clubs/${k}/`)
@@ -137,6 +137,12 @@ export function Awards({ path }) {
         lead="Duke of Edinburgh expedition training and support, paddlesport and climbing awards for young people, and leader training for adults."
         image={{ src: img('award-dofe-group'), alt: 'A Duke of Edinburgh group with rucksacks checking their route' }}
       />
+      <OnThisPage items={[
+        { id: 'dofe', label: 'DofE' },
+        { id: 'young-people', label: 'Young people' },
+        { id: 'leaders', label: 'Leaders' },
+        { id: 'gallery', label: 'Gallery' },
+      ]} />
       <Band id="dofe">
         <Split image={{ src: img('award-dofe-camp'), alt: 'Young people pitching tents on the camping field' }} heading="The Duke of Edinburgh's Award">
           <p>The Award is popular with schools and youth groups across Oldham, but running the expedition section can be a challenge for supervising staff. We can help in several ways.</p>
@@ -168,7 +174,8 @@ export function Awards({ path }) {
           <TBC block>Upcoming dates and prices for leader training.</TBC>
         </Intro>
       </Band>
-      <Band tone="sage">
+      <Band tone="sage" id="gallery">
+        <SectionHead title="Gallery" />
         <Gallery images={[
           { src: img('award-kayak'), alt: 'An instructor with young paddlers in a kayak' },
           { src: img('award-bikes'), alt: 'Riders with mountain bikes ready to set off' },
