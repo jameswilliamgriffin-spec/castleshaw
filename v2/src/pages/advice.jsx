@@ -304,6 +304,7 @@ export function Advisers({ path }) {
         image={{ src: img('advice-river-training'), alt: 'Leaders practising a river crossing with walking poles' }}
       />
       <Band>
+        <SectionHead title="Meet the advisers" />
         <People items={[
           { name: 'Rod Steele', role: 'Senior tutor and adviser', img: shared('team/rod-steele'), alt: 'Rod Steele, smiling, holding a canoe paddle on a river', extra: 'Institute for Outdoor Learning accredited practitioner. IOSH. Level 4 canoe and kayak coach. Mountain bike leader. OEAP member.' },
           { name: 'Joseph Myhill', role: 'Centre manager and adviser', img: shared('team/joseph-myhill'), alt: 'Joseph Myhill, smiling, in a red jacket and woolly hat outdoors', extra: 'Duke of Edinburgh’s Award assessor and supervisor. Former DofE manager. Paddlesport leader. OEAP member.' },
@@ -311,6 +312,7 @@ export function Advisers({ path }) {
         <p><TBC>Whether the advisers hold OEAP accredited adviser status</TBC></p>
       </Band>
       <Band tone="sky">
+        <SectionHead title="At a glance" />
         <Ledger items={[
           ['20+', 'years running the service'],
           ['40+', 'years of combined adviser experience'],
@@ -319,6 +321,7 @@ export function Advisers({ path }) {
         ]} />
       </Band>
       <Band tone="ink">
+        <SectionHead title="What inspectors say" />
         <Pull big text="Extraordinary." by="A Council for Learning Outside the Classroom inspector, on our most recent inspection" />
       </Band>
       <QuoteCta />
