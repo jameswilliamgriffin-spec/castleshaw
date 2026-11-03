@@ -4,10 +4,8 @@ These were made with ChatGPT image generation for the educational visits advice 
 
 | File | Used for |
 |---|---|
-| boots-gritstone.webp | Advice landing hero |
-| hands-carabiner.webp | "What we look at" |
-| wellies-puddle.webp | "Who it's for"; Who it's for page hero |
-| compass-moss.webp | "How it works"; How it works page hero |
 | moor-dusk.webp | Emergency support band and page hero |
 | drystone-wall.webp | Guidance and resources page hero |
 | stream-stones.webp | Guide and quote section |
+
+Four earlier images (boots-gritstone, hands-carabiner, wellies-puddle, compass-moss) were removed in the imagery pass because they showed people or kit; they are in git history. The newer generated set lives in `assets/generated/raw/` (register: `assets/generated/REGISTER.md`), built into `shared/images/gen/` by `scripts/imagery.py`.

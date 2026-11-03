@@ -542,3 +542,18 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 .people-img { width: 100%; }
 /* kit lists: body-size text and a little more air on wide screens */
 @media (min-width: 1100px) { .kit { padding: 1.8rem 2rem 2rem; } .kit ul { font-size: 1rem; gap: .5rem; } .kits { gap: var(--s-4); } }
+
+/* --- imagery (ui/inner/Slot.jsx) --- */
+/* a full-width image between two sections */
+.ibreak { position: relative; overflow: hidden; height: clamp(13rem, 30vw, 30rem); background: var(--sky-pale); }
+.ibreak-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 599px) { .ibreak { height: auto; aspect-ratio: 3 / 2; } }
+@media (prefers-reduced-motion: no-preference) {
+  .ibreak-img { transform: scale(1.04); opacity: .001; transition: transform 1.1s var(--ease), opacity .6s var(--ease); }
+  .ibreak.is-in .ibreak-img { transform: none; opacity: 1; }
+}
+/* an image behind a navy band, under a scrim that keeps text at AA (darkest where the text sits) */
+.band-bg { position: relative; isolation: isolate; overflow: hidden; }
+.band-bg::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10, 42, 60, .93) 0%, rgba(10, 42, 60, .87) 45%, rgba(10, 42, 60, .74) 100%); }
+.band-bg-img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; margin: 0 !important; max-width: none; object-fit: cover; }
+@media (max-width: 599px) { .band-bg::before { background: rgba(10, 42, 60, .86); } }

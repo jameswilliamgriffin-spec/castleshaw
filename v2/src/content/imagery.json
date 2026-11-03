@@ -232,7 +232,8 @@
     "advice-how-hero": {
       "image": "g05-bilberry-heather",
       "alt": "",
-      "pos": "45% 50%"
+      "pos": "45% 50%",
+      "sizes": "(min-width: 900px) 30rem, 80vw"
     },
     "advice-how-break": {
       "image": "g04-moor-mist",
@@ -243,7 +244,8 @@
     "advice-agreement-hero": {
       "image": "g06-wall-wool",
       "alt": "",
-      "pos": "55% 40%"
+      "pos": "55% 40%",
+      "sizes": "(min-width: 900px) 30rem, 80vw"
     },
     "advice-agreement-break": {
       "image": "g07-reservoir-ripples",
@@ -253,7 +255,8 @@
     "advice-who-hero": {
       "image": "g08-cotton-grass",
       "alt": "",
-      "pos": "45% 35%"
+      "pos": "45% 35%",
+      "sizes": "(min-width: 900px) 30rem, 80vw"
     },
     "advice-advisers-quote": {
       "image": "g04-moor-mist",
@@ -312,7 +315,8 @@
     "courses-hub-hero": {
       "image": "r-water-kayaks",
       "alt": "Young people paddling kayaks on a reservoir among the hills",
-      "pos": "50% 55%"
+      "pos": "50% 55%",
+      "sizes": "(min-width: 900px) 30rem, 80vw"
     },
     "courses-clubs-quote": {
       "image": "g13-grass-backlit",

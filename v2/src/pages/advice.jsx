@@ -1,7 +1,7 @@
 // Educational visits advice and guidance: the sub-pages behind the advice landing.
 // Facts come from the centre's 2025 service leaflet and the client's answers;
 // anything not yet confirmed is marked with <TBC>.
-import { PageTop, Band, SectionHead, SqLink, Intro, Split, Ticks, Ledger, Steps, Faq, LinkList, People, Callout, CtaBand, Quote as Pull, Btn, TBC, img, gen, shared, Breadcrumbs, SubNav } from '../ui/inner/blocks'
+import { PageTop, Band, ImageBreak, SectionHead, SqLink, Intro, Split, Ticks, Ledger, Steps, Faq, LinkList, People, Callout, CtaBand, Quote as Pull, Btn, TBC, img, gen, shared, Breadcrumbs, SubNav } from '../ui/inner/blocks'
 import ShapedImage from '../ui/shape/ShapedImage'
 import { Squiggle, useReveal } from '../ui/Squiggle'
 import LeadForm from '../ui/advice/LeadForm'
@@ -30,7 +30,7 @@ export function How({ path }) {
         tone="sky"
         title="How it works"
         lead="Every visit is planned on Evolve and passes through four sets of hands before it goes ahead. Ours are the last."
-        image={{ src: gen('compass-moss'), alt: 'A compass resting on wet moss and stones' }}
+        image={{ slot: 'advice-how-hero', key: gen('compass-moss') }}
         actions={<Btn href={QUOTE}>Contact us for a quote</Btn>}
       />
       <Band>
@@ -53,6 +53,7 @@ export function How({ path }) {
           <TBC block>Whether any other visit types need adviser approval, such as visits near water, and how far in advance visits should be submitted.</TBC>
         </Intro>
       </Band>
+      <ImageBreak slot="advice-how-break" />
 
       <Band>
         <Intro heading="What we look at">
@@ -101,7 +102,7 @@ export function Agreement({ path }) {
         path={path}
         title="The service agreement"
         lead="One annual Service Level Agreement covers advice, approval, Evolve, policy support, training and a 24/7 critical incident line."
-        image={{ src: gen('hands-carabiner'), alt: 'Hands checking a locked carabiner on a climbing rope', pos: '55% 40%' }}
+        image={{ slot: 'advice-agreement-hero', key: gen('hands-carabiner') }}
         actions={<Btn href={QUOTE}>Contact us for a quote</Btn>}
       />
       <Band>
@@ -116,6 +117,7 @@ export function Agreement({ path }) {
         </div>
       </Band>
 
+      <ImageBreak slot="advice-agreement-break" />
       <Band tone="sky" id="packages">
         <Intro heading="Packages and prices">
           <p>Prices depend on the size and type of your establishment. Contact us and we will send you a quote.</p>
@@ -148,7 +150,7 @@ export function Who({ path }) {
         path={path}
         title="Who it's for"
         lead="Any school, college, academy or youth service can join, in Oldham and beyond."
-        image={{ src: gen('wellies-puddle'), alt: 'Wellington boots stepping into a muddy puddle on a farm track', pos: '50% 70%' }}
+        image={{ slot: 'advice-who-hero', key: gen('wellies-puddle') }}
       />
       <Band>
         <Intro heading="Why it matters">
@@ -321,7 +323,7 @@ export function Advisers({ path }) {
           ['24/7', 'critical incident line'],
         ]} />
       </Band>
-      <Band tone="ink">
+      <Band tone="ink" backdrop="advice-advisers-quote">
         <SectionHead title="What inspectors say" />
         <Pull big text="Extraordinary." by="A Council for Learning Outside the Classroom inspector, on our most recent inspection" />
       </Band>

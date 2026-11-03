@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { PAGES } from '../../site.mjs'
 import { href, PHONE, PHONE_HREF, EMAIL, CONTACT } from '../../data'
 import { ROOT, HOME, ridge } from '../../lib'
+import { Picture, slot } from './Slot'
 import { Squiggle, Contours, useReveal } from '../Squiggle'
 import ScrollCue from '../ScrollCue'
 import ShapedImage from '../shape/ShapedImage'
@@ -81,6 +82,9 @@ export function SubNav({ path }) {
 
 export function Hero({ path, title, lead, children, image, illustration, tone = 'sky', actions, seed = 2.1 }) {
   const d = useMemo(() => ridge(seed, { h: 140, base: 0.55, amp: 0.22 }), [seed])
+  // image.slot: a manifest image (content/imagery.json). image.key keeps the shape picked for the image it replaced.
+  const pic = image?.slot ? slot(image.slot) : undefined
+  const key = image && (image.key || image.src || pic?.src)
   return (
     <header className={`ph ph-${tone}${illustration ? ' ph-ill' : ''}`}>
       <div className="ph-inner">
@@ -92,13 +96,13 @@ export function Hero({ path, title, lead, children, image, illustration, tone = 
           {actions && <div className="ph-actions">{actions}</div>}
         </div>
         {image && (image.shape === 'soft' ? (
-          <ShapedImage className="ph-art ph-shp ph-shp-soft" src={image.src} alt={image.alt} shape="soft" aspect="4/3" shadow priority pos={image.pos} />
+          <ShapedImage className="ph-art ph-shp ph-shp-soft" src={image.src} picture={pic} alt={image.alt} shape="soft" aspect="4/3" shadow priority pos={image.pos} />
         ) : (
           <ShapedImage
-            className="ph-art ph-shp" src={image.src} alt={image.alt} priority shadow
-            shape={image.shape || pick(image.src, HERO_SHAPES)} backdrop="offset"
-            accent={image.accent || pick(image.src, ACCENTS, 7)} offset={pick(image.src, ['br', 'bl'], 3)}
-            float={pick(image.src, ['circle', 'squiggle', 'blob'], 11)} aspect="4/4.4" pos={image.pos || '50% 35%'}
+            className="ph-art ph-shp" src={image.src} picture={pic} alt={image.alt} priority shadow
+            shape={image.shape || pick(key, HERO_SHAPES)} backdrop="offset"
+            accent={image.accent || pick(key, ACCENTS, 7)} offset={pick(key, ['br', 'bl'], 3)}
+            float={pick(key, ['circle', 'squiggle', 'blob'], 11)} aspect="4/4.4" pos={image.pos || '50% 35%'}
           />
         ))}
         {illustration && (
@@ -115,7 +119,8 @@ export function Hero({ path, title, lead, children, image, illustration, tone = 
 
 /* ---------- layout ---------- */
 // A section of the page. Its contents rise in once, the first time it scrolls into view.
-export function Band({ tone = 'chalk', id, children, className = '', narrow }) {
+// backdrop: an imagery slot shown behind the band under a navy scrim (navy quote bands only).
+export function Band({ tone = 'chalk', id, children, className = '', narrow, backdrop }) {
   const ref = useRef(null)
   useEffect(() => {
     const el = ref.current
@@ -124,7 +129,25 @@ export function Band({ tone = 'chalk', id, children, className = '', narrow }) {
     io.observe(el)
     return () => io.disconnect()
   }, [])
-  return <section ref={ref} id={id} className={`band band-${tone}${narrow ? ' band-narrow' : ''} ${className}`}>{children}</section>
+  return (
+    <section ref={ref} id={id} className={`band band-${tone}${narrow ? ' band-narrow' : ''}${backdrop ? ' band-bg' : ''} ${className}`}>
+      {children}
+      {backdrop && <Picture slot={backdrop} sizes="100vw" imgClassName="band-bg-img" />}
+    </section>
+  )
+}
+
+// A full-width image between two sections. Decorative; reveals once.
+export function ImageBreak({ slot: id }) {
+  const ref = useRef(null)
+  useEffect(() => {
+    const el = ref.current
+    if (!('IntersectionObserver' in window)) { el.classList.add('is-in'); return }
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.classList.add('is-in'); io.disconnect() } }, { rootMargin: '0px 0px -10% 0px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+  return <div ref={ref} className="ibreak"><Picture slot={id} sizes="100vw" imgClassName="ibreak-img" /></div>
 }
 
 // A section's heading block: optional eyebrow, the h2, an optional lead.
