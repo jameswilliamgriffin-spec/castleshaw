@@ -47,6 +47,7 @@ export function Clubs({ path }) {
         actions={<a className="ib ib-ink" href={FACEBOOK} rel="noopener">Updates on Facebook</a>}
       />
       <Band>
+        <SectionHead eyebrow="Holiday clubs" title="Two kinds of club" />
         <div className="cols cols-2">
           <div className="icard">
             <h3>Holiday Activities and Food (HAF)</h3>
@@ -61,6 +62,7 @@ export function Clubs({ path }) {
         </div>
       </Band>
       <Band tone="sky">
+        <SectionHead title="Gallery" />
         <Gallery images={[
           { src: img('club-archery'), alt: 'Children trying archery on the field' },
           { src: img('club-girls'), alt: 'Children smiling on the hillside during a club day' },
@@ -71,9 +73,11 @@ export function Clubs({ path }) {
         ]} />
       </Band>
       <Band tone="ink">
+        <SectionHead title="What parents say" />
         <Quote big text="Best day ever!" by="A parent, after the Summer Holiday Club" />
       </Band>
       <Band>
+        <SectionHead title="Club dates" />
         <Callout title="Stay up to date" tone="sky">
           <p>We post club dates and places on our <a href={FACEBOOK} rel="noopener">Facebook page</a> first.</p>
         </Callout>
