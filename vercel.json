@@ -192,8 +192,8 @@
       "permanent": true
     },
     {
-      "source": "/v2/:path*",
-      "destination": "/:path*",
+      "source": "/v2/:path(.*)",
+      "destination": "/:path",
       "permanent": true
     },
     {
@@ -202,7 +202,7 @@
       "permanent": true
     },
     {
-      "source": "/v1/:path*",
+      "source": "/v1/:path(.*)",
       "destination": "/",
       "permanent": true
     }
