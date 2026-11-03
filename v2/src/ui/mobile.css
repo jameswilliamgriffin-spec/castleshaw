@@ -140,6 +140,9 @@ img, video { max-width: 100%; }
   /* activity lists: a smaller thumbnail so the text isn't three words a line */
   :root:root .aitem { grid-template-columns: 4rem 1fr; gap: .9rem; }
   :root:root .j-call { margin-left: 0; white-space: nowrap; font-size: .9375rem; }
+  /* long single words in big type fit the column instead of breaking ("Environmental", "Extraordinary.") */
+  :root:root .ph-h1 { font-size: min(2.75rem, 12.4vw); }
+  :root:root .al-inspect blockquote { font-size: min(2.2rem, 8.6vw); overflow-wrap: normal; }
   /* the hero line "the classroom." stays together */
   :root:root .hero-h { font-size: min(9.4vw, 14svh); }
 }
@@ -156,6 +159,8 @@ img, video { max-width: 100%; }
   :root { --g: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); }
   /* portraits stay two to a row, even at 320 */
   :root:root .people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* advice landing advisers: a smaller photo, so the bio keeps a usable column */
+  :root:root .al-person { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; }
   /* people with a bio: one to a row, the portrait beside the text, so the bio isn't 13 characters a line */
   :root:root .people:has(.people-extra) { grid-template-columns: minmax(0, 1fr); }
   :root:root .people:has(.people-extra) li { grid-template-columns: 6.5rem minmax(0, 1fr); column-gap: 1rem; }
