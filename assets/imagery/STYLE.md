@@ -16,6 +16,13 @@ Generated imagery fills atmospheric gaps only. It never stands in for the real c
 
 Then add: **subject**, **composition**, **light**, **colour family**, **aspect ratio**, **focal point position**.
 
+## Notes from the style test (approved direction)
+
+- **Stone** is dark, grey, coarse Pennine gritstone (millstone grit), not honey sandstone or limestone.
+- **Water** picks up a hint of cool sky blue in its reflections, so it reads as Water and not only slate.
+- **Backlight** is warmer and clearer than a flat dull day: a soft warm rim on grasses and edges, never golden-hour cliché.
+- **Lamplight** (Stay) is soft and warm, not orange.
+
 ## Negative list (append to every generation)
 
 > No people, no faces, no hands, no feet, no legs, no body parts, no silhouettes or figures in the distance. No text, letters, numbers, signage, logos or watermarks. No buildings, ruins, landmarks or recognisable places. No vehicles, boats, tents, ropes, harnesses, helmets, carabiners, compasses or other equipment. No animals in focus. Not an illustration, painting, drawing, cartoon, vector art, 3D render or CGI. No fantasy, no surreal lighting, no heavy HDR, no oversaturation, no vignette, no lens flare.

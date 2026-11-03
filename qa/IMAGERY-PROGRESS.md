@@ -6,8 +6,8 @@ Branch `imagery/internal-pages` (from `polish/internal-pages`). Audit: `qa/IMAGE
 |---|---|---|
 | 0: Tools | Done | Image tool connected: `codex-images` (ChatGPT image generation), the one used for the existing advice photos. |
 | 1: Audit | Done, approved | 18 slots on 12 pages: 15 generated, 3 real (compass added). |
-| 2: Shot list, style guide, style test | Style test done, awaiting review | 13 images for 15 slots (`assets/imagery/SHOTLIST.md`). Style: `assets/imagery/STYLE.md`. Test images: `assets/generated/style-test/`. |
-| 3: Generate | Not started | |
+| 2: Shot list, style guide, style test | Done, approved | 13 images for 15 slots (`assets/imagery/SHOTLIST.md`). Style: `assets/imagery/STYLE.md`. Test images: `assets/generated/style-test/`. |
+| 3: Generate | Batch 1 of 2 done, awaiting review | Batch 1: g01–g06, g08, g09 (`qa/contact-sheet-1.html`). Batch 2 next: g07, g10 (style test approved as is), g11, g12, g13 with the style-test tweaks. |
 | 4: Implement | Not started | |
 | 5: QA | Not started | |
 
