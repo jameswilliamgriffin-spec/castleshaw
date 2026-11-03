@@ -32,6 +32,7 @@ export function Hub({ path }) {
         actions={<><Btn href={at('plan-your-visit')}>Plan your visit</Btn><a className="ib ib-line" href={PHONE_HREF}>Call {PHONE}</a></>}
       />
       <Band>
+        <SectionHead eyebrow="Activities and school visits" title="What you can do" />
         <TileLinks items={[
           { title: 'Adventure on land', href: at('adventure-on-land'), img: img('land-ghyll-waterfall'), text: 'Ghyll scrambling, climbing, abseiling, caving, hill walking and orienteering.' },
           { title: 'Adventure on water', href: at('adventure-on-water'), img: img('water-kayak-green'), text: 'Kayaking, canoeing, rafting and paddleboarding on reservoir water.' },
@@ -45,7 +46,7 @@ export function Hub({ path }) {
         <Intro heading="A day or a residential">
           <p>Courses at Castleshaw extend what your curriculum can offer and give young people experiences they may not otherwise have. They can be day visits or residential stays, and that choice is usually made by school staff.</p>
           <p>We can design an individual course, but it&rsquo;s generally best to choose topics that make the most of where we are. In our words: Roman history would be better than Egyptian history.</p>
-          <p><a href={at('plan-your-visit')}>How to plan and book a visit</a></p>
+          <p><SqLink href={at('plan-your-visit')}>How to plan and book a visit</SqLink></p>
         </Intro>
         <Ledger items={[
           ['10,000', 'people of all ages visit each year'],
@@ -54,7 +55,12 @@ export function Hub({ path }) {
           ['LOtC', 'Quality Badge for learning outside the classroom'],
         ]} />
       </Band>
+      <Band tone="ink">
+        <SectionHead title="What schools say" />
+        <Quote big text="Absolutely brilliant. Most children would not have got this opportunity with their families." by="Freehold, Year 6 activity residential" />
+      </Band>
       <Band>
+        <SectionHead title="Who it’s for" />
         <div className="cols cols-3">
           <div className="icard">
             <h3>Primary schools</h3>
@@ -72,9 +78,6 @@ export function Hub({ path }) {
             <Ticks items={['Away days for staff teams', 'Youth service residentials', 'The Oldham Linked Schools project', <a key="s" href={href('stay/')}>Accommodation only, if you run your own programme</a>]} />
           </div>
         </div>
-      </Band>
-      <Band tone="ink">
-        <Quote big text="Absolutely brilliant. Most children would not have got this opportunity with their families." by="Freehold, Year 6 activity residential" />
       </Band>
       <AdviceNote />
       <CtaBand title="Tell us who is coming and what you would like to do" text="Once we have agreed a programme, we email the group leader a quotation and booking form." />
