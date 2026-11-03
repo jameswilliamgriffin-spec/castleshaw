@@ -156,11 +156,12 @@ export function Who({ path }) {
         </Intro>
       </Band>
       <Band tone="sky">
+        <SectionHead title="Who can join" />
         <div className="cols cols-2">
           <div className="icard" id="oldham-schools"><h3>Oldham maintained schools</h3><p>Oldham Council is the employer for community and voluntary controlled schools.</p><TBC block>Whether Oldham maintained schools receive the service as part of the Council&rsquo;s duty as employer, or buy the agreement, and what is extra.</TBC></div>
-          <div className="icard" id="academies"><h3>Academies and trusts</h3><p>Academies and multi-academy trusts are their own employers and can buy the service for one school or all of them, with one point of contact.</p><p><TBC>Whether whole-trust agreements are offered</TBC></p></div>
+          <div className="icard" id="academies"><h3>Academies and trusts</h3><p>Academies and multi-academy trusts are their own employers and can buy the service for one school or all of them, with one point of contact.</p><TBC block>Whether whole-trust agreements are offered</TBC></div>
           <div className="icard" id="colleges-youth"><h3>Colleges and youth services</h3><p>Colleges, youth services and community organisations running visits, residentials or adventurous activities can join, with sign-off by the head of the service instead of a head teacher.</p></div>
-          <div className="icard" id="beyond-oldham"><h3>Schools outside Oldham</h3><p>Being outside Oldham is no barrier. We are based in Delph, close to Greater Manchester, West Yorkshire and the Peak District, and can come to you in person for planning and complex visits.</p><p><TBC>How far in-person support reaches</TBC></p></div>
+          <div className="icard" id="beyond-oldham"><h3>Schools outside Oldham</h3><p>Being outside Oldham is no barrier. We are based in Delph, close to Greater Manchester, West Yorkshire and the Peak District, and can come to you in person for planning and complex visits.</p><TBC block>How far in-person support reaches</TBC></div>
         </div>
       </Band>
       <Band>
