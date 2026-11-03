@@ -35,6 +35,7 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 |---|---|---|---|
 | Activities hub (batch 1) | Done, no page change | — | Shared fixes it found: ledger figures had shrunk to 13px (fixed); hub tiles 16:9 on phones. "Who it's for" cards are long on phones (no shared tap-to-open block for cards yet). |
 | Adventure on land (batch 1) | Done, no page change | — | Shared fixes it found: At a glance values level at 768; activity thumbnails 64px below 375px; What to bring box padding 24px under 600px. |
+| Adventure on water (batch 1) | Done, no page change | — | Shared fix it found: "To confirm" boxes stack their label above the text under 900px (390: 6,852 → 6,585px). |
 | Plan your visit (pilot) | Done | see git log (`mobile: plan-your-visit`) | 390: 11,525px → 9,775px. No overflow, no targets under 44px, headings in order, no console errors at 320/360/390/430/768/844×390; works at 200% text zoom; keyboard opens the kit lists; desktop unchanged (7,551px, lists open). No hero CTA added (content rule): the page's booking CTA stays at the end. |
 
 ## Decisions and notes
