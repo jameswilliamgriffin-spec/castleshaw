@@ -475,6 +475,7 @@ export function Plan({ path }) {
         </div>
       </Band>
 
+      <ImageBreak slot="activities-plan-break" />
       <Band id="what-to-bring">
         <Intro heading="What to bring" aside={
           <Callout title="Five things visitors most often wish they had brought" tone="sage">

@@ -8,12 +8,12 @@ Branch `imagery/internal-pages` (from `polish/internal-pages`). Audit: `qa/IMAGE
 | 1: Audit | Done, approved | 18 slots on 12 pages: 15 generated, 3 real (compass added). |
 | 2: Shot list, style guide, style test | Done, approved | 13 images for 15 slots (`assets/imagery/SHOTLIST.md`). Style: `assets/imagery/STYLE.md`. Test images: `assets/generated/style-test/`. |
 | 3: Generate | Done, approved | 13 images in `assets/generated/raw/`; contact sheets `qa/contact-sheet-1.html`, `qa/contact-sheet-2.html`. |
-| 4: Implement | Pilot and batch 1 approved; batch 2 (Activities) done, awaiting feedback | Manifest `v2/src/content/imagery.json`; build `python3 scripts/imagery.py` (AVIF, WebP, JPEG at 480/768/1200/1536, sizes in `qa/IMAGERY-SIZES.md`); component `v2/src/ui/inner/Slot.jsx` (`Picture`, `slot()`; `ShapedImage` takes `picture`). Hero preload now uses the slot's AVIF srcset. Landing: perf 85 → 91, LCP 4.1 → 3.2 s, CLS 0, page weight 369 KB. |
+| 4: Implement | All 18 slots on 12 pages done (pilot and batches 1–3); batch 3 awaiting feedback | Manifest `v2/src/content/imagery.json`; build `python3 scripts/imagery.py` (AVIF, WebP, JPEG at 480/768/1200/1536, sizes in `qa/IMAGERY-SIZES.md`); component `v2/src/ui/inner/Slot.jsx` (`Picture`, `slot()`; `ShapedImage` takes `picture`). Hero preload now uses the slot's AVIF srcset. Landing: perf 85 → 91, LCP 4.1 → 3.2 s, CLS 0, page weight 369 KB. |
 | 5: QA | Not started | |
 
 ## Decisions
 
-- **Courses and clubs illustration:** remove (user, Phase 1). Replace with a real photograph (`water-kayaks` proposed).
+- **Courses and clubs illustration:** removed (user, Phase 1); replaced with the real `water-kayaks` photo, and the file deleted (in git history).
 - **Existing AI images that break the rules:** `boots-gritstone`, `wellies-puddle`, `hands-carabiner` to be replaced in the same set. `compass-moss` also to be replaced (user, Phase 1): new slot `advice-how-hero`.
 
 ## New blocks
@@ -33,11 +33,15 @@ Branch `imagery/internal-pages` (from `polish/internal-pages`). Audit: `qa/IMAGE
 | Service agreement (batch 1) | `advice-agreement-hero`, `advice-agreement-break` | Done | `25a44fa` |
 | Who it's for (batch 1) | `advice-who-hero` | Done | `25a44fa` |
 | Our advisers (batch 1) | `advice-advisers-quote` | Done | `25a44fa` |
-| Activities hub (batch 2) | `activities-hub-quote` | Done | batch 2 |
-| Team building (batch 2) | `activities-team-quote` | Done | batch 2 |
-| Bushcraft (batch 2) | `activities-bushcraft-break` | Done | batch 2 |
-| Environmental education (batch 2) | `activities-env-break` (real photo) | Done | batch 2 |
-| Roman and local history (batch 2) | `activities-roman-break` (three real photos) | Done | batch 2 |
+| Activities hub (batch 2) | `activities-hub-quote` | Done | `47c8c53` |
+| Team building (batch 2) | `activities-team-quote` | Done | `47c8c53` |
+| Bushcraft (batch 2) | `activities-bushcraft-break` | Done | `47c8c53` |
+| Environmental education (batch 2) | `activities-env-break` (real photo) | Done | `47c8c53` |
+| Roman and local history (batch 2) | `activities-roman-break` (three real photos) | Done | `47c8c53` |
+| Plan your visit (batch 3) | `activities-plan-break` | Done | batch 3 |
+| Stay and hire (batch 3) | `stay-evening-break` | Done (crop raised to show the beam and the light) | batch 3 |
+| Courses and clubs hub (batch 3) | `courses-hub-hero` (real photo; the illustration removed) | Done | batch 3 |
+| Holiday clubs (batch 3) | `courses-clubs-quote` | Done | batch 3 |
 
 ## How to resume
 

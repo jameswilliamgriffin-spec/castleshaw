@@ -1,5 +1,5 @@
 // Stay and hire: the centre building for residential groups and self-programming groups.
-import { PageTop, Band, SectionHead, OnThisPage, Split, Ticks, Ledger, Gallery, Facilities, Quotes, Downloads, Callout, CtaBand, Btn, TBC, img, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, OnThisPage, Split, Ticks, Ledger, Gallery, Facilities, Quotes, Downloads, Callout, CtaBand, Btn, TBC, img, OLD, ImageBreak } from '../ui/inner/blocks'
 import { href, CONTACT } from '../data'
 
 export function Stay({ path }) {
@@ -43,6 +43,7 @@ export function Stay({ path }) {
         </div>
       </Band>
 
+      <ImageBreak slot="stay-evening-break" />
       <Band id="facilities">
         <Split image={{ src: img('stay-lounge-2'), alt: 'The lounge, with long blue sofas and a large screen' }} heading="Facilities">
           <Facilities items={[

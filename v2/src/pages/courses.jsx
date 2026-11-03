@@ -1,5 +1,5 @@
 // Courses and holiday clubs: for young people, families and outdoor leaders.
-import { PageTop, Band, SectionHead, Intro, Split, Ticks, TileLinks, ActivityList, Gallery, Quote, Quotes, Callout, CtaBand, OnThisPage, Btn, TBC, img, ill } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Intro, Split, Ticks, TileLinks, ActivityList, Gallery, Quote, Quotes, Callout, CtaBand, OnThisPage, Btn, TBC, img } from '../ui/inner/blocks'
 import { href, FACEBOOK } from '../data'
 
 const cc = (k) => href(`courses-and-clubs/${k}/`)
@@ -13,7 +13,7 @@ export function Hub({ path }) {
         tone="sage"
         title="Courses and holiday clubs"
         lead="Holiday clubs for Oldham children, summer activity courses for young people, and outdoor awards for young people and leaders."
-        illustration={{ src: ill('courses-camp'), alt: 'An illustration of a tent, a canoe, a campfire and a climbing helmet in the valley' }}
+        image={{ slot: 'courses-hub-hero' }}
       />
       <Band>
         <SectionHead eyebrow="Courses and clubs" title="What we run" />
@@ -72,7 +72,7 @@ export function Clubs({ path }) {
           { src: img('bushcraft-fire'), alt: 'Toasting marshmallows over a small fire' },
         ]} />
       </Band>
-      <Band tone="ink">
+      <Band tone="ink" backdrop="courses-clubs-quote">
         <SectionHead title="What parents say" />
         <Quote big text="Best day ever!" by="A parent, after the Summer Holiday Club" />
       </Band>

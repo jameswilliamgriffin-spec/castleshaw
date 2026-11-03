@@ -309,8 +309,8 @@
     "stay-evening-break": {
       "image": "g12-lamplight-stone",
       "alt": "",
-      "pos": "40% 40%",
-      "posMobile": "30% 45%"
+      "pos": "35% 22%",
+      "posMobile": "25% 25%"
     },
     "courses-hub-hero": {
       "image": "r-water-kayaks",
