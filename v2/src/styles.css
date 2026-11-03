@@ -1,5 +1,8 @@
 /* Castleshaw Centre homepage, concept 2: "the page is the logo".
    Brand colours are sampled from the logo; the rest are tints or deepened versions of them. */
+/* Georgia, resized to Literata's measurements, so text doesn't re-wrap when the web font arrives */
+@font-face { font-family: 'Bricolage Fallback'; src: local('Arial'); size-adjust: 101%; ascent-override: 92%; descent-override: 26.7%; line-gap-override: 0%; }
+@font-face { font-family: 'Literata Fallback'; src: local('Georgia'); size-adjust: 106.65%; ascent-override: 110.6%; descent-override: 29.1%; line-gap-override: 0%; }
 :root {
   --sky: #bfe4f7;       /* logo sky */
   --sky-pale: #e4f3fb;
@@ -11,8 +14,8 @@
   --ink: #0a2a3c;       /* night reservoir: our black */
   --chalk: #fbfdf8;     /* the white path in the logo */
   --focus: var(--water);
-  --disp: 'Bricolage Grotesque Variable', 'Arial Narrow', sans-serif;
-  --text: 'Literata Variable', Georgia, serif;
+  --disp: 'Bricolage Grotesque Variable', 'Bricolage Fallback', 'Arial Narrow', sans-serif;
+  --text: 'Literata Variable', 'Literata Fallback', Georgia, serif;
   --g: clamp(1rem, 4vw, 3.5rem);
   --out: cubic-bezier(.16, 1, .3, 1);
 }
@@ -109,23 +112,12 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .rg g { will-change: transform; }
 .rg-far { height: 100%; fill: var(--sage); }
 .rg-mid { height: 70%; fill: var(--moss); z-index: 2; }
-.rg-near { height: 42%; fill: #dbe9a8; z-index: 3; }
-.wins { position: absolute; inset: 0; z-index: 1; }
-.win { position: absolute; aspect-ratio: 3 / 4; overflow: hidden; -webkit-clip-path: var(--shape-blob-2); clip-path: var(--shape-blob-2); }
-.win-2 { -webkit-clip-path: var(--shape-blob-9); clip-path: var(--shape-blob-9); }
-.win-3 { -webkit-clip-path: var(--shape-blob-7); clip-path: var(--shape-blob-7); }
-.win img { width: 100%; height: 100%; object-fit: cover; }
-.win-1 { left: 6%; bottom: 26%; width: 27vw; }
-.win-2 { left: 38%; bottom: 14%; width: 30vw; }
-.win-3 { left: 72%; bottom: 30%; width: 22vw; }
+.rg-near { height: 26%; fill: #dbe9a8; z-index: 4; }
 @media (min-width: 900px) {
   .hero-copy { grid-template-columns: repeat(12, 1fr); align-items: end; padding-top: 7.5rem; }
   .hero-h { grid-column: 1 / 9; }
   .hero-side { grid-column: 9 / 13; padding-bottom: .6rem; }
   .land { margin-top: -10vh; }
-  .win-1 { left: 40%; bottom: 30%; width: 11vw; }
-  .win-2 { left: 54%; bottom: 18%; width: 13vw; }
-  .win-3 { left: 70%; bottom: 34%; width: 9.5vw; }
 }
 
 /* activities: horizontal track */
@@ -134,11 +126,6 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .acts-tints i { position: absolute; inset: 0; opacity: 0; transition: opacity .9s; }
 .acts-tints i.on { opacity: 1; }
 .acts-head { padding: 0 var(--g); display: grid; gap: 1.2rem; margin-bottom: 2rem; }
-.acts-dots { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; font: 600 .95rem var(--disp); }
-.acts-dots li { display: flex; align-items: center; gap: .4rem; opacity: .55; transition: opacity .3s; }
-.acts-dots li::before { content: ''; width: .7rem; height: .7rem; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1.5px var(--ink); transition: transform .4s var(--out); }
-.acts-dots li.on { opacity: 1; }
-.acts-dots li.on::before { transform: scale(1.4); }
 .acts-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--g) 1.2rem; scrollbar-width: thin; }
 .act { flex: none; width: 84vw; scroll-snap-align: center; display: grid; gap: 1.2rem; align-content: start; }
 .act-img { aspect-ratio: 4 / 5; overflow: hidden; background: var(--ink); -webkit-clip-path: var(--act-shape, var(--shape-blob-5)); clip-path: var(--act-shape, var(--shape-blob-5)); }
@@ -373,7 +360,6 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 
 .j-h-s { font-size: clamp(1.3rem, 2.4vw, 1.9rem); margin-bottom: 1.2rem; color: var(--sky); }
 
-.j-ai { opacity: .75; font-size: .85rem; max-width: 34rem; }
 .journey .pb-txt .h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
 @media (max-width: 600px) {
   .j-controls { justify-content: stretch; }
@@ -468,36 +454,9 @@ html.is-loading { overflow: hidden; }
 /* threshold: shorter, so the first chapter's words arrive as the drawing turns real */
 .j-threshold { min-height: 118svh; }
 .j-block-first { padding-top: 6svh; }
-/* keep-scrolling cue: a walker dot heading down a dotted trail */
-.j-cue { margin-top: 1.6rem; display: inline-flex; align-items: center; gap: .8rem; font: 650 .95rem var(--disp); color: var(--ink); }
-.j-cue svg { width: 1.6rem; height: 6rem; overflow: visible; }
-.j-cue-path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1 6; opacity: .55; }
-.j-cue-dot { fill: var(--moss); stroke: var(--ink); stroke-width: 2; offset-path: path('M12 2 C 4 22, 20 34, 12 52 S 6 80, 12 94'); animation: j-walk 2.2s cubic-bezier(.45, 0, .25, 1) infinite; }
-@keyframes j-walk {
-  0% { offset-distance: 0%; opacity: 0; }
-  12% { opacity: 1; }
-  80% { offset-distance: 100%; opacity: 1; }
-  100% { offset-distance: 100%; opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) { .j-cue-dot { animation: none; offset-distance: 60%; } }
-
 /* lift the first chapter's words so they arrive while the hills are still turning real */
 .j-block-first .j-copy { transform: translateY(-42svh); opacity: clamp(0, calc((var(--thr, 0) - .38) * 4), 1); }
-/* keep-scrolling cue: large, on the right of the threshold */
 .j-threshold { position: relative; }
-.j-cue { position: absolute; right: calc(var(--g) + 1rem); top: 38svh; margin: 0; flex-direction: column; align-items: center; gap: 1rem; font-size: clamp(1.1rem, 1.8vw, 1.5rem); }
-.j-cue svg { width: clamp(2.6rem, 4vw, 3.6rem); height: clamp(11rem, 26svh, 17rem); }
-.j-cue-path { stroke-width: 3; stroke-dasharray: 1 9; opacity: .65; }
-.j-cue-dot { r: 6; stroke-width: 2.5; }
-.j-cue span { writing-mode: horizontal-tb; }
-@media (max-width: 600px) {
-  .j-cue { right: var(--g); top: 30svh; font-size: 1rem; gap: .6rem; }
-  .j-cue svg { height: 9rem; width: 2.2rem; }
-}
-.j-cue-dot { fill: var(--chalk); }
-.j-cue span { text-shadow: 0 1px 10px rgba(251, 253, 248, .7); }
-.j-cue { top: 14svh; }
-@media (max-width: 600px) { .j-cue { top: 24svh; } }
 /* the planner holds still for a moment while the film carries on behind it */
 .j-block:has(.j-panel-plan) { min-height: 240svh; padding-top: 14svh; }
 .j-panel-plan { position: sticky; top: clamp(5rem, 12svh, 8rem); align-self: start; }
@@ -508,10 +467,8 @@ html.is-loading { overflow: hidden; }
 .j-contact-info > p { margin-top: .8rem; max-width: 30rem; }
 .j-contact .j-tel { margin-top: .9rem; font-size: clamp(2rem, 4.4vw, 3.4rem); }
 .j-contact .j-form { margin-top: 0; }
-.j-contact .j-ai { margin: 0; }
 @media (min-width: 900px) {
   .j-contact { grid-template-columns: 5fr 6fr; column-gap: 3rem; align-items: center; }
-  .j-contact .j-ai { grid-column: 1 / -1; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .14); max-width: none; }
 }
 .j-block-end { min-height: 100svh; padding-top: 16svh; }
 
@@ -531,3 +488,168 @@ html.is-loading { overflow: hidden; }
 .hd-tag { padding: .12rem .45rem; border-radius: 99px; background: var(--moss); color: var(--ink); font: 700 .66rem/1.3 var(--disp); letter-spacing: .04em; text-transform: uppercase; }
 .hd-solid .hd-tag, .hd-top .hd-tag { background: var(--moss); }
 @media (max-width: 1199px) { .hd-tag { display: none; } }
+
+/* ====================== homepage polish ====================== */
+/* One easing for interface motion across the page: var(--out). */
+
+/* --- hero: room for the large logo, calmer copy column --- */
+.hero { min-height: max(100svh, 700px); }
+.hero-copy { padding-top: 7.4rem; }
+.hero-side p { font-size: 1.08rem; line-height: 1.65; }
+@media (min-width: 900px) { .hero-copy { padding-top: 9rem; } }
+
+/* --- hero: the sky lives a little --- */
+.sun-in { position: relative; }
+.sun-in::after { content: ''; position: absolute; inset: -32%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 66%); animation: sun-breathe 7s ease-in-out infinite alternate; }
+@keyframes sun-breathe { from { opacity: .55; transform: scale(.94); } to { opacity: 1; transform: scale(1.06); } }
+.clouds { position: absolute; inset: 0 0 35% 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.cloud { position: absolute; left: 0; fill: #fff; opacity: .78; animation: cloud-drift linear infinite; will-change: transform; }
+.cloud-1 { top: 12%; width: clamp(6rem, 11vw, 10rem); animation-duration: 110s; animation-delay: -40s; }
+.cloud-2 { top: 30%; width: clamp(4rem, 7vw, 6.5rem); opacity: .6; animation-duration: 150s; animation-delay: -95s; }
+.cloud-3 { top: 6%; width: clamp(7rem, 14vw, 13rem); opacity: .5; animation-duration: 190s; animation-delay: -20s; }
+@keyframes cloud-drift { from { transform: translateX(-16vw); } to { transform: translateX(112vw); } }
+.birds { position: absolute; left: 0; top: 24%; width: 2.6rem; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; opacity: 0; animation: birds 34s linear infinite 6s; }
+@keyframes birds { 0% { transform: translate(-6vw, 0); opacity: 0; } 3% { opacity: .5; } 38% { transform: translate(104vw, -9vh); opacity: .5; } 39%, 100% { opacity: 0; transform: translate(104vw, -9vh); } }
+.rg-near .sway { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 9s ease-in-out infinite alternate; }
+@keyframes sway { from { transform: skewX(-.5deg); } to { transform: skewX(.5deg); } }
+
+/* --- hero: photos layered between the hills, at different depths --- */
+.win { position: absolute; margin: 0; z-index: 1; }
+.win-par, .win-float { width: 100%; }
+.win-float { animation: win-float var(--fd, 7s) ease-in-out var(--fdl, 0s) infinite alternate; filter: drop-shadow(0 18px 22px rgba(10, 42, 60, .24)); }
+@keyframes win-float { from { transform: translateY(calc(var(--fy, 7px) * -1)); } to { transform: translateY(var(--fy, 7px)); } }
+.win-mask { aspect-ratio: 4 / 5; overflow: hidden; -webkit-clip-path: var(--clip); clip-path: var(--clip); background: var(--sage); }
+.win-mask img { width: 100%; height: 100%; object-fit: cover; }
+.win-1 { z-index: 5; left: 4%; bottom: 7%; width: 40vw; }
+.win-2 { z-index: 1; left: 38%; bottom: 36%; width: 27vw; }
+.win-3 { z-index: 3; left: 62%; bottom: 3%; width: 34vw; }
+.land { min-height: 52svh; }
+@media (min-width: 900px) {
+  .land { min-height: 46vh; }
+  .win-1 { left: 5%; bottom: 5%; width: clamp(12rem, 18vw, 21rem); }
+  .win-2 { left: 34%; bottom: 33%; width: clamp(8.5rem, 11.5vw, 13.5rem); }
+  .win-3 { left: 62%; bottom: 2%; width: clamp(10.5rem, 15.5vw, 18rem); }
+}
+
+/* --- the large logo, shrinking with scroll (homepage) --- */
+.hd-grow { --lg-s: 1.7; --lgp: 1; }
+/* while the logo shrinks, a chalk backing fades in so the headline never shows through the nav */
+.hd-grow.hd-top { background: rgba(251, 253, 248, calc(var(--lgp) * .94)); box-shadow: 0 1px 0 rgba(10, 42, 60, calc(var(--lgp) * .08)); }
+@media (min-width: 600px) { .hd-grow { --lg-s: 1.9; } }
+@media (min-width: 1080px) { .hd-grow { --lg-s: 1.6; } }
+@media (min-width: 1280px) { .hd-grow { --lg-s: 2.2; } }
+.hd .hd-logo-cut { overflow: visible; border-radius: 0; box-shadow: none; position: relative; z-index: 2; }
+.hd-logo-cut img { width: 100%; height: auto; transform-origin: 0 0; transform: scale(calc(1 + (var(--lg-s) - 1) * (1 - var(--lgp)))); will-change: transform; }
+/* the nav makes room while the logo is large, then settles */
+.hd-grow .hd-nav { transform: translateX(calc((1 - var(--lgp)) * (var(--lg-s) - 1) * 5rem)); }
+.hd.hd-open .hd-logo-cut { box-shadow: 0 0 0 .3rem #fff; background: #fff; border-radius: .3rem; }
+.hd.hd-open .hd-logo-cut img { transform: none; }
+
+/* --- scroll prompt: a few dots walking a short trail --- */
+.cue { position: absolute; z-index: 6; display: flex; align-items: center; gap: .55rem; color: var(--ink); font: 600 .82rem/1.2 var(--disp); letter-spacing: .01em; pointer-events: none; opacity: 0; transform: translateY(6px); transition: opacity .15s, transform .15s; }
+.cue.is-on { opacity: 1; transform: none; transition: opacity .6s var(--out), transform .7s var(--out); }
+.cue-down { flex-direction: column; }
+.cue svg { overflow: visible; }
+.cue-down svg { width: .8rem; height: 2.9rem; }
+.cue-right svg { width: 2.9rem; height: .8rem; order: 2; }
+.cue-path { fill: none; stroke: currentColor; stroke-width: 1.1; stroke-linecap: round; stroke-dasharray: .4 3.4; opacity: .4; }
+.cue-dot { fill: currentColor; opacity: 0; }
+.cue.is-on .cue-dot { animation: cue-walk 2.2s var(--out) infinite; animation-delay: calc(var(--i) * .17s); }
+@keyframes cue-walk { 0% { opacity: 0; } 18% { opacity: .9; } 55% { opacity: .9; } 85%, 100% { opacity: 0; } }
+.cue-ring { fill: none; stroke: currentColor; stroke-width: 1.4; opacity: .7; }
+.cue-hero { right: var(--g); bottom: 8svh; }
+.cue-acts { right: var(--g); bottom: 1.4rem; }
+.cue-thr { position: relative; margin-top: 1.6rem; }
+@media (max-width: 899px) { .cue-hero { bottom: 5svh; } .cue-acts { bottom: .2rem; } }
+
+/* --- "Six ways": legend beside the heading, with icons, count and progress --- */
+.acts-nav { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: .7rem .9rem; justify-items: start; }
+.acts-legend { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .3rem .35rem; }
+.acts-chip { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.6rem; padding: .3rem .9rem .3rem .6rem; border: 0; border-radius: 99px; background: transparent; color: var(--ink); font: 600 .98rem var(--disp); transition: background-color .3s var(--out), box-shadow .3s var(--out); }
+.acts-chip:hover { background: rgba(255, 255, 255, .55); }
+.acts-chip[aria-current] { background: #fff; font-weight: 700; box-shadow: 0 1px 0 rgba(10, 42, 60, .1), 0 10px 20px -14px rgba(10, 42, 60, .6); }
+.aicon { width: 1.4rem; height: 1.4rem; flex: none; fill: none; stroke: color-mix(in srgb, var(--c) 55%, var(--ink)); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: .72; transition: opacity .3s; }
+.acts-chip[aria-current] .aicon { opacity: 1; stroke: color-mix(in srgb, var(--c) 82%, var(--ink)); }
+.acts-chip[aria-current] .aicon path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ai-draw .4s var(--out) forwards; }
+@keyframes ai-draw { to { stroke-dashoffset: 0; } }
+.acts-count { font: 700 .92rem var(--disp); letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+.acts-prog { display: block; width: min(20rem, 100%); height: 2px; border-radius: 2px; background: rgba(10, 42, 60, .16); overflow: hidden; }
+.acts-prog i { display: block; height: 100%; background: var(--ink); transform-origin: 0 50%; transform: scaleX(var(--prog, 0)); }
+@media (min-width: 900px) {
+  .acts-head { grid-template-columns: auto minmax(0, 1fr); column-gap: clamp(2rem, 4vw, 4.5rem); align-items: end; }
+  .acts-nav { padding-bottom: .5rem; }
+}
+@media (max-width: 899px) {
+  .acts-nav { width: 100%; }
+  .acts-legend { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(var(--g) * -1); padding: .2rem var(--g); width: calc(100% + var(--g) * 2); }
+  .acts-legend::-webkit-scrollbar { display: none; }
+  .acts-legend li { flex: none; scroll-snap-align: center; }
+}
+
+/* neighbouring cards stay quiet until they arrive */
+@media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .act:not(.act-on) { opacity: .32; }
+  .act .act-txt { transition: opacity .5s var(--out); }
+  .act:not(.act-on):not(:focus-within) .act-txt { opacity: 0; }
+}
+
+/* --- journey: words hold in a safe zone, clear of the controls at the bottom --- */
+@media (min-width: 900px) {
+  .j-block:not(.j-block-first) > .j-copy, .j-block > .j-quote { position: sticky; top: clamp(6rem, 16svh, 10rem); }
+}
+.stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 8rem; background: linear-gradient(0deg, rgba(5, 22, 32, .55), rgba(5, 22, 32, 0)); opacity: clamp(0, calc(var(--thr, 0) * 2 - 1), 1); pointer-events: none; }
+.j-controls { bottom: calc(1rem + env(safe-area-inset-bottom)); }
+/* the puddle chapter is shot close and dark: lift it a little */
+.film, .stills img { transition: opacity .4s, filter .8s var(--out); }
+.journey[data-active='2'] .film, .journey[data-active='2'] .stills img.on { filter: brightness(1.16) contrast(1.05); }
+.stills img { transition: opacity 1.2s, filter .8s var(--out); }
+
+/* --- phones: comfortable buttons and a tidy photo cluster --- */
+@media (max-width: 599px) {
+  .hero-cta { flex-direction: column; align-items: stretch; gap: .6rem; }
+  .hero-cta .b { justify-content: center; width: 100%; }
+  .hero-tel { align-self: flex-start; min-height: 44px; display: inline-flex; align-items: center; border-bottom: 0; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .3em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud, .birds, .sun-in::after, .rg-near .sway, .win-float { animation: none; }
+  .birds { display: none; }
+  .cue-dot { opacity: .7; }
+  .cue.is-on .cue-dot { animation: none; }
+  .acts-chip[aria-current] .aicon path { animation: none; stroke-dashoffset: 0; }
+}
+/* the hero runs straight into "Six ways": its base is the near hill's colour, so no seam or band shows */
+.hero { background: linear-gradient(180deg, var(--sky) 0 70%, #dbe9a8 70% 100%); }
+.acts { margin-top: -1px; }
+@media (min-width: 900px) and (prefers-reduced-motion: no-preference) { .acts { padding-top: 5.6rem; } }
+/* mid widths: the legend stays one row and scrolls sideways if it must */
+@media (min-width: 900px) and (max-width: 1279px) {
+  .acts-legend { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100%; }
+  .acts-legend::-webkit-scrollbar { display: none; }
+  .acts-legend li { flex: none; }
+  .acts-chip { padding: .3rem .7rem .3rem .5rem; font-size: .92rem; }
+  .acts-head { grid-template-columns: auto minmax(0, 1fr); }
+}
+/* short landscape screens: size the headline and logo by height as well as width */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero-h { font-size: min(10.5vw, 14vh); }
+  .hd-grow { --lg-s: 1.3; }
+  .hero-copy { padding-top: 5.6rem; }
+}
+/* slider prompt: in the counter row on phones, bottom-right of the pinned section on wide screens */
+.acts-nav { grid-template-columns: auto 1fr auto; }
+@media (max-width: 899px) { .cue-acts { position: static; } }
+@media (min-width: 900px) { .cue-acts { position: absolute; } }
+/* phones: text scrolling under the film's controls fades into a dark band behind them */
+@media (max-width: 899px) {
+  .j-controls::before { content: ''; position: absolute; left: 0; right: 0; bottom: calc(-1rem - env(safe-area-inset-bottom)); height: calc(5.5rem + env(safe-area-inset-bottom)); background: linear-gradient(0deg, rgba(5, 22, 32, .92) 35%, rgba(5, 22, 32, 0)); pointer-events: none; z-index: -1; }
+  .j-block-end { padding-bottom: calc(7rem + env(safe-area-inset-bottom)); }
+}
+/* short landscape: the photos sit lower and smaller, clear of the copy */
+@media (max-height: 520px) and (orientation: landscape) {
+  .land { margin-top: 1rem; min-height: 60svh; }
+  .win-1 { width: 22vw; } .win-2 { width: 15vw; } .win-3 { width: 19vw; }
+}
+/* the hero's two calls to action: stacked until there's clearly room for one row, so the font loading never re-wraps them */
+@media (min-width: 900px) and (max-width: 1439px) { .hero-cta { flex-direction: column; align-items: flex-start; gap: .9rem; } }
+@media (min-width: 1440px) { .hero-cta { flex-wrap: nowrap; } }

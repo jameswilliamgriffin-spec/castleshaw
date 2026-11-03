@@ -4,6 +4,7 @@ import TH from '../threshold.json'
 import { Film, filmSource, prefersStills } from '../film'
 import Planner from './Planner'
 import Postbag from './Postbag'
+import ScrollCue from './ScrollCue'
 import { PHONE, PHONE_HREF, FACEBOOK, QUOTES, href } from '../data'
 
 // The six chapters of the film, in scroll order. `side` is where the words sit.
@@ -111,11 +112,15 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
       if (marker) { marker.style.strokeDashoffset = String(len * (1 - prog)) }
       if (dot && marker?.getPointAtLength) { const pt = marker.getPointAtLength(len * prog); dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y) }
     }
-    const tick = () => { update(); if (film) { film.resize(); film.tick() } }
+    // only do the work while the journey is on, or about to be on, the screen
+    let near = false
+    const nearIO = new IntersectionObserver(([e]) => { near = e.isIntersecting; if (near) update() }, { rootMargin: '50% 0px' })
+    nearIO.observe(el)
+    const tick = () => { if (!near) return; update(); if (film) { film.resize(); film.tick() } }
     gsap.ticker.add(tick)
     const rs = () => film?.resize()
     addEventListener('resize', rs)
-    return () => { alive = false; io.disconnect(); gsap.ticker.remove(tick); removeEventListener('resize', rs) }
+    return () => { alive = false; io.disconnect(); nearIO.disconnect(); gsap.ticker.remove(tick); removeEventListener('resize', rs) }
   }, [base])
 
   useEffect(() => { // ambient sound: user-started only, follows the toggle
@@ -171,10 +176,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
           <div className="j-thr-copy">
             <h2 className="j-thr-h">Same hills.<br />A little less flat.</h2>
             <p>Scroll back up to rewind.</p>
-            <div className="j-cue" aria-hidden="true">
-              <svg viewBox="0 0 24 96"><path className="j-cue-path" d="M12 2 C 4 22, 20 34, 12 52 S 6 80, 12 94" /><circle className="j-cue-dot" r="4" /></svg>
-              <span>Keep scrolling</span>
-            </div>
+            <ScrollCue className="cue-thr" label="Keep scrolling" />
           </div>
         </div>
 
@@ -235,7 +237,6 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
                 </form>
               )}
             </div>
-            <p className="j-small j-ai">The film on this page was made with AI video, starting from our own illustration and photographs. It shows the kind of day we run, not a specific visit.</p>
           </div>
         </div>
       </div>

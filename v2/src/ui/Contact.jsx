@@ -115,7 +115,7 @@ export function Footer() {
 
       <div className="ft-bar rv" style={{ '--k': 5 }}>
         <p className="ft-cred">LOtC Quality Badge 101040. Licensed by AALA for climbing, watersports and trekking. Adventuremark accredited.</p>
-        <p className="ft-note">Homepage design concept. Photographs, drawings and quoted words belong to the Castleshaw Centre and the people who sent them. Illustrations and the homepage film were made with AI, from our own illustration and photographs.</p>
+        <p className="ft-note">Homepage design concept. Photographs, drawings and quoted words belong to the Castleshaw Centre and the people who sent them.</p>
         <div className="ft-row">
           <span className="ft-copy">&copy; Oldham Council {new Date().getFullYear()}</span>
           <ul className="ft-small">

@@ -36,7 +36,7 @@ export default function App() {
       <Loader />
       <a className="skip" href="#main">Skip to content</a>
       <Cursor />
-      <Header open={menu} setOpen={setMenu} count={picks.size} />
+      <Header open={menu} setOpen={setMenu} count={picks.size} grow />
       <Menu open={menu} close={close} />
       <main id="main">
         <Hero />

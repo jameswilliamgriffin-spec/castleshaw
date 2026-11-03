@@ -31,21 +31,35 @@ const toEnquiry = (e) => { if (document.getElementById('contact')) { e.preventDe
 // On the advice pages the header offers a quote instead; on the landing it scrolls to the form.
 const toQuote = (e) => { if (document.getElementById('quote')) { e.preventDefault(); goTo('quote') } }
 
-export function Header({ open, setOpen, count, current }) {
+// grow: the homepage's large logo, which shrinks to the usual size as you scroll.
+const GROW_END = 180 // px of scroll over which the logo shrinks
+
+export function Header({ open, setOpen, count, current, grow = false }) {
   const [state, setState] = useState('top')
+  const ref = useRef(null)
   useEffect(() => {
-    let last = 0
+    let last = 0, raf = 0
+    const shrink = () => {
+      raf = 0
+      const p = Math.min(1, Math.max(0, scrollY / GROW_END))
+      ref.current?.style.setProperty('--lgp', p.toFixed(3))
+    }
     const on = () => {
       const y = scrollY
-      setState(y < 30 ? 'top' : y > last && y > 600 ? 'away' : 'solid')
+      // with a large logo, the bar stays clear until the logo has finished shrinking
+      setState(y < (grow ? GROW_END : 30) ? 'top' : y > last && y > 600 ? 'away' : 'solid')
       last = y
+      if (grow && !raf) raf = requestAnimationFrame(shrink)
     }
+    on(); if (grow) shrink()
     addEventListener('scroll', on, { passive: true })
-    return () => removeEventListener('scroll', on)
-  }, [])
+    return () => { removeEventListener('scroll', on); cancelAnimationFrame(raf) }
+  }, [grow])
   return (
-    <header className={`hd hd-${open ? 'open' : state}`}>
-      <a href={HOME} className="hd-logo"><img src={`${ROOT}shared/images/logo.jpg`} alt="Castleshaw Centre home" width="200" height="129" /></a>
+    <header ref={ref} className={`hd hd-${open ? 'open' : state}${grow ? ' hd-grow' : ''}`}>
+      {grow
+        ? <a href={HOME} className="hd-logo hd-logo-cut"><img src={`${ROOT}shared/images/logo-cut.png`} alt="Castleshaw Centre home" width="600" height="354" /></a>
+        : <a href={HOME} className="hd-logo"><img src={`${ROOT}shared/images/logo.jpg`} alt="Castleshaw Centre home" width="200" height="129" /></a>}
       <nav aria-label="Main" className="hd-nav">
         {NAV_MAIN.map(([t, h], i) => (
           <a key={t} href={h} aria-current={current === NAV_SECTIONS[i].key ? 'true' : undefined} className={NAV_SECTIONS[i].key === 'advice' ? 'hd-advice' : undefined}>
