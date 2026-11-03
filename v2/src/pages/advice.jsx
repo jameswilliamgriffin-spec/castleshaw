@@ -108,12 +108,12 @@ export function Agreement({ path }) {
       <Band>
         <SectionHead title="What&rsquo;s included" />
         <div className="cols cols-3">
-          <div className="icard"><h3>Advice and approval</h3><Ticks items={['Ongoing advice on any educational visit', 'Visit forms reviewed within 10 working days', 'Approval of adventurous activities, residentials and overseas visits', `An advice line during school hours: ${PHONE}`, 'Visits to your school to help with planning and monitoring', 'In-person support for complex visits']} /></div>
-          <div className="icard"><h3>Evolve</h3><Ticks items={['Use of the Evolve visit management system', 'Support and training for every user', 'Help linking your MIS to Evolve (Evolve+)']} /><p><TBC>Whether Evolve+ is included or an optional upgrade</TBC></p></div>
-          <div className="icard"><h3>Policy and updates</h3><Ticks items={['Guidance, policies and template documents', 'Updates on local policy, national guidance and legislation', 'Representation at national and regional meetings']} /></div>
+          <TopicCard title="Advice and approval" open><Ticks items={['Ongoing advice on any educational visit', 'Visit forms reviewed within 10 working days', 'Approval of adventurous activities, residentials and overseas visits', `An advice line during school hours: ${PHONE.replace(/ /g, '\u00a0')}`, 'Visits to your school to help with planning and monitoring', 'In-person support for complex visits']} /></TopicCard>
+          <TopicCard title="Evolve"><Ticks items={['Use of the Evolve visit management system', 'Support and training for every user', 'Help linking your MIS to Evolve (Evolve+)']} /><p><TBC>Whether Evolve+ is included or an optional upgrade</TBC></p></TopicCard>
+          <TopicCard title="Policy and updates"><Ticks items={['Guidance, policies and template documents', 'Updates on local policy, national guidance and legislation', 'Representation at national and regional meetings']} /></TopicCard>
           <div className="icard"><h3>Training</h3><Ticks items={['One free EVC course place a year, per establishment', 'Subsidised visit leader and extra EVC training', 'Sessions for head teachers and governors', 'Access to MoVE training']} /><p><a href={av('training/')}>All training</a></p></div>
-          <div className="icard"><h3>Emergency support</h3><Ticks items={[`A 24/7 critical incident line: ${INCIDENT}`, 'Help managing an incident, contacting families and dealing with the media']} /><p><a href={av('emergency-support/')}>Emergency support</a></p></div>
-          <div className="icard"><h3>Peace of mind</h3><Ticks items={['Running for more than 20 years', 'Over 40 years of combined adviser experience', 'Rated outstanding by most schools in our annual survey']} /></div>
+          <div className="icard"><h3>Emergency support</h3><Ticks items={[`A 24/7 critical incident line: ${INCIDENT.replace(/ /g, '\u00a0')}`, 'Help managing an incident, contacting families and dealing with the media']} /><p><a href={av('emergency-support/')}>Emergency support</a></p></div>
+          <TopicCard title="Peace of mind"><Ticks items={['Running for more than 20 years', 'Over 40 years of combined adviser experience', 'Rated outstanding by most schools in our annual survey']} /></TopicCard>
         </div>
       </Band>
 
