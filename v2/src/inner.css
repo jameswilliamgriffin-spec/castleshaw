@@ -554,6 +554,14 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 }
 /* an image behind a navy band, under a scrim that keeps text at AA (darkest where the text sits) */
 .band-bg { position: relative; isolation: isolate; overflow: hidden; }
-.band-bg::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10, 42, 60, .93) 0%, rgba(10, 42, 60, .87) 45%, rgba(10, 42, 60, .74) 100%); }
+.band-bg::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(10, 42, 60, .93) 0%, rgba(10, 42, 60, .88) 45%, rgba(10, 42, 60, .82) 100%); }
 .band-bg-img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; margin: 0 !important; max-width: none; object-fit: cover; }
-@media (max-width: 599px) { .band-bg::before { background: rgba(10, 42, 60, .86); } }
+@media (max-width: 599px) { .band-bg::before { background: rgba(10, 42, 60, .88); } }
+/* a row of images (for example the three carved stones), as one full-width strip */
+.ibreak-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); gap: 3px; height: clamp(10rem, 24vw, 22rem); background: var(--chalk); }
+@media (max-width: 599px) { .ibreak-row { aspect-ratio: auto; height: 34vw; } }
+.ibreak-row .ibreak-img { min-height: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .ibreak-row > picture:nth-child(2) .ibreak-img { transition-delay: 80ms; }
+  .ibreak-row > picture:nth-child(3) .ibreak-img { transition-delay: 160ms; }
+}

@@ -6,6 +6,7 @@ import { PAGES } from '../../site.mjs'
 import { href, PHONE, PHONE_HREF, EMAIL, CONTACT } from '../../data'
 import { ROOT, HOME, ridge } from '../../lib'
 import { Picture, slot } from './Slot'
+import M from '../../content/imagery.json'
 import { Squiggle, Contours, useReveal } from '../Squiggle'
 import ScrollCue from '../ScrollCue'
 import ShapedImage from '../shape/ShapedImage'
@@ -137,7 +138,7 @@ export function Band({ tone = 'chalk', id, children, className = '', narrow, bac
   )
 }
 
-// A full-width image between two sections. Decorative; reveals once.
+// A full-width image between two sections (or a row of them, when the slot lists several). Reveals once.
 export function ImageBreak({ slot: id }) {
   const ref = useRef(null)
   useEffect(() => {
@@ -147,7 +148,12 @@ export function ImageBreak({ slot: id }) {
     io.observe(el)
     return () => io.disconnect()
   }, [])
-  return <div ref={ref} className="ibreak"><Picture slot={id} sizes="100vw" imgClassName="ibreak-img" /></div>
+  const n = M.slots[id].images?.length || 1
+  return (
+    <div ref={ref} className={`ibreak${n > 1 ? ' ibreak-row' : ''}`}>
+      {Array.from({ length: n }, (_, i) => <Picture key={i} slot={id} n={i} sizes={n > 1 ? `${Math.ceil(100 / n)}vw` : '100vw'} imgClassName="ibreak-img" />)}
+    </div>
+  )
 }
 
 // A section's heading block: optional eyebrow, the h2, an optional lead.

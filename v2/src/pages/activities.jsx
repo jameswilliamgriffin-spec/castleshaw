@@ -1,6 +1,6 @@
 // Activities and school visits. Copy is drawn from the centre's own pages
 // (adventurous activities, curriculum, team building, booking, kit lists, testimonials).
-import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, OnThisPage, Btn, TBC, img, shared, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, OnThisPage, Btn, TBC, img, shared, OLD, ImageBreak } from '../ui/inner/blocks'
 import { href, PHONE, PHONE_HREF } from '../data'
 
 const at = (k) => href(`activities/${k}/`)
@@ -75,7 +75,7 @@ export function Hub({ path }) {
           </div>
         </div>
       </Band>
-      <Band tone="ink">
+      <Band tone="ink" backdrop="activities-hub-quote">
         <SectionHead title="What schools say" />
         <Quote big text="Absolutely brilliant. Most children would not have got this opportunity with their families." by="Freehold, Year 6 activity residential" />
       </Band>
@@ -202,6 +202,7 @@ export function Bushcraft({ path }) {
           { name: 'Woodland skills', img: img('bushcraft-tools'), text: 'Working with natural materials. We also run woodland skills training for adults.' },
         ]} />
       </Band>
+      <ImageBreak slot="activities-bushcraft-break" />
       <Band tone="sage">
         <AtAGlance ages="Suitable ages" bring={
           <div>
@@ -275,6 +276,7 @@ export function Environment({ path }) {
         </div>
       </Band>
 
+      <ImageBreak slot="activities-env-break" />
       <Band id="secondary">
         <Split image={{ src: img('sec-map-1849'), alt: 'A hand-drawn map of the Castleshaw Valley dated 1849' }} shape="soft" heading="Secondary field studies">
           <p>The Castleshaw Valley is ideal for a wide range of field study topics. Our staff&rsquo;s outdoor experience and local knowledge complement your subject objectives.</p>
@@ -350,6 +352,7 @@ export function History({ path }) {
         </div>
       </Band>
 
+      <ImageBreak slot="activities-roman-break" />
       <Band id="secondary-groups">
         <Split reverse image={{ src: img('history-victorian-day'), alt: 'A class dressed in Victorian costume outside' }} heading="For secondary groups">
           <p>The valley holds an archaeological timeline from the Bronze Age through the Romans and the Middle Ages to the Industrial Revolution and the Victorians.</p>
@@ -413,7 +416,7 @@ export function Team({ path }) {
           { src: img('team-challenge'), alt: 'A group working together with poles and a tarpaulin' },
         ]} />
       </Band>
-      <Band tone="ink">
+      <Band tone="ink" backdrop="activities-team-quote">
         <SectionHead title="What schools say" />
         <Quote big text="Our aims were to build relationships and get to know each other. The course was really effective. It was nice to see students laughing together all day." by="Royton and Crompton, Year 7 team building" />
       </Band>
