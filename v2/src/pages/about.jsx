@@ -161,6 +161,7 @@ export function Accreditation({ path }) {
         image={{ src: img('land-abseil-2'), alt: 'A young person in a blue helmet abseiling down a rock face' }}
       />
       <Band>
+        <SectionHead eyebrow="About the centre" title="Licences and awards" />
         <div className="cols cols-3">
           <div className="icard"><h3>AALA licence</h3><p>Licensed by the Adventure Activities Licensing Authority, part of the Health and Safety Executive, for climbing, watersports and trekking.</p><p>Licence <TBC>L71687 or L137899</TBC></p></div>
           <div className="icard"><h3>LOtC Quality Badge</h3><p>The Learning Outside the Classroom Quality Badge, the national award for providers of learning outside the classroom.</p><p>Badge number 101040</p></div>
@@ -172,7 +173,7 @@ export function Accreditation({ path }) {
         ]} />
       </Band>
       <Band tone="sky">
-        <Intro heading="From our inspection reports" />
+        <SectionHead title="From our inspection reports" />
         <Quotes items={[
           { text: 'The session observed set a distinct standard in how orienteering can be delivered using a wide array of resources, including IT, to Year 1 primary students.', by: 'LOtC inspection, November 2023' },
           { text: 'Accommodation is of a good standard and the centre has a welcoming and friendly feel to those staying, and the consistent staff team contributes positively to the experience.', by: 'LOtC inspection, November 2023' },
@@ -184,7 +185,7 @@ export function Accreditation({ path }) {
       <Band>
         <Split image={{ src: img('water-canoe-calm'), alt: 'A lone paddler in a canoe on a calm reservoir at dusk' }} heading="How we keep visits safe">
           <Ticks items={['Every activity is risk assessed by competent staff', 'Instructors hold national governing body awards for the activities they lead', 'Staff-to-participant ratios set for each activity', 'All specialist equipment provided and checked', 'Practice in line with OEAP National Guidance and HSE advice on school trips']} />
-          <p><a href={href('activities/plan-your-visit/') + '#group-leaders'}>Information for group leaders</a></p>
+          <p><SqLink href={href('activities/plan-your-visit/') + '#group-leaders'}>Information for group leaders</SqLink></p>
         </Split>
       </Band>
       <CtaBand />
