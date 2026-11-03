@@ -497,3 +497,7 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 @media (min-width: 900px) { .gallery:has(> li:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 /* drawings shown whole (per-image option in Gallery) */
 .gallery img.fit-contain { object-fit: contain; background: #fff; }
+/* big quotes keep their size after the base .q rule */
+.q.q-big blockquote { font-size: clamp(1.5rem, 3vw, 2.3rem); }
+/* galleries of six sit as two even rows of three */
+@media (min-width: 900px) { .gallery:has(> li:nth-child(6):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
