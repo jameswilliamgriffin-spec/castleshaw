@@ -29,9 +29,9 @@ export function Contact({ msg, setMsg }) {
           ) : (
             <>
               <p className="ct-form-h">Or leave a message</p>
-              <label><span>Name</span><input name="name" autoComplete="name" required /></label>
-              <label><span>Email or phone</span><input name="contact" autoComplete="email" required /></label>
-              <label><span>School or group (optional)</span><input name="org" autoComplete="organization" /></label>
+              <label><span>Name</span><input enterKeyHint="next" name="name" autoComplete="name" required /></label>
+              <label><span>Email or phone</span><input enterKeyHint="next" name="contact" autoComplete="email" required /></label>
+              <label><span>School or group (optional)</span><input enterKeyHint="next" name="org" autoComplete="organization" /></label>
               <label><span>Message</span><textarea rows="5" value={msg} onChange={(e) => setMsg(e.target.value)} placeholder="Who is coming, roughly when, and what you would like to do." /></label>
               <button type="submit" className="ct-send">Send message</button>
             </>

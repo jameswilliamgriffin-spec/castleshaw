@@ -230,8 +230,8 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
                   <button type="button" className="txt" onClick={() => setSent(false)}>Back to the form</button></div>
               ) : (
                 <form className="j-form" onSubmit={(e) => { e.preventDefault(); setSent(true) }}>
-                  <label><span>Name</span><input name="name" autoComplete="name" required /></label>
-                  <label><span>Email or phone</span><input name="contact" autoComplete="email" required /></label>
+                  <label><span>Name</span><input enterKeyHint="next" name="name" autoComplete="name" required /></label>
+                  <label><span>Email or phone</span><input enterKeyHint="next" name="contact" autoComplete="email" required /></label>
                   <label className="j-wide"><span>Message</span><textarea rows="3" value={msg} onChange={(e) => setMsg(e.target.value)} placeholder="Who is coming, roughly when, and what you would like to do." /></label>
                   <button type="submit" className="ct-send">Send message</button>
                 </form>

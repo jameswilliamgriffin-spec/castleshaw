@@ -65,10 +65,19 @@ export default function Menu({ open, close, current }) {
     }
     addEventListener('keydown', onKey)
 
+    // The phone's back button closes the menu rather than leaving the page.
+    history.pushState({ ...(history.state || {}), csMenu: true }, '')
+    let viaBack = false
+    const onPop = () => { viaBack = true; close() }
+    addEventListener('popstate', onPop)
+
     return () => {
       clearTimeout(settle)
       clearTimeout(first)
       removeEventListener('keydown', onKey)
+      removeEventListener('popstate', onPop)
+      // closed another way: take the menu's history entry back off (unless a link replaced it)
+      if (!viaBack && history.state?.csMenu) history.back()
       html.style.overflow = ''
       document.body.style.paddingRight = ''
       window.__lenis?.start()

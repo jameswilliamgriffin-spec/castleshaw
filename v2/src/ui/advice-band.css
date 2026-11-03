@@ -14,7 +14,8 @@
 .adb-points li::before { content: ''; position: absolute; left: .2rem; top: .45em; width: .7rem; height: .4rem; border-left: 2.5px solid var(--moss); border-bottom: 2.5px solid var(--moss); transform: rotate(-45deg); }
 .adb-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; margin-top: 2rem; }
 .adb-btn { display: inline-flex; align-items: center; min-height: 3.2rem; padding: 0 1.5rem; border-radius: var(--cs-pill); background: var(--ink); color: #fff; font: 680 1.02rem var(--disp); text-decoration: none; transition: background-color var(--cs-fast), transform 300ms var(--cs-out); }
-.adb-btn:hover, .adb-btn:focus-visible { background: var(--deep); transform: translateY(-2px); }
+.adb-btn:focus-visible { background: var(--deep); transform: translateY(-2px); }
+@media (hover: hover) { .adb-btn:hover { background: var(--deep); transform: translateY(-2px); } }
 .adb-link { font: 650 1.02rem var(--disp); color: var(--ink); text-decoration-color: var(--moss); text-decoration-thickness: 2px; text-underline-offset: .3em; }
 .adb-img { width: 100%; max-width: 26rem; justify-self: center; }
 @media (prefers-reduced-motion: reduce) { .adb-copy > * { transform: none; transition: opacity 300ms; } }

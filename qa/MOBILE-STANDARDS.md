@@ -35,7 +35,7 @@ Long strings (emails, URLs, what3words) get `overflow-wrap: anywhere`.
 
 ## Touch
 
-- **Tap targets:** at least 44×44px, with at least 8px between neighbouring targets. Inline links in running text are exempt, but get a 44px-tall hit area where they stand alone (lists, footers, card links).
+- **Tap targets:** at least 44×44px, with at least 8px between neighbouring targets. Inline links in running text are exempt, but get a 44px-tall hit area where they stand alone (lists, footers, card links). Full-width stacked rows at least 48px tall with a divider between them (accordion and FAQ rows) count as separated.
 - **Hover:** every `:hover` effect sits inside `@media (hover: hover) and (pointer: fine)`. Touch gets an `:active` pressed state (scale .98 or a tint, 100ms) and the same state on `:focus-visible`.
 - **Tap behaviour:** `touch-action: manipulation` on buttons, links and controls; `-webkit-tap-highlight-color: transparent` with a visible `:active` state instead.
 - **Swipe:** horizontal rows (chips, card rows, sliders) use `scroll-snap-type: x mandatory` with `overscroll-behavior-x: contain` and never trap vertical scroll; the active chip scrolls into view.
@@ -88,3 +88,10 @@ Long strings (emails, URLs, what3words) get `overflow-wrap: anywhere`.
 
 - AA contrast, visible focus everywhere, headings in order, labelled inputs, landmarks.
 - Works at 200% text zoom with no overlap or horizontal scroll.
+
+## How the mobile layer is built
+
+- All shared mobile rules live in `v2/src/ui/mobile.css`, imported last by `main.jsx` and `inner.jsx`.
+- The build places that file in a stylesheet shared by every page, which loads *before* each page's own CSS, so rules inside its media queries are prefixed with `:root:root` to win on specificity rather than order. Keep that prefix on any rule added there.
+- Hover effects are gated with `@media (hover: hover)` in every stylesheet (`scripts/gate-hover.py` did it mechanically; run it again after adding `:hover` rules).
+- `--hd-h` is the header height (4.6rem desktop, 4rem phones, 3.5rem landscape phones); the sticky row and anchor offsets follow it. `--g` (the gutter) never sits under a notch; the viewport uses `viewport-fit=cover`.

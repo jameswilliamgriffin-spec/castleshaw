@@ -78,11 +78,11 @@ export default function LeadForm({ source = 'advice-landing', defaultType = TYPE
         </div>
       )}
       <div className="lf-grid">
-        {field('name', 'Your name', <input id="lf-name" name="name" autoComplete="name" aria-invalid={!!errors.name} aria-describedby={described('name')} />)}
-        {field('org', 'School, college or organisation', <input id="lf-org" name="org" autoComplete="organization" aria-invalid={!!errors.org} aria-describedby={described('org')} />)}
+        {field('name', 'Your name', <input enterKeyHint="next" id="lf-name" name="name" autoComplete="name" aria-invalid={!!errors.name} aria-describedby={described('name')} />)}
+        {field('org', 'School, college or organisation', <input enterKeyHint="next" id="lf-org" name="org" autoComplete="organization" aria-invalid={!!errors.org} aria-describedby={described('org')} />)}
         {field('role', 'Your role', <select id="lf-role" name="role" defaultValue={ROLES[0]}>{ROLES.map((r) => <option key={r}>{r}</option>)}</select>)}
-        {field('email', 'Email', <input id="lf-email" name="email" type="email" autoComplete="email" inputMode="email" aria-invalid={!!errors.email} aria-describedby={described('email')} />)}
-        {field('phone', <>Phone <em>(optional)</em></>, <input id="lf-phone" name="phone" type="tel" autoComplete="tel" />)}
+        {field('email', 'Email', <input enterKeyHint="next" id="lf-email" name="email" type="email" autoComplete="email" inputMode="email" aria-invalid={!!errors.email} aria-describedby={described('email')} />)}
+        {field('phone', <>Phone <em>(optional)</em></>, <input enterKeyHint="next" id="lf-phone" name="phone" type="tel" autoComplete="tel" />)}
         {field('type', 'What can we help with?', <select id="lf-type" name="type" defaultValue={defaultType}>{TYPES.map((t) => <option key={t}>{t}</option>)}</select>)}
         <div className="lf-field lf-wide">
           <label htmlFor="lf-msg">Anything we should know? <em>(optional)</em></label>

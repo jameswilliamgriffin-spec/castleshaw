@@ -23,13 +23,14 @@
 .al-lead { max-width: 36rem; margin-top: 1.4rem; font-size: 1.2rem; line-height: 1.6; }
 .al-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; margin-top: 2rem; }
 .al-btn { display: inline-flex; align-items: center; min-height: 3.2rem; padding: 0 1.6rem; border-radius: var(--cs-pill); background: var(--ink); color: #fff; font: 680 1.05rem var(--disp); text-decoration: none; transition: background-color var(--cs-fast), transform 300ms var(--cs-out); }
-.al-btn:hover, .al-btn:focus-visible { background: var(--deep); transform: translateY(-2px); }
+.al-btn:focus-visible { background: var(--deep); transform: translateY(-2px); }
+@media (hover: hover) { .al-btn:hover { background: var(--deep); transform: translateY(-2px); } }
 .al-dl { display: inline-flex; align-items: baseline; gap: .5rem; color: var(--ink); text-decoration: none; font: 650 1.02rem var(--disp); }
 .al-dl-t { position: relative; }
 .al-dl small { padding: .1rem .45rem; border-radius: .3rem; background: #fff; box-shadow: 0 0 0 1px var(--line); font: 650 .72rem var(--disp); letter-spacing: .04em; color: var(--deep); }
 .al-sos { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; margin-top: 1.8rem; font: 550 .92rem var(--disp); color: #2b4656; }
 .al-sos a { color: var(--ink); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; }
-.al-sos a:hover { text-decoration: underline; text-decoration-color: var(--moss); text-underline-offset: .25em; }
+@media (hover: hover) { .al-sos a:hover { text-decoration: underline; text-decoration-color: var(--moss); text-underline-offset: .25em; } }
 .al-dot { width: .5rem; height: .5rem; border-radius: 50%; background: #e0523a; box-shadow: 0 0 0 4px rgba(224, 82, 58, .15); }
 .al-hero-img { width: 100%; max-width: 32rem; justify-self: center; }
 @media (min-width: 960px) {
@@ -51,7 +52,7 @@
 .at { margin-top: 2rem; }
 .at-list { display: flex; flex-wrap: wrap; gap: .5rem; }
 .at-tab { min-height: 2.75rem; padding: .5rem 1.1rem; border: 0; border-radius: var(--cs-pill); background: #fff; box-shadow: inset 0 0 0 1.5px var(--line); color: var(--ink); font: 650 .95rem var(--disp); cursor: pointer; transition: background-color var(--cs-fast), color var(--cs-fast), box-shadow var(--cs-fast); }
-.at-tab:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+@media (hover: hover) { .at-tab:hover { box-shadow: inset 0 0 0 1.5px var(--ink); } }
 .at-tab[aria-selected='true'] { background: var(--ink); color: #fff; box-shadow: none; }
 .at-panel { margin-top: 1.4rem; padding: 1.5rem 1.6rem; border-radius: var(--cs-radius); background: #fff; box-shadow: 0 1px 0 var(--line); max-width: 42rem; animation: al-fade 400ms var(--cs-out); }
 .at-panel p + p { margin-top: .8rem; }
@@ -64,7 +65,7 @@
 .sp-list::before, .sp-list::after { content: ''; position: absolute; left: 1.55rem; top: 1.6rem; bottom: 1.6rem; width: 2px; background: rgba(10, 42, 60, .14); }
 .sp-list::after { background: var(--moss); bottom: auto; height: calc((100% - 3.2rem) * var(--p)); transition: height 500ms var(--cs-out); }
 .sp-btn { position: relative; z-index: 1; display: flex; gap: 1rem; align-items: center; width: 100%; min-height: 4.2rem; padding: .7rem 1rem .7rem .6rem; border: 0; border-radius: 1rem; background: transparent; color: var(--ink); text-align: left; cursor: pointer; transition: background-color var(--cs-fast); }
-.sp-btn:hover { background: rgba(255, 255, 255, .6); }
+@media (hover: hover) { .sp-btn:hover { background: rgba(255, 255, 255, .6); } }
 .sp-btn.is-on { background: #fff; box-shadow: 0 1px 0 var(--line), 0 18px 30px -26px rgba(10, 42, 60, .5); }
 .sp-n { flex: none; display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--sky-pale); box-shadow: inset 0 0 0 2px rgba(10, 42, 60, .18); font: 750 .9rem var(--disp); transition: background-color var(--cs-fast), color var(--cs-fast); }
 .sp-btn.is-done .sp-n { background: var(--moss); box-shadow: none; }
@@ -109,7 +110,8 @@
 .al-sos-in { position: relative; z-index: 2; max-width: 84rem; margin: 0 auto; }
 .al-sos-in h2 { max-width: 18ch; margin: 0; font: 760 clamp(2rem, 4.4vw, 3.6rem)/1.02 var(--disp); font-variation-settings: 'wdth' 80; letter-spacing: -.025em; text-wrap: balance; }
 .al-sos-num { display: inline-block; margin-top: 1.6rem; font: 760 clamp(2.4rem, 6vw, 4.6rem)/1 var(--disp); font-variation-settings: 'wdth' 80; font-variant-numeric: tabular-nums; color: var(--cs-accent); text-decoration: none; transition: color var(--cs-fast); }
-.al-sos-num:hover, .al-sos-num:focus-visible { color: #fff; }
+.al-sos-num:focus-visible { color: #fff; }
+@media (hover: hover) { .al-sos-num:hover { color: #fff; } }
 .al-sos-in > p { max-width: 36rem; margin-top: 1.2rem; color: var(--cs-soft); }
 .al-sos-in a:not(.al-sos-num) { color: #fff; }
 
@@ -149,16 +151,17 @@
 .al-final .al-sub { color: var(--cs-soft); }
 .al-final .al-kicker { color: var(--cs-eyebrow); }
 .al-guide-card { display: flex; gap: 1.2rem; align-items: center; margin-top: 1.8rem; padding: 1rem; border-radius: var(--cs-radius); background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px var(--cs-line); color: #fff; text-decoration: none; transition: background-color var(--cs-fast), transform 300ms var(--cs-out); }
-.al-guide-card:hover, .al-guide-card:focus-visible { background: rgba(255, 255, 255, .1); transform: translateY(-2px); }
+.al-guide-card:focus-visible { background: rgba(255, 255, 255, .1); transform: translateY(-2px); }
+@media (hover: hover) { .al-guide-card:hover { background: rgba(255, 255, 255, .1); transform: translateY(-2px); } }
 .al-guide-card img { width: 6.5rem; height: auto; border-radius: .3rem; box-shadow: 0 12px 24px -12px rgba(0, 0, 0, .6); }
 .al-guide-card strong { display: block; font: 700 1.15rem var(--disp); }
 .al-guide-card small { display: block; margin-top: .3rem; font: 500 .88rem var(--disp); color: var(--cs-muted); }
 .al-talk { margin-top: 2.4rem; padding-top: 1.6rem; border-top: 1px solid var(--cs-line); display: grid; justify-items: start; gap: .4rem; font-family: var(--disp); }
 .al-talk p { margin: 0; color: var(--cs-muted); font-size: .95rem; }
 .al-talk-tel { font: 720 clamp(1.6rem, 3vw, 2.2rem)/1.1 var(--disp); font-variant-numeric: tabular-nums; color: #fff; text-decoration: none; transition: color var(--cs-fast); }
-.al-talk-tel:hover { color: var(--cs-accent); }
+@media (hover: hover) { .al-talk-tel:hover { color: var(--cs-accent); } }
 .al-talk-mail { position: relative; color: var(--cs-soft); text-decoration: none; white-space: nowrap; }
-.al-talk-mail:hover { color: #fff; }
+@media (hover: hover) { .al-talk-mail:hover { color: #fff; } }
 
 /* the form */
 .lf { padding: clamp(1.5rem, 3vw, 2.4rem); border-radius: 1.4rem; background: #fff; color: var(--ink); --focus: var(--water); }
@@ -184,7 +187,7 @@
 .lf-privacy { margin-top: 1rem; font-size: .88rem; color: #3a5463; }
 .lf-fail { margin-top: 1rem; padding: .8rem 1rem; border-radius: .5rem; background: #fdf1f0; color: #8c1d17; font-weight: 600; }
 .lf-send { margin-top: 1.4rem; min-height: 3.2rem; padding: 0 1.8rem; border: 0; border-radius: var(--cs-pill); background: var(--moss); color: var(--ink); font: 700 1.05rem var(--disp); cursor: pointer; transition: background-color var(--cs-fast), transform 300ms var(--cs-out); }
-.lf-send:hover { background: var(--ink); color: #fff; transform: translateY(-2px); }
+@media (hover: hover) { .lf-send:hover { background: var(--ink); color: #fff; transform: translateY(-2px); } }
 .lf-send:disabled { opacity: .6; cursor: progress; transform: none; }
 .lf-done { outline: none; }
 .lf-done p { margin-top: .8rem; }
@@ -196,7 +199,7 @@
 .qbar.is-on { transform: none; opacity: 1; }
 .qbar-tel { color: #fff; font: 650 .95rem var(--disp); font-variant-numeric: tabular-nums; text-decoration: none; padding: 0 .6rem 0 0; }
 .qbar-cta { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.2rem; border-radius: var(--cs-pill); background: var(--moss); color: var(--ink); font: 700 .95rem var(--disp); text-decoration: none; }
-.qbar-cta:hover { background: #fff; }
+@media (hover: hover) { .qbar-cta:hover { background: #fff; } }
 @media (max-width: 699px) {
   .qbar { left: .75rem; right: .75rem; bottom: .75rem; justify-content: space-between; }
 }

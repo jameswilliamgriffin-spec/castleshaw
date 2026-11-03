@@ -53,7 +53,7 @@ for (const p of PAGES) {
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(desc)}" />
   <link rel="icon" href="${root}shared/images/logo.jpg" />${preload(p.path, root)}${structured(p.path)}

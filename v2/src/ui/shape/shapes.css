@@ -95,5 +95,5 @@
   .shp-img { transform: none; }
   .shp:not(.is-in) .shp-back { transform: translate(calc(var(--dx) * var(--shp-off)), calc(var(--dy) * var(--shp-off))) rotate(var(--rot)); }
   .shp:not(.is-in) .shp-ring { transform: translate(calc(var(--dx) * var(--shp-off)), calc(var(--dy) * var(--shp-off))) rotate(calc(var(--rot) * .6)); }
-  .shp.is-in:hover .shp-img { transform: none; }
+  @media (hover: hover) { .shp.is-in:hover .shp-img { transform: none; } }
 }

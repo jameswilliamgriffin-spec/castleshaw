@@ -14,6 +14,7 @@ import * as stay from './pages/stay'
 import * as courses from './pages/courses'
 import * as about from './pages/about'
 import * as misc from './pages/misc'
+import './ui/mobile.css'
 
 // Which component renders which path. Every page in site.mjs must appear here.
 const REGISTRY = {
@@ -86,7 +87,8 @@ function App() {
       const update = () => {
         flushSync(() => setPath(next))
         setHead(next)
-        if (push) history.pushState({ path: next }, '', HOME + next)
+        // a link in the open menu replaces the menu's history entry, so back goes to the previous page
+        if (push) history[history.state?.csMenu ? 'replaceState' : 'pushState']({ path: next }, '', HOME + next)
         const nbar = document.querySelector('.subnav')
         if (nbar) {
           window.scrollTo(0, Math.max(0, nbar.getBoundingClientRect().top + scrollY - keep))

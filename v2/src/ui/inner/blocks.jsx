@@ -264,7 +264,7 @@ export function TileLinks({ items, feature = true }) {
       {items.map((t) => (
         <li key={t.href}>
           <a href={t.href} className="tile">
-            <span className="tile-img"><img src={t.img} alt="" loading="lazy" /></span>
+            <span className="tile-img"><img src={t.img} alt="" width="800" height="500" loading="lazy" decoding="async" /></span>
             <span className="tile-txt"><strong>{t.title}</strong>{t.text && <span>{t.text}</span>}</span>
           </a>
         </li>
@@ -469,7 +469,7 @@ export function EnquiryForm({ title = 'Send an enquiry', fields, submit = 'Send 
           ) : f.type === 'textarea' ? (
             <textarea name={f.name} rows={f.rows || 4} placeholder={f.placeholder} required={!f.optional} />
           ) : (
-            <input name={f.name} type={f.type || 'text'} autoComplete={f.auto} placeholder={f.placeholder} required={!f.optional} />
+            <input enterKeyHint="next" name={f.name} type={f.type || 'text'} autoComplete={f.auto} placeholder={f.placeholder} required={!f.optional} />
           )}
         </label>
       ))}
