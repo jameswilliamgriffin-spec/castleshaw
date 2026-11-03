@@ -528,3 +528,5 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
   .qs:has(> :nth-child(5):last-child) > * { grid-column: span 2; }
   .qs:has(> :nth-child(5):last-child) > :nth-child(n+4) { grid-column: span 3; }
 }
+/* galleries of five or ten sit in even rows of five on wide screens */
+@media (min-width: 1100px) { .gallery:is(:has(> li:nth-child(5):last-child), :has(> li:nth-child(10):last-child)) { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
