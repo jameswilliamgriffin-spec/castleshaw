@@ -1,5 +1,5 @@
 // Stay and hire: the centre building for residential groups and self-programming groups.
-import { PageTop, Band, Intro, Split, Ticks, Ledger, Gallery, Facilities, Quotes, Downloads, Callout, CtaBand, Btn, TBC, img, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, OnThisPage, Split, Ticks, Ledger, Gallery, Facilities, Quotes, Downloads, Callout, CtaBand, Btn, TBC, img, OLD } from '../ui/inner/blocks'
 import { href, CONTACT } from '../data'
 
 export function Stay({ path }) {
@@ -12,7 +12,14 @@ export function Stay({ path }) {
         image={{ src: img('stay-front'), alt: 'The front of the Castleshaw Centre, a long stone building beside the lane', shape: 'arch' }}
         actions={<><Btn href={CONTACT}>Check availability</Btn><a className="ib ib-line" href="#facilities">Facilities</a></>}
       />
+      <OnThisPage items={[
+        { id: 'ways-to-book', label: 'Ways to book' },
+        { id: 'facilities', label: 'Facilities' },
+        { id: 'food-and-prices', label: 'Food and prices' },
+        { id: 'what-groups-say', label: 'What groups say' },
+      ]} />
       <Band>
+        <SectionHead eyebrow="Stay and hire" title="At a glance" />
         <Ledger items={[
           ['38', 'beds in rooms sleeping 2 to 6'],
           ['17', 'people minimum for accommodation-only bookings'],
@@ -21,7 +28,8 @@ export function Stay({ path }) {
         ]} />
       </Band>
 
-      <Band tone="sky">
+      <Band tone="sky" id="ways-to-book">
+        <SectionHead title="Ways to book" />
         <div className="cols cols-2">
           <div className="icard">
             <h3>Residential activity visits</h3>
@@ -68,29 +76,29 @@ export function Stay({ path }) {
         ]} />
       </Band>
 
-      <Band tone="sage">
-        <Intro heading="Food">
-          <p>The kitchen is equipped for groups to cater for themselves.</p>
-          <TBC block>Whether the centre can provide catering, and if so, which meals and at what cost.</TBC>
-        </Intro>
-      </Band>
-
-      <Band>
+      <Band tone="sage" id="food-and-prices">
+        <SectionHead title="Food and prices" />
         <div className="cols cols-2">
-          <div>
-            <h2 className="h2i">Prices and availability</h2>
+          <div className="icard">
+            <h3>Food</h3>
+            <p>The kitchen is equipped for groups to cater for themselves.</p>
+            <TBC block>Whether the centre can provide catering, and if so, which meals and at what cost.</TBC>
+          </div>
+          <div className="icard">
+            <h3>Prices and availability</h3>
             <p>Call or email with your dates and group size and we will check availability.</p>
             <p><TBC>Prices per night, per person or for the whole building, and any minimum stay</TBC></p>
             <p><TBC>Venue hire for meetings and away days, and day rates for the classroom and yurt</TBC></p>
           </div>
-          <Callout title="Before you arrive" tone="sky">
-            <p>We send a welcome pack and a centre plan when you book. <a href={href('activities/plan-your-visit/') + '#what-to-bring'}>Residential kit list</a></p>
-            <Downloads items={[{ title: 'Centre plan with fire exits and alarm points', href: OLD + 'centre_plan_with_fire_exits_and_alarm_points_2019.pdf', meta: 'PDF, 270 KB' }]} />
-          </Callout>
         </div>
+        <Callout title="Before you arrive" tone="sky">
+          <p>We send a welcome pack and a centre plan when you book. <a href={href('activities/plan-your-visit/') + '#what-to-bring'}>Residential kit list</a></p>
+          <Downloads items={[{ title: 'Centre plan with fire exits and alarm points', href: OLD + 'centre_plan_with_fire_exits_and_alarm_points_2019.pdf', meta: 'PDF, 270 KB' }]} />
+        </Callout>
       </Band>
 
-      <Band tone="paper">
+      <Band tone="paper" id="what-groups-say">
+        <SectionHead title="What groups say" />
         <Quotes items={[
           { text: 'Accommodation is of a good standard and the centre has a welcoming and friendly feel to those staying, and the consistent staff team contributes positively to the experience.', by: 'Learning Outside the Classroom inspection, November 2023' },
           { text: 'Excellent venue in a beautiful location. Great communication throughout.', by: 'Manchester Hash House Harriers, accommodation only' },
