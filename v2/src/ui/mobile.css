@@ -95,13 +95,15 @@ img, video { max-width: 100%; }
   /* "On this page" label beside its chips, so the row reads differently from the section links */
   :root:root .otp-label { display: block; max-width: 4.6rem; font-size: .8125rem; line-height: 1.1; letter-spacing: .08em; }
   :root:root .otp { gap: .6rem; }
-  /* kit lists: one tap row each; the list opens beneath */
+  /* kit lists and topic cards: one tap row each; the content opens beneath */
   :root:root .kit { padding: 0 1.25rem; }
-  :root:root .kit summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.5rem; padding: .8rem 0; cursor: pointer; }
-  :root:root .kit summary h3 { margin: 0; }
-  :root:root .kit summary::after { content: ''; flex: none; width: .6rem; height: .6rem; margin-right: .2rem; border: solid var(--ink); border-width: 0 2px 2px 0; transform: translateY(-25%) rotate(45deg); transition: transform .2s var(--ease); }
-  :root:root .kit[open] summary::after { transform: translateY(15%) rotate(-135deg); }
-  :root:root .kit[open] { padding-bottom: 1.4rem; }
+  :root:root .tcard { padding-block: 0; }
+  :root:root :is(.kit, .tcard) summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.5rem; padding: .8rem 0; cursor: pointer; }
+  :root:root :is(.kit, .tcard) summary h3 { margin: 0; }
+  :root:root :is(.kit, .tcard) summary::after { content: ''; flex: none; width: .6rem; height: .6rem; margin-right: .2rem; border: solid var(--ink); border-width: 0 2px 2px 0; transform: translateY(-25%) rotate(45deg); transition: transform .2s var(--ease); }
+  :root:root :is(.kit, .tcard)[open] summary::after { transform: translateY(15%) rotate(-135deg); }
+  :root:root .kit[open], :root:root .tcard[open] { padding-bottom: 1.4rem; }
+  :root:root .cols:has(> .tcard) { gap: .75rem; }
   :root:root .kits { gap: .75rem; }
   /* "To confirm" boxes: the label sits above the text, so the text uses the box's full width */
   :root:root .tbc { flex-direction: column; align-items: flex-start; gap: .3rem; padding: .4rem .6rem .5rem; }
@@ -121,6 +123,10 @@ img, video { max-width: 100%; }
 @media (max-width: 599px) {
   /* "At a glance": the What to bring box keeps a usable text column */
   :root:root .glance-wrap .callout { padding: var(--s-3); }
+  /* photo galleries: a swipe row with snap; the next photo peeks in */
+  :root:root .gallery { display: flex; gap: .75rem; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; margin-inline: calc(-1 * var(--g)); padding: 0 var(--g) .25rem; scroll-padding-inline: var(--g); }
+  :root:root .gallery::-webkit-scrollbar { display: none; }
+  :root:root .gallery > li { flex: 0 0 72%; scroll-snap-align: start; }
   /* hub tiles: a shorter photo, so six tiles don't run to two thousand pixels */
   :root:root .tiles .tile-img { aspect-ratio: 16 / 9; }
   :root { --g: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); }

@@ -288,8 +288,17 @@ export function ActivityList({ items }) {
 }
 
 export function Gallery({ images, id }) {
+  // on phones the gallery is a swipe row; while it scrolls sideways it can take keyboard focus
+  const ref = useRef(null)
+  useEffect(() => {
+    const el = ref.current
+    const sync = () => { if (el.scrollWidth > el.clientWidth + 1) { el.tabIndex = 0; el.setAttribute('aria-label', 'Photos (scroll sideways)') } else { el.removeAttribute('tabindex'); el.removeAttribute('aria-label') } }
+    sync()
+    const ro = new ResizeObserver(sync); ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
   return (
-    <ul className="gallery" id={id}>
+    <ul className="gallery" id={id} ref={ref}>
       {images.map((g) => (
         <li key={g.src}><figure><img src={g.src} alt={g.alt} loading="lazy" className={g.fit === 'contain' ? 'fit-contain' : undefined} style={g.pos ? { objectPosition: g.pos } : undefined} />{g.caption && <figcaption>{g.caption}</figcaption>}</figure></li>
       ))}
@@ -402,6 +411,26 @@ export function Kit({ title, bring, avoid, note }) {
       <ul className="kit-bring">{bring.map((b) => <li key={b}>{b}</li>)}</ul>
       {note && <p className="kit-note">{note}</p>}
       {avoid && <><h4>Please don&rsquo;t bring</h4><ul className="kit-avoid">{avoid.map((b) => <li key={b}>{b}</li>)}</ul></>}
+    </details>
+  )
+}
+
+// A topic card that is tap-to-open on phones (closed to start unless `open`), always open on wider
+// screens. Arriving at its section's anchor (for example #primary-science) opens every card in it.
+export function TopicCard({ title, open: keep = false, children }) {
+  const ref = useRef(null)
+  const [open, setOpen] = useState(() => keep || wide())
+  useEffect(() => {
+    const sec = ref.current?.closest('[id]')
+    const check = () => { if (sec && location.hash === `#${sec.id}`) setOpen(true) }
+    check()
+    addEventListener('hashchange', check)
+    return () => removeEventListener('hashchange', check)
+  }, [])
+  return (
+    <details ref={ref} className="icard tcard" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>
+      <summary onClick={(e) => { if (wide()) e.preventDefault() }}><h3>{title}</h3></summary>
+      {children}
     </details>
   )
 }

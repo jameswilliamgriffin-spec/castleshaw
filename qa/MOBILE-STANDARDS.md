@@ -111,3 +111,8 @@ Long strings (emails, URLs, what3words) get `overflow-wrap: anywhere`.
 - **"On this page" row:** its label shows on phones too, as a compact two-line label at the start of the row, so it reads differently from the section links above it; the row stays the same height.
 - **Footer and CTA links on touch sizes:** the open footer columns (600–899px), the footer accordion panels, and the CTA band's phone and email links are all 44px tall.
 - **Don't add new calls to action** to meet "a primary call to action in the first screen or two": pages keep their existing CTAs (content rule). Where a page's first action is only at the end, note it.
+
+## Patterns approved after batch 1
+
+- **Topic cards** (`TopicCard` in `ui/inner/blocks.jsx`): for a group of 4 or more plain topic cards (`.icard` with an h3 and text, not link cards), use `<TopicCard title="…">…</TopicCard>`. On phones each card is a 56px tap row with a chevron, closed to start; on desktop it is always open and doesn't toggle. Keep the one card that matters most open with `open` (for example the first entry point). A link to the section's anchor opens all of that section's cards.
+- **Galleries** (`Gallery`): under 600px a swipe row with snap, each photo about 72% wide so the next peeks in; keyboard-focusable only while it scrolls. Desktop and tablet keep the grid.
