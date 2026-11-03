@@ -163,7 +163,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
       <div className={`j-controls${inView ? ' is-on' : ''}`}>
         <a className="j-call" href={PHONE_HREF} data-cue="Call">Call {PHONE}</a>
         {hasAudio && !stills && (
-          <button type="button" className="j-sound" aria-pressed={sound} onClick={() => setSound(!sound)} data-cue={sound ? 'Mute' : 'Listen'}>
+          <button type="button" className="j-sound" aria-label="Sound" aria-pressed={sound} onClick={() => setSound(!sound)} data-cue={sound ? 'Mute' : 'Listen'}>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z" />{sound ? <path className="w" d="M16 8.5c1.5 1.8 1.5 5.2 0 7M18.5 6c3 3.3 3 8.7 0 12" /> : <path className="w" d="M17 9l5 6M22 9l-5 6" />}</svg>
             <span>{sound ? 'Sound on' : 'Sound off'}</span>
           </button>

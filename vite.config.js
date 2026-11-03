@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from 'node:path'
+import { resolve, relative, dirname } from 'node:path'
 import { PAGES } from './v2/src/site.mjs'
 
 // One static build: / (chooser), /v1/ and /v2/ with all its inner pages.
@@ -8,9 +8,24 @@ import { PAGES } from './v2/src/site.mjs'
 // Inner page entries are generated from v2/src/site.mjs by scripts/gen-pages.mjs.
 const inner = Object.fromEntries(PAGES.map((p) => ['v2-' + p.path.replace(/\/$/, '').replace(/\//g, '-'), resolve(__dirname, 'v2', p.path, 'index.html')]))
 
+// Preload the two Latin font files on every page, so headings don't reflow when the
+// web font replaces the fallback (the variable width axis can't be matched by Arial).
+const FONTS = [/bricolage-grotesque-latin-wght-normal-.*\.woff2$/, /literata-latin-wght-normal-.*\.woff2$/]
+const preloadFonts = () => ({
+  name: 'preload-fonts',
+  enforce: 'post',
+  transformIndexHtml(html, ctx) {
+    if (!ctx.bundle || !relative(__dirname, ctx.filename).startsWith('v2/')) return html
+    const files = Object.keys(ctx.bundle).filter((f) => FONTS.some((re) => re.test(f)))
+    const from = dirname(relative(__dirname, ctx.filename))
+    const tags = files.map((f) => `<link rel="preload" as="font" type="font/woff2" crossorigin href="${relative(from, f) || f}">`).join('')
+    return html.replace('</title>', `</title>${tags}`)
+  },
+})
+
 export default defineConfig({
   base: './',
-  plugins: [react()],
+  plugins: [react(), preloadFonts()],
   build: {
     rollupOptions: {
       input: {
