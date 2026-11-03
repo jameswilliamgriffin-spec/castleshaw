@@ -522,3 +522,9 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 .band.band-narrow > * { max-width: 60rem; }
 /* small teams (five or fewer) size their portraits sensibly instead of leaving empty tracks */
 @media (min-width: 900px) { .people:not(:has(> li:nth-child(6))) { grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem)); } }
+/* five quotes: a row of three, then a balanced row of two */
+@media (min-width: 1200px) {
+  .qs:has(> :nth-child(5):last-child) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .qs:has(> :nth-child(5):last-child) > * { grid-column: span 2; }
+  .qs:has(> :nth-child(5):last-child) > :nth-child(n+4) { grid-column: span 3; }
+}
