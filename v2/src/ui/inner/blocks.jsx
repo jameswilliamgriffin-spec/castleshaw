@@ -417,18 +417,19 @@ export function Kit({ title, bring, avoid, note }) {
 
 // A topic card that is tap-to-open on phones (closed to start unless `open`), always open on wider
 // screens. Arriving at its section's anchor (for example #primary-science) opens every card in it.
-export function TopicCard({ title, open: keep = false, children }) {
+export function TopicCard({ id, title, open: keep = false, children }) {
   const ref = useRef(null)
   const [open, setOpen] = useState(() => keep || wide())
   useEffect(() => {
-    const sec = ref.current?.closest('[id]')
-    const check = () => { if (sec && location.hash === `#${sec.id}`) setOpen(true) }
+    // a link to the card itself, or to its section, opens it
+    const sec = ref.current?.parentElement?.closest('[id]')
+    const check = () => { const h = location.hash; if ((id && h === `#${id}`) || (sec && h === `#${sec.id}`)) setOpen(true) }
     check()
     addEventListener('hashchange', check)
     return () => removeEventListener('hashchange', check)
   }, [])
   return (
-    <details ref={ref} className="icard tcard" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>
+    <details ref={ref} id={id} className="icard tcard" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>
       <summary onClick={(e) => { if (wide()) e.preventDefault() }}><h3>{title}</h3></summary>
       {children}
     </details>
