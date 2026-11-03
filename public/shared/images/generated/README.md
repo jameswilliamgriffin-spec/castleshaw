@@ -8,4 +8,4 @@ These were made with ChatGPT image generation for the educational visits advice 
 | drystone-wall.webp | Guidance and resources page hero |
 | stream-stones.webp | Guide and quote section |
 
-Four earlier images (boots-gritstone, hands-carabiner, wellies-puddle, compass-moss) were removed in the imagery pass because they showed people or kit; they are in git history. The newer generated set lives in `assets/generated/raw/` (register: `assets/generated/REGISTER.md`), built into `shared/images/gen/` by `scripts/imagery.py`.
+Three earlier images (boots-gritstone, wellies-puddle, compass-moss) were removed in the imagery pass because they showed people or kit; they are in git history. `hands-carabiner.webp` is kept only because the homepage advice band (`ui/AdviceBand.jsx`) still uses it; it breaks the imagery rules (hands and kit) and should be swapped when the homepage is next touched. The newer generated set lives in `assets/generated/raw/` (register: `assets/generated/REGISTER.md`), built into `shared/images/gen/` by `scripts/imagery.py`.

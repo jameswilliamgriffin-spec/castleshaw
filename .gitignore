@@ -14,3 +14,4 @@ qa/imagery-after/**/*.jpg
 qa/lighthouse/
 assets/generated/**/_sheet.jpg
 assets/generated/_*.jpg
+dist-before/
