@@ -520,3 +520,5 @@ a.icard:hover, .lift:hover { transform: translateY(-3px); box-shadow: 0 1px 0 va
 .inner .shead-lead { max-width: 40rem; }
 /* narrow bands stay narrow after the shared .band > * width */
 .band.band-narrow > * { max-width: 60rem; }
+/* small teams (five or fewer) size their portraits sensibly instead of leaving empty tracks */
+@media (min-width: 900px) { .people:not(:has(> li:nth-child(6))) { grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem)); } }
