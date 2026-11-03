@@ -1,5 +1,5 @@
 // About the Castleshaw Centre: place, people, standards, reputation and 130 years of history.
-import { PageTop, Band, SectionHead, Intro, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, SqLink, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, OnThisPage, Intro, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, SqLink, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
 import { href, ADDRESS, W3W, FACEBOOK } from '../data'
 
 const ab = (k = '') => href(`about/${k}`)
@@ -203,8 +203,15 @@ export function Say({ path }) {
         lead="A few words from the schools, families and groups who visit, and a wall of the drawings and letters children send us afterwards."
         image={{ src: gal('g-6315479'), alt: 'A child’s painting of hills, a stream and a bridge with the words Thank you Rod', shape: 'soft' }}
       />
-      <Band>
-        <Intro heading="Primary schools" />
+      <OnThisPage items={[
+        { id: 'primary-schools', label: 'Primary schools' },
+        { id: 'secondary-and-specialist', label: 'Secondary and specialist' },
+        { id: 'families-and-groups', label: 'Families and groups' },
+        { id: 'hall-of-fame', label: 'Hall of Fame' },
+        { id: 'inspection-reports', label: 'Inspection reports' },
+      ]} />
+      <Band id="primary-schools">
+        <SectionHead eyebrow="What people say" title="Primary schools" />
         <Quotes items={[
           { text: 'One of the highlights was jumping in puddles! Something that they are often prevented from doing, but because of appropriate outdoor clothing it was not a problem.', by: 'Thorp Primary, Year 1' },
           { text: 'It is always a time in Year 2 that the children highlight at the end of the year. Thank you!', by: 'Richmond Academy, Year 2 habitats' },
@@ -214,28 +221,24 @@ export function Say({ path }) {
           { text: 'Absolutely brilliant. Most children would not have got this opportunity with their families.', by: 'Freehold, Year 6 activity residential' },
         ]} />
       </Band>
-      <Band tone="sky">
-        <div className="cols cols-2">
-          <div>
-            <Intro heading="Secondary and specialist groups" />
-            <Quotes items={[
-              { text: 'Our aims were to build relationships and get to know each other. The course was really effective. It was nice to see students laughing together all day.', by: 'Royton and Crompton, Year 7 team building' },
-              { text: 'Staff provided careful accessible information and took time to build confidence in students. They loved it.', by: 'Visual Impairment Service residential' },
-            ]} />
-          </div>
-          <div>
-            <Intro heading="Families and other groups" />
-            <Quotes items={[
-              { text: 'Best day ever!', by: 'A parent, after the Summer Holiday Club' },
-              { text: 'Excellent venue in a beautiful location. Great communication throughout.', by: 'Manchester Hash House Harriers, accommodation only' },
-            ]} />
-          </div>
-        </div>
+      <Band tone="sky" id="secondary-and-specialist">
+        <SectionHead title="Secondary and specialist groups" />
+        <Quotes items={[
+          { text: 'Our aims were to build relationships and get to know each other. The course was really effective. It was nice to see students laughing together all day.', by: 'Royton and Crompton, Year 7 team building' },
+          { text: 'Staff provided careful accessible information and took time to build confidence in students. They loved it.', by: 'Visual Impairment Service residential' },
+        ]} />
+      </Band>
+      <Band tone="sage" id="families-and-groups">
+        <SectionHead title="Families and other groups" />
+        <Quotes items={[
+          { text: 'Best day ever!', by: 'A parent, after the Summer Holiday Club' },
+          { text: 'Excellent venue in a beautiful location. Great communication throughout.', by: 'Manchester Hash House Harriers, accommodation only' },
+        ]} />
       </Band>
       <Band id="hall-of-fame">
-        <Intro heading="The Hall of Fame">
+        <SectionHead title="The Hall of Fame">
           <p>Drawings, posters and letters sent to us after visits.</p>
-        </Intro>
+        </SectionHead>
         <Gallery images={[
           { src: gal('g-6315479'), alt: 'A painting of hills, a stream and a bridge with the words Thank you Rod' },
           { src: gal('g-5743290'), alt: 'A hand-made poster: Castleshaw Centre, it is amazing, have a lovely walk with friends, come and see the animals' },
@@ -249,11 +252,10 @@ export function Say({ path }) {
           { src: gal('g-7378642'), alt: 'A handwritten letter on paper with a rainbow border' },
         ]} />
       </Band>
-      <Band tone="paper">
-        <Quotes items={[
-          { text: 'The session observed set a distinct standard in how orienteering can be delivered.', by: 'LOtC inspection, November 2023' },
-        ]} />
-        <p><a href={ab('accreditation/')}>More from our inspection reports</a></p>
+      <Band tone="paper" id="inspection-reports">
+        <SectionHead title="From our inspection reports" />
+        <Quote big text="The session observed set a distinct standard in how orienteering can be delivered." by="LOtC inspection, November 2023" />
+        <p><SqLink href={ab('accreditation/')}>More from our inspection reports</SqLink></p>
       </Band>
       <CtaBand title="Come and see for yourself" />
     </>
