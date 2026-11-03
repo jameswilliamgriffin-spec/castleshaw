@@ -386,14 +386,23 @@ export function Facilities({ items }) {
   return <ul className="facil">{items.map((f) => <li key={f}>{f}</li>)}</ul>
 }
 
+// A kit list. On phones each list is a tap-to-open section (closed to start, so the page stays short);
+// on wider screens it is always open. Arriving at #what-to-bring opens them all.
+const wide = () => typeof window === 'undefined' || matchMedia('(min-width: 900px)').matches
 export function Kit({ title, bring, avoid, note }) {
+  const [open, setOpen] = useState(() => wide() || (typeof location !== 'undefined' && location.hash === '#what-to-bring'))
+  useEffect(() => {
+    const onHash = () => { if (location.hash === '#what-to-bring') setOpen(true) }
+    addEventListener('hashchange', onHash)
+    return () => removeEventListener('hashchange', onHash)
+  }, [])
   return (
-    <div className="kit">
-      <h3>{title}</h3>
+    <details className="kit" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>
+      <summary onClick={(e) => { if (wide()) e.preventDefault() }}><h3>{title}</h3></summary>
       <ul className="kit-bring">{bring.map((b) => <li key={b}>{b}</li>)}</ul>
       {note && <p className="kit-note">{note}</p>}
       {avoid && <><h4>Please don&rsquo;t bring</h4><ul className="kit-avoid">{avoid.map((b) => <li key={b}>{b}</li>)}</ul></>}
-    </div>
+    </details>
   )
 }
 

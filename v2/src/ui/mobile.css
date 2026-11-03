@@ -48,6 +48,8 @@ img, video { max-width: 100%; }
   /* footer: 44px targets, 8px apart, 16px text for sentences */
   :root:root .ft-mail, :root:root .ft-sos a, :root:root .ft-small a { display: inline-flex; align-items: center; min-height: 2.75rem; }
   :root:root .ft-small { gap: .25rem 1.4rem; }
+  /* footer column links and the phone numbers (open columns at 600–899px, and the accordion panels on phones) */
+  :root:root .ft-a, :root:root .ft-h a, :root:root .ft-tel, :root:root .cta-tel, :root:root .cta-mail a { display: inline-flex; align-items: center; min-height: 2.75rem; min-width: 2.75rem; }
   :root:root .ft-top { min-height: 2.75rem; margin-top: .5rem; }
   :root:root .ft-mail, :root:root .ft-addr, :root:root .ft-sos, :root:root .ft-small a, :root:root .ft-top, :root:root .ft-note, :root:root .ft-cred, :root:root .ft-copy { font-size: 1rem; }
   :root:root .ft-h, :root:root .ft-tog { font-size: .8125rem; }
@@ -86,6 +88,21 @@ img, video { max-width: 100%; }
   /* the scroll prompt is a hint, not a feature */
   :root:root .cue-down svg { height: 2rem; }
   :root:root .cue { font-size: .78rem; }
+}
+
+/* ---------- inner pages on phones ---------- */
+@media (max-width: 899px) {
+  /* "On this page" label beside its chips, so the row reads differently from the section links */
+  :root:root .otp-label { display: block; max-width: 4.6rem; font-size: .8125rem; line-height: 1.1; letter-spacing: .08em; }
+  :root:root .otp { gap: .6rem; }
+  /* kit lists: one tap row each; the list opens beneath */
+  :root:root .kit { padding: 0 1.25rem; }
+  :root:root .kit summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.5rem; padding: .8rem 0; cursor: pointer; }
+  :root:root .kit summary h3 { margin: 0; }
+  :root:root .kit summary::after { content: ''; flex: none; width: .6rem; height: .6rem; margin-right: .2rem; border: solid var(--ink); border-width: 0 2px 2px 0; transform: translateY(-25%) rotate(45deg); transition: transform .2s var(--ease); }
+  :root:root .kit[open] summary::after { transform: translateY(15%) rotate(-135deg); }
+  :root:root .kit[open] { padding-bottom: 1.4rem; }
+  :root:root .kits { gap: .75rem; }
 }
 
 /* the smallest phones: the Call button keeps its number on one line */

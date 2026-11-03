@@ -104,3 +104,10 @@ Long strings (emails, URLs, what3words) get `overflow-wrap: anywhere`.
 - **"Six ways":** native horizontal scroll with snap on phones (unchanged), 44px chips 8px apart, the active chip kept in view.
 - **Testimonial stack:** swipe with `touch-action: pan-y` (vertical scroll stays with the page) and a reset on `pointercancel`.
 - **Hero headline** keeps "the classroom." together at every phone width.
+
+## Content pages (from the Phase 4 pilot, Plan your visit)
+
+- **Long repeated lists** (kit lists, and similar card-per-topic lists) become tap-to-open sections on phones: `<details>` with the card's heading inside the `<summary>`, a 56px tap row and a chevron. They start closed on phones and are always open on desktop (the summary doesn't toggle there). A link to the section's anchor opens them. Keep the one summary block that matters most (for example "Five things visitors most often wish they had brought") always visible.
+- **"On this page" row:** its label shows on phones too, as a compact two-line label at the start of the row, so it reads differently from the section links above it; the row stays the same height.
+- **Footer and CTA links on touch sizes:** the open footer columns (600–899px), the footer accordion panels, and the CTA band's phone and email links are all 44px tall.
+- **Don't add new calls to action** to meet "a primary call to action in the first screen or two": pages keep their existing CTAs (content rule). Where a page's first action is only at the end, note it.

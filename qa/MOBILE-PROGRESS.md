@@ -7,8 +7,8 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | 0: Setup | Done | Vite + React; source `v2/` (Vite root), served from `/`. Dev `npm run dev` (5175), build `npm run build`, preview `npm run preview` (4175). Testing with the Playwright MCP and Chrome DevTools emulation (touch, DPR, CPU and network throttling); nothing to install. |
 | 1: Audit | Done, approved | 34 pages, 6 viewports; 14 shared root causes. |
 | 2: Shared layer | Done, approved | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
-| 3: Homepage and signature interactions | Done, awaiting feedback | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
-| 4: Pilot internal page | Not started | |
+| 3: Homepage and signature interactions | Done, approved | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
+| 4: Pilot internal page | Done (Plan your visit), awaiting feedback | Kit lists as tap-to-open sections on phones; "On this page" label on phones; footer and CTA links 44px at all touch sizes. |
 | 5: Remaining pages | Not started | |
 | 6: Site-wide QA | Not started | |
 
@@ -28,6 +28,12 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 - Homepage tap targets under 44px at 390: 21 → 0 (the hero link uses an invisible 44px hit area around its underline).
 - Journey frame time on a 4×-throttled phone (DPR 3): 16.7ms median (60fps), 95th percentile 18.5ms portrait and 33ms landscape, with or without the new loop; the 30fps reading in Phase 1 did not reproduce in controlled runs (cold and warm). The loop now does less work per frame and has an automatic stills fallback for phones that really are slow.
 - Swipe on the testimonial stack works with a real touch (1 of 12 → 2 of 12).
+
+## Pages
+
+| Page | Status | Commit | Notes |
+|---|---|---|---|
+| Plan your visit (pilot) | Done | see git log (`mobile: plan-your-visit`) | 390: 11,525px → 9,775px. No overflow, no targets under 44px, headings in order, no console errors at 320/360/390/430/768/844×390; works at 200% text zoom; keyboard opens the kit lists; desktop unchanged (7,551px, lists open). No hero CTA added (content rule): the page's booking CTA stays at the end. |
 
 ## Decisions and notes
 
