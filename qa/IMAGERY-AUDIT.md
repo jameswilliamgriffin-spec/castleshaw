@@ -21,7 +21,7 @@ Image types by folder:
 | `boots-gritstone` | Advice landing hero | **Breaks rules**: legs and boots. Replace. |
 | `wellies-puddle` | Advice landing "Who it's for"; Who it's for hero | **Breaks rules**: legs. Replace. |
 | `hands-carabiner` | Advice landing "The whole visit"; Service agreement hero | **Breaks rules**: hands, rope and carabiner (safety kit). Replace. |
-| `compass-moss` | How it works hero | Borderline: a compass is kit but not safety kit. Keep for now; can be replaced in the same set if you prefer. |
+| `compass-moss` | How it works hero | Borderline (a compass is kit). **Replace** (your decision): slot 18. |
 | `moor-dusk` | Advice landing incident band; Emergency support hero | Complies. Keep. |
 | `drystone-wall` | Guidance and resources hero | Complies. Keep. |
 | `stream-stones` | Advice landing guide section | Complies. Keep. |
@@ -58,9 +58,10 @@ Image types by folder:
 | 14 | `activities-plan-break` | Plan your visit | Between "Information for group leaders" and "What to bring" | BR | 21:9 / 3:2 | none | Mud, puddles and wet grass on a track | land green and peat | generated |
 | 15 | `stay-evening-break` | Stay and hire | Between "Ways to book" and "Facilities" | BR | 21:9 / 3:2 | none | Lamplight on rough stone and old timber, macro (no room, no furniture) | Stay warm neutral | generated |
 | 16 | `courses-hub-hero` | Courses and clubs hub | Hero image (replaces the illustration) | HS | current photo frame | none | Real kayaking session | water blue | **real** (`water-kayaks`) |
+| 18 | `advice-how-hero` | How it works | Hero image (replaces the compass) | HS | 1:1 / 1:1 | none | Bilberry, heather and moss on a peat bank | sage and green | generated |
 | 17 | `courses-clubs-quote` | Holiday clubs | Behind the navy "What parents say" quote | QB | 16:9 / 4:5 | left and centre | Backlit grass seed heads, summer evening | land green, warm | generated |
 
-**Totals:** 17 slots on 12 pages: 14 generated, 3 real. Of the 14 generated, 5 replace existing AI images that break the rules, and 9 are new.
+**Totals:** 18 slots on 12 pages: 15 generated, 3 real. Of the 15 generated, 6 replace existing AI images (5 that break the rules and the compass), and 9 are new.
 
 ## Pages and sections left without new imagery, and why
 

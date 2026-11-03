@@ -12,3 +12,4 @@ qa/after/**/*.jpg
 qa/imagery-before/**/*.jpg
 qa/imagery-after/**/*.jpg
 qa/lighthouse/
+assets/generated/**/_sheet.jpg
