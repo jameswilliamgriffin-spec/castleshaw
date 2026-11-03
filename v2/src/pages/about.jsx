@@ -1,5 +1,5 @@
 // About the Castleshaw Centre: place, people, standards, reputation and 130 years of history.
-import { PageTop, Band, SectionHead, Intro, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Intro, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, SqLink, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
 import { href, ADDRESS, W3W, FACEBOOK } from '../data'
 
 const ab = (k = '') => href(`about/${k}`)
@@ -52,15 +52,16 @@ export function Where({ path }) {
         actions={<><a className="ib ib-ink" href={MAPS} rel="noopener">Open in maps</a><a className="ib ib-line" href={`https://what3words.com/${W3W}`} rel="noopener">what3words</a></>}
       />
       <Band>
+        <SectionHead eyebrow="About the centre" title="Finding us" />
         <div className="cols cols-2">
-          <div>
-            <h2 className="h2i">Address</h2>
+          <div className="icard">
+            <h3>Address</h3>
             <address className="addr">The Castleshaw Centre<br />{ADDRESS.join(', ')}</address>
             <p>what3words: <a href={`https://what3words.com/${W3W}`} rel="noopener">///{W3W}</a></p>
             <p>We are handy for groups from Manchester, Rochdale, Tameside, Huddersfield and Leeds.</p>
           </div>
-          <div>
-            <h2 className="h2i">Getting here</h2>
+          <div className="icard">
+            <h3>Getting here</h3>
             <TBC block>Directions from the M62 and from Oldham, coach access and the drop-off point, parking, and the nearest bus and train stops.</TBC>
           </div>
         </div>
@@ -68,7 +69,7 @@ export function Where({ path }) {
       <Band tone="sage">
         <Split image={{ src: img('valley-bridge'), alt: 'A footbridge over a moorland stream in the valley' }} heading="Around the valley">
           <p>We are surrounded by lanes, footpaths and bridleways with excellent public access, a Roman fort, reservoirs and the open moor.</p>
-          <p><a href={ab('where-we-are/around-the-valley/')}>Walks, rides and places to visit</a></p>
+          <p><SqLink href={ab('where-we-are/around-the-valley/')}>Walks, rides and places to visit</SqLink></p>
         </Split>
       </Band>
       <CtaBand title="Planning a visit?" />
