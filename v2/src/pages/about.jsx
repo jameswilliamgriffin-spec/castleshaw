@@ -1,5 +1,5 @@
 // About the Castleshaw Centre: place, people, standards, reputation and 130 years of history.
-import { PageTop, Band, SectionHead, OnThisPage, Intro, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, SqLink, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, OnThisPage, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, SqLink, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
 import { href, ADDRESS, W3W, FACEBOOK } from '../data'
 
 const ab = (k = '') => href(`about/${k}`)
@@ -362,6 +362,7 @@ export function News({ path }) {
     <>
       <PageTop path={path} title="News" lead="What has been happening at Castleshaw." actions={<a className="ib ib-ink" href={FACEBOOK} rel="noopener">Latest on Facebook</a>} />
       <Band>
+        <SectionHead eyebrow="About the centre" title="News from the centre" />
         <TBC block>News since April 2024, and who will keep this page up to date (or whether to show the Facebook feed here instead).</TBC>
         <ul className="news">
           {NEWS.map((n) => (
