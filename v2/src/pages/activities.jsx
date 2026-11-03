@@ -430,14 +430,28 @@ export function Plan({ path }) {
         lead="Everything a group leader needs: how booking works, the guides we send you, what to pack, access, and free resources for before and after."
         image={{ src: img('bring-muddy'), alt: 'A smiling child in muddy waterproofs and wellies' }}
       />
+      <OnThisPage items={[
+        { id: 'booking', label: 'Booking' },
+        { id: 'group-leaders', label: 'Group leaders' },
+        { id: 'what-to-bring', label: 'What to bring' },
+        { id: 'access', label: 'Access' },
+        { id: 'resources', label: 'Resources' },
+      ]} />
+
       <Band id="booking">
-        <Intro heading="Booking a visit">
-          <p><strong>Oldham schools.</strong> Oldham local authority schools can take out a Service Level Agreement for a package of Outdoor and Environmental Education services, or book services individually. Local academies can take out similar agreements.</p>
-          <p>Each year schools receive a letter reminding them to book for the following academic year. To avoid missing out, book when you get the reminder.</p>
-          <p><strong>Schools outside Oldham and other organisations.</strong> Call or email us to talk through what you need. Once a programme is agreed, we email the group leader a quotation and booking form.</p>
+        <SectionHead title="Booking a visit">
           <p>Book activities a term in advance if you can, although short-notice bookings are sometimes possible.</p>
-        </Intro>
+        </SectionHead>
         <div className="cols cols-2">
+          <div className="icard">
+            <h3>Oldham schools</h3>
+            <p>Oldham local authority schools can take out a Service Level Agreement for a package of Outdoor and Environmental Education services, or book services individually. Local academies can take out similar agreements.</p>
+            <p>Each year schools receive a letter reminding them to book for the following academic year. To avoid missing out, book when you get the reminder.</p>
+          </div>
+          <div className="icard">
+            <h3>Schools outside Oldham and other organisations</h3>
+            <p>Call or email us to talk through what you need. Once a programme is agreed, we email the group leader a quotation and booking form.</p>
+          </div>
           <TBC block>Prices for day visits and residentials, and what the Oldham schools Outdoor and Environmental Education agreement includes.</TBC>
           <Callout title="Planning a trip somewhere else?" tone="sky"><p>Our advisers can sign off educational visits to anywhere, not just Castleshaw. <a href={href('advice-and-guidance/')}>Educational visits advice and guidance</a></p></Callout>
         </div>
@@ -447,22 +461,23 @@ export function Plan({ path }) {
         <Intro heading="Information for group leaders">
           <p>We email the relevant guides when you book, and you can ask for them earlier if you need to:</p>
           <Ticks items={['Guide for Oldham teachers and Integrated Youth Service staff', 'Leaders’ guide', 'Welcome pack', 'Centre plan, fire exits and alarm points']} />
+          <Downloads items={[{ title: 'Centre plan with fire exits and alarm points', href: OLD + 'centre_plan_with_fire_exits_and_alarm_points_2019.pdf', meta: 'PDF, 270 KB' }]} />
         </Intro>
         <div className="cols cols-2">
           <div className="icard"><h3>Insurance</h3><p>The service is covered by the Council&rsquo;s Public Liability and Employer&rsquo;s Liability policies. These don&rsquo;t cover loss of personal items, or provide compensation for injury except in cases of negligence. The organiser should take out additional personal insurance for group leaders and participants.</p></div>
           <div className="icard"><h3>Health and safety</h3><p>Our practice is in line with the national guidance recognised by the Government, which the Health and Safety Executive&rsquo;s school trips guidance points to.</p><LinkList items={[{ title: 'OEAP National Guidance', href: 'https://oeapng.info/' }, { title: 'HSE: school trips', href: 'https://www.hse.gov.uk/education/school-trips.htm' }]} /></div>
         </div>
-        <Downloads items={[{ title: 'Centre plan with fire exits and alarm points', href: OLD + 'centre_plan_with_fire_exits_and_alarm_points_2019.pdf', meta: 'PDF, 270 KB' }]} />
       </Band>
 
       <Band id="what-to-bring">
-        <Intro heading="What to bring">
+        <Intro heading="What to bring" aside={
+          <Callout title="Five things visitors most often wish they had brought" tone="sage">
+            <Ticks items={['Old clothes: tracksuit bottoms, a fleece or sweatshirt, trainers and socks. Avoid cotton T-shirts and jeans, which feel cold when wet', 'Spare socks, whatever the activity and whatever the weather', 'A warm coat, hat and gloves when it’s cool; a sun hat and sun cream when it’s warm', 'Any medication, such as asthma inhalers or hay fever tablets', 'A packed lunch on day trips. It’s a long way to the shops']} />
+          </Callout>
+        }>
           <p>Up here in the Pennines it is often cooler and breezier than down in the valleys, even on sunny days, so bring a few extra layers, especially if you will be on or near the water, or the mud.</p>
           <p>We provide specialist equipment, including waterproofs and wellingtons. For the extreme ends of the size range, such as Reception classes, stocks may be limited, so check with us first.</p>
         </Intro>
-        <Callout title="Five things visitors most often wish they had brought" tone="sage">
-          <Ticks items={['Old clothes: tracksuit bottoms, a fleece or sweatshirt, trainers and socks. Avoid cotton T-shirts and jeans, which feel cold when wet', 'Spare socks, whatever the activity and whatever the weather', 'A warm coat, hat and gloves when it’s cool; a sun hat and sun cream when it’s warm', 'Any medication, such as asthma inhalers or hay fever tablets', 'A packed lunch on day trips. It’s a long way to the shops']} />
-        </Callout>
         <div className="kits">
           <Kit title="Adventure and environmental days" bring={['Lunch and a drink (no glass bottles)', 'Outdoor clothing: tracksuit bottoms, sweatshirt or fleece, trainers, socks', 'Coat, hat and gloves if cooler', 'Sun hat and sun cream if sunny', 'Wellingtons if you have them (we can provide some)', 'Any medication you need', 'A camera if you like, at your own risk']} avoid={['Electronic games', 'Mobile phones', 'Knives', 'Large amounts of money']} />
           <Kit title="Outdoor and adventurous activities" bring={['Old clothes, avoiding cotton for water activities', 'Extra warm clothes: fleece, coat, hat, gloves', 'A full change of clothes, including footwear and underwear', 'A towel', 'Sun hat and sun cream if sunny']} note="We provide all specialist equipment: canoeing and kayaking kit, climbing kit, biking kit. If you want to bring your own, check with us first." avoid={['Electronic games', 'Mobile phones', 'Knives', 'Large amounts of money']} />
@@ -483,16 +498,20 @@ export function Plan({ path }) {
           <p>Free resources to prepare for your visit or to follow up back at school. If you would like other presentation materials, such as the Delph Bypass game cards or scavenger hunt sheets, ask your tutor on the day and we can share them.</p>
         </Intro>
         <Downloads items={RESOURCES} />
-        <LinkList items={[
-          { title: 'Field Studies Council', href: 'https://www.field-studies-council.org/resources/', text: 'Resources for fieldwork' },
-          { title: 'OPAL identification guides', href: 'https://www.opalexplorenature.org/identification', text: 'Downloadable ID guides for all kinds of living things' },
-          { title: 'Moors for the Future', href: 'https://www.moorsforthefuture.org.uk/get-involved/teachers-and-educators', text: 'A teachers’ pack on the local moorland environment' },
-          { title: 'The Pond Pack', href: 'https://www.arguk.org/info-advice/educational-resources/ks1-ks2-resources/222-the-pond-pack/file', text: 'KS1 and KS2 resources on ponds and pond life' },
-          { title: 'Tree Tools for Schools', href: 'http://www.treetoolsforschools.org.uk/categorymenu/?cat=activities', text: 'Ideas and resources for primary and secondary' },
-          { title: 'Science and Plants for Schools', href: 'http://www.saps.org.uk/primary', text: 'Plant life cycles and classification' },
-          { title: 'Canal and River Trust Explorers', href: 'https://canalrivertrust.org.uk/explorers', text: 'Rivers, canal history, recreation and safety' },
-          { title: 'Castleshaw archaeology', href: 'http://www.castleshawarchaeology.co.uk/', text: 'The Roman forts and research in the valley' },
-        ]} />
+        <div>
+          <Callout title="Useful links" tone="sage">
+            <LinkList items={[
+              { title: 'Field Studies Council', href: 'https://www.field-studies-council.org/resources/', text: 'Resources for fieldwork' },
+              { title: 'OPAL identification guides', href: 'https://www.opalexplorenature.org/identification', text: 'Downloadable ID guides for all kinds of living things' },
+              { title: 'Moors for the Future', href: 'https://www.moorsforthefuture.org.uk/get-involved/teachers-and-educators', text: 'A teachers’ pack on the local moorland environment' },
+              { title: 'The Pond Pack', href: 'https://www.arguk.org/info-advice/educational-resources/ks1-ks2-resources/222-the-pond-pack/file', text: 'KS1 and KS2 resources on ponds and pond life' },
+              { title: 'Tree Tools for Schools', href: 'http://www.treetoolsforschools.org.uk/categorymenu/?cat=activities', text: 'Ideas and resources for primary and secondary' },
+              { title: 'Science and Plants for Schools', href: 'http://www.saps.org.uk/primary', text: 'Plant life cycles and classification' },
+              { title: 'Canal and River Trust Explorers', href: 'https://canalrivertrust.org.uk/explorers', text: 'Rivers, canal history, recreation and safety' },
+              { title: 'Castleshaw archaeology', href: 'http://www.castleshawarchaeology.co.uk/', text: 'The Roman forts and research in the valley' },
+            ]} />
+          </Callout>
+        </div>
       </Band>
       <CtaBand title="Ready to book?" text="Call us to talk through dates and a programme for your group." />
     </>
