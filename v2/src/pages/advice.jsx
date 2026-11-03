@@ -1,7 +1,7 @@
 // Educational visits advice and guidance: the sub-pages behind the advice landing.
 // Facts come from the centre's 2025 service leaflet and the client's answers;
 // anything not yet confirmed is marked with <TBC>.
-import { PageTop, Band, Intro, Split, Ticks, Ledger, Steps, Faq, LinkList, People, Callout, CtaBand, Quote as Pull, Btn, TBC, img, gen, shared, Breadcrumbs, SubNav } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, SqLink, Intro, Split, Ticks, Ledger, Steps, Faq, LinkList, People, Callout, CtaBand, Quote as Pull, Btn, TBC, img, gen, shared, Breadcrumbs, SubNav } from '../ui/inner/blocks'
 import ShapedImage from '../ui/shape/ShapedImage'
 import { Squiggle, useReveal } from '../ui/Squiggle'
 import LeadForm from '../ui/advice/LeadForm'
@@ -73,14 +73,18 @@ export function How({ path }) {
       </Band>
 
       <Band>
+        <SectionHead title="Using Evolve" />
         <div className="cols cols-2">
-          <Callout title="Already a member?" tone="sky">
+          <div className="icard">
+            <h3>Already a member?</h3>
             <p>Log into Evolve to plan or submit a visit.</p>
             <p><TBC>Evolve login address for Oldham</TBC></p>
-          </Callout>
-          <Callout title="New to Evolve?" tone="sky">
-            <p>We set up your establishment, train your users and help you link your MIS so pupil and staff details flow into Evolve (Evolve+). <a href={av('training/')}>Training</a></p>
-          </Callout>
+          </div>
+          <div className="icard">
+            <h3>New to Evolve?</h3>
+            <p>We set up your establishment, train your users and help you link your MIS so pupil and staff details flow into Evolve (Evolve+).</p>
+            <p><SqLink href={av('training/')}>Training</SqLink></p>
+          </div>
         </div>
       </Band>
       <QuoteCta />
