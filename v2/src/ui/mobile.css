@@ -181,5 +181,11 @@ img, video { max-width: 100%; }
 
 /* small tablets: a gallery of exactly three photos sits three across, not two and one */
 @media (min-width: 600px) and (max-width: 899px) {
+  /* quote groups two across from 600px (one long column of short lines before) */
+  :root:root .qs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  :root:root .qs > .q:nth-child(odd):last-child { grid-column: 1 / -1; }
+  /* What people say: the Hall of Fame letters three across, not five rows of two */
+  :root:root #hall-of-fame .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  :root:root #hall-of-fame .gallery > li:last-child:nth-child(3n+1) { grid-column: 2; }
   :root:root .gallery:has(> li:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
