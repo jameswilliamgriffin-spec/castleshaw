@@ -55,6 +55,9 @@ img, video { max-width: 100%; }
   /* footer column links and the phone numbers (open columns at 600–899px, and the accordion panels on phones) */
   :root:root .ft-a, :root:root .ft-h a, :root:root .ft-tel, :root:root .cta-tel, :root:root .cta-mail a { display: inline-flex; align-items: center; min-height: 2.75rem; min-width: 2.75rem; }
   :root:root .ft-top { min-height: 2.75rem; margin-top: .5rem; }
+  /* contact page: the big phone number and the list links (email, what3words) are 44px tall */
+  :root:root .contact-big { display: inline-flex; align-items: center; min-height: 2.75rem; }
+  :root:root .contact-list a { display: inline-flex; align-items: center; min-height: 2.75rem; }
   :root:root .ft-mail, :root:root .ft-addr, :root:root .ft-sos, :root:root .ft-small a, :root:root .ft-top, :root:root .ft-note, :root:root .ft-cred, :root:root .ft-copy { font-size: 1rem; }
   :root:root .ft-h, :root:root .ft-tog { font-size: .8125rem; }
 
