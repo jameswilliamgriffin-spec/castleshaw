@@ -9,7 +9,7 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | 2: Shared layer | Done, approved | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
 | 3: Homepage and signature interactions | Done, approved | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
 | 4: Pilot internal page | Done (Plan your visit), awaiting feedback | Kit lists as tap-to-open sections on phones; "On this page" label on phones; footer and CTA links 44px at all touch sizes. |
-| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 approved; batches 1–3 done (Advice restructured afterwards); batch 4 done, awaiting go-ahead | |
+| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 approved; batches 1–3 done (Advice restructured afterwards); batches 4 and 5 done, awaiting go-ahead for batch 6 (About) | |
 | 6: Site-wide QA | Not started | |
 
 ## Phase 2 results (inner pages, 390 unless stated)
@@ -87,3 +87,14 @@ Run `npm run build && npm run preview` in `site/` (port 4175). Measure with `qa/
 | Shared | Done | 8863936 | Footer small links 44px wide; "What we look at" headings full size; advisers fit at 200% text; `mobile-check.js` measures desktop height in a fresh tab. |
 
 Content note: the "The end of another era" photo is only 204×153px (soft on phones); a larger photo can be uploaded in Sanity.
+
+## Batch 5: Courses and clubs (8 November 2026)
+
+All four pages needed no page change: clean at 320/360/390/430/768/844×390 and at 200% text, desktop unchanged. The shared layer (16:9 tiles, galleries, "To confirm" boxes, 44px targets) already covered what the audit found. No group reaches four plain topic cards.
+
+| Page | Status | Phone height at 390 | Desktop |
+|---|---|---|---|
+| Courses and clubs (hub) | Done, no page change | 4,728px | 3,699px |
+| Holiday clubs | Done, no page change | 4,699px | 4,452px |
+| Activity courses | Done, no page change | 4,475px | 3,683px |
+| Outdoor awards and DofE | Done, no page change | 6,534px | 4,970px |
