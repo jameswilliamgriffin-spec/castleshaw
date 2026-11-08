@@ -15,11 +15,11 @@ export default defineConfig({
   plugins: [
     structureTool({
       structure: (S) => S.list().title('Website content').items([
-        S.documentTypeListItem('newsStory').title('News stories'),
+        S.listItem().title('News stories').schemaType('newsStory').child(S.documentTypeList('newsStory').title('News stories').defaultOrdering([{ field: 'date', direction: 'desc' }])),
         S.divider(),
         S.listItem().title('Training').child(S.list().title('Training').items([
-          S.documentTypeListItem('trainingDate').title('Course dates and prices'),
-          S.documentTypeListItem('trainingCourse').title('Courses'),
+          S.listItem().title('Course dates and prices').schemaType('trainingDate').child(S.documentTypeList('trainingDate').title('Course dates and prices').defaultOrdering([{ field: 'date', direction: 'asc' }])),
+          S.listItem().title('Courses').schemaType('trainingCourse').child(S.documentTypeList('trainingCourse').title('Courses').defaultOrdering([{ field: 'order', direction: 'asc' }])),
         ])),
       ]),
     }),
