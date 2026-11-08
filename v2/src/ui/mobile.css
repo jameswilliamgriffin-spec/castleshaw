@@ -50,6 +50,7 @@ img, video { max-width: 100%; }
 
   /* footer: 44px targets, 8px apart, 16px text for sentences */
   :root:root .ft-mail, :root:root .ft-sos a, :root:root .ft-small a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+  :root:root .ft-small a { min-width: 2.75rem; justify-content: center; }
   :root:root .ft-small { gap: .25rem 1.4rem; }
   /* footer column links and the phone numbers (open columns at 600–899px, and the accordion panels on phones) */
   :root:root .ft-a, :root:root .ft-h a, :root:root .ft-tel, :root:root .cta-tel, :root:root .cta-mail a { display: inline-flex; align-items: center; min-height: 2.75rem; min-width: 2.75rem; }
@@ -59,7 +60,7 @@ img, video { max-width: 100%; }
 
   /* text: 16px for anything that is a sentence; 13px for short labels */
   :root:root .kit-note, :root:root .kit ul, :root:root .kit-bring li, :root:root .kit-avoid li, :root:root .kit h4, :root:root .lf-privacy, :root:root .lf-privacy a, :root:root .lf-err, :root:root .lf-check span, :root:root .lf-field label, :root:root .form-note, :root:root .form label span, :root:root .form label em, :root:root .tbc, :root:root .tbc-block p, :root:root .ticks li, :root:root .icard li, :root:root dd, :root:root .al-inspect figcaption, :root:root .al-inspect-meta, :root:root .al-sos, :root:root .al-by, :root:root .al-role, :root:root .al-talk p, :root:root .people-role, :root:root .q figcaption, :root:root .split-art figcaption, :root:root .gallery figcaption, :root:root .tl-imgs figcaption, :root:root blockquote cite, :root:root .post-card time, :root:root .dl small, :root:root .dl a span, :root:root .cta-mail, :root:root .sp-nav button, :root:root .at-tab, :root:root .j-small, :root:root .j-form label span, :root:root .pl-count, :root:root .acts-count, :root:root .act-more { font-size: 1rem; }
-  :root:root .tbc-tag, :root:root .shead-eyebrow, :root:root .al-eyebrow, :root:root .al-kicker, :root:root .adb-kicker, :root:root .sp-step, :root:root dt:not(.ledger dt) { font-size: .8125rem; }
+  :root:root .tbc-tag, :root:root .shead-eyebrow, :root:root .al-eyebrow, :root:root .al-kicker, :root:root .adb-kicker, :root:root .sp-step, :root:root dt:not(.ledger dt, .al-check-list dt) { font-size: .8125rem; }
 
   /* inner-page hero: the photo is a supporting picture, not the whole first screen */
   :root:root .ph { padding-top: calc(var(--hd-h) + var(--safe-t) + 1.6rem); padding-bottom: 4.2rem; }
@@ -159,7 +160,7 @@ img, video { max-width: 100%; }
   /* portraits stay two to a row, even at 320 */
   :root:root .people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* advice landing advisers: a smaller photo, so the bio keeps a usable column */
-  :root:root .al-person { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; }
+  :root:root .al-person { grid-template-columns: min(6.5rem, 30%) minmax(0, 1fr); gap: 1rem; }
   /* people with a bio: one to a row, the portrait beside the text, so the bio isn't 13 characters a line */
   :root:root .people:has(.people-extra) { grid-template-columns: minmax(0, 1fr); }
   :root:root .people:has(.people-extra) li { grid-template-columns: 6.5rem minmax(0, 1fr); column-gap: 1rem; }

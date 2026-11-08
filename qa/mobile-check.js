@@ -44,9 +44,11 @@ async (page) => {
   });
   await cdp.send('Emulation.clearDeviceMetricsOverride');
   await cdp.send('Emulation.setTouchEmulationEnabled', { enabled: false });
-  // desktop height, to confirm desktop is unchanged
-  await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('http://localhost:4175/' + r, { waitUntil: 'networkidle' });
-  out.desktopH = await page.evaluate(() => document.body.scrollHeight);
+  // desktop height, to confirm desktop is unchanged: in a fresh tab, so no phone emulation lingers
+  const desk = await page.context().newPage();
+  await desk.setViewportSize({ width: 1440, height: 900 });
+  await desk.goto('http://localhost:4175/' + r, { waitUntil: 'networkidle' });
+  out.desktopH = await desk.evaluate(() => document.body.scrollHeight);
+  await desk.close();
   return JSON.stringify(out);
 }

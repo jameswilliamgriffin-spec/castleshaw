@@ -58,18 +58,19 @@ export function Stepper({ steps }) {
   )
 }
 
-// A slim "Get a quote" bar that appears once the hero has gone, and steps aside at the form.
+// A slim "Get a quote" bar that appears once the hero has gone, and steps aside at the form,
+// the footer and the emergency band (so it never covers the incident number).
 export function StickyQuote({ phone, phoneHref }) {
   const [show, setShow] = useState(false)
   useEffect(() => {
-    const hero = document.querySelector('.al-hero'), form = document.getElementById('quote'), foot = document.querySelector('.ft')
+    const hero = document.querySelector('.al-hero'), form = document.getElementById('quote'), foot = document.querySelector('.ft'), sos = document.getElementById('emergency')
     if (!hero || !form) return
     const seen = new Map()
     const io = new IntersectionObserver((es) => {
       es.forEach((e) => seen.set(e.target, e.isIntersecting))
-      setShow(!seen.get(hero) && !seen.get(form) && !seen.get(foot))
+      setShow(!seen.get(hero) && !seen.get(form) && !seen.get(foot) && !seen.get(sos))
     }, { threshold: 0 })
-    ;[hero, form, foot].forEach((el) => el && io.observe(el))
+    ;[hero, form, foot, sos].forEach((el) => el && io.observe(el))
     return () => io.disconnect()
   }, [])
   return (
