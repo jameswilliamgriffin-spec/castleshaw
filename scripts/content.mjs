@@ -76,6 +76,12 @@ export async function buildContent(v2) {
     try {
       ;[news, training] = await Promise.all([sanityNews(), sanityTraining()])
       source = `Sanity (${process.env.SANITY_PROJECT_ID})`
+      // an empty project (before the content is imported) must not empty the live site
+      if (!news.length && !training.courses.length) {
+        console.warn('\n!! content: Sanity has no stories or courses yet. Building from the repository files instead.\n')
+        news = training = undefined
+        source = 'repository files'
+      }
     } catch (e) {
       // the site still builds, from the repository's copy, but say so loudly in the build log
       console.warn(`\n!! content: could not read from Sanity (${e.message}). Building from the repository files instead.\n`)
