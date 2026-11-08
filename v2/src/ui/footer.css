@@ -117,3 +117,6 @@
   .ft-sos a { position: relative; }
   .ft-mail::after, .ft-sos a::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 44px; margin-top: -22px; }
 }
+
+/* "Cookie settings" looks like the links beside it */
+.ft-cookies { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; }

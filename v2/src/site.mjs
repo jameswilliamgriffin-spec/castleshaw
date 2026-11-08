@@ -68,6 +68,7 @@ export const SECTIONS = [
 export const EXTRA = [
   { key: 'contact', title: 'Contact us', path: 'contact/' },
   { key: 'privacy', title: 'Privacy notice', path: 'privacy/' },
+  { key: 'accessibility', title: 'Accessibility statement', path: 'accessibility/' },
 ]
 
 // Every page with its section, for breadcrumbs and generation.
@@ -122,5 +123,6 @@ export const DESCRIPTIONS = {
   'about/history/': 'From the Oldham Poor Children’s Holiday Association in 1895 to today.',
   'news/': 'News from the Castleshaw Centre, Delph: people, projects and what has been happening.',
   'contact/': 'Contact the Castleshaw Centre: 0161 770 8595.',
-  'privacy/': 'How Oldham Council’s young people’s services use your information.',
+  'privacy/': 'How Oldham Council’s young people’s services and this website use your information, and the cookies we use.',
+  'accessibility/': 'How accessible the Castleshaw Centre website is, and how to report a problem.',
 }

@@ -7,7 +7,7 @@ import { Squiggle, useReveal } from '../ui/Squiggle'
 import LeadForm from '../ui/advice/LeadForm'
 import { slot } from '../ui/inner/Slot'
 import { Stepper, StickyQuote } from '../ui/advice/parts'
-import { PROOF, STEPS, CHECKS, INCLUDED, FAQ, GUIDE } from '../content/advice.mjs'
+import { PROOF, STEPS, CHECKS, INCLUDED, FAQ } from '../content/advice.mjs'
 import TRAINING from '../content/training.json'
 import { ROOT, ridge } from '../lib'
 import { track } from '../track'
@@ -86,10 +86,10 @@ export function Training({ path }) {
 
 /* ------------------------------------------------------------------ landing */
 // "Signed off": the whole service on one page. Proof and who it's for, how sign-off works,
-// what's included, the incident line, the advisers, questions, and the guide and quote form.
+// what's included, the incident line, the advisers, questions, and the quote form.
 // The old sub-pages redirect to these sections (vercel.json).
-const GUIDE_URL = () => `${ROOT}${GUIDE.href}`
-const downloadGuide = (place) => () => track('Guide downloaded', { place })
+// Evolve, for members: choose Oldham Metropolitan Borough Council on the login page
+const EVOLVE = 'https://evolve.edufocus.co.uk/evco10/unknown.asp'
 
 function Reveal({ as: Tag = 'div', className = '', children, ...rest }) {
   const ref = useReveal()
@@ -117,8 +117,8 @@ export function Landing({ path }) {
             <p className="al-lead">Planning a trip is a lot of work, and getting it right matters. Our advisers check your visit plans, sign them off, and stay on the end of the phone until everyone is home.</p>
             <div className="al-actions">
               <a className="al-btn" href="#quote" onClick={() => track('Quote button', { place: 'hero' })}>Get a quote</a>
-              <a className="al-dl sq-host" href={GUIDE_URL()} download onClick={downloadGuide('hero')}>
-                <span className="al-dl-t">Download the guide<Squiggle i={1} /></span><small>PDF</small>
+              <a className="al-dl sq-host" href={EVOLVE} rel="noopener" onClick={() => track('Evolve login', { place: 'hero' })}>
+                <span className="al-dl-t">Members: log in to Evolve<Squiggle i={1} /></span>
               </a>
             </div>
             <p className="al-sos"><span className="al-dot" aria-hidden="true" />Members&rsquo; 24/7 critical incident line <a href={INCIDENT_HREF} onClick={() => track('Phone tapped', { place: 'hero-incident' })}>{INCIDENT}</a></p>
@@ -136,7 +136,7 @@ export function Landing({ path }) {
       <Band id="who">
         <Reveal><Ledger items={PROOF} /></Reveal>
         <Reveal as="p" className="al-for">
-          <strong>For any school, college, academy or youth service, in Oldham or beyond.</strong> Maintained schools, academies and trusts, colleges, youth services and community groups can all join. <TBC>Whether Oldham maintained schools receive the service as part of the Council&rsquo;s duty as employer</TBC>
+          <strong>For any school, college, academy or youth service, in Oldham or beyond.</strong> Oldham maintained schools, academies and trusts, colleges, youth services and community groups all join through the same agreement, one for each school or setting.
         </Reveal>
       </Band>
 
@@ -145,7 +145,7 @@ export function Landing({ path }) {
         <Reveal className="al-head">
           <p className="al-kicker">How it works</p>
           <h2 className="h2i">Four sets of hands. Ours are the last.</h2>
-          <p className="al-sub">Every visit is planned on Evolve, the online system schools use to plan, check and approve trips, so everyone in the chain sees the same plan.</p>
+          <p className="al-sub">Every visit is planned on Evolve, the online system schools use to plan, check and approve trips, so everyone in the chain sees the same plan. Members <a href={EVOLVE} rel="noopener">log in to Evolve</a> and choose Oldham Metropolitan Borough Council.</p>
         </Reveal>
         <Reveal><Stepper steps={STEPS} /></Reveal>
         <Reveal className="al-checks-row" id="what-we-check">
@@ -172,7 +172,7 @@ export function Landing({ path }) {
             </div>
           ))}
         </Reveal>
-        <p className="al-more"><TBC>Packages and price bands, and when the agreement year runs</TBC> <a href={av('training/')}>Training courses and dates</a></p>
+        <p className="al-more">One agreement for every kind of setting, priced per pupil. <a href={av('training/')}>Training courses and dates</a></p>
       </Band>
 
       {/* emergency */}
@@ -183,7 +183,7 @@ export function Landing({ path }) {
           <h2 id="sos-h">If something goes wrong on a visit, call us. Day or night.</h2>
           <a className="al-sos-num" style={LAND_TAP} href={INCIDENT_HREF} onClick={() => track('Phone tapped', { place: 'incident-band' })}>{INCIDENT}</a>
           <p>An experienced adviser helps you manage the incident, contact families and deal with the media. For everyday advice in school hours, call <a href={PHONE_HREF}>{PHONE}</a>.</p>
-          <p><TBC>Whether the line is staffed all year, or in term time only</TBC></p>
+          <p>The line is staffed all year round, including the school holidays.</p>
         </Reveal>
       </section>
 
@@ -208,7 +208,7 @@ export function Landing({ path }) {
           <figure className="al-inspect">
             <blockquote>&ldquo;Extraordinary.&rdquo;</blockquote>
             <figcaption>How a Council for Learning Outside the Classroom inspector described our practice on our most recent inspection.</figcaption>
-            <p className="al-inspect-meta">40+ years of combined adviser experience. LOtC Quality Badge 101040. AALA licensed, licence <TBC>number</TBC>.</p>
+            <p className="al-inspect-meta">40+ years of combined adviser experience. LOtC Quality Badge 101040. AALA licence L194369.</p>
           </figure>
         </Reveal>
       </Band>
@@ -223,18 +223,14 @@ export function Landing({ path }) {
         <p className="al-more">National guidance: <a href="https://oeapng.info/" rel="noopener">OEAP National Guidance</a>, <a href="https://www.hse.gov.uk/education/school-trips.htm" rel="noopener">HSE on school trips</a>, <a href="https://www.hse.gov.uk/aala/" rel="noopener">Adventure Activities Licensing</a> and the <a href="https://www.lotcqualitybadge.org.uk/" rel="noopener">LOtC Quality Badge</a>.</p>
       </Band>
 
-      {/* guide + quote */}
+      {/* quote */}
       <section className="al-final" id="quote" aria-labelledby="lf-h">
         <div className="al-final-strip"><img src={gen('stream-stones')} alt="" width="1600" height="687" loading="lazy" /></div>
         <div className="al-final-in">
           <div className="al-guide">
-            <p className="al-kicker">Free guide</p>
-            <h2 className="h2i">{GUIDE.title}</h2>
-            <p className="al-sub">{GUIDE.sub}: how sign-off works, which visits need approval, what we check, a printable pre-submission checklist, and what to do if something goes wrong.</p>
-            <a className="al-guide-card" href={GUIDE_URL()} download onClick={downloadGuide('final')}>
-              <img src={`${ROOT}shared/docs/guide-cover.jpg`} alt="" width="420" height="594" loading="lazy" />
-              <span><strong>Download the guide</strong><small>PDF, 10 pages, 1.3 MB. No sign-up needed.</small></span>
-            </a>
+            <p className="al-kicker">Get a quote</p>
+            <h2 className="h2i">Talk to an adviser</h2>
+            <p className="al-sub">Tell us a little about your setting and one of our advisers will get back to you to talk it through and send a quote.</p>
             <div className="al-talk">
               <p>Rather talk it through?</p>
               <a className="al-talk-tel" style={LAND_TAP} href={PHONE_HREF} onClick={() => track('Phone tapped', { place: 'final' })}>{PHONE}</a>

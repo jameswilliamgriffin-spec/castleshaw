@@ -611,3 +611,11 @@ a.icard, .lift { transition: transform 350ms var(--ease), box-shadow 350ms var(-
   .tdates td .tplaces { justify-self: start; }
   .tdates td::before { content: attr(data-label); font: 650 .9rem var(--disp); color: var(--deep); }
 }
+
+/* long-form pages (privacy notice, accessibility statement): one comfortable reading column */
+.legal, .band > .legal { max-width: 44rem; margin-inline: 0; display: grid; gap: var(--s-5); }
+.legal-sec h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: .6rem; }
+.legal-sec p + p, .legal-sec p + .legal-list, .legal-list + p { margin-top: .8rem; }
+.legal-list { margin: .6rem 0 0; padding-left: 1.2rem; display: grid; gap: .4rem; list-style: disc; }
+.legal-list li::marker { color: var(--deep); }
+.legal-meta { font-size: 1rem; color: var(--deep); }

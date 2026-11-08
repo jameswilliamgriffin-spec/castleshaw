@@ -45,6 +45,7 @@ const REGISTRY = {
   ...Object.fromEntries(NEWS.map((n) => [`news/${n.slug}/`, news.Post])),
   'contact/': misc.Contact,
   'privacy/': misc.Privacy,
+  'accessibility/': misc.Accessibility,
 }
 
 const first = window.__PAGE

@@ -3,3 +3,4 @@ dist/
 .sanity/
 .env
 seed/import.ndjson
+seed/courses.ndjson

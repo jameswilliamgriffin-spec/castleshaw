@@ -39,7 +39,7 @@ export default function LeadForm({ source = 'advice-landing', defaultType = TYPE
         await new Promise((r) => setTimeout(r, 700))
       }
       setState('sent')
-      if (!bot) track('Enquiry sent', { type: data.type, role: data.role, guide: data.guide ? 'yes' : 'no', source })
+      if (!bot) track('Enquiry sent', { type: data.type, role: data.role, source })
     } catch {
       setState('error')
       track('Enquiry failed', { source })
@@ -91,7 +91,6 @@ export default function LeadForm({ source = 'advice-landing', defaultType = TYPE
       </div>
       {/* Hidden from people; bots tend to fill it in. */}
       <div className="lf-trap" aria-hidden="true"><label htmlFor="lf-website">Website</label><input id="lf-website" name="website" tabIndex={-1} autoComplete="off" /></div>
-      <label className="lf-check"><input type="checkbox" name="guide" value="yes" /> <span>Email me a copy of the guide, <em>Planning safe educational visits</em></span></label>
       <p className="lf-privacy">Oldham Council will use your details only to reply to this enquiry and, if you join, to provide the service. Read our <a href={PRIVACY}>privacy notice</a>.</p>
       {state === 'error' && (
         <p className="lf-fail" role="alert">Sorry, your enquiry didn&rsquo;t send. Please try again, or call <a href={PHONE_HREF}>{PHONE}</a>.</p>

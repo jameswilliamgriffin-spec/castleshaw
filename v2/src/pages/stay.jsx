@@ -82,8 +82,8 @@ export function Stay({ path }) {
         <div className="cols cols-2">
           <div className="icard">
             <h3>Food</h3>
-            <p>The kitchen is equipped for groups to cater for themselves.</p>
-            <TBC block>Whether the centre can provide catering, and if so, which meals and at what cost.</TBC>
+            <p>The kitchen is equipped for groups to cater for themselves, and the centre can also provide catering for groups who stay.</p>
+            <TBC block>Which meals we can provide, and at what cost.</TBC>
           </div>
           <div className="icard">
             <h3>Prices and availability</h3>

@@ -255,7 +255,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
             <h2 className="j-h">A day on the water</h2>
             <p className="j-lead">Kayaking and canoeing on reservoir water in the hills above Delph.</p>
             <p>First timers start close to the bank, getting a feel for the boat, the paddle and the cold. By the end of the session most groups are racing, rafting up together, or trying to stand up in a canoe without falling in. A few manage it.</p>
-            <p>Every water session runs under our AALA licence for watersports (L71687) and is led by our own instructors, with the boats, paddles and buoyancy aids provided. Bring a full change of clothes and a towel, and something warm for afterwards.</p>
+            <p>Every water session runs under our AALA licence for watersports (L194369) and is led by our own instructors, with the boats, paddles and buoyancy aids provided. Bring a full change of clothes and a towel, and something warm for afterwards.</p>
             <a className="j-more" href={href('activities/adventure-on-water/')}>More about adventure on water</a>
           </div>
         </div>

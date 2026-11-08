@@ -51,6 +51,7 @@ img, video { max-width: 100%; }
   /* footer: 44px targets, 8px apart, 16px text for sentences */
   :root:root .ft-mail, :root:root .ft-sos a, :root:root .ft-small a { display: inline-flex; align-items: center; min-height: 2.75rem; }
   :root:root .ft-small a { min-width: 2.75rem; justify-content: center; }
+  :root:root .ft-cookies { min-height: 2.75rem; }
   :root:root .ft-small { gap: .25rem 1.4rem; }
   /* footer column links and the phone numbers (open columns at 600–899px, and the accordion panels on phones) */
   :root:root .ft-a, :root:root .ft-h a, :root:root .ft-tel, :root:root .cta-tel, :root:root .cta-mail a { display: inline-flex; align-items: center; min-height: 2.75rem; min-width: 2.75rem; }

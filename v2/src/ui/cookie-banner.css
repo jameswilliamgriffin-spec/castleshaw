@@ -1,0 +1,8 @@
+/* the cookie banner: a slim bar at the bottom, clear of the home indicator */
+.ckb { position: fixed; z-index: 900; left: max(.75rem, env(safe-area-inset-left, 0px)); right: max(.75rem, env(safe-area-inset-right, 0px)); bottom: calc(.75rem + env(safe-area-inset-bottom, 0px)); max-width: 40rem; margin-inline: auto; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; padding: .9rem 1rem .9rem 1.2rem; border-radius: 1rem; background: var(--ink); color: #fff; font: 500 1rem/1.4 var(--disp); box-shadow: 0 18px 40px -18px rgba(10, 42, 60, .7); }
+.ckb p { margin: 0; flex: 1 1 16rem; }
+.ckb a { color: var(--sky); }
+.ckb-btns { display: flex; gap: .5rem; }
+.ckb button { min-height: 2.75rem; padding: 0 1.1rem; border: 2px solid var(--moss); border-radius: 99px; font: 680 1rem var(--disp); cursor: pointer; }
+.ckb-yes { background: var(--moss); color: var(--ink); }
+.ckb-no { background: transparent; color: #fff; }

@@ -166,7 +166,7 @@ export function Water({ path }) {
         </Split>
       </Band>
       <Band>
-        <AtAGlance ages="Suitable ages, and any swimming requirement" bring={
+        <AtAGlance ages="Suitable ages" bring={
           <div>
             <Callout title="Paddlesport awards" tone="sky"><p>Groups can work towards British Canoeing awards, from Paddle Start to Discover and Explore. <a href={href('courses-and-clubs/outdoor-awards/')}>Outdoor awards</a></p></Callout>
             <Callout title="Where we paddle" tone="sky"><p><TBC>Which reservoirs and rivers are used for each activity</TBC></p></Callout>
@@ -210,7 +210,7 @@ export function Bushcraft({ path }) {
               <p>Our tutor Matt completed his NCFE Level 2 Bushcraft Instructor Award in 2023, and with Chiron leads bushcraft sessions for school groups, youth groups and our holiday clubs.</p>
               <p><SqLink href={href('about/our-team/')}>Meet the team</SqLink></p>
             </Callout>
-            <TBC block>The full bushcraft programme: which activities suit which ages, and whether tool use is included.</TBC>
+            <TBC block>The full bushcraft programme.</TBC>
           </div>
         } />
       </Band>

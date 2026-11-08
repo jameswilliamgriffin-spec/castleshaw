@@ -1,6 +1,6 @@
 // News: the list of stories, and one page per story. The stories are plain files in
 // content/news/ (see the README there); scripts/news.mjs turns them into content/news.json.
-import { PageTop, Band, SectionHead, TBC, img } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, img } from '../ui/inner/blocks'
 import { NEWS } from '../site.mjs'
 import { href, FACEBOOK } from '../data'
 
@@ -49,7 +49,6 @@ export function Index({ path }) {
         actions={<a className="ib ib-ink" href={FACEBOOK} rel="noopener">Latest on Facebook</a>}
       />
       <Band>
-        <TBC block>News since April 2024, and who at the centre will post new stories.</TBC>
         <ul className="posts">
           {NEWS.map((n) => <Card key={n.slug} n={n} />)}
         </ul>

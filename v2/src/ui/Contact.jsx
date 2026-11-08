@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { PHONE, PHONE_HREF, FACEBOOK, NAV_SECTIONS, PRIVACY, CONTACT, EMAIL, ADDRESS, INCIDENT, INCIDENT_HREF } from '../data'
+import CookieBanner, { STATS_ID, openCookieSettings } from './CookieBanner'
+import { PHONE, PHONE_HREF, FACEBOOK, NAV_SECTIONS, PRIVACY, ACCESSIBILITY, CONTACT, EMAIL, ADDRESS, INCIDENT, INCIDENT_HREF } from '../data'
 import { ridge, ROOT, HOME, reduced } from '../lib'
 import { Squiggle, useReveal } from './Squiggle'
 import './footer.css'
@@ -123,11 +124,14 @@ export function Footer() {
             <li><a href={NAV_SECTIONS.find((x) => x.key === 'news').href}>News</a></li>
             <li><a href={CONTACT}>Contact</a></li>
             <li><a href={PRIVACY}>Privacy notice</a></li>
+            <li><a href={ACCESSIBILITY}>Accessibility</a></li>
+            {STATS_ID && <li><button type="button" className="ft-cookies" onClick={openCookieSettings}>Cookie settings</button></li>}
             <li><a href={FACEBOOK} rel="noopener">Facebook</a></li>
           </ul>
           <button type="button" className="ft-top" onClick={toTop}>Back to top <svg viewBox="0 0 12 16" aria-hidden="true"><path d="M6 15V2M1.5 6.5 6 2l4.5 4.5" /></svg></button>
         </div>
       </div>
+      <CookieBanner />
     </footer>
   )
 }
