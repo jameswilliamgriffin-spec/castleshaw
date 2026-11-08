@@ -224,3 +224,47 @@
   .al-dl, .al-sos a, .qbar-tel { display: inline-flex; align-items: center; min-height: 44px; }
   .lf-check { min-height: 44px; align-items: center; }
 }
+
+/* ---------- phones and small tablets (under 900px): tighter, nothing wider than the screen ---------- */
+@media (max-width: 899px) {
+  /* hero: a smaller photo and a lower ridge, so the page starts sooner */
+  .al-hero { padding-bottom: 3.5rem; }
+  .al-hero .ph-ridge { height: 3rem; }
+  .al-hero-img { max-width: min(100%, 24rem); }
+  /* stepper and final panel: one column that never grows past the screen (large text) */
+  .sp, .al-final-in { grid-template-columns: minmax(0, 1fr); }
+  .sp-nav { flex-wrap: wrap; }
+  .al-talk-mail { white-space: normal; max-width: 100%; }
+  /* the incident number stays on one line, as large as the column allows */
+  .al-sos-band { padding-block: clamp(3.5rem, 12vw, 4.5rem); }
+  .al-sos-num { font-size: min(2.4rem, 11vw); white-space: nowrap; overflow-wrap: normal; }
+  /* the incident line: the dot sits beside its label, the number under the label */
+  .al-sos { display: grid; grid-template-columns: auto minmax(0, 1fr); }
+  .al-sos a { grid-column: 2; }
+  /* a phone number in running text keeps its digits together */
+  .al-sos-in p a[href^='tel:'] { white-space: nowrap; }
+  /* "To confirm" note on its own line, then the training link */
+  .al-more > .tbc { display: flex; width: fit-content; margin-bottom: .6rem; }
+  /* advisers' qualifications at the 16px floor */
+  .al-person ul { font-size: 1rem; }
+  /* guide: a shorter photo strip and a compact cover */
+  .al-final-strip { height: clamp(96px, 22vw, 140px); }
+  .al-guide-card img { width: 4.5rem; }
+}
+@media (max-width: 599px) {
+  .al-hero-img { max-width: min(100%, 17rem); }
+}
+/* landscape phones: copy and photo side by side */
+@media (max-width: 899px) and (orientation: landscape) and (max-height: 500px) {
+  .al-hero { padding-top: 5rem; }
+  .al-hero-in { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); column-gap: 2rem; }
+}
+/* the sticky quote bar sits clear of the home indicator */
+@media (max-width: 699px) {
+  .qbar { bottom: calc(.75rem + env(safe-area-inset-bottom, 0px)); }
+}
+/* touch: a visible pressed state on the steps and the guide card */
+@media (hover: none) {
+  .sp-btn:active, .al-guide-card:active { transform: scale(.98); transition: transform .1s; }
+  .sp-btn:active { background: rgba(255, 255, 255, .6); }
+}
