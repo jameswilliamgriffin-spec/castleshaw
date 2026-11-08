@@ -9,7 +9,7 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | 2: Shared layer | Done, approved | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
 | 3: Homepage and signature interactions | Done, approved | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
 | 4: Pilot internal page | Done (Plan your visit), awaiting feedback | Kit lists as tap-to-open sections on phones; "On this page" label on phones; footer and CTA links 44px at all touch sizes. |
-| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 approved; batches 1–3 done (Advice restructured afterwards); batches 4–6 done, awaiting go-ahead for batch 7 (Contact, Privacy) | |
+| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 approved; batches 1–3 done (Advice restructured afterwards); all batches done (Phase 5 complete); Phase 6 site-wide QA next | |
 | 6: Site-wide QA | Not started | |
 
 ## Phase 2 results (inner pages, 390 unless stated)
@@ -110,3 +110,12 @@ All four pages needed no page change: clean at 320/360/390/430/768/844×390 and 
 | Accreditation and safety | Done, no page change | Downloads comfortable taps. |
 | What people say | Done (shared fixes) | Small tablets: quote groups two across from 600px, Hall of Fame three across; 768: 7,742 → 6,304px; other quote pages 24–171px shorter at 768; phones and desktop unchanged. Open decision: Primary schools' six quotes keep the phone page long (a swipe row would be a new pattern). |
 | Our history | Done | Timeline: a third photo spans the row under 600px (no lone small photo). Nick Price's photo crop moved to 50% 15% so his head isn't cut off (also on desktop; crop only, height unchanged at 6,122px). |
+
+## Batch 7: Contact and Privacy (8 November 2026)
+
+| Page | Status | Notes |
+|---|---|---|
+| Contact | Done (shared fix) | Phone number and list links (email, what3words, Facebook, incident line) 44px tall on phones. Form fields, labels, types and order fine; nothing covers Send. Open: the enquiry form (`EnquiryForm`) uses the browser's own required-field popups, not inline errors under each field; do it when the forms are wired to email (LeadForm already has inline errors). The phone number sits just below the first screen on phones (under the hero). |
+| Privacy | Done, no page change | Clean everywhere. |
+
+Phase 5 is complete. Next: Phase 6, site-wide QA.
