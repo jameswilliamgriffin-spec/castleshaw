@@ -326,7 +326,9 @@
 .post-card .post-card-h { margin: 0; font: 730 1.35rem/1.15 var(--disp); font-variation-settings: 'wdth' 84; }
 .post-card p { margin: 0; font-size: 1rem; color: #2b4656; }
 .post-when { margin-top: 1rem; font: 650 1.05rem var(--disp); color: var(--deep); }
-.post-body { max-width: 40rem; }
+.post-body, .band.band-narrow > .post-body { max-width: 40rem; }
+/* "More news": three cards, so two-across sizes show the first two */
+@media (min-width: 640px) and (max-width: 999px) { .posts-more > li:nth-child(3) { display: none; } }
 .post-body p { font-size: 1.15rem; line-height: 1.7; }
 .post-body p:first-child { margin-top: 0; }
 .post-back { margin-top: var(--s-5); font: 650 1.05rem var(--disp); }

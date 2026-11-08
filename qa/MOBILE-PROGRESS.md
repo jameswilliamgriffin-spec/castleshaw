@@ -9,7 +9,7 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | 2: Shared layer | Done, approved | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
 | 3: Homepage and signature interactions | Done, approved | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
 | 4: Pilot internal page | Done (Plan your visit), awaiting feedback | Kit lists as tap-to-open sections on phones; "On this page" label on phones; footer and CTA links 44px at all touch sizes. |
-| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 approved; batch 3 (Advice) in progress, paused by the user | |
+| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 approved; batches 1–3 done (Advice restructured afterwards); batch 4 done, awaiting go-ahead | |
 | 6: Site-wide QA | Not started | |
 
 ## Phase 2 results (inner pages, 390 unless stated)
@@ -76,3 +76,14 @@ Run `npm run build && npm run preview` in `site/` (port 4175). Measure with `qa/
 - **Homepage:** the testimonial stack is replaced by the advice call to action (a card in the scroll journey, same sticky timing); the separate advice band near the top is gone.
 - **Fixes found on the way:** the header's phone number steps aside at 1080–1279px so six sections fit; the footer's four columns go two by two below 1280px (they overflowed at 1100–1260px before).
 - Health check clean on all 32 pages (desktop and phone).
+
+## Batch 4 (8 November 2026, branch `mobile/remaining`)
+
+| Page | Status | Commit | Notes |
+|---|---|---|---|
+| Advice landing | Done | 5dc45ef, 8863936 | Phone-only rules in `advice-landing.css`: shorter hero, landscape hero side by side, incident number on one line at 320, Stepper and final panel fit at 200% text, smaller guide cover and image strip; quote bar above the home indicator and now steps aside at the emergency band. 390: 11,803 → 11,620px. Desktop unchanged (8,025px). |
+| Stay | Done, no page change | — | Already clean at every size; first booking action is in the hero. "To confirm" boxes in Food and prices use two styles (placeholders, left). |
+| News list and story pages | Done | 5ba777c + follow-up | "All news" 44px; story text 40rem wide (also on desktop, where a general rule had widened it to 60rem); cards pressed state on touch; "More news" shows two cards at two-across sizes. |
+| Shared | Done | 8863936 | Footer small links 44px wide; "What we look at" headings full size; advisers fit at 200% text; `mobile-check.js` measures desktop height in a fresh tab. |
+
+Content note: the "The end of another era" photo is only 204×153px (soft on phones); a larger photo can be uploaded in Sanity.
