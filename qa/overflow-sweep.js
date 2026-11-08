@@ -1,12 +1,12 @@
-// Overflow sweep: every page at 320, 390 and 768, plus 200% text zoom at 320 and 390, measured against the device width
+// Overflow sweep: every page at 320, 360, 390, 430, 768, 844x390 (landscape) and 1024x768 (tablet landscape), plus 200% text at 320 and 390, measured against the device width
 // (with mobile emulation innerWidth grows when content overflows, so it can't be the reference).
 // Use with browser_run_code_unsafe (filename). Reports only pages with a problem, and the widest offenders.
 async (page) => {
-  const routes = ["", "about/", "about/accreditation/", "about/history/", "about/our-team/", "about/what-people-say/", "about/where-we-are/", "about/where-we-are/around-the-valley/", "activities/", "activities/adventure-on-land/", "activities/adventure-on-water/", "activities/bushcraft/", "activities/environmental-education/", "activities/plan-your-visit/", "activities/roman-history/", "activities/team-building/", "advice-and-guidance/", "advice-and-guidance/training/", "contact/", "courses-and-clubs/", "courses-and-clubs/activity-courses/", "courses-and-clubs/holiday-clubs/", "courses-and-clubs/outdoor-awards/", "news/", "news/a-peak-district-ambassador-centre/", "news/bushcraft-sessions/", "news/our-new-centre-manager/", "news/raising-the-roof/", "news/sup-er/", "news/the-end-of-another-era/", "privacy/", "stay/"];
+  const routes = ["", "about/", "about/accreditation/", "about/history/", "about/our-team/", "about/what-people-say/", "about/where-we-are/", "about/where-we-are/around-the-valley/", "accessibility/", "activities/", "activities/adventure-on-land/", "activities/adventure-on-water/", "activities/bushcraft/", "activities/environmental-education/", "activities/plan-your-visit/", "activities/roman-history/", "activities/team-building/", "advice-and-guidance/", "advice-and-guidance/training/", "contact/", "courses-and-clubs/", "courses-and-clubs/activity-courses/", "courses-and-clubs/holiday-clubs/", "courses-and-clubs/outdoor-awards/", "news/", "news/a-peak-district-ambassador-centre/", "news/bushcraft-sessions/", "news/our-new-centre-manager/", "news/raising-the-roof/", "news/sup-er/", "news/the-end-of-another-era/", "privacy/", "stay/"];
   const cdp = await page.context().newCDPSession(page);
   await cdp.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 });
   const bad = {};
-  for (const [w, h, zoom] of [[320, 568, 0], [390, 844, 0], [768, 1024, 0], [320, 568, 1], [390, 844, 1]]) {
+  for (const [w, h, zoom] of [[320, 568, 0], [360, 740, 0], [390, 844, 0], [430, 932, 0], [768, 1024, 0], [844, 390, 0], [1024, 768, 0], [320, 568, 1], [390, 844, 1]]) {
     await cdp.send('Emulation.setDeviceMetricsOverride', { width: w, height: h, deviceScaleFactor: 1, mobile: true });
     await page.setViewportSize({ width: w, height: h });
     for (const r of routes) {

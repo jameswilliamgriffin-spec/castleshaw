@@ -119,3 +119,11 @@ All four pages needed no page change: clean at 320/360/390/430/768/844×390 and 
 | Privacy | Done, no page change | Clean everywhere. |
 
 Phase 5 is complete. Next: Phase 6, site-wide QA.
+
+## Client answers and Phase 6 (8 November 2026, branch `content/client-answers`, from `mobile/remaining`)
+
+- Client answers (3 November questionnaire) applied: commit 352bd31. Final questions document: `../Castleshaw website - final questions.docx`.
+- Phase 6 so far: Lighthouse mobile after (qa/lighthouse/after-*.json) vs before (v2*.json):
+  home 64→68 (LCP 9.6→9.2s), advice 85→93 (4.1→3.0s), stay 81→83 (5.0→4.5s), land 72→75 (6.8→6.7s), what people say 68→75 (LCP 4.8→7.3s). Accessibility and best practices 100 on all five; CLS 0. SEO 92 was the missing robots.txt (added; preview stays noindex via the X-Robots-Tag header).
+- Still to do in Phase 6: re-run Lighthouse after robots.txt; look at the LCP images (homepage film poster, gallery and activity photos are large JPGs; consider AVIF/WebP and sizes); run `qa/site-qa.js` (menu, header, footer, fixed buttons at 390), `qa/overflow-sweep.js` (all sizes incl. landscape and 1024×768, 200% text), `qa/health.js`, desktop check at 1440 on 5 pages; then the final summary with a real-device iPhone/Android checklist; then push.
+- Resume: `npm run preview` in site/ (port 4175), Playwright MCP `browser_run_code_unsafe` with each script's filename.
