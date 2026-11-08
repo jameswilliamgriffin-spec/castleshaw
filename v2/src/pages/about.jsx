@@ -338,7 +338,7 @@ export function History({ path }) {
         ]} />
       </Band>
       <Band id="nick-price">
-        <Split image={{ src: img('team-nick'), alt: 'Nick Price, smiling, in a fleece' }} shape="soft" heading="Remembering Nick Price, 1958 to 2016">
+        <Split image={{ src: img('team-nick'), alt: 'Nick Price, smiling, in a fleece', pos: '50% 15%' }} shape="soft" heading="Remembering Nick Price, 1958 to 2016">
           <p>Almost anyone who visited Castleshaw this century will have seen, or heard, Nick around the centre and its grounds. Thousands of young people and their teachers benefited from his knowledge, professionalism and experience over 16 years.</p>
           <p>We always joked that his size 12s would be big shoes to fill. We never expected the time to come so soon.</p>
         </Split>

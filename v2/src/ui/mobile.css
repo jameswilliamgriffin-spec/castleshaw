@@ -157,6 +157,8 @@ img, video { max-width: 100%; }
   /* hub tiles: a shorter photo, so six tiles don't run to two thousand pixels */
   :root:root .tiles .tile-img { aspect-ratio: 16 / 9; }
   :root { --g: max(1.25rem, env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px)); }
+  /* timeline entries with three photos: the third (a group shot) spans the row, not alone beside a gap */
+  :root:root .tl-imgs > figure:nth-child(3):last-child { grid-column: 1 / -1; }
   /* portraits stay two to a row, even at 320 */
   :root:root .people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* advice landing advisers: a smaller photo, so the bio keeps a usable column */

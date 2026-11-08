@@ -9,7 +9,7 @@ Branch `mobile/cleanup` (from `imagery/internal-pages`). Audit: `qa/MOBILE-AUDIT
 | 2: Shared layer | Done, approved | `ui/mobile.css`; hover gated in all stylesheets; safe areas; header 64/56px; type floors; inner hero proportions and landscape layout; portraits two-up at 320; menu back button; form controls and `enterkeyhint`; `svh`. Desktop verified pixel-identical on inner pages at 1440. |
 | 3: Homepage and signature interactions | Done, approved | Sticky panels reachable; Call/Sound bar tucks over the form and while typing; homepage targets 44px; journey loop lighter, stills fallback on slow phones; hero headline; Call button on one line at 320. |
 | 4: Pilot internal page | Done (Plan your visit), awaiting feedback | Kit lists as tap-to-open sections on phones; "On this page" label on phones; footer and CTA links 44px at all touch sizes. |
-| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 approved; batches 1–3 done (Advice restructured afterwards); batches 4 and 5 done, awaiting go-ahead for batch 6 (About) | |
+| 5: Remaining pages | Batch 1 (Activities) done and approved; batch 2 approved; batches 1–3 done (Advice restructured afterwards); batches 4–6 done, awaiting go-ahead for batch 7 (Contact, Privacy) | |
 | 6: Site-wide QA | Not started | |
 
 ## Phase 2 results (inner pages, 390 unless stated)
@@ -98,3 +98,15 @@ All four pages needed no page change: clean at 320/360/390/430/768/844×390 and 
 | Holiday clubs | Done, no page change | 4,699px | 4,452px |
 | Activity courses | Done, no page change | 4,475px | 3,683px |
 | Outdoor awards and DofE | Done, no page change | 6,534px | 4,970px |
+
+## Batch 6: About (8 November 2026)
+
+| Page | Status | Notes |
+|---|---|---|
+| About (hub) | Done, no page change | Clean everywhere; News tile goes to /news/. |
+| Where we are | Done, no page change | "Open in maps" and "what3words" are 50px buttons on the first screen. "Getting here" directions still To confirm (content, matters for people on the road). |
+| Around the valley | Done, no page change | Route links have 44px+ tap areas at 320. |
+| Our team | Done, no page change | 320: 7,745px at the audit → 5,057px (shared two-up portraits). |
+| Accreditation and safety | Done, no page change | Downloads comfortable taps. |
+| What people say | Done (shared fixes) | Small tablets: quote groups two across from 600px, Hall of Fame three across; 768: 7,742 → 6,304px; other quote pages 24–171px shorter at 768; phones and desktop unchanged. Open decision: Primary schools' six quotes keep the phone page long (a swipe row would be a new pattern). |
+| Our history | Done | Timeline: a third photo spans the row under 600px (no lone small photo). Nick Price's photo crop moved to 50% 15% so his head isn't cut off (also on desktop; crop only, height unchanged at 6,122px). |
