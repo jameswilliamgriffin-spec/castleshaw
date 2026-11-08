@@ -40,7 +40,8 @@ async function groq(query, params = {}) {
   const id = process.env.SANITY_PROJECT_ID, ds = process.env.SANITY_DATASET || 'production'
   const q = new URLSearchParams({ query })
   for (const [k, v] of Object.entries(params)) q.set('$' + k, JSON.stringify(v))
-  const res = await fetch(`https://${id}.apicdn.sanity.io/v2025-02-19/data/query/${ds}?${q}`)
+  // the live API, not the cached CDN: a build runs straight after someone publishes, and must see the change
+  const res = await fetch(`https://${id}.api.sanity.io/v2025-02-19/data/query/${ds}?${q}`)
   if (!res.ok) throw new Error(`Sanity answered ${res.status}`)
   return (await res.json()).result
 }

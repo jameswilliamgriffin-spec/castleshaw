@@ -8,7 +8,7 @@
     "dev": "sanity dev",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "import": "node seed/make-import.mjs && sanity dataset import seed/import.ndjson production --replace"
+    "import": "node seed/make-import.mjs && sanity dataset import seed/import.ndjson --dataset production --replace"
   },
   "engines": { "node": ">=22" },
   "dependencies": {
