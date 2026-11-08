@@ -1,5 +1,8 @@
 # News stories
 
+**Once Sanity is connected (see `SANITY-SETUP.md` at the root), stories are written in Sanity and these files are only a fallback.**
+
+
 One file per story. The file name is the story's web address: `raising-the-roof.md` becomes `/news/raising-the-roof/`.
 
 ```
@@ -19,4 +22,4 @@ Links look like [this](https://example.com).
 - `alt`: a short description of the photo, for screen readers.
 - `summary`: optional. The line shown on the News page; otherwise the first sentence of the story.
 
-The site rebuilds the News page and the story pages from these files (`scripts/gen-pages.mjs`).
+The site rebuilds the News page and the story pages from these files (`scripts/content.mjs`, run by `scripts/gen-pages.mjs`).

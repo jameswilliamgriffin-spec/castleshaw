@@ -5,12 +5,12 @@
 import { mkdirSync, writeFileSync, readFileSync, readdirSync, rmSync, existsSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { buildNews } from './news.mjs'
+import { buildContent } from './content.mjs'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const v2 = resolve(here, '../v2')
-// The news stories first: the site map reads the list they produce.
-const posts = buildNews(v2)
+// The editable content first (Sanity, or the repository's files): the site map reads the news list.
+const posts = await buildContent(v2)
 const { PAGES, CUSTOM_ENTRY, DESCRIPTIONS, TITLES, PRELOAD } = await import('../v2/src/site.mjs')
 const { FAQ } = await import('../v2/src/content/advice.mjs')
 const IMAGERY = JSON.parse(readFileSync(resolve(v2, 'src/content/imagery.json'), 'utf8'))

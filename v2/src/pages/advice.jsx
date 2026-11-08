@@ -1,13 +1,14 @@
 // Educational visits advice and guidance: the landing page (the whole service on one page) and Training.
 // Facts come from the centre's 2025 service leaflet and the client's answers;
 // anything not yet confirmed is marked with <TBC>.
-import { PageTop, Band, SectionHead, Intro, Ledger, Faq, Callout, CtaBand, Btn, TBC, img, gen, shared, Breadcrumbs, SubNav, TopicCard } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Ledger, Faq, CtaBand, Btn, TBC, img, gen, Breadcrumbs, SubNav, TopicCard } from '../ui/inner/blocks'
 import ShapedImage from '../ui/shape/ShapedImage'
 import { Squiggle, useReveal } from '../ui/Squiggle'
 import LeadForm from '../ui/advice/LeadForm'
 import { slot } from '../ui/inner/Slot'
 import { Stepper, StickyQuote } from '../ui/advice/parts'
 import { PROOF, STEPS, CHECKS, INCLUDED, FAQ, GUIDE } from '../content/advice.mjs'
+import TRAINING from '../content/training.json'
 import { ROOT, ridge } from '../lib'
 import { track } from '../track'
 import { useMemo } from 'react'
@@ -23,51 +24,60 @@ const QuoteCta = ({ title = 'Join the service', text = 'Any school, college, aca
 
 
 /* ------------------------------------------------------------------ training */
-const COURSES = [
-  { id: 'evc', name: 'Educational Visits Coordinator (EVC)', length: 'One day', who: 'New EVCs and the staff who support them', text: 'Follows DfE guidance on the role of the EVC. One free place a year comes with the service.', extra: <TBC block>How often EVCs should refresh their training</TBC> },
-  { id: 'visit-leader', name: 'Visit Leader training', length: 'Three hours, or two twilight sessions', who: 'Staff leading and supporting visits', text: 'Follows the OEAP framework, at Castleshaw or at your school.' },
-  { id: 'move', name: 'Management of Visit Emergencies (MoVE)', length: 'To confirm', who: 'Senior leaders', text: 'The national OEAP programme for the people who would lead the response if something went wrong on a visit.' },
-  { id: 'heads', name: 'Head teacher and governor sessions', length: 'To confirm', who: 'Head teachers and governors', text: 'Your responsibilities for approving visits, and what a good visits policy looks like.' },
-  { id: 'first-aid', name: 'First Aid for group leaders (ITC)', length: 'Two days', who: 'Anyone leading groups outdoors', text: 'HSE approved. Meets most national governing body requirements for outdoor leaders.' },
-  { id: 'midas', name: 'Minibus Driver Awareness (MiDAS)', length: 'Three hours', who: 'Staff who drive minibuses', text: 'Theory course, at the centre or at your school.' },
-]
+// Courses and upcoming dates come from Sanity (or content/training.local.json): see scripts/content.mjs.
+const PLACES = { open: 'Places available', few: 'Few places left', full: 'Full' }
+const today = () => new Date().toISOString().slice(0, 10)
 
 export function Training({ path }) {
+  // dates already past drop off, even before the site is next rebuilt
+  const dates = TRAINING.dates.filter((d) => d.date >= today())
   return (
     <>
       <PageTop
         path={path}
         title="Training"
-        lead="Courses for everyone involved in planning and running educational visits, at the Castleshaw Centre or at your school."
+        lead="Courses for everyone involved in planning and running educational visits, at the Castleshaw Centre or at your school. Members get one free EVC place a year and subsidised places on other courses."
         image={{ src: img('advice-owc'), alt: 'A group of leaders walking together along a lane' }}
       />
-      <Band>
+      <Band id="dates">
+        <SectionHead title="Upcoming dates and prices" />
+        {dates.length ? (
+          <div className="tdates-wrap">
+            <table className="tdates">
+              <thead><tr><th scope="col">Course</th><th scope="col">Date</th><th scope="col">Where</th><th scope="col">Members</th><th scope="col">Non-members</th><th scope="col">Places</th></tr></thead>
+              <tbody>
+                {dates.map((d) => (
+                  <tr key={d.courseId + d.date} className={d.status === 'full' ? 'is-full' : undefined}>
+                    <th scope="row"><a href={'#' + d.courseId}>{d.course}</a></th>
+                    <td data-label="Date"><span>{d.when}{d.time && <><br /><small>{d.time}</small></>}</span></td>
+                    <td data-label="Where">{d.venue || 'Castleshaw Centre'}</td>
+                    <td data-label="Members">{d.priceMember || '–'}</td>
+                    <td data-label="Non-members">{d.priceStandard || 'Members only'}</td>
+                    <td data-label="Places"><span className={`tplaces tplaces-${d.status || 'open'}`}>{PLACES[d.status] || PLACES.open}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="tdates-none">New dates are on their way. To ask about the next course, or to arrange training at your school, get in touch.</p>
+        )}
+        <p>To book a place, call <a href={PHONE_HREF}>{PHONE.replace(/ /g, '\u00a0')}</a> or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
+      </Band>
+      <Band tone="sky">
         <SectionHead title="Our courses" />
         <div className="courses">
-          {COURSES.map((c) => (
-            <TopicCard key={c.id} id={c.id} title={c.name} open={c.id === 'evc'}>
+          {TRAINING.courses.map((c) => (
+            <TopicCard key={c.id} id={c.id} title={c.name} open={!!c.featured}>
               <dl className="meta">
-                <div><dt>Length</dt><dd>{c.length === 'To confirm' ? <TBC>Length</TBC> : c.length}</dd></div>
-                <div><dt>For</dt><dd>{c.who}</dd></div>
+                {c.length && <div><dt>Length</dt><dd>{c.length === 'To confirm' ? <TBC>Length</TBC> : c.length}</dd></div>}
+                {c.who && <div><dt>For</dt><dd>{c.who}</dd></div>}
               </dl>
               <p>{c.text}</p>
-              {c.extra}
             </TopicCard>
           ))}
         </div>
-      </Band>
-      <Band tone="sky" id="dates">
-        <Intro heading="Course dates and prices">
-          <p>Members of the service get one free EVC place a year and subsidised places on other courses.</p>
-        </Intro>
-        <TBC block>Upcoming course dates, and prices for members and non-members. The last published date was an EVC course on 6 November 2025.</TBC>
-        <p>To book a place or arrange training at your school, call <a href={PHONE_HREF}>{PHONE.replace(/ /g, '\u00a0')}</a> or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
-      </Band>
-      <Band>
-        <SectionHead title="Other training we run" />
-        <Callout title="Outdoor qualifications for leaders">
-          <p>We also run British Canoeing, Duke of Edinburgh expedition and Countryside Leader training. <a href={href('courses-and-clubs/outdoor-awards/')}>Outdoor awards</a></p>
-        </Callout>
+        <p className="tother">We also run British Canoeing, Duke of Edinburgh expedition and Countryside Leader training: see <a href={href('courses-and-clubs/outdoor-awards/')}>outdoor awards</a>.</p>
       </Band>
       <QuoteCta title="Training comes with the service" text="One free EVC place a year for every member establishment, and subsidised places on other courses." />
     </>

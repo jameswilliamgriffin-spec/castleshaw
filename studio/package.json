@@ -1,0 +1,21 @@
+{
+  "name": "castleshaw-studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sanity Studio for the Castleshaw Centre website: news stories and training dates.",
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "import": "node seed/make-import.mjs && sanity dataset import seed/import.ndjson production --replace"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@sanity/vision": "6.22.0",
+    "react": "^19.2.2",
+    "react-dom": "^19.2.2",
+    "sanity": "6.22.0",
+    "styled-components": "^6.1.15"
+  }
+}

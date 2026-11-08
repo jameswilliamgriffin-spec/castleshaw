@@ -5,6 +5,8 @@ import { NEWS } from '../site.mjs'
 import { href, FACEBOOK } from '../data'
 
 const storyHref = (n) => href(`news/${n.slug}/`)
+// a photo from Sanity (a full address), or one of the site's own photos (a name)
+const photo = (n) => n.imageUrl || (n.imageKey ? img(n.imageKey) : null)
 
 // A paragraph of a story: plain text, with [links](https://…) turned into links.
 function Para({ text }) {
@@ -26,8 +28,8 @@ function Card({ n, level = 'h2' }) {
   return (
     <li>
       <a className="post-card" href={storyHref(n)}>
-        {n.image
-          ? <img src={img(n.image)} alt="" width="800" height="600" loading="lazy" />
+        {photo(n)
+          ? <img src={photo(n)} alt="" width="800" height="600" loading="lazy" />
           : <span className="post-card-none" aria-hidden="true" />}
         <time dateTime={n.date}>{n.when}</time>
         <H className="post-card-h">{n.title}</H>
@@ -68,7 +70,7 @@ export function Post({ path }) {
       <PageTop
         path={path}
         title={n.title}
-        image={n.image ? { src: img(n.image), alt: n.alt } : undefined}
+        image={photo(n) ? { src: photo(n), alt: n.alt } : undefined}
       >
         <p className="post-when"><time dateTime={n.date}>{n.when}</time></p>
       </PageTop>

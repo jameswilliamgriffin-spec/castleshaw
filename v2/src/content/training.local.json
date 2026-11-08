@@ -1,0 +1,11 @@
+{
+  "courses": [
+    { "id": "evc", "name": "Educational Visits Coordinator (EVC)", "length": "One day", "who": "New EVCs and the staff who support them", "text": "Follows DfE guidance on the role of the EVC. One free place a year comes with the service.", "featured": true },
+    { "id": "visit-leader", "name": "Visit Leader training", "length": "Three hours, or two twilight sessions", "who": "Staff leading and supporting visits", "text": "Follows the OEAP framework, at Castleshaw or at your school." },
+    { "id": "move", "name": "Management of Visit Emergencies (MoVE)", "length": "To confirm", "who": "Senior leaders", "text": "The national OEAP programme for the people who would lead the response if something went wrong on a visit." },
+    { "id": "heads", "name": "Head teacher and governor sessions", "length": "To confirm", "who": "Head teachers and governors", "text": "Your responsibilities for approving visits, and what a good visits policy looks like." },
+    { "id": "first-aid", "name": "First Aid for group leaders (ITC)", "length": "Two days", "who": "Anyone leading groups outdoors", "text": "HSE approved. Meets most national governing body requirements for outdoor leaders." },
+    { "id": "midas", "name": "Minibus Driver Awareness (MiDAS)", "length": "Three hours", "who": "Staff who drive minibuses", "text": "Theory course, at the centre or at your school." }
+  ],
+  "dates": []
+}

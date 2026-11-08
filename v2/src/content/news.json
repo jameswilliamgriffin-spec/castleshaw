@@ -4,7 +4,8 @@
     "title": "The end of another era",
     "date": "2024-04",
     "when": "April 2024",
-    "image": "stay-front",
+    "imageKey": "stay-front",
+    "imageUrl": null,
     "alt": "The front of the centre",
     "summary": "After more than 20 years at Castleshaw, Eileen, our long-serving warden, has moved on to new challenges.",
     "body": [
@@ -16,7 +17,8 @@
     "title": "Raising the roof",
     "date": "2024-03",
     "when": "March 2024",
-    "image": "news-roof",
+    "imageKey": "news-roof",
+    "imageUrl": null,
     "alt": "Council officers and staff outside the centre",
     "summary": "Castleshaw is one of 140 youth projects in England to receive a Youth Investment Fund grant, for improvements to the roof.",
     "body": [
@@ -28,7 +30,8 @@
     "title": "Bushcraft sessions",
     "date": "2023-06",
     "when": "June 2023",
-    "image": "bushcraft-tools",
+    "imageKey": "bushcraft-tools",
+    "imageUrl": null,
     "alt": "Bushcraft tools and kindling on a stump",
     "summary": "Congratulations to Matt, who has completed his NCFE Level 2 Bushcraft Instructor Award.",
     "body": [
@@ -40,7 +43,8 @@
     "title": "Our new centre manager",
     "date": "2022-05",
     "when": "May 2022",
-    "image": "team-joseph-2",
+    "imageKey": "team-joseph-2",
+    "imageUrl": null,
     "alt": "Joseph Myhill",
     "summary": "Joseph Myhill joins as centre manager, looking forward to meeting the many groups who use the centre and making plans with those who would like to.",
     "body": [
@@ -52,7 +56,8 @@
     "title": "SUP-er!",
     "date": "2021",
     "when": "2021",
-    "image": "water-sup",
+    "imageKey": "water-sup",
+    "imageUrl": null,
     "alt": "Two people on stand up paddleboards on the reservoir",
     "summary": "Young people in Oldham’s Youth Service asked if they could try paddleboarding.",
     "body": [
@@ -64,7 +69,8 @@
     "title": "A Peak District Ambassador Centre",
     "date": "2020-10",
     "when": "October 2020",
-    "image": "valley-reservoir",
+    "imageKey": "valley-reservoir",
+    "imageUrl": null,
     "alt": "A reservoir in a green valley",
     "summary": "We are now an Ambassador Centre for the Peak District National Park.",
     "body": [
