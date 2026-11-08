@@ -1,13 +1,13 @@
-// Educational visits advice and guidance: the sub-pages behind the advice landing.
+// Educational visits advice and guidance: the landing page (the whole service on one page) and Training.
 // Facts come from the centre's 2025 service leaflet and the client's answers;
 // anything not yet confirmed is marked with <TBC>.
-import { PageTop, Band, ImageBreak, SectionHead, SqLink, Intro, Split, Ticks, Ledger, Steps, Faq, LinkList, People, Callout, CtaBand, Quote as Pull, Btn, TBC, img, gen, shared, Breadcrumbs, SubNav, TopicCard } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Intro, Ledger, Faq, Callout, CtaBand, Btn, TBC, img, gen, shared, Breadcrumbs, SubNav, TopicCard } from '../ui/inner/blocks'
 import ShapedImage from '../ui/shape/ShapedImage'
 import { Squiggle, useReveal } from '../ui/Squiggle'
 import LeadForm from '../ui/advice/LeadForm'
-import { Picture, slot } from '../ui/inner/Slot'
-import { AudienceTabs, Stepper, StickyQuote } from '../ui/advice/parts'
-import { PROOF, STEPS, CHECKS, INCLUDED, AUDIENCES, FAQ, GUIDE } from '../content/advice.mjs'
+import { slot } from '../ui/inner/Slot'
+import { Stepper, StickyQuote } from '../ui/advice/parts'
+import { PROOF, STEPS, CHECKS, INCLUDED, FAQ, GUIDE } from '../content/advice.mjs'
 import { ROOT, ridge } from '../lib'
 import { track } from '../track'
 import { useMemo } from 'react'
@@ -15,167 +15,12 @@ import '../advice-landing.css'
 import { href, PHONE, PHONE_HREF, EMAIL, INCIDENT, INCIDENT_HREF } from '../data'
 
 const av = (k = '') => href(`advice-and-guidance/${k}`)
-const QUOTE = av('get-a-quote/')
+const QUOTE = av() + '#quote'
 
 const QuoteCta = ({ title = 'Join the service', text = 'Any school, college, academy or youth service can join. Prices depend on the size of your establishment.' }) => (
   <CtaBand title={title} text={text} primary={<Btn href={QUOTE} tone="moss">Contact us for a quote</Btn>} />
 )
 
-/* ------------------------------------------------------------------ how it works */
-export function How({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        tone="sky"
-        title="How it works"
-        lead="Every visit is planned on Evolve and passes through four sets of hands before it goes ahead. Ours are the last."
-        image={{ slot: 'advice-how-hero', key: gen('compass-moss') }}
-        actions={<Btn href={QUOTE}>Contact us for a quote</Btn>}
-      />
-      <Band>
-        <Intro heading="From plan to sign-off">
-          <p>Evolve is the online system schools use to plan, check and approve educational visits. It keeps the itinerary, risk management, staffing, consent and contacts in one place, so everyone in the chain sees the same plan.</p>
-        </Intro>
-        <Steps items={[
-          { title: 'The visit leader plans the visit on Evolve', body: 'The itinerary, risk management, staffing, transport and any activity providers, all in one place.' },
-          { title: 'Your EVC checks it', body: 'Your Educational Visits Coordinator, a senior member of staff, reviews the plan first.' },
-          { title: 'Your head teacher approves it', body: 'Or the head of your service, for youth and community settings.' },
-          { title: 'A Castleshaw adviser signs it off', body: 'We review the whole visit against Oldham Council policy, OEAP National Guidance and legislation, usually within 10 working days.' },
-        ]} />
-      </Band>
-
-      <Band tone="sky">
-        <Intro heading="Which visits come to us">
-          <p>Not every trip needs an adviser&rsquo;s approval. Under the service we approve the visits that carry most risk:</p>
-          <Ticks items={['Adventurous activities, such as climbing, watersports and trekking', 'Residential visits', 'Overseas visits']} />
-          <p>Your EVC and head teacher approve lower-risk visits within your own setting, and we are on hand for advice on any of them.</p>
-          <TBC block>Whether any other visit types need adviser approval, such as visits near water, and how far in advance visits should be submitted.</TBC>
-        </Intro>
-      </Band>
-      <ImageBreak slot="advice-how-break" />
-
-      <Band>
-        <Intro heading="What we look at">
-          <p>We review the whole visit, not just the risk assessment. The question is simple: has this been organised safely and sensibly, in line with national guidance?</p>
-        </Intro>
-        <div className="cols cols-2">
-          <TopicCard title="Planning" open><p>Clear aims, a realistic itinerary, and a plan B for the weather.</p></TopicCard>
-          <TopicCard title="Risk management"><p>The significant risks spotted, and sensibly managed rather than buried in paperwork.</p></TopicCard>
-          <TopicCard title="Arrangements"><p>Transport, accommodation, providers, consent, medical needs and what happens in an emergency.</p></TopicCard>
-          <TopicCard title="Staffing"><p>Enough adults, with the right experience and qualifications for the group and the activities.</p></TopicCard>
-        </div>
-      </Band>
-
-      <Band tone="sage">
-        <Split image={{ src: img('advice-river-training'), alt: 'Leaders practising a river crossing with walking poles' }} heading="If a visit isn't ready yet">
-          <p>We don&rsquo;t just say no. If something needs to change, we send the plan back with clear advice on what to change and why, and we&rsquo;re happy to talk it through on the phone.</p>
-          <p>Most visits are approved once those changes are made. The aim is a visit that goes ahead, safely.</p>
-        </Split>
-      </Band>
-
-      <Band>
-        <SectionHead title="Using Evolve" />
-        <div className="cols cols-2">
-          <div className="icard">
-            <h3>Already a member?</h3>
-            <p>Log into Evolve to plan or submit a visit.</p>
-            <p><TBC>Evolve login address for Oldham</TBC></p>
-          </div>
-          <div className="icard">
-            <h3>New to Evolve?</h3>
-            <p>We set up your establishment, train your users and help you link your MIS so pupil and staff details flow into Evolve (Evolve+).</p>
-            <p><SqLink href={av('training/')}>Training</SqLink></p>
-          </div>
-        </div>
-      </Band>
-      <QuoteCta />
-    </>
-  )
-}
-
-/* ------------------------------------------------------------------ service agreement */
-export function Agreement({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        title="The service agreement"
-        lead="One annual Service Level Agreement covers advice, approval, Evolve, policy support, training and a 24/7 critical incident line."
-        image={{ slot: 'advice-agreement-hero', key: gen('hands-carabiner') }}
-        actions={<Btn href={QUOTE}>Contact us for a quote</Btn>}
-      />
-      <Band>
-        <SectionHead title="What&rsquo;s included" />
-        <div className="cols cols-3">
-          <TopicCard title="Advice and approval" open><Ticks items={['Ongoing advice on any educational visit', 'Visit forms reviewed within 10 working days', 'Approval of adventurous activities, residentials and overseas visits', `An advice line during school hours: ${PHONE.replace(/ /g, '\u00a0')}`, 'Visits to your school to help with planning and monitoring', 'In-person support for complex visits']} /></TopicCard>
-          <TopicCard title="Evolve"><Ticks items={['Use of the Evolve visit management system', 'Support and training for every user', 'Help linking your MIS to Evolve (Evolve+)']} /><p><TBC>Whether Evolve+ is included or an optional upgrade</TBC></p></TopicCard>
-          <TopicCard title="Policy and updates"><Ticks items={['Guidance, policies and template documents', 'Updates on local policy, national guidance and legislation', 'Representation at national and regional meetings']} /></TopicCard>
-          <div className="icard"><h3>Training</h3><Ticks items={['One free EVC course place a year, per establishment', 'Subsidised visit leader and extra EVC training', 'Sessions for head teachers and governors', 'Access to MoVE training']} /><p><a href={av('training/')}>All training</a></p></div>
-          <div className="icard"><h3>Emergency support</h3><Ticks items={[`A 24/7 critical incident line: ${INCIDENT.replace(/ /g, '\u00a0')}`, 'Help managing an incident, contacting families and dealing with the media']} /><p><a href={av('emergency-support/')}>Emergency support</a></p></div>
-          <TopicCard title="Peace of mind"><Ticks items={['Running for more than 20 years', 'Over 40 years of combined adviser experience', 'Rated outstanding by most schools in our annual survey']} /></TopicCard>
-        </div>
-      </Band>
-
-      <ImageBreak slot="advice-agreement-break" />
-      <Band tone="sky" id="packages">
-        <Intro heading="Packages and prices">
-          <p>Prices depend on the size and type of your establishment. Contact us and we will send you a quote.</p>
-        </Intro>
-        <TBC block>Packages and pricing: whether the agreement is priced per establishment, per pupil or in bands, whether trusts can buy for all their schools, and when the agreement year runs (April or September).</TBC>
-        <div className="cols cols-3">
-          {['Primary schools', 'Secondary schools and colleges', 'Trusts, youth and community services'].map((t) => (
-            <div className="icard" key={t}><h3>{t}</h3><TBC block>What is included and the price band</TBC></div>
-          ))}
-        </div>
-        <p><SqLink href={QUOTE}>Ask for a quote</SqLink></p>
-      </Band>
-
-      <Band>
-        <Intro heading="The formal agreement">
-          <p>Business managers can ask us for the full Service Level Agreement document, which sets out the service, the terms and the responsibilities on each side.</p>
-          <p><TBC>A downloadable copy of the current agreement</TBC></p>
-        </Intro>
-      </Band>
-      <QuoteCta />
-    </>
-  )
-}
-
-/* ------------------------------------------------------------------ who it's for */
-export function Who({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        title="Who it's for"
-        lead="Any school, college, academy or youth service can join, in Oldham and beyond."
-        image={{ slot: 'advice-who-hero', key: gen('wellies-puddle') }}
-      />
-      <Band>
-        <Intro heading="Why it matters">
-          <p>Employers are responsible for the health and safety of staff and young people on educational visits, under the Health and Safety at Work Act. National guidance from the Outdoor Education Advisers&rsquo; Panel (OEAP) recommends that employers have access to competent advice, and most use a specialist adviser to approve higher-risk visits.</p>
-          <p>The service gives your setting that competent advice, and an independent check before a visit goes ahead.</p>
-        </Intro>
-      </Band>
-      <Band tone="sky">
-        <SectionHead title="Who can join" />
-        <div className="cols cols-2">
-          <TopicCard id="oldham-schools" title="Oldham maintained schools" open><p>Oldham Council is the employer for community and voluntary controlled schools.</p><TBC block>Whether Oldham maintained schools receive the service as part of the Council&rsquo;s duty as employer, or buy the agreement, and what is extra.</TBC></TopicCard>
-          <TopicCard id="academies" title="Academies and trusts"><p>Academies and multi-academy trusts are their own employers and can buy the service for one school or all of them, with one point of contact.</p><TBC block>Whether whole-trust agreements are offered</TBC></TopicCard>
-          <TopicCard id="colleges-youth" title="Colleges and youth services"><p>Colleges, youth services and community organisations running visits, residentials or adventurous activities can join, with sign-off by the head of the service instead of a head teacher.</p></TopicCard>
-          <TopicCard id="beyond-oldham" title="Schools outside Oldham"><p>Being outside Oldham is no barrier. We are based in Delph, close to Greater Manchester, West Yorkshire and the Peak District, and can come to you in person for planning and complex visits.</p><TBC block>How far in-person support reaches</TBC></TopicCard>
-        </div>
-      </Band>
-      <Band>
-        <Split image={{ src: shared('land-ghyll'), alt: 'Young people in helmets scrambling up a moorland stream with an instructor nearby' }} heading="Who in your school uses it">
-          <Ticks items={['Visit leaders plan and submit visits on Evolve', 'Your EVC checks plans and is our main contact', 'Head teachers and governors approve visits and set policy', 'Business managers look after the agreement']} />
-        </Split>
-      </Band>
-      <QuoteCta />
-    </>
-  )
-}
 
 /* ------------------------------------------------------------------ training */
 const COURSES = [
@@ -229,184 +74,10 @@ export function Training({ path }) {
   )
 }
 
-/* ------------------------------------------------------------------ emergency */
-export function Emergency({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        tone="ink"
-        title="Emergency support"
-        lead="If something goes wrong on a visit, you are not on your own. Call our critical incident line, day or night."
-        image={{ src: gen('moor-dusk'), alt: 'A moorland reservoir at dusk', pos: '50% 50%' }}
-      >
-        <p className="sos-big"><a href={INCIDENT_HREF}>{INCIDENT}</a></p>
-        <p>The 24/7 critical incident line for members of the service.</p>
-      </PageTop>
-      <Band>
-        <Intro heading="What we do in an incident">
-          <p>An experienced adviser answers, helps you take stock and stays with you until the situation is under control.</p>
-          <Ticks items={['Helping the visit leader manage the incident on the ground', 'Supporting your school’s senior leaders', 'Contacting families', 'Dealing with the media', 'Linking with the Council’s emergency arrangements']} />
-          <TBC block>Whether the line is staffed 24/7 all year, or during term time only, and what happens in school holidays.</TBC>
-        </Intro>
-      </Band>
-      <Band tone="sky">
-        <SectionHead title="Advice and preparation" />
-        <div className="cols cols-3">
-          <div className="icard"><h3>Everyday advice</h3><p>For questions that aren&rsquo;t emergencies, call the advice line in school hours.</p><p><a href={PHONE_HREF}>{PHONE}</a></p></div>
-          <div className="icard"><h3>Be ready</h3><p>Management of Visit Emergencies (MoVE) training prepares senior leaders to run the response at school.</p><p><a href={av('training/') + '#move'}>About MoVE</a></p></div>
-          <div className="icard"><h3>Save the number</h3><p>Add the critical incident line to every visit&rsquo;s emergency contacts and to each leader&rsquo;s phone.</p><TBC block>A printable card for visit leaders</TBC></div>
-        </div>
-      </Band>
-      <QuoteCta title="Have someone to call" text="The critical incident line is part of the service agreement." />
-    </>
-  )
-}
-
-/* ------------------------------------------------------------------ resources */
-export function Resources({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        title="Guidance and resources"
-        lead="Policies, templates and national guidance for planning educational visits."
-        image={{ src: gen('drystone-wall'), alt: 'A lichen-covered dry-stone wall on the moor', pos: '30% 50%' }}
-      />
-      <Band>
-        <Intro heading="National guidance">
-          <p>Our advice follows the guidance recognised by the Government and the Health and Safety Executive.</p>
-        </Intro>
-        <LinkList items={[
-          { title: 'OEAP National Guidance', href: 'https://oeapng.info/', text: 'The national guidance for outdoor learning, off-site visits and learning outside the classroom' },
-          { title: 'HSE: school trips', href: 'https://www.hse.gov.uk/education/school-trips.htm', text: 'The Health and Safety Executive on school trips and outdoor activities' },
-          { title: 'Adventure Activities Licensing', href: 'https://www.hse.gov.uk/aala/', text: 'Checking whether an activity provider holds an AALA licence' },
-          { title: 'LOtC Quality Badge', href: 'https://www.lotcqualitybadge.org.uk/', text: 'Finding accredited providers' },
-        ]} />
-      </Band>
-      <Band tone="sky">
-        <Intro heading="For members">
-          <p>Members receive Oldham&rsquo;s visits policy, template documents and updates on local policy, national guidance and legislation.</p>
-          <TBC block>Which policies and templates can be shared publicly, and which are for members only (for example the visits policy, risk management templates, consent forms and emergency procedures).</TBC>
-        </Intro>
-      </Band>
-      <QuoteCta />
-    </>
-  )
-}
-
-/* ------------------------------------------------------------------ advisers */
-export function Advisers({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        title="Our advisers"
-        lead="Our advisers are not desk-based. They still lead groups outdoors every week, so their advice comes from doing the job as well as knowing the guidance."
-        image={{ src: img('advice-river-training'), alt: 'Leaders practising a river crossing with walking poles' }}
-      />
-      <Band>
-        <SectionHead title="Meet the advisers" />
-        <People items={[
-          { name: 'Rod Steele', role: 'Senior tutor and adviser', img: shared('team/rod-steele'), alt: 'Rod Steele, smiling, holding a canoe paddle on a river', extra: 'Institute for Outdoor Learning accredited practitioner. IOSH. Level 4 canoe and kayak coach. Mountain bike leader. OEAP member.' },
-          { name: 'Joseph Myhill', role: 'Centre manager and adviser', img: shared('team/joseph-myhill'), alt: 'Joseph Myhill, smiling, in a red jacket and woolly hat outdoors', extra: 'Duke of Edinburgh’s Award assessor and supervisor. Former DofE manager. Paddlesport leader. OEAP member.' },
-        ]} />
-        <p><TBC>Whether the advisers hold OEAP accredited adviser status</TBC></p>
-      </Band>
-      <Band tone="sky">
-        <SectionHead title="At a glance" />
-        <Ledger items={[
-          ['20+', 'years running the service'],
-          ['40+', 'years of combined adviser experience'],
-          ['10', 'working days to review a visit, usually less'],
-          ['24/7', 'critical incident line'],
-        ]} />
-      </Band>
-      <Band tone="ink" backdrop="advice-advisers-quote">
-        <SectionHead title="What inspectors say" />
-        <Pull big text="Extraordinary." by="A Council for Learning Outside the Classroom inspector, on our most recent inspection" />
-      </Band>
-      <QuoteCta />
-    </>
-  )
-}
-
-/* ------------------------------------------------------------------ questions */
-export function Questions({ path }) {
-  return (
-    <>
-      <PageTop path={path} title="Questions" lead="What schools and business managers usually ask us." />
-      <Band narrow>
-        <SectionHead title="Frequently asked questions" />
-        <Faq items={[
-          { q: 'What does it cost?', a: <p>Prices depend on the size and type of your establishment. <a href={QUOTE}>Contact us for a quote</a>. <TBC>Packages and price bands</TBC></p> },
-          { q: 'Who can join?', a: 'Any school, college, academy or youth service, in Oldham or beyond.' },
-          { q: 'When does the agreement run?', a: <p><TBC>Agreement year (April to March, or September to August)</TBC></p> },
-          { q: 'Do we need Evolve already?', a: 'No. Evolve comes with the service. We set up your establishment and train your users.' },
-          { q: 'Can a trust buy for all its schools?', a: <p><TBC>Whether whole-trust agreements are offered</TBC></p> },
-          { q: 'How long does approval take?', a: 'We review visit forms within 10 working days, and usually sooner. Submit visits in good time, especially residentials and overseas visits.' },
-          { q: 'What happens if a visit isn’t approved?', a: 'We send it back with clear advice on what to change and why, and we’re happy to talk it through. Most visits are approved once the changes are made.' },
-          { q: 'What happens out of hours?', a: <p>Our critical incident line is for emergencies on a visit: <a href={INCIDENT_HREF}>{INCIDENT.replace(/ /g, ' ')}</a>. For everyday advice, call {PHONE.replace(/ /g, ' ')} in school hours. <TBC>Cover outside term time</TBC></p> },
-          { q: 'Can you train our staff at our school?', a: 'Yes. Visit Leader training and MiDAS theory can run at your school, and other courses can be arranged for groups.' },
-          { q: 'Do you only approve visits to Castleshaw?', a: 'No. We advise on and approve visits anywhere, from a local museum to an overseas expedition.' },
-        ]} />
-      </Band>
-      <QuoteCta title="Another question?" text="Call or email and one of our advisers will help." />
-    </>
-  )
-}
-
-/* ------------------------------------------------------------------ quote */
-// Top padding tracks the form card's own padding, so the h2 lines up with the form's heading.
-const QUOTE_SIDE = { paddingTop: 'clamp(0rem, 3vw, 2.4rem)' }
-const QUOTE_GROUP = { marginTop: 'var(--s-4)' }
-const QUOTE_TAP = { display: 'inline-flex', alignItems: 'center', minHeight: '44px' }
-function QuotePage({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        title="Get a quote"
-        lead="Tell us a little about your setting and one of our advisers will get back to you by email or phone to talk it through and send a quote."
-      />
-      <Band>
-        <div className="contact-grid">
-          {/* Side column: three groups (talk, members, guide) spaced as groups, top-aligned with the form. */}
-          <div className="contact-side" style={QUOTE_SIDE}>
-            <SectionHead title="Talk to an adviser">
-              <p>Call in school hours, or email us any time.</p>
-            </SectionHead>
-            <div style={QUOTE_GROUP}>
-              <a className="contact-big" href={PHONE_HREF} style={QUOTE_TAP}>{PHONE}</a>
-              <p style={{ marginTop: '.5rem' }}><a href={`mailto:${EMAIL}`} style={{ ...QUOTE_TAP, overflowWrap: 'anywhere' }}>{EMAIL}</a></p>
-            </div>
-            <div style={QUOTE_GROUP}>
-              <Callout title="Already a member?" tone="sky"><p><TBC>Evolve login address</TBC></p></Callout>
-            </div>
-            <ul className="dl" style={QUOTE_GROUP}>
-              <li>
-                <a href={`${ROOT}${GUIDE.href}`} download onClick={() => track('Guide downloaded', { place: 'get-a-quote' })}>
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14" /></svg>
-                  <span><strong>Download the guide: {GUIDE.title} (PDF)</strong></span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          {/* min-width 0 lets the form shrink with its column: at 200% text zoom the role
-              select's longest option otherwise widens the form past the screen on phones. */}
-          <div style={{ minWidth: 0 }}>
-            <LeadForm source="get-a-quote" />
-          </div>
-        </div>
-      </Band>
-    </>
-  )
-}
-export { QuotePage as Quote }
-
 /* ------------------------------------------------------------------ landing */
-// "Signed off": the landing page for the service. Calm and photographic, with one
-// promise, the four-step sign-off, proof, the advisers, and a short quote form.
+// "Signed off": the whole service on one page. Proof and who it's for, how sign-off works,
+// what's included, the incident line, the advisers, questions, and the guide and quote form.
+// The old sub-pages redirect to these sections (vercel.json).
 const GUIDE_URL = () => `${ROOT}${GUIDE.href}`
 const downloadGuide = (place) => () => track('Guide downloaded', { place })
 
@@ -451,21 +122,11 @@ export function Landing({ path }) {
       </header>
       <SubNav path={path} />
 
-      {/* proof */}
-      <Band>
-        <Reveal><Ledger items={PROOF} /></Reveal>
-      </Band>
-
-      {/* who it's for */}
+      {/* proof, and who it's for */}
       <Band id="who">
-        <Reveal className="al-who">
-          <div className="al-who-copy">
-            <p className="al-kicker">Who it&rsquo;s for</p>
-            <h2 className="h2i">Any school, college, academy or youth service</h2>
-            <p className="al-sub">Employers are responsible for the safety of staff and young people on visits, and national guidance recommends access to competent advice. That&rsquo;s us.</p>
-            <AudienceTabs items={AUDIENCES} renderPanel={(t) => (<><p>{t.body}</p>{t.tbc && <p><TBC>{t.tbc}</TBC></p>}<p><a href={av('who-its-for/') + '#' + ({ maintained: 'oldham-schools', trusts: 'academies', youth: 'colleges-youth', beyond: 'beyond-oldham' })[t.key]}>More about {t.title.toLowerCase()}</a></p></>)} />
-          </div>
-          <figure className="al-photo al-photo-tall"><Picture slot="advice-landing-who" /></figure>
+        <Reveal><Ledger items={PROOF} /></Reveal>
+        <Reveal as="p" className="al-for">
+          <strong>For any school, college, academy or youth service, in Oldham or beyond.</strong> Maintained schools, academies and trusts, colleges, youth services and community groups can all join. <TBC>Whether Oldham maintained schools receive the service as part of the Council&rsquo;s duty as employer</TBC>
         </Reveal>
       </Band>
 
@@ -477,24 +138,12 @@ export function Landing({ path }) {
           <p className="al-sub">Every visit is planned on Evolve, the online system schools use to plan, check and approve trips, so everyone in the chain sees the same plan.</p>
         </Reveal>
         <Reveal><Stepper steps={STEPS} /></Reveal>
-      </Band>
-
-      {/* what we look at */}
-      <Band id="what-we-check">
-        <Reveal className="al-checks">
-          <figure className="al-photo al-photo-tall"><Picture slot="advice-landing-whole-visit" /></figure>
-          <div>
-            <p className="al-kicker">What we look at</p>
-            <h2 className="h2i">The whole visit, not just the risk assessment</h2>
-            <p className="al-sub">The question is simple: has this been organised safely and sensibly, in line with national guidance?</p>
-            <dl className="al-check-list">
-              {CHECKS.map(([t, d]) => <div key={t}><dt>{t}</dt><dd>{d}</dd></div>)}
-            </dl>
-            <div className="al-ready">
-              <h3>If a visit isn&rsquo;t ready yet</h3>
-              <p>We don&rsquo;t just say no. We send the plan back with clear advice on what to change and why, and we&rsquo;re happy to talk it through. Most visits are approved once those changes are made.</p>
-            </div>
-          </div>
+        <Reveal className="al-checks-row" id="what-we-check">
+          <h3>What we look at: the whole visit, not just the risk assessment</h3>
+          <dl className="al-check-list">
+            {CHECKS.map(([t, d]) => <div key={t}><dt>{t}</dt><dd>{d}</dd></div>)}
+          </dl>
+          <p>If a visit isn&rsquo;t ready yet, we send it back with clear advice on what to change and why. Most visits are approved once those changes are made.</p>
         </Reveal>
       </Band>
 
@@ -513,16 +162,11 @@ export function Landing({ path }) {
             </div>
           ))}
         </Reveal>
-        <Reveal className="al-quote">
-          <Placeholder>Placeholder quote</Placeholder>
-          <blockquote>&ldquo;We used to dread the paperwork for our Year 6 residential. Now it goes through Evolve, Castleshaw check it, and if something needs changing they tell us exactly what and why.&rdquo;</blockquote>
-          <p className="al-by">Visits coordinator, primary school <Placeholder>To be replaced with a real, attributed quote</Placeholder></p>
-        </Reveal>
-        <p className="al-more"><a href={av('service-agreement/')}>Everything in the service agreement</a></p>
+        <p className="al-more"><TBC>Packages and price bands, and when the agreement year runs</TBC> <a href={av('training/')}>Training courses and dates</a></p>
       </Band>
 
       {/* emergency */}
-      <section className="al-sos-band" aria-labelledby="sos-h">
+      <section className="al-sos-band" id="emergency" aria-labelledby="sos-h">
         <img className="al-sos-bg" src={gen('moor-dusk')} alt="" width="1600" height="900" loading="lazy" />
         <Reveal className="al-sos-in">
           <p className="al-kicker al-kicker-light">Emergency support</p>
@@ -559,23 +203,6 @@ export function Landing({ path }) {
         </Reveal>
       </Band>
 
-      {/* training */}
-      <Band tone="sky" id="training">
-        <Reveal className="al-train">
-          <div>
-            <p className="al-kicker">Training</p>
-            <h2 className="h2i">Courses for everyone in the chain</h2>
-            <p className="al-sub">At the Castleshaw Centre, or at your school. Members get one free EVC place a year and subsidised places on other courses.</p>
-            <p><a href={av('training/')}>Course details and dates</a></p>
-          </div>
-          <ul className="al-courses">
-            {[['Educational Visits Coordinator (EVC)', 'One day'], ['Visit Leader training', 'Three hours'], ['Management of Visit Emergencies (MoVE)', null], ['First Aid for group leaders', 'Two days'], ['Minibus Driver Awareness (MiDAS)', 'Three hours']].map(([n, l]) => (
-              <li key={n}><span>{n}</span><span className="al-len">{l || <TBC>Length</TBC>}</span></li>
-            ))}
-          </ul>
-        </Reveal>
-      </Band>
-
       {/* questions */}
       <Band id="questions" narrow>
         <Reveal className="al-head">
@@ -583,7 +210,7 @@ export function Landing({ path }) {
           <h2 className="h2i">What schools usually ask</h2>
         </Reveal>
         <Faq items={FAQ} />
-        <p className="al-more"><a href={av('questions/')}>More questions</a></p>
+        <p className="al-more">National guidance: <a href="https://oeapng.info/" rel="noopener">OEAP National Guidance</a>, <a href="https://www.hse.gov.uk/education/school-trips.htm" rel="noopener">HSE on school trips</a>, <a href="https://www.hse.gov.uk/aala/" rel="noopener">Adventure Activities Licensing</a> and the <a href="https://www.lotcqualitybadge.org.uk/" rel="noopener">LOtC Quality Badge</a>.</p>
       </Band>
 
       {/* guide + quote */}

@@ -1,6 +1,6 @@
 // About the Castleshaw Centre: place, people, standards, reputation and 130 years of history.
 import { PageTop, Band, SectionHead, OnThisPage, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, SqLink, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
-import { href, ADDRESS, W3W, FACEBOOK } from '../data'
+import { href, ADDRESS, W3W } from '../data'
 
 const ab = (k = '') => href(`about/${k}`)
 const MAPS = 'https://www.google.com/maps/search/?api=1&query=Castleshaw+Centre+OL3+5LZ'
@@ -32,7 +32,7 @@ export function Hub({ path }) {
           { title: 'Accreditation and safety', href: ab('accreditation/'), img: img('land-climbing-wall'), text: 'AALA licensed, LOtC Quality Badge and Adventuremark.' },
           { title: 'What people say', href: ab('what-people-say/'), img: gal('g-6315479'), text: 'Schools, parents, groups and inspectors, plus the Hall of Fame.' },
           { title: 'Our history', href: ab('history/'), img: img('history-1895'), text: 'From a holiday home for poor children to an outdoor centre.' },
-          { title: 'News', href: ab('news/'), img: img('news-roof'), text: 'What has been happening at Castleshaw.' },
+          { title: 'News', href: href('news/'), img: img('news-roof'), text: 'What has been happening at Castleshaw.' },
         ]} />
       </Band>
       <CtaBand />
@@ -142,7 +142,7 @@ export function Team({ path }) {
       <Band tone="sage">
         <SectionHead title="Educational visits advisers">
           <p>Rod and Joseph also run Oldham&rsquo;s educational visits advice service.</p>
-          <p><SqLink href={href('advice-and-guidance/our-advisers/')}>Our advisers</SqLink></p>
+          <p><SqLink href={href('advice-and-guidance/') + '#advisers'}>Our advisers</SqLink></p>
         </SectionHead>
       </Band>
       <CtaBand />
@@ -342,37 +342,6 @@ export function History({ path }) {
           <p>Almost anyone who visited Castleshaw this century will have seen, or heard, Nick around the centre and its grounds. Thousands of young people and their teachers benefited from his knowledge, professionalism and experience over 16 years.</p>
           <p>We always joked that his size 12s would be big shoes to fill. We never expected the time to come so soon.</p>
         </Split>
-      </Band>
-    </>
-  )
-}
-
-/* ------------------------------------------------------------------ news */
-const NEWS = [
-  { date: 'April 2024', title: 'The end of another era', img: img('stay-front'), alt: 'The front of the centre', body: 'After more than 20 years at Castleshaw, Eileen, our long-serving warden, has moved on to new challenges. She may not miss cleaning up after classes of muddy children, but we’re sure she’ll miss feeding the goats. We’ll certainly miss her. All the best, Eileen!' },
-  { date: 'March 2024', title: 'Raising the roof', img: img('news-roof'), alt: 'Council officers and staff outside the centre', body: <>Castleshaw is one of 140 youth projects in England to receive a Youth Investment Fund grant, for improvements to the roof. Councillor Shaid Mushtaq, Cabinet Member for Children and Young People, said the centre &ldquo;provides opportunities for people to enjoy activities they may otherwise have never had the chance to experience&rdquo;.</> },
-  { date: 'June 2023', title: 'Bushcraft sessions', img: img('bushcraft-tools'), alt: 'Bushcraft tools and kindling on a stump', body: 'Congratulations to Matt, who has completed his NCFE Level 2 Bushcraft Instructor Award. He and Chiron are looking forward to sharing these skills with more groups.' },
-  { date: 'May 2022', title: 'Our new centre manager', img: img('team-joseph-2'), alt: 'Joseph Myhill', body: 'Joseph Myhill joins as centre manager, looking forward to meeting the many groups who use the centre and making plans with those who would like to.' },
-  { date: '2021', title: 'SUP-er!', img: img('water-sup'), alt: 'Two people on stand up paddleboards on the reservoir', body: 'Young people in Oldham’s Youth Service asked if they could try paddleboarding. We listened: we now have our own small fleet of boards, the activity is on our licence, and we have more wetsuits too.' },
-  { date: 'October 2020', title: 'A Peak District Ambassador Centre', img: img('valley-reservoir'), alt: 'A reservoir in a green valley', body: 'We are now an Ambassador Centre for the Peak District National Park.' },
-]
-
-export function News({ path }) {
-  return (
-    <>
-      <PageTop path={path} title="News" lead="What has been happening at Castleshaw." actions={<a className="ib ib-ink" href={FACEBOOK} rel="noopener">Latest on Facebook</a>} />
-      <Band>
-        <SectionHead eyebrow="About the centre" title="News from the centre" />
-        <TBC block>News since April 2024, and who will keep this page up to date (or whether to show the Facebook feed here instead).</TBC>
-        <ul className="news">
-          {NEWS.map((n) => (
-            <li key={n.title}>
-              <time>{n.date}</time>
-              <div><h3>{n.title}</h3><p>{n.body}</p></div>
-              <img src={n.img} alt={n.alt} loading="lazy" />
-            </li>
-          ))}
-        </ul>
       </Band>
     </>
   )

@@ -27,6 +27,101 @@
   ],
   "redirects": [
     {
+      "source": "/advice-and-guidance/how-it-works",
+      "destination": "/advice-and-guidance/#how-it-works",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/how-it-works/",
+      "destination": "/advice-and-guidance/#how-it-works",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/service-agreement",
+      "destination": "/advice-and-guidance/#included",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/service-agreement/",
+      "destination": "/advice-and-guidance/#included",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/who-its-for",
+      "destination": "/advice-and-guidance/#who",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/who-its-for/",
+      "destination": "/advice-and-guidance/#who",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/emergency-support",
+      "destination": "/advice-and-guidance/#emergency",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/emergency-support/",
+      "destination": "/advice-and-guidance/#emergency",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/guidance-and-resources",
+      "destination": "/advice-and-guidance/#questions",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/guidance-and-resources/",
+      "destination": "/advice-and-guidance/#questions",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/our-advisers",
+      "destination": "/advice-and-guidance/#advisers",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/our-advisers/",
+      "destination": "/advice-and-guidance/#advisers",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/questions",
+      "destination": "/advice-and-guidance/#questions",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/questions/",
+      "destination": "/advice-and-guidance/#questions",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/get-a-quote",
+      "destination": "/advice-and-guidance/#quote",
+      "permanent": true
+    },
+    {
+      "source": "/advice-and-guidance/get-a-quote/",
+      "destination": "/advice-and-guidance/#quote",
+      "permanent": true
+    },
+    {
+      "source": "/about/news",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/about/news/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/about/news/:path(.*)",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
       "source": "/advice-and-guidance.html",
       "destination": "/advice-and-guidance/",
       "permanent": true
@@ -93,12 +188,12 @@
     },
     {
       "source": "/news.html",
-      "destination": "/about/news/",
+      "destination": "/news/",
       "permanent": true
     },
     {
       "source": "/blog.html",
-      "destination": "/about/news/",
+      "destination": "/news/",
       "permanent": true
     },
     {

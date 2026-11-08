@@ -71,8 +71,8 @@
 @media (hover: hover) { .ft-top:hover { color: #fff; } }
 @media (hover: hover) { .ft-top:hover svg { transform: translateY(-3px); } }
 
-/* tablet: the brand block beside the links, links two by two */
-@media (max-width: 1099px) {
+/* tablet and small desktop: the brand block beside the links, links two by two (four 12.5rem columns need 1280px) */
+@media (max-width: 1279px) {
   .ft-brand { grid-column: span 4; }
   .ft-groups { grid-column: span 8; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

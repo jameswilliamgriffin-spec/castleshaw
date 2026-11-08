@@ -6,7 +6,7 @@ import '@fontsource-variable/literata/index.css'
 import './styles.css'
 import './inner.css'
 import Shell from './ui/inner/Shell'
-import { PAGES, DESCRIPTIONS, TITLES } from './site.mjs'
+import { PAGES, DESCRIPTIONS, TITLES, NEWS } from './site.mjs'
 import { HOME, reduced } from './lib'
 import * as activities from './pages/activities'
 import * as advice from './pages/advice'
@@ -14,6 +14,7 @@ import * as stay from './pages/stay'
 import * as courses from './pages/courses'
 import * as about from './pages/about'
 import * as misc from './pages/misc'
+import * as news from './pages/news'
 import './ui/mobile.css'
 
 // Which component renders which path. Every page in site.mjs must appear here.
@@ -27,15 +28,7 @@ const REGISTRY = {
   'activities/team-building/': activities.Team,
   'activities/plan-your-visit/': activities.Plan,
   'advice-and-guidance/': advice.Landing,
-  'advice-and-guidance/how-it-works/': advice.How,
-  'advice-and-guidance/service-agreement/': advice.Agreement,
-  'advice-and-guidance/who-its-for/': advice.Who,
   'advice-and-guidance/training/': advice.Training,
-  'advice-and-guidance/emergency-support/': advice.Emergency,
-  'advice-and-guidance/guidance-and-resources/': advice.Resources,
-  'advice-and-guidance/our-advisers/': advice.Advisers,
-  'advice-and-guidance/questions/': advice.Questions,
-  'advice-and-guidance/get-a-quote/': advice.Quote,
   'stay/': stay.Stay,
   'courses-and-clubs/': courses.Hub,
   'courses-and-clubs/holiday-clubs/': courses.Clubs,
@@ -48,7 +41,8 @@ const REGISTRY = {
   'about/accreditation/': about.Accreditation,
   'about/what-people-say/': about.Say,
   'about/history/': about.History,
-  'about/news/': about.News,
+  'news/': news.Index,
+  ...Object.fromEntries(NEWS.map((n) => [`news/${n.slug}/`, news.Post])),
   'contact/': misc.Contact,
   'privacy/': misc.Privacy,
 }
@@ -71,7 +65,7 @@ function setHead(path) {
   const page = PAGES.find((p) => p.path === path)
   if (!page) return
   document.title = `${TITLES[path] || page.long || page.title} | Castleshaw Centre`
-  document.querySelector('meta[name="description"]')?.setAttribute('content', DESCRIPTIONS[path] || '')
+  document.querySelector('meta[name="description"]')?.setAttribute('content', DESCRIPTIONS[path] || NEWS.find((n) => n.slug === page.post)?.summary || '')
   window.__PAGE = path
 }
 

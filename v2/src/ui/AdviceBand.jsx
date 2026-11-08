@@ -4,12 +4,13 @@ import { ROOT, ADVICE } from '../lib'
 import { track } from '../track'
 import './advice-band.css'
 
-// The homepage's pointer to the educational visits advice service: one of the centre's
-// main services, for schools planning any trip, not just a visit here.
+// The homepage's call to action for the educational visits advice service: one of the
+// centre's main services, for schools planning any trip, not just a visit here.
+// Shown as a card in the scroll journey (Journey.jsx), on paper over the film.
 export default function AdviceBand() {
   const ref = useReveal()
   return (
-    <section className="adb" aria-labelledby="adb-h" ref={ref}>
+    <section className="adb adb-card" aria-labelledby="adb-h" ref={ref}>
       <div className="adb-in">
         <div className="adb-copy">
           <p className="adb-kicker">For schools and settings</p>

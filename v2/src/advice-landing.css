@@ -88,6 +88,13 @@
 .al-check-list div { padding-top: 1rem; border-top: 2px solid var(--ink); }
 .al-check-list dt { font: 720 1.15rem var(--disp); }
 .al-check-list dd { margin: .4rem 0 0; font-size: .98rem; }
+.al-for { max-width: 46rem; margin: 1.8rem 0 0; font-size: 1.08rem; color: #2b4656; }
+.al-for strong { display: block; margin-bottom: .3rem; font: 720 clamp(1.25rem, 2.2vw, 1.6rem)/1.25 var(--disp); color: var(--ink); }
+.al-checks-row { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.al-checks-row h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+.al-checks-row .al-check-list { margin-top: 1.2rem; }
+@media (min-width: 1000px) { .al-checks-row .al-check-list { grid-template-columns: repeat(4, 1fr); } }
+.al-checks-row > p { max-width: 44rem; margin-top: 1.6rem; }
 .al-ready { margin-top: 2.2rem; padding: 1.4rem 1.6rem; border-radius: var(--cs-radius); background: #eef3dc; }
 .al-ready h3 { margin-bottom: .5rem; }
 

@@ -226,31 +226,6 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .pl-opts:not(.pl-opts-img) { grid-template-columns: 1fr 1fr; }
 }
 
-/* postbag */
-.pb { background: var(--sage); padding: clamp(4rem, 9vw, 8rem) var(--g) calc(clamp(4rem, 9vw, 8rem) + 40px); display: grid; gap: 2.5rem; overflow: hidden; }
-.pb-txt p { margin-top: 1rem; max-width: 28rem; }
-.pb-ctl { display: flex; align-items: center; gap: .8rem; margin-top: 1.8rem; }
-.round { width: 3.4rem; height: 3.4rem; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--ink); background: transparent; transition: background-color .25s, transform .4s var(--out); }
-.round svg { width: 1.4rem; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
-@media (hover: hover) { .round:hover { transform: scale(1.08); } }
-.round-main { width: 4.2rem; height: 4.2rem; background: var(--ink); color: var(--chalk); }
-.pb-n { font: 600 1rem var(--disp); margin-left: .4rem; }
-.pb-links { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; font: 600 1rem var(--disp); }
-.pb-pile { position: relative; height: clamp(26rem, 110vw, 36rem); touch-action: pan-y; user-select: none; }
-.card { position: absolute; left: 50%; top: 50%; width: min(88%, 25rem); background: #fff; box-shadow: 0 1px 0 rgba(10, 42, 60, .1), 0 22px 40px -24px rgba(10, 42, 60, .6);
-  transform: translate(-50%, -50%) translate(calc(var(--d) * 12px), calc(var(--d) * 10px)) rotate(calc(var(--r) * (1 + var(--d) * .6))); z-index: calc(10 - var(--d)); transition: transform .6s var(--out); }
-.card-img { padding: .8rem .8rem 2.4rem; }
-.card-img img { width: 100%; max-height: min(26rem, 90vw); object-fit: contain; }
-.card-q { padding: 2rem 1.8rem 1.6rem; border-top: 10px solid var(--water); }
-.card-q blockquote { font: 600 clamp(1.25rem, 2.2vw, 1.6rem)/1.25 var(--disp); text-wrap: pretty; }
-.card-q blockquote.big { font-size: clamp(2.8rem, 6vw, 4.2rem); line-height: .95; }
-.card-q figcaption { margin-top: 1rem; font-size: .9rem; color: var(--deep); }
-.card:nth-child(odd).card-q { border-top-color: var(--moss); }
-@media (min-width: 900px) {
-  .pb { grid-template-columns: 5fr 7fr; align-items: center; gap: 4rem; }
-  .pb-pile { height: 38rem; }
-}
-
 /* contact: the reservoir band */
 .ct { --focus: var(--sky); position: relative; background: var(--deep); color: #fff; padding: clamp(3.5rem, 8vw, 7rem) var(--g); }
 .ct-edge { position: absolute; left: 0; bottom: calc(100% - 1px); width: 100%; height: 60px; fill: var(--deep); }
@@ -337,12 +312,9 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .j-quote blockquote::before { content: '\201C'; display: block; font-size: 2.4em; line-height: .6; color: var(--moss); }
 .j-quote figcaption { margin-top: 1.2rem; font-weight: 600; }
 .j-panel { width: min(100%, 44rem); }
-/* the planner and postbag keep their own look, set on paper over the film */
+/* the planner keeps its own look, set on paper over the film */
 .journey .pl { background: transparent; padding: 0; color: var(--ink); grid-template-columns: 1fr; gap: 1.2rem; }
 .journey .pl-intro { color: #fff; text-shadow: 0 1px 14px rgba(0, 0, 0, .5); }
-.journey .pb { background: var(--sage); color: var(--ink); border-radius: 1.6rem; padding: 2rem 1.6rem; grid-template-columns: 1fr; gap: 1.5rem; }
-.journey .pb-pile { height: clamp(24rem, 90vw, 30rem); }
-.j-panel-post { width: min(100%, 40rem); }
 .j-contact { background: var(--deep); border-radius: 1.6rem; padding: clamp(1.6rem, 4vw, 2.6rem); box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .7); }
 .j-contact > p { margin-top: .9rem; max-width: 34rem; }
 .j-tel { display: inline-block; margin-top: 1rem; font: 760 clamp(2.2rem, 6vw, 4.4rem)/1 var(--disp); font-variation-settings: 'wdth' 78; color: var(--sky); text-decoration: none; letter-spacing: -.02em; }
@@ -359,7 +331,6 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 
 .j-h-s { font-size: clamp(1.3rem, 2.4vw, 1.9rem); margin-bottom: 1.2rem; color: var(--sky); }
 
-.journey .pb-txt .h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
 @media (max-width: 600px) {
   .j-controls { justify-content: stretch; }
   .j-call { flex: 1; justify-content: center; margin-left: 6.4rem; }
@@ -439,13 +410,8 @@ html.is-loading { overflow: hidden; }
   .journey .j-panel-plan .pl-card { padding: 1.8rem 2.2rem 1.6rem; }
 }
 
-/* --- postbag: words left, the pile right, wide and centred --- */
-.j-panel-post { justify-self: center; width: min(100%, 70rem); }
-.journey .pb { padding: clamp(1.6rem, 3vw, 2.6rem); }
-@media (min-width: 900px) {
-  .journey .pb { grid-template-columns: 5fr 6fr; gap: 3rem; align-items: center; }
-  .journey .pb-pile { height: 30rem; }
-}
+/* --- the advice card: the service for schools, set on paper over the film --- */
+.j-panel-advice { justify-self: center; width: min(100%, 70rem); }
 
 /* --- footer --- */
 
@@ -470,15 +436,17 @@ html.is-loading { overflow: hidden; }
 }
 .j-block-end { min-height: 100svh; padding-top: 16svh; }
 
-/* the postbag holds still for a moment while the film carries on behind it */
-.j-block:has(.j-panel-post) { min-height: 240svh; padding-top: 14svh; }
-.j-panel-post { position: sticky; top: clamp(5rem, 12svh, 8rem); align-self: start; }
-@media (max-width: 600px) { .j-panel-post { top: 4.8rem; } }
+/* the advice card holds still for a moment while the film carries on behind it */
+.j-block:has(.j-panel-advice) { min-height: 240svh; padding-top: 14svh; }
+.j-panel-advice { position: sticky; top: clamp(5rem, 12svh, 8rem); align-self: start; }
+@media (max-width: 600px) { .j-panel-advice { top: 4.8rem; } }
 
 /* homepage activity cards: link through to the full page */
 .act-more { display: inline-block; margin: 1rem 0 0 1.2rem; font: 650 .98rem var(--disp); color: var(--ink); text-underline-offset: .3em; text-decoration-thickness: 2px; text-decoration-color: var(--c, var(--moss)); }
 @media (hover: hover) { .act-more:hover { color: var(--deep); } }
 /* footer: contact plus four section columns */
+/* six sections fit beside the logo and buttons: on smaller desktops the phone number steps aside (it is in the menu and footer) */
+@media (min-width: 1080px) and (max-width: 1279px) { .hd-tel { display: none; } .hd-nav { gap: 1.2rem; } }
 .hd-nav a[aria-current] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .4em; text-decoration-color: var(--moss); }
 
 /* "For schools" tag on the Visits advice nav item */

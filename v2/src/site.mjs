@@ -1,6 +1,7 @@
 // The v2 site map: one source of truth for the menu, footer, breadcrumbs, section
 // navigation, page generation (scripts/gen-pages.mjs) and the build (vite.config.js).
 // Paths are relative to the site root and always end in a slash.
+import NEWS from './content/news.json' with { type: 'json' }
 
 export const SECTIONS = [
   {
@@ -20,15 +21,15 @@ export const SECTIONS = [
     key: 'advice', title: 'Visits advice', long: 'Educational visits advice and guidance', path: 'advice-and-guidance/',
     blurb: 'Final sign-off, training and 24/7 support for every educational visit.',
     children: [
-      { key: 'how', title: 'How it works', path: 'advice-and-guidance/how-it-works/' },
-      { key: 'sla', title: 'The service agreement', path: 'advice-and-guidance/service-agreement/' },
-      { key: 'who', title: "Who it's for", path: 'advice-and-guidance/who-its-for/' },
       { key: 'training', title: 'Training', path: 'advice-and-guidance/training/' },
-      { key: 'emergency', title: 'Emergency support', path: 'advice-and-guidance/emergency-support/' },
-      { key: 'resources', title: 'Guidance and resources', path: 'advice-and-guidance/guidance-and-resources/' },
-      { key: 'advisers', title: 'Our advisers', path: 'advice-and-guidance/our-advisers/' },
-      { key: 'faq', title: 'Questions', path: 'advice-and-guidance/questions/' },
-      { key: 'quote', title: 'Get a quote', path: 'advice-and-guidance/get-a-quote/' },
+    ],
+    // the footer lists the landing page's main sections too, as shortcuts
+    footer: [
+      { key: 'how', title: 'How it works', path: 'advice-and-guidance/#how-it-works' },
+      { key: 'included', title: 'What’s included', path: 'advice-and-guidance/#included' },
+      { key: 'emergency', title: 'Emergency support', path: 'advice-and-guidance/#emergency' },
+      { key: 'training', title: 'Training', path: 'advice-and-guidance/training/' },
+      { key: 'quote', title: 'Get a quote', path: 'advice-and-guidance/#quote' },
     ],
   },
   {
@@ -46,6 +47,11 @@ export const SECTIONS = [
     ],
   },
   {
+    key: 'news', title: 'News', long: 'News from the centre', path: 'news/',
+    blurb: 'What has been happening at Castleshaw.',
+    children: [],
+  },
+  {
     key: 'about', title: 'About us', long: 'About the Castleshaw Centre', path: 'about/',
     blurb: 'Who we are, where we are, and 130 years of history.',
     children: [
@@ -55,7 +61,6 @@ export const SECTIONS = [
       { key: 'accreditation', title: 'Accreditation and safety', path: 'about/accreditation/' },
       { key: 'say', title: 'What people say', path: 'about/what-people-say/' },
       { key: 'history', title: 'Our history', path: 'about/history/' },
-      { key: 'news', title: 'News', path: 'about/news/' },
     ],
   },
 ]
@@ -72,8 +77,12 @@ export const PAGES = [
     { ...s, section: s.key, hub: true },
     ...s.children.map((c) => ({ ...c, section: s.key })),
   ]),
+  // each news story is a page in the News section (not listed in the menus)
+  ...NEWS.map((n) => ({ key: 'news-' + n.slug, title: n.title, long: n.title, path: `news/${n.slug}/`, section: 'news', post: n.slug })),
   ...EXTRA.map((e) => ({ ...e, section: e.key })),
 ]
+
+export { NEWS }
 
 // Pages with their own entry file instead of a generated one (none at present).
 export const CUSTOM_ENTRY = new Set()
@@ -98,15 +107,7 @@ export const DESCRIPTIONS = {
   'activities/team-building/': 'Team building for primary classes, secondary groups and adult away days.',
   'activities/plan-your-visit/': 'Booking, what to bring, information for group leaders and free resources for teachers.',
   'advice-and-guidance/': 'Educational visit sign-off, Evolve, EVC training and a 24/7 critical incident line for schools, academies, trusts, colleges and youth services, from Oldham Council’s advisers at the Castleshaw Centre.',
-  'advice-and-guidance/how-it-works/': 'How visits are planned on Evolve and signed off by our advisers.',
-  'advice-and-guidance/service-agreement/': 'What the Educational Visits Advice and Guidance Service Level Agreement includes.',
-  'advice-and-guidance/who-its-for/': 'The advice service for maintained schools, academies, trusts, colleges and youth services.',
   'advice-and-guidance/training/': 'EVC, Visit Leader, MoVE, First Aid and MiDAS training for school and youth staff.',
-  'advice-and-guidance/emergency-support/': 'The 24/7 critical incident line for educational visits.',
-  'advice-and-guidance/guidance-and-resources/': 'Policies, templates and national guidance for planning educational visits.',
-  'advice-and-guidance/our-advisers/': 'Meet the Educational Visits Advisers based at the Castleshaw Centre.',
-  'advice-and-guidance/questions/': 'Questions schools ask about the educational visits advice service.',
-  'advice-and-guidance/get-a-quote/': 'Ask for a quote for the Educational Visits Advice and Guidance Service.',
   'stay/': 'Accommodation for up to 38 people in the South Pennines, for residential activity visits or groups running their own programme.',
   'courses-and-clubs/': 'Holiday clubs, summer activity courses and outdoor awards at the Castleshaw Centre.',
   'courses-and-clubs/holiday-clubs/': 'Holiday Activities and Food (HAF) and summer holiday clubs for Oldham children.',
@@ -119,7 +120,7 @@ export const DESCRIPTIONS = {
   'about/accreditation/': 'AALA licence, LOtC Quality Badge, Adventuremark and inspection reports.',
   'about/what-people-say/': 'What schools, parents, youth groups and inspectors say about Castleshaw.',
   'about/history/': 'From the Oldham Poor Children’s Holiday Association in 1895 to today.',
-  'about/news/': 'News from the Castleshaw Centre.',
+  'news/': 'News from the Castleshaw Centre, Delph: people, projects and what has been happening.',
   'contact/': 'Contact the Castleshaw Centre: 0161 770 8595.',
   'privacy/': 'How Oldham Council’s young people’s services use your information.',
 }

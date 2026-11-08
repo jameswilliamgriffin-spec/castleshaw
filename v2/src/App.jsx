@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Cursor, Header, Menu } from './ui/Top'
 import Hero from './ui/Hero'
 import Activities from './ui/Activities'
-import AdviceBand from './ui/AdviceBand'
 import Journey from './ui/Journey'
 import Loader from './ui/Loader'
 import { Footer } from './ui/Contact'
@@ -41,7 +40,6 @@ export default function App() {
       <main id="main">
         <Hero />
         <Activities picks={picks} toggle={toggle} />
-        <AdviceBand />
         <Journey picks={picks} toggle={toggle} onEnquire={(t) => { setMsg(t); goTo('contact') }} msg={msg} setMsg={setMsg} />
       </main>
       <Footer />

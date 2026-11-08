@@ -14,7 +14,7 @@ export const ADDRESS = ['Waterworks Road', 'Delph', 'Oldham', 'OL3 5LZ']
 // Navigation, built from the site map in site.mjs. Links are relative to the current page.
 export const href = (path) => HOME + path
 export const NAV_MAIN = SECTIONS.map((s) => [s.title, href(s.path)])
-export const NAV_SECTIONS = SECTIONS.map((s) => ({ ...s, href: href(s.path), children: s.children.map((c) => ({ ...c, href: href(c.path) })) }))
+export const NAV_SECTIONS = SECTIONS.map((s) => ({ ...s, href: href(s.path), children: s.children.map((c) => ({ ...c, href: href(c.path) })), footer: (s.footer || s.children).map((c) => ({ ...c, href: href(c.path) })) }))
 export const PRIVACY = href('privacy/')
 export const CONTACT = href('contact/')
 

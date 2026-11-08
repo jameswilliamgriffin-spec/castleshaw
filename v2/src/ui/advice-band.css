@@ -19,3 +19,10 @@
 .adb-link { font: 650 1.02rem var(--disp); color: var(--ink); text-decoration-color: var(--moss); text-decoration-thickness: 2px; text-underline-offset: .3em; }
 .adb-img { width: 100%; max-width: 26rem; justify-self: center; }
 @media (prefers-reduced-motion: reduce) { .adb-copy > * { transform: none; transition: opacity 300ms; } }
+
+/* as a card in the scroll journey */
+.adb-card { color: var(--ink); text-shadow: none; padding: clamp(1.8rem, 4vw, 3.2rem) clamp(1.4rem, 4vw, 3.4rem); border-radius: 1.6rem; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .55); }
+.adb-card .adb-in { gap: 2rem clamp(2rem, 5vw, 4rem); }
+.adb-card .adb-h { font-size: clamp(2rem, 4.4vw, 3.6rem); }
+.adb-card .adb-img { max-width: 22rem; }
+@media (max-width: 899px) { .adb-card .adb-img { display: none; } }

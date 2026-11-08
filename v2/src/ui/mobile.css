@@ -58,7 +58,7 @@ img, video { max-width: 100%; }
   :root:root .ft-h, :root:root .ft-tog { font-size: .8125rem; }
 
   /* text: 16px for anything that is a sentence; 13px for short labels */
-  :root:root .kit-note, :root:root .kit ul, :root:root .kit-bring li, :root:root .kit-avoid li, :root:root .kit h4, :root:root .lf-privacy, :root:root .lf-privacy a, :root:root .lf-err, :root:root .lf-check span, :root:root .lf-field label, :root:root .form-note, :root:root .form label span, :root:root .form label em, :root:root .tbc, :root:root .tbc-block p, :root:root .ticks li, :root:root .icard li, :root:root dd, :root:root .al-inspect figcaption, :root:root .al-inspect-meta, :root:root .al-sos, :root:root .al-by, :root:root .al-role, :root:root .al-talk p, :root:root .people-role, :root:root .q figcaption, :root:root .card figcaption, :root:root .card-q figcaption, :root:root .split-art figcaption, :root:root .gallery figcaption, :root:root .tl-imgs figcaption, :root:root blockquote cite, :root:root .news time, :root:root .dl small, :root:root .dl a span, :root:root .cta-mail, :root:root .sp-nav button, :root:root .at-tab, :root:root .j-small, :root:root .j-form label span, :root:root .pl-count, :root:root .acts-count, :root:root .act-more { font-size: 1rem; }
+  :root:root .kit-note, :root:root .kit ul, :root:root .kit-bring li, :root:root .kit-avoid li, :root:root .kit h4, :root:root .lf-privacy, :root:root .lf-privacy a, :root:root .lf-err, :root:root .lf-check span, :root:root .lf-field label, :root:root .form-note, :root:root .form label span, :root:root .form label em, :root:root .tbc, :root:root .tbc-block p, :root:root .ticks li, :root:root .icard li, :root:root dd, :root:root .al-inspect figcaption, :root:root .al-inspect-meta, :root:root .al-sos, :root:root .al-by, :root:root .al-role, :root:root .al-talk p, :root:root .people-role, :root:root .q figcaption, :root:root .split-art figcaption, :root:root .gallery figcaption, :root:root .tl-imgs figcaption, :root:root blockquote cite, :root:root .post-card time, :root:root .dl small, :root:root .dl a span, :root:root .cta-mail, :root:root .sp-nav button, :root:root .at-tab, :root:root .j-small, :root:root .j-form label span, :root:root .pl-count, :root:root .acts-count, :root:root .act-more { font-size: 1rem; }
   :root:root .tbc-tag, :root:root .shead-eyebrow, :root:root .al-eyebrow, :root:root .al-kicker, :root:root .adb-kicker, :root:root .sp-step, :root:root dt:not(.ledger dt) { font-size: .8125rem; }
 
   /* inner-page hero: the photo is a supporting picture, not the whole first screen */
@@ -93,11 +93,10 @@ img, video { max-width: 100%; }
   /* "Six ways": 44px chips, 8px apart; links with a 44px hit area */
   :root:root .acts-chip { min-height: 2.75rem; }
   :root:root .acts-legend { gap: .5rem; }
-  :root:root .act-more, :root:root .adb-link, :root:root .j-more, :root:root .pb-links a, :root:root .j-tel { display: inline-flex; align-items: center; min-height: 2.75rem; }
+  :root:root .act-more, :root:root .adb-link, :root:root .j-more, :root:root .j-tel { display: inline-flex; align-items: center; min-height: 2.75rem; }
   /* the hero link keeps its underline under the text, with a 44px tap area around it */
   :root:root .hero-tel { position: relative; }
   :root:root .hero-tel::after { content: ''; position: absolute; inset: -.7rem -.3rem; }
-  :root:root .pb-links { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
   :root:root .pl .txt { min-width: 2.75rem; min-height: 2.75rem; }
   /* Call and Sound: 44px, clear of the home bar */
   :root:root .j-call, :root:root .j-sound { height: 2.75rem; }

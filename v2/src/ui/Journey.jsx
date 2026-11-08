@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import TH from '../threshold.json'
 import { Film, filmSource, prefersStills } from '../film'
 import Planner from './Planner'
-import Postbag from './Postbag'
+import AdviceBand from './AdviceBand'
 import ScrollCue from './ScrollCue'
 import { PHONE, PHONE_HREF, FACEBOOK, QUOTES, href } from '../data'
 
@@ -52,7 +52,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
     const cio = new IntersectionObserver(([e]) => { contact = e.isIntersecting; sync() }, { rootMargin: '0px 0px -30% 0px' })
     const c = el.querySelector('.j-contact'); if (c) cio.observe(c)
     // a sticky panel taller than the room above the bar sticks by its bottom edge, so all of it can be reached
-    const panels = [...el.querySelectorAll('.j-panel-plan, .j-panel-post')]
+    const panels = [...el.querySelectorAll('.j-panel-plan, .j-panel-advice')]
     const bar = el.querySelector('.j-controls')
     const fit = () => {
       const dock = bar ? Math.max(16, innerHeight - bar.getBoundingClientRect().top + 12) : 16
@@ -261,7 +261,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
         </div>
 
         <div className="j-block j-block-tall" data-seg="5">
-          <div className="j-panel j-panel-post"><Postbag /></div>
+          <div className="j-panel j-panel-advice"><AdviceBand /></div>
         </div>
 
         <div className="j-block j-block-end" data-seg="6">

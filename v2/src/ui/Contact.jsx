@@ -104,7 +104,7 @@ export function Footer() {
                 <div className="ft-panel" id={panel}>
                   <ul>
                     {narrow && <li><FtLink href={x.href} i={0}>Overview</FtLink></li>}
-                    {x.children.map((c, ci) => <li key={c.key}><FtLink href={c.href} i={ci}>{c.title}</FtLink></li>)}
+                    {x.footer.map((c, ci) => <li key={c.key}><FtLink href={c.href} i={ci}>{c.title}</FtLink></li>)}
                   </ul>
                 </div>
               </nav>
@@ -120,6 +120,7 @@ export function Footer() {
           <span className="ft-copy">&copy; Oldham Council {new Date().getFullYear()}</span>
           <ul className="ft-small">
             <li><a href={NAV_SECTIONS.find((x) => x.key === 'stay').href}>Stay and hire</a></li>
+            <li><a href={NAV_SECTIONS.find((x) => x.key === 'news').href}>News</a></li>
             <li><a href={CONTACT}>Contact</a></li>
             <li><a href={PRIVACY}>Privacy notice</a></li>
             <li><a href={FACEBOOK} rel="noopener">Facebook</a></li>

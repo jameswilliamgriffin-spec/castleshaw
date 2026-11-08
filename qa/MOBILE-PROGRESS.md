@@ -68,3 +68,11 @@ Run `npm run build && npm run preview` in `site/` (port 4175). Measure with `qa/
 - **Still overflowing at 200% text:** the activities pages' `.adv-note-link` span; the homepage Call/Sound bar (`.j-controls`); Training's `dd`/`.tbc` at 320; Advice landing's `.tbc-tag` and `.qbar`.
 - **Left in batch 3:** Advice landing (`export function Landing`; it overflows 35px at 320 from `.al-person` at normal size).
 - **Resume:** `npm run build && npm run preview` in `site/`; run `qa/overflow-sweep.js`, fix the remaining items above, check `qa/heights.js` against the values before; then the Advice landing subagent; then the batch 3 sheets and stop.
+
+## Site streamlined (8 November 2026, branch `streamline/advice-news`)
+
+- **Advice:** 10 pages → 2. The landing page holds the whole service (proof and who it's for, how it works with what we check, what's included, the incident line, the advisers, questions with national guidance, the guide and quote form); Training keeps its own page. How it works, Service agreement, Who it's for, Emergency support, Guidance and resources, Our advisers, Questions and Get a quote redirect to the matching section (vercel.json). The batch 3 mobile passes on those pages no longer apply; the landing page still needs its own mobile pass.
+- **News:** its own section at `/news/`, in the header, the phone menu and the footer, with a page per story. Stories are files in `v2/src/content/news/` (see the README there); `scripts/news.mjs` builds them. `/about/news/` redirects to `/news/`.
+- **Homepage:** the testimonial stack is replaced by the advice call to action (a card in the scroll journey, same sticky timing); the separate advice band near the top is gone.
+- **Fixes found on the way:** the header's phone number steps aside at 1080–1279px so six sections fit; the footer's four columns go two by two below 1280px (they overflowed at 1100–1260px before).
+- Health check clean on all 32 pages (desktop and phone).
