@@ -127,3 +127,26 @@ Phase 5 is complete. Next: Phase 6, site-wide QA.
   home 64→68 (LCP 9.6→9.2s), advice 85→93 (4.1→3.0s), stay 81→83 (5.0→4.5s), land 72→75 (6.8→6.7s), what people say 68→75 (LCP 4.8→7.3s). Accessibility and best practices 100 on all five; CLS 0. SEO 92 was the missing robots.txt (added; preview stays noindex via the X-Robots-Tag header).
 - Still to do in Phase 6: re-run Lighthouse after robots.txt; look at the LCP images (homepage film poster, gallery and activity photos are large JPGs; consider AVIF/WebP and sizes); run `qa/site-qa.js` (menu, header, footer, fixed buttons at 390), `qa/overflow-sweep.js` (all sizes incl. landscape and 1024×768, 200% text), `qa/health.js`, desktop check at 1440 on 5 pages; then the final summary with a real-device iPhone/Android checklist; then push.
 - Resume: `npm run preview` in site/ (port 4175), Playwright MCP `browser_run_code_unsafe` with each script's filename.
+
+## Phase 6, step 1: page speed (9 November 2026)
+
+Lighthouse mobile (qa/lighthouse/after2-*, after3-*), before → after:
+
+| Page | Performance | LCP | SEO |
+|---|---|---|---|
+| Homepage | 64 → 73 | 9.6 → 5.5s | 92 → 100 |
+| Advice landing | 85 → 93 | 4.1 → 3.0s | 92 → 100 |
+| Stay | 81 → 92 | 5.0 → 3.2s | 92 → 100 |
+| Adventure on land | 72 → 86 | 6.8 → 4.0s | 92 → 100 |
+| What people say | 68 → 88 | 4.8 → 3.6s | 92 → 100 |
+
+Accessibility and best practices 100 on all five; CLS 0.
+
+What changed:
+- `scripts/responsive.py` makes 480/720/960px WebP copies of every site photo (public/shared/images/rs/, listed in v2/src/content/responsive.json). Run it after adding or replacing photos; pages fall back to the JPEG if a copy is missing.
+- `Photo` (ui/inner/Slot.jsx) offers those copies as a srcset; used by shaped photos, heroes, tiles, galleries, the timeline, news cards, the planner and the homepage hero. Sanity photos use Sanity's own sizes.
+- Each page's hero photo is preloaded in its HTML head (PRELOAD in site.mjs; news stories automatically).
+- Homepage: the ripple photos load their 960 WebP only as they come near; the intro preloads the hero's WebP copies, not full JPEGs, and waits at most 2.0s (was 2.6s); header logo as WebP (122 → 26KB). First-load images 1,211 → 661KB.
+- robots.txt added (the preview stays noindex through the X-Robots-Tag header).
+
+What's left: LCP on the inner pages now sits about a second behind the page script drawing anything (FCP about 2s on Lighthouse's slow phone); going further would need pre-rendered HTML. The homepage's remaining time is the intro animation, by design.

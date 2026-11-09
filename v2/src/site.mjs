@@ -93,9 +93,34 @@ export const TITLES = {
   'advice-and-guidance/': 'Educational visits advice and guidance for schools, Oldham',
 }
 
-// The hero image each page should preload.
+// The hero image each page should preload, so the browser fetches it before the page's script runs:
+// { slot } for a generated image (content/imagery.json), { photo } for a site photo (its WebP sizes,
+// scripts/responsive.py). Keep in step with the hero image on each page. News stories are added
+// automatically from their own photos (scripts/gen-pages.mjs).
 export const PRELOAD = {
   'advice-and-guidance/': { slot: 'advice-landing-hero' },
+  'courses-and-clubs/': { slot: 'courses-hub-hero' },
+  'about/': { photo: 'shared/images/site/history-building-now.jpg' },
+  'about/accreditation/': { photo: 'shared/images/site/land-abseil-2.jpg' },
+  'about/history/': { photo: 'shared/images/site/history-postcard.jpg' },
+  'about/our-team/': { photo: 'shared/images/site/team-joseph-2.jpg' },
+  'about/what-people-say/': { photo: 'shared/images/gallery/g-6315479.jpg' },
+  'about/where-we-are/': { photo: 'shared/images/site/valley-reservoir.jpg' },
+  'about/where-we-are/around-the-valley/': { photo: 'shared/images/site/valley-obelisk.jpg' },
+  'activities/': { photo: 'shared/images/site/water-canoe-reflect.jpg' },
+  'activities/adventure-on-land/': { photo: 'shared/images/site/land-ghyll-waterfall.jpg' },
+  'activities/adventure-on-water/': { photo: 'shared/images/site/water-kayak-green.jpg' },
+  'activities/bushcraft/': { photo: 'shared/images/bushcraft-marshmallows.jpg' },
+  'activities/environmental-education/': { photo: 'shared/images/site/env-stream.jpg' },
+  'activities/plan-your-visit/': { photo: 'shared/images/site/bring-muddy.jpg' },
+  'activities/roman-history/': { photo: 'shared/images/site/roman-shields.jpg' },
+  'activities/team-building/': { photo: 'shared/images/site/team-rope.jpg' },
+  'advice-and-guidance/training/': { photo: 'shared/images/site/advice-owc.jpg' },
+  'contact/': { photo: 'shared/images/site/stay-front.jpg' },
+  'courses-and-clubs/activity-courses/': { photo: 'shared/images/site/course-caving.jpg' },
+  'courses-and-clubs/holiday-clubs/': { photo: 'shared/images/site/club-group.jpg' },
+  'courses-and-clubs/outdoor-awards/': { photo: 'shared/images/site/award-dofe-group.jpg' },
+  'stay/': { photo: 'shared/images/site/stay-front.jpg' },
 }
 
 export const DESCRIPTIONS = {

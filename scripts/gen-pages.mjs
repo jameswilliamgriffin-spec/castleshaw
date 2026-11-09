@@ -15,9 +15,27 @@ const { PAGES, CUSTOM_ENTRY, DESCRIPTIONS, TITLES, PRELOAD } = await import('../
 const { FAQ } = await import('../v2/src/content/advice.mjs')
 const IMAGERY = JSON.parse(readFileSync(resolve(v2, 'src/content/imagery.json'), 'utf8'))
 // A page's LCP image, preloaded: a plain path, or { slot } naming an imagery slot (preloads its AVIF srcset).
+// how wide inner-page hero photos show (HERO_SIZES in v2/src/ui/inner/blocks.jsx)
+const HERO_SIZES = '(max-width: 599px) 66vw, (max-width: 899px) 17rem, 34vw'
+const RS = JSON.parse(readFileSync(resolve(v2, 'src/content/responsive.json'), 'utf8'))
 function preload(path, root) {
-  const v = PRELOAD[path]
+  let v = PRELOAD[path]
+  // a news story's own photo: from Sanity (its image service sizes it) or one of the site's photos
+  const post = posts.find((n) => `news/${n.slug}/` === path)
+  if (!v && post?.imageUrl) {
+    const u = post.imageUrl.split('?')[0]
+    const set = [480, 960].map((w) => `${u}?w=${w}&fit=max&auto=format&q=75 ${w}w`).join(', ')
+    return `\n  <link rel="preload" as="image" imagesrcset="${set}" imagesizes="${HERO_SIZES}" fetchpriority="high" />`
+  }
+  if (!v && post?.imageKey) v = { photo: `shared/images/site/${post.imageKey}.jpg` }
   if (!v) return ''
+  if (v.photo) {
+    const m = RS[v.photo]
+    if (!m) return ''
+    const stem = v.photo.slice('shared/images/'.length).replace(/\.[a-z]+$/i, '')
+    const set = m.widths.map((w) => `${root}shared/images/rs/${stem}-${w}.webp ${w}w`).join(', ')
+    return `\n  <link rel="preload" as="image" type="image/webp" imagesrcset="${set}" imagesizes="${HERO_SIZES}" fetchpriority="high" />`
+  }
   if (typeof v === 'string') return `\n  <link rel="preload" as="image" href="${root}${v}" fetchpriority="high" />`
   const s = IMAGERY.slots[v.slot], im = IMAGERY.images[s.image]
   const set = im.widths.map((w) => `${root}shared/images/gen/${s.image}-${w}.avif ${w}w`).join(', ')

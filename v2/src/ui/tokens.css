@@ -53,6 +53,6 @@
 /* imagery slots (ui/inner/Slot.jsx): crop set per image, with its own crop on phones */
 .slot-img { object-position: var(--pos, 50% 50%); }
 @media (max-width: 599px) { .slot-img { object-position: var(--pos-m, var(--pos, 50% 50%)); } }
-picture.slot, picture:has(> .shp-img) { display: contents; }
+picture.slot, picture.photo, picture:has(> .shp-img) { display: contents; }
 /* sources choose the file; they never take up space (matters when the picture is display: contents in a grid) */
 picture > source { display: none; }

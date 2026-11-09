@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import Button from './Button'
 import ScrollCue from './ScrollCue'
 import { ridge, reduced, fine, goTo, ROOT } from '../lib'
+import { Photo } from './inner/Slot'
 import { SkyGL } from './Shaders'
 
 // set line by line on wide screens so no word is left on its own
@@ -96,7 +97,7 @@ export default function Hero() {
             <div className="win-par">
               <div className="win-float" style={drift[i]}>
                 <div className="win-mask" style={{ '--clip': `var(--shape-${w.shape})` }}>
-                  <img src={`${ROOT}shared/images/${w.src}`} alt={w.alt} width="600" height="800" style={{ objectPosition: w.pos }} />
+                  <Photo src={`${ROOT}shared/images/${w.src}`} sizes="(max-width: 899px) 34vw, 22vw" alt={w.alt} width="600" height="800" style={{ objectPosition: w.pos }} />
                 </div>
               </div>
             </div>

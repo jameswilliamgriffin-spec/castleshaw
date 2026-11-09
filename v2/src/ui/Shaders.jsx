@@ -1,3 +1,4 @@
+import { Photo, responsiveUrl } from './inner/Slot'
 import { useEffect, useRef } from 'react'
 import { makeGL, whileVisible, NOISE } from '../gl'
 import { fine } from '../lib'
@@ -59,10 +60,12 @@ export function RippleImage({ src, pos = '50% 50%', alt = '' }) {
     const [px, py] = pos.split(' ').map((v) => parseFloat(v) / 100)
     const st = { mx: 0.5, my: 0.5, hover: 0, target: 0, vel: 0, dirty: true }
     let stop = () => {}, alive = true
+    // the texture is the WebP copy, loaded only as the image comes near the screen
     const img = new Image()
     img.decoding = 'async'
-    img.src = src
-    img.decode().then(() => {
+    const near = new IntersectionObserver(([e]) => { if (e.isIntersecting) { near.disconnect(); img.src = responsiveUrl(src, 960) } }, { rootMargin: '600px 0px' })
+    near.observe(canvas)
+    new Promise((ok) => { img.onload = ok }).then(() => img.decode()).then(() => {
       if (!alive) return
       g.texture(img)
       canvas.classList.add('gl-on')
@@ -85,11 +88,11 @@ export function RippleImage({ src, pos = '50% 50%', alt = '' }) {
     const rs = () => { st.dirty = true }
     if (fine()) { el.addEventListener('pointermove', mv); el.addEventListener('pointerleave', lv) }
     addEventListener('resize', rs)
-    return () => { alive = false; stop(); g.destroy(); el.removeEventListener('pointermove', mv); el.removeEventListener('pointerleave', lv); removeEventListener('resize', rs) }
+    return () => { alive = false; near.disconnect(); stop(); g.destroy(); el.removeEventListener('pointermove', mv); el.removeEventListener('pointerleave', lv); removeEventListener('resize', rs) }
   }, [src, pos])
   return (
     <div className="media" ref={wrap}>
-      <img src={src} alt={alt} loading="lazy" style={{ objectPosition: pos }} />
+      <Photo src={src} sizes="(max-width: 899px) 80vw, 40vw" alt={alt} loading="lazy" style={{ objectPosition: pos }} />
       <canvas ref={cv} className="gl gl-img" aria-hidden="true" />
     </div>
   )

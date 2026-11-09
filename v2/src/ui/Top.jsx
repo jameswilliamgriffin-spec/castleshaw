@@ -58,7 +58,7 @@ export function Header({ open, setOpen, count, current, grow = false }) {
   return (
     <header ref={ref} className={`hd hd-${open ? 'open' : state}${grow ? ' hd-grow' : ''}`}>
       {grow
-        ? <a href={HOME} className="hd-logo hd-logo-cut"><img src={`${ROOT}shared/images/logo-cut.png`} alt="Castleshaw Centre home" width="600" height="354" /></a>
+        ? <a href={HOME} className="hd-logo hd-logo-cut"><picture className="photo"><source type="image/webp" srcSet={`${ROOT}shared/images/logo-cut.webp`} /><img src={`${ROOT}shared/images/logo-cut.png`} alt="Castleshaw Centre home" width="600" height="354" /></picture></a>
         : <a href={HOME} className="hd-logo"><img src={`${ROOT}shared/images/logo.jpg`} alt="Castleshaw Centre home" width="200" height="129" /></a>}
       <nav aria-label="Main" className="hd-nav">
         {NAV_MAIN.map(([t, h], i) => (

@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { PAGES } from '../../site.mjs'
 import { href, PHONE, PHONE_HREF, EMAIL, CONTACT } from '../../data'
 import { ROOT, HOME, ridge } from '../../lib'
-import { Picture, slot } from './Slot'
+import { Picture, slot, Photo } from './Slot'
 import M from '../../content/imagery.json'
 import { Squiggle, Contours, useReveal } from '../Squiggle'
 import ScrollCue from '../ScrollCue'
@@ -81,6 +81,9 @@ export function SubNav({ path }) {
   )
 }
 
+// how wide the hero photo shows: two-thirds of a phone screen, 17rem on small tablets, about a third of a desktop
+export const HERO_SIZES = '(max-width: 599px) 66vw, (max-width: 899px) 17rem, 34vw'
+
 export function Hero({ path, title, lead, children, image, illustration, tone = 'sky', actions, seed = 2.1 }) {
   const d = useMemo(() => ridge(seed, { h: 140, base: 0.55, amp: 0.22 }), [seed])
   // image.slot: a manifest image (content/imagery.json). image.key keeps the shape picked for the image it replaced.
@@ -97,10 +100,10 @@ export function Hero({ path, title, lead, children, image, illustration, tone = 
           {actions && <div className="ph-actions">{actions}</div>}
         </div>
         {image && (image.shape === 'soft' ? (
-          <ShapedImage className="ph-art ph-shp ph-shp-soft" src={image.src} picture={pic} alt={image.alt} shape="soft" aspect="4/3" shadow priority pos={image.pos} />
+          <ShapedImage className="ph-art ph-shp ph-shp-soft" src={image.src} picture={pic} alt={image.alt} shape="soft" aspect="4/3" shadow priority pos={image.pos} sizes={HERO_SIZES} />
         ) : (
           <ShapedImage
-            className="ph-art ph-shp" src={image.src} picture={pic} alt={image.alt} priority shadow
+            className="ph-art ph-shp" src={image.src} picture={pic} alt={image.alt} priority shadow sizes={HERO_SIZES}
             shape={image.shape || pick(key, HERO_SHAPES)} backdrop="offset"
             accent={image.accent || pick(key, ACCENTS, 7)} offset={pick(key, ['br', 'bl'], 3)}
             float={pick(key, ['circle', 'squiggle', 'blob'], 11)} aspect="4/4.4" pos={image.pos || '50% 35%'}
@@ -212,7 +215,7 @@ export function Split({ image, reverse, heading, children, shape = 'arch', capti
     <div className={`split${reverse ? ' split-rev' : ''}`}>
       {shape === 'ill' ? (
         <figure className="split-art split-ill">
-          <img src={image.src} alt={image.alt} loading="lazy" width="1200" height="900" />
+          <Photo src={image.src} sizes="(max-width: 899px) 92vw, 45vw" alt={image.alt} loading="lazy" width="1200" height="900" />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       ) : shape === 'soft' ? (
@@ -264,7 +267,7 @@ export function TileLinks({ items, feature = true }) {
       {items.map((t) => (
         <li key={t.href}>
           <a href={t.href} className="tile">
-            <span className="tile-img"><img src={t.img} alt="" width="800" height="500" loading="lazy" decoding="async" /></span>
+            <span className="tile-img"><Photo src={t.img} sizes="(max-width: 599px) 92vw, (max-width: 1099px) 45vw, 30vw" alt="" width="800" height="500" loading="lazy" decoding="async" /></span>
             <span className="tile-txt"><strong>{t.title}</strong>{t.text && <span>{t.text}</span>}</span>
           </a>
         </li>
@@ -300,7 +303,7 @@ export function Gallery({ images, id }) {
   return (
     <ul className="gallery" id={id} ref={ref}>
       {images.map((g) => (
-        <li key={g.src}><figure><img src={g.src} alt={g.alt} loading="lazy" className={g.fit === 'contain' ? 'fit-contain' : undefined} style={g.pos ? { objectPosition: g.pos } : undefined} />{g.caption && <figcaption>{g.caption}</figcaption>}</figure></li>
+        <li key={g.src}><figure><Photo src={g.src} sizes="(max-width: 599px) 72vw, (max-width: 899px) 45vw, 30vw" alt={g.alt} loading="lazy" className={g.fit === 'contain' ? 'fit-contain' : undefined} style={g.pos ? { objectPosition: g.pos } : undefined} />{g.caption && <figcaption>{g.caption}</figcaption>}</figure></li>
       ))}
     </ul>
   )
@@ -345,7 +348,7 @@ export function Timeline({ items }) {
           <div className="tl-body">
             <h3>{e.title}</h3>
             {e.body}
-            {e.images && <div className="tl-imgs">{e.images.map((g) => <figure key={g.src}><img src={g.src} alt={g.alt} loading="lazy" className={g.fit === 'contain' ? 'fit-contain' : undefined} style={g.pos ? { objectPosition: g.pos } : undefined} />{g.caption && <figcaption>{g.caption}</figcaption>}</figure>)}</div>}
+            {e.images && <div className="tl-imgs">{e.images.map((g) => <figure key={g.src}><Photo src={g.src} sizes="(max-width: 599px) 45vw, 22vw" alt={g.alt} loading="lazy" className={g.fit === 'contain' ? 'fit-contain' : undefined} style={g.pos ? { objectPosition: g.pos } : undefined} />{g.caption && <figcaption>{g.caption}</figcaption>}</figure>)}</div>}
           </div>
         </li>
       ))}

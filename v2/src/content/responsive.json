@@ -1,0 +1,1505 @@
+{
+ "shared/images/bushcraft-marshmallows.jpg": {
+  "h": 800,
+  "w": 602,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/centre-building.jpg": {
+  "h": 720,
+  "w": 960,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/environmental-education.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-1064138.jpg": {
+  "h": 800,
+  "w": 806,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/gallery/g-1161441.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/gallery/g-2022-08-18-15-cropped.jpg": {
+  "h": 800,
+  "w": 666,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-2127949.jpg": {
+  "h": 800,
+  "w": 572,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-3478808.jpg": {
+  "h": 800,
+  "w": 784,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/gallery/g-5026559.jpg": {
+  "h": 800,
+  "w": 590,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-5074829.jpg": {
+  "h": 799,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/gallery/g-5128773.jpg": {
+  "h": 800,
+  "w": 1089,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/gallery/g-5743290.jpg": {
+  "h": 800,
+  "w": 584,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-6222095.jpg": {
+  "h": 800,
+  "w": 563,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-6263414.jpg": {
+  "h": 800,
+  "w": 557,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-6315479.jpg": {
+  "h": 776,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/gallery/g-6465623.jpg": {
+  "h": 776,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/gallery/g-7160946.jpg": {
+  "h": 791,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/gallery/g-7378642.jpg": {
+  "h": 800,
+  "w": 566,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-8159649.jpg": {
+  "h": 748,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/gallery/g-8461248.jpg": {
+  "h": 800,
+  "w": 569,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-8943904.jpg": {
+  "h": 800,
+  "w": 621,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-901601.jpg": {
+  "h": 800,
+  "w": 591,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-9270774.jpg": {
+  "h": 800,
+  "w": 575,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-9364174.jpg": {
+  "h": 800,
+  "w": 540,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-9768512.jpg": {
+  "h": 800,
+  "w": 580,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-9879036.jpg": {
+  "h": 800,
+  "w": 593,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/gallery/g-guy-f-p1190351.jpg": {
+  "h": 1067,
+  "w": 800,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/land-ghyll.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/roman-session.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/advice-owc.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/advice-river-training.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/animals-ducks.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/animals-goats.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/animals-hens.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/animals-horse.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/arch-1960-class.jpg": {
+  "h": 778,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-1960-dorm.jpg": {
+  "h": 1275,
+  "w": 937,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/arch-bonfire.jpg": {
+  "h": 800,
+  "w": 1099,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-building.jpg": {
+  "h": 785,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-bw-stream.jpg": {
+  "h": 739,
+  "w": 902,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/arch-canoe2.jpg": {
+  "h": 792,
+  "w": 1160,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-canoe3.jpg": {
+  "h": 601,
+  "w": 1006,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-canoes.jpg": {
+  "h": 737,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-classroom.jpg": {
+  "h": 800,
+  "w": 1088,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-climb.jpg": {
+  "h": 1165,
+  "w": 794,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/arch-girls.jpg": {
+  "h": 800,
+  "w": 1099,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-hill.jpg": {
+  "h": 792,
+  "w": 1173,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-hillside.jpg": {
+  "h": 797,
+  "w": 1170,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-raft.jpg": {
+  "h": 702,
+  "w": 944,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/arch-snow.jpg": {
+  "h": 582,
+  "w": 861,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/arch-stream.jpg": {
+  "h": 795,
+  "w": 1224,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-tent.jpg": {
+  "h": 789,
+  "w": 1168,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-walk.jpg": {
+  "h": 797,
+  "w": 1171,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/arch-yurt.jpg": {
+  "h": 794,
+  "w": 1173,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/award-bikes.jpg": {
+  "h": 800,
+  "w": 1053,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/award-dofe-camp.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/award-dofe-group.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/award-dofe-walk.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/award-dofe.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/award-kayak.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/bring-muddy.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/bushcraft-fire.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/bushcraft-tipi.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/bushcraft-tools.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/club-archery.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/club-girls.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/club-group.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/club-smiles.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/course-caving.jpg": {
+  "h": 800,
+  "w": 743,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/course-wall.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/env-group-hill.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-hopscotch.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/env-indoor.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-map-reading.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-mud.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-nest.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-noticeboard.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-photo.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/env-pond-tray.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-pond-walk.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-sample.jpg": {
+  "h": 800,
+  "w": 635,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/env-science.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-sheep.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-snow-walk.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/env-stream.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/env-valley-walk.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/history-1895.jpg": {
+  "h": 800,
+  "w": 995,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/history-building-now.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/history-camp-building.jpg": {
+  "h": 599,
+  "w": 896,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/history-camp-dorm.jpg": {
+  "h": 800,
+  "w": 856,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/history-frank-lord.jpg": {
+  "h": 800,
+  "w": 603,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/history-greenhill-girls.jpg": {
+  "h": 600,
+  "w": 776,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/history-group-old.jpg": {
+  "h": 612,
+  "w": 945,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/history-plaque.jpg": {
+  "h": 800,
+  "w": 1074,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/history-postcard.jpg": {
+  "h": 800,
+  "w": 995,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/history-sanatorium.jpg": {
+  "h": 694,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/history-sarah-lees.jpg": {
+  "h": 454,
+  "w": 314,
+  "widths": [
+   314
+  ]
+ },
+ "shared/images/site/history-scan.jpg": {
+  "h": 662,
+  "w": 904,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/history-victorian-day.jpg": {
+  "h": 624,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/history-victorians.jpg": {
+  "h": 800,
+  "w": 1068,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/land-abseil-2.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/land-abseil.jpg": {
+  "h": 448,
+  "w": 336,
+  "widths": [
+   336
+  ]
+ },
+ "shared/images/site/land-caving.jpg": {
+  "h": 733,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/land-climb-crag.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/land-climbing-wall.jpg": {
+  "h": 800,
+  "w": 800,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/land-crag.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/land-ghyll-2.jpg": {
+  "h": 1067,
+  "w": 800,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/land-ghyll-waterfall.jpg": {
+  "h": 800,
+  "w": 1059,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/land-mapwork.jpg": {
+  "h": 800,
+  "w": 736,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/land-obelisk-walk.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/land-orienteer.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/land-raft-build.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/news-event.jpg": {
+  "h": 619,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/news-roof.jpg": {
+  "h": 153,
+  "w": 204,
+  "widths": [
+   204
+  ]
+ },
+ "shared/images/site/news-yurt-opening.jpg": {
+  "h": 734,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/roman-auxiliary.jpg": {
+  "h": 1010,
+  "w": 444,
+  "widths": [
+   444
+  ]
+ },
+ "shared/images/site/roman-formation.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/roman-fort-aerial.jpg": {
+  "h": 680,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/roman-march.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/roman-shields.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/roman-stone-1.jpg": {
+  "h": 800,
+  "w": 855,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/roman-stone-2.jpg": {
+  "h": 800,
+  "w": 814,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/roman-stone-3.jpg": {
+  "h": 800,
+  "w": 791,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/sec-bike.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/sec-climb.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/sec-crates.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/sec-ghyll.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/sec-kayak-2.jpg": {
+  "h": 765,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/sec-kayak.jpg": {
+  "h": 728,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/sec-map-1849.jpg": {
+  "h": 780,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/sec-pond.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/sec-stepping.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-building.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-bunks.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-classroom.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-dining.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-dorm.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-front.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-kitchen.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-lounge-2.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-lounge.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/stay-snow.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/team-archery.jpg": {
+  "h": 800,
+  "w": 925,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/team-balance.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/team-blocks.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/team-challenge.jpg": {
+  "h": 800,
+  "w": 993,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/team-chiron.jpg": {
+  "h": 1067,
+  "w": 800,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/team-gill.jpg": {
+  "h": 1067,
+  "w": 800,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/team-group-2.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/team-guy-f.jpg": {
+  "h": 1067,
+  "w": 800,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/team-guy-fk.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/team-high-ropes.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/team-ian.jpg": {
+  "h": 1067,
+  "w": 800,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/team-janet.jpg": {
+  "h": 800,
+  "w": 621,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/team-joseph-2.jpg": {
+  "h": 766,
+  "w": 1100,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/team-kate.jpg": {
+  "h": 1067,
+  "w": 800,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/team-matt.jpg": {
+  "h": 800,
+  "w": 557,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/team-nick.jpg": {
+  "h": 800,
+  "w": 583,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/team-planks.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/team-rope.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/team-tape.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/valley-bridge.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/valley-obelisk.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/valley-reservoir.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-canoe-calm.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-canoe-pair.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-canoe-raft-2.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-canoe-raft.jpg": {
+  "h": 800,
+  "w": 619,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/site/water-canoe-reflect.jpg": {
+  "h": 800,
+  "w": 958,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/site/water-jump.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-kayak-close.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-kayak-green.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-kayak-kids.jpg": {
+  "h": 800,
+  "w": 1067,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-kayak-stand.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-kayaks.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-raft.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-sup.jpg": {
+  "h": 800,
+  "w": 1060,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/site/water-whitewater.jpg": {
+  "h": 800,
+  "w": 1066,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/team/joseph-myhill.jpg": {
+  "h": 641,
+  "w": 640,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/team/rod-steele.jpg": {
+  "h": 800,
+  "w": 666,
+  "widths": [
+   480
+  ]
+ },
+ "shared/images/water-consent.jpg": {
+  "h": 800,
+  "w": 600,
+  "widths": [
+   480
+  ]
+ }
+}

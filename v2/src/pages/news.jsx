@@ -3,6 +3,7 @@
 import { PageTop, Band, SectionHead, img } from '../ui/inner/blocks'
 import { NEWS } from '../site.mjs'
 import { href, FACEBOOK } from '../data'
+import { Photo } from '../ui/inner/Slot'
 
 const storyHref = (n) => href(`news/${n.slug}/`)
 // a photo from Sanity (a full address), or one of the site's own photos (a name)
@@ -29,7 +30,7 @@ function Card({ n, level = 'h2' }) {
     <li>
       <a className="post-card" href={storyHref(n)}>
         {photo(n)
-          ? <img src={photo(n)} alt="" width="800" height="600" loading="lazy" />
+          ? <Photo src={photo(n)} sizes="(max-width: 639px) 92vw, (max-width: 999px) 45vw, 30vw" alt="" width="800" height="600" loading="lazy" />
           : <span className="post-card-none" aria-hidden="true" />}
         <time dateTime={n.date}>{n.when}</time>
         <H className="post-card-h">{n.title}</H>

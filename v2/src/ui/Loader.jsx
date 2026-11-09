@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { reduced, ROOT } from '../lib'
+import { responsiveUrl } from './inner/Slot'
 
 // A short, purposeful intro: the logo's bands draw in while the fonts, hero photos and the
 // first frames of the film load, so the drawing-to-film moment further down is seamless.
 // It shows once per visit, never longer than MAX, and is skipped for reduced motion.
-const MIN = 1100, MAX = 2600
+const MIN = 1100, MAX = 2000
 
 function preload(src) {
   return new Promise((res) => { const i = new Image(); i.onload = i.onerror = () => res(); i.src = src })
@@ -24,7 +25,9 @@ export default function Loader() {
     const work = (async () => {
       const dir = matchMedia('(max-width: 760px)').matches ? 'mobile' : 'desktop'
       const base = new URL(`./video/frames/${dir}/`, document.baseURI).href
-      const imgs = ['land-ghyll', 'water-consent', 'environmental-education', 'logo'].map((n) => `${ROOT}shared/images/${n}.jpg`)
+      // the hero photos at the size the hero shows them (the same WebP copies its srcset picks)
+      const want = dir === 'mobile' ? 480 : 960
+      const imgs = [...['land-ghyll', 'water-consent', 'environmental-education'].map((n) => responsiveUrl(`${ROOT}shared/images/${n}.jpg`, want)), `${ROOT}shared/images/logo.jpg`]
       let frames = []
       try {
         const m = await (await fetch(base + 'manifest.json')).json()

@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import { AREAS, WHO, AGES, LENGTH, BY_AGE } from '../data'
+import { Photo } from './inner/Slot'
 import Button from './Button'
 
 export function suggest(age, length, picks) {
@@ -65,7 +66,7 @@ export default function Planner({ picks, toggle, onEnquire }) {
                 {AREAS.filter((a) => a.id !== 'stay').map((a) => (
                   <label key={a.id} className={`opt opt-img${picks.has(a.id) ? ' opt-on' : ''}`} style={{ '--c': a.accent }}>
                     <input type="checkbox" checked={picks.has(a.id)} onChange={() => toggle(a.id)} />
-                    <img src={a.img} alt="" loading="lazy" style={{ objectPosition: a.pos }} />
+                    <Photo src={a.img} sizes="(max-width: 599px) 45vw, 20vw" alt="" loading="lazy" style={{ objectPosition: a.pos }} />
                     <span>{a.short}</span>
                   </label>
                 ))}
@@ -80,7 +81,7 @@ export default function Planner({ picks, toggle, onEnquire }) {
                   const a = AREAS.find((x) => x.id === id)
                   return (
                     <li key={id} style={{ '--c': a.accent, '--i': i }}>
-                      <img src={a.img} alt="" style={{ objectPosition: a.pos }} />
+                      <Photo src={a.img} sizes="(max-width: 599px) 30vw, 12vw" alt="" style={{ objectPosition: a.pos }} />
                       <span><strong>{a.title}</strong>{a.text.split('. ')[0]}.</span>
                     </li>
                   )
