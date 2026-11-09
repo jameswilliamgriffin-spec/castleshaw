@@ -155,3 +155,17 @@ What's left: LCP on the inner pages now sits about a second behind the page scri
 
 - `qa/site-qa.js` at 390 (touch): no problems. Menu opens; Escape and the back button close it; all 25 menu links land on a page with a heading; header controls 44px; header steps away on scroll and returns; "On this page" row clear of the header; all 4 footer groups open; all 27 footer links resolve; Back to top works; homepage Call bar shows in the journey and tucks away at the contact panel; advice quote bar shows mid-page and steps aside at the emergency band and the form.
 - `qa/overflow-sweep.js`: every page at 320, 360, 390, 430, 768, 844×390 and 1024×768: no overflow. At 200% text, two fixes (both phone-only, normal-size heights unchanged): the advice note link on the activity pages may now wrap; the advice landing's adviser list can't grow wider than the screen. Now clean at 200% text at 320 and 390 too.
+
+## Phase 6, step 3: desktop regression at 1440 (9 November 2026)
+
+Compared with the pre-mobile build (ba30607) using `qa/desktop-compare.js` and `qa/desktop-diff.py`, reduced motion:
+
+| Page | Height before → now | Pixels different | What differs |
+|---|---|---|---|
+| Stay | 6,478 → 6,479 | 0.9% | News in the header; the client's catering text; footer columns; WebP photos |
+| Adventure on land | 5,265 → 5,265 | 0.2% | News in the header; footer columns; WebP photos |
+| What people say | 5,355 → 5,355 | 0.2% | same |
+| Homepage | 13,748 → 12,964 | (redesigned section) | advice band removed, testimonial stack replaced by the advice card (agreed) |
+| Advice landing | 10,009 → 7,953 | (restructured) | ten pages into one, agreed |
+
+Found and fixed: photo shapes and accents were chosen from a hash of the photo's full web address, domain included, so they would all have changed when the site moves to castleshawcentre.com. They now hash the path only (`pick` in ui/shape/shapes.js and the float choice in ShapedImage), so they're the same on every domain. This changes some shapes compared with the current preview, once; they're fixed from now on.

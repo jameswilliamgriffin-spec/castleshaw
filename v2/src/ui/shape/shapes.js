@@ -75,7 +75,10 @@ if (typeof document !== 'undefined' && !document.getElementById('shape-defs')) {
 }
 
 // A small, stable hash, so a given photo always gets the same shape and colour.
+// Web addresses are hashed by their path only, so the choice doesn't change with the domain
+// (the preview address, the live domain and localhost all give the same shapes).
 export function pick(key, list, salt = 0) {
+  key = String(key).replace(/^https?:\/\/[^/]+/, '')
   let h = 2166136261 ^ salt
   for (let i = 0; i < key.length; i++) h = Math.imul(h ^ key.charCodeAt(i), 16777619)
   return list[Math.abs(h) % list.length]

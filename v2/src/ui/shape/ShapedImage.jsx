@@ -30,7 +30,8 @@ export default function ShapedImage({
     const blobs = Object.keys(SHAPES).filter((k) => k.startsWith('blob-'))
     return blobs[(blobs.indexOf(name) + 3 + blobs.length) % blobs.length] || 'blob-4'
   }, [name])
-  const floatKind = float === true ? FLOATS[(name.length + src.length) % FLOATS.length] : float
+  // chosen from the photo's path, not its full address, so it doesn't change with the domain
+  const floatKind = float === true ? FLOATS[(name.length + src.replace(/^https?:\/\/[^/]+/, '').length) % FLOATS.length] : float
   const at = floatAt || { br: 'tl', bl: 'tr', tr: 'bl', tl: 'br' }[offset]
   // Each floating accent drifts on its own timing, so no two move in step.
   const drift = useMemo(() => ({
