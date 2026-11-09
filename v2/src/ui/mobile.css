@@ -165,7 +165,10 @@ img, video { max-width: 100%; }
   :root:root .tl-imgs > figure:nth-child(3):last-child { grid-column: 1 / -1; }
   /* portraits stay two to a row, even at 320 */
   :root:root .people { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* the advice note's link may wrap at large text sizes instead of running off the screen */
+  :root:root .adv-note-link { flex: 0 1 auto; min-width: 0; }
   /* advice landing advisers: a smaller photo, so the bio keeps a usable column */
+  :root:root .al-people { grid-template-columns: minmax(0, 1fr); }
   :root:root .al-person { grid-template-columns: min(6.5rem, 30%) minmax(0, 1fr); gap: 1rem; }
   /* people with a bio: one to a row, the portrait beside the text, so the bio isn't 13 characters a line */
   :root:root .people:has(.people-extra) { grid-template-columns: minmax(0, 1fr); }

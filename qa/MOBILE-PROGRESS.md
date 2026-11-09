@@ -150,3 +150,8 @@ What changed:
 - robots.txt added (the preview stays noindex through the X-Robots-Tag header).
 
 What's left: LCP on the inner pages now sits about a second behind the page script drawing anything (FCP about 2s on Lighthouse's slow phone); going further would need pre-rendered HTML. The homepage's remaining time is the intro animation, by design.
+
+## Phase 6, step 2: click-through and overflow sweep (9 November 2026)
+
+- `qa/site-qa.js` at 390 (touch): no problems. Menu opens; Escape and the back button close it; all 25 menu links land on a page with a heading; header controls 44px; header steps away on scroll and returns; "On this page" row clear of the header; all 4 footer groups open; all 27 footer links resolve; Back to top works; homepage Call bar shows in the journey and tucks away at the contact panel; advice quote bar shows mid-page and steps aside at the emergency band and the form.
+- `qa/overflow-sweep.js`: every page at 320, 360, 390, 430, 768, 844×390 and 1024×768: no overflow. At 200% text, two fixes (both phone-only, normal-size heights unchanged): the advice note link on the activity pages may now wrap; the advice landing's adviser list can't grow wider than the screen. Now clean at 200% text at 320 and 390 too.
