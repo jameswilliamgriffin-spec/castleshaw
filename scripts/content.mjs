@@ -1,7 +1,7 @@
-// The site's editable content: news stories and training courses and dates.
+// The site's editable content: news stories, training courses and dates, and the staff team.
 // With SANITY_PROJECT_ID set (in Vercel, or a local .env), it is read from Sanity at build time;
-// otherwise from the files in the repository (v2/src/content/news/*.md and training.local.json).
-// Either way it is written to v2/src/content/news.json and training.json, which the site reads.
+// otherwise from the files in the repository (v2/src/content/news/*.md, training.local.json, staff.local.json).
+// Either way it is written to v2/src/content/news.json, training.json and staff.json, which the site reads.
 // Run by scripts/gen-pages.mjs, so before every `npm run dev` and `npm run build`.
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
@@ -34,6 +34,9 @@ function localNews(v2) {
   return readdirSync(dir).filter((f) => f.endsWith('.md') && f !== 'README.md').map((f) => parseStory(f, readFileSync(resolve(dir, f), 'utf8')))
 }
 const localTraining = (v2) => JSON.parse(readFileSync(resolve(v2, 'src/content/training.local.json'), 'utf8'))
+// photo: a path under public/ (the page adds the way back to the site root)
+const localStaff = (v2) => JSON.parse(readFileSync(resolve(v2, 'src/content/staff.local.json'), 'utf8'))
+  .map((p) => ({ name: p.name, role: p.role || '', group: p.group || 'team', src: p.photo || null, alt: p.alt || '', pos: p.pos || '', about: p.about || '' }))
 
 /* ---------- from Sanity ---------- */
 async function groq(query, params = {}) {
@@ -70,9 +73,34 @@ async function sanityTraining() {
   }`, { today })
 }
 
+// Staff, in page order. A photo's crop is applied by Sanity's image service, and its hotspot
+// (the face) becomes the point the site keeps in view when it cuts the oval.
+async function sanityStaff() {
+  const rows = await groq(`*[_type == "staffMember" && !(_id in path("drafts.**"))] | order(order asc, name asc) {
+    name, role, group, about, "url": photo.asset->url, "dims": photo.asset->metadata.dimensions, "crop": photo.crop, "hotspot": photo.hotspot, "alt": photo.alt }`)
+  const pct = (n) => `${Math.round(Math.min(1, Math.max(0, n)) * 100)}%`
+  return rows.map((r) => {
+    let src = null, pos = ''
+    if (r.url) {
+      const c = { top: 0, bottom: 0, left: 0, right: 0, ...(r.crop || {}) }
+      const q = new URLSearchParams({ w: '900', fit: 'max', auto: 'format', q: '75' })
+      if (r.dims && (c.top || c.bottom || c.left || c.right)) {
+        const { width: w, height: h } = r.dims
+        q.set('rect', [c.left * w, c.top * h, (1 - c.left - c.right) * w, (1 - c.top - c.bottom) * h].map(Math.round).join(','))
+      }
+      src = `${r.url}?${q}`
+      if (r.hotspot) {
+        const cw = 1 - c.left - c.right, ch = 1 - c.top - c.bottom
+        pos = `${pct((r.hotspot.x - c.left) / cw)} ${pct((r.hotspot.y - c.top) / ch)}`
+      }
+    }
+    return { name: r.name, role: r.role || '', group: r.group || 'team', src, alt: r.alt || '', pos, about: r.about || '' }
+  })
+}
+
 /* ---------- write what the site reads ---------- */
 export async function buildContent(v2) {
-  let news, training, source = 'repository files'
+  let news, training, staff, source = 'repository files', staffSource = 'repository files'
   if (process.env.SANITY_PROJECT_ID) {
     try {
       ;[news, training] = await Promise.all([sanityNews(), sanityTraining()])
@@ -87,13 +115,28 @@ export async function buildContent(v2) {
       // the site still builds, from the repository's copy, but say so loudly in the build log
       console.warn(`\n!! content: could not read from Sanity (${e.message}). Building from the repository files instead.\n`)
     }
+    // staff on its own: a project set up before staff moved to Sanity has stories but no staff yet
+    try {
+      staff = await sanityStaff()
+      staffSource = `Sanity (${process.env.SANITY_PROJECT_ID})`
+      if (!staff.length) {
+        console.warn('\n!! content: Sanity has no staff yet. Building the team from the repository files instead.\n')
+        staff = undefined
+        staffSource = 'repository files'
+      }
+    } catch (e) {
+      console.warn(`\n!! content: could not read staff from Sanity (${e.message}). Building the team from the repository files instead.\n`)
+    }
   }
+  staff ||= localStaff(v2)
   news ||= localNews(v2)
   training ||= localTraining(v2)
   news.sort((a, b) => String(b.date).localeCompare(String(a.date)))
   training.dates = (training.dates || []).map((d) => ({ ...d, when: when(d.date) }))
   writeFileSync(resolve(v2, 'src/content/news.json'), JSON.stringify(news, null, 2) + '\n')
   writeFileSync(resolve(v2, 'src/content/training.json'), JSON.stringify(training, null, 2) + '\n')
-  console.log(`content: ${news.length} news stories, ${training.courses.length} courses, ${training.dates.length} course dates, from ${source}`)
+  // fromSanity: the team list is the centre's own, so the page drops its "To confirm" note
+  writeFileSync(resolve(v2, 'src/content/staff.json'), JSON.stringify({ fromSanity: staffSource !== 'repository files', people: staff }, null, 2) + '\n')
+  console.log(`content: ${news.length} news stories, ${training.courses.length} courses, ${training.dates.length} course dates, from ${source}; ${staff.length} staff, from ${staffSource}`)
   return news
 }

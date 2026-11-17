@@ -1,4 +1,4 @@
-// Builds seed/import.ndjson: the site's current news stories and training courses, ready to load
+// Builds seed/import.ndjson: the site's current news stories, training courses and staff, ready to load
 // into an empty Sanity dataset with `npm run import` (run once, after `npx sanity login`).
 // Photos are copied into Sanity from the live site during the import.
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
@@ -9,6 +9,7 @@ const here = dirname(fileURLToPath(import.meta.url))
 const site = resolve(here, '../..')
 const news = JSON.parse(readFileSync(resolve(site, 'v2/src/content/news.json'), 'utf8'))
 const training = JSON.parse(readFileSync(resolve(site, 'v2/src/content/training.local.json'), 'utf8'))
+const staff = JSON.parse(readFileSync(resolve(site, 'v2/src/content/staff.local.json'), 'utf8'))
 let k = 0
 const key = () => `k${(k++).toString(36)}`
 
@@ -44,5 +45,19 @@ training.courses.forEach((c, i) => docs.push({
   _id: `course-${c.id}`, _type: 'trainingCourse', name: c.name, slug: { _type: 'slug', current: c.id },
   length: c.length, audience: c.who, description: c.text, order: i + 1, featured: !!c.featured,
 }))
+// staff, in page order (10, 20, 30… so editors can slot people in between). A photo's crop on the
+// site ("78% 40%") becomes its hotspot, the point Sanity keeps in view.
+staff.forEach((p, i) => {
+  const [x, y] = (p.pos || '50% 25%').split(' ').map((v) => parseFloat(v) / 100)
+  const slug = p.name.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  docs.push({
+    _id: `staff-${slug}`, _type: 'staffMember', name: p.name, role: p.role || undefined, group: p.group || 'team',
+    order: (i + 1) * 10, about: p.about || undefined,
+    ...(p.photo && existsSync(resolve(site, 'public', p.photo)) ? { photo: {
+      _type: 'image', _sanityAsset: `image@https://castleshaw.vercel.app/${p.photo}`,
+      hotspot: { _type: 'sanity.imageHotspot', x, y, width: 0.6, height: 0.6 }, ...(p.alt ? { alt: p.alt } : {}),
+    } } : {}),
+  })
+})
 writeFileSync(resolve(here, 'import.ndjson'), docs.map((d) => JSON.stringify(d)).join('\n') + '\n')
-console.log(`seed/import.ndjson: ${docs.length} documents (${news.length} stories, ${training.courses.length} courses)`)
+console.log(`seed/import.ndjson: ${docs.length} documents (${news.length} stories, ${training.courses.length} courses, ${staff.length} staff)`)

@@ -122,6 +122,46 @@
       "permanent": true
     },
     {
+      "source": "/about/where-we-are/around-the-valley",
+      "destination": "/about/#around-the-valley",
+      "permanent": true
+    },
+    {
+      "source": "/about/where-we-are/around-the-valley/",
+      "destination": "/about/#around-the-valley",
+      "permanent": true
+    },
+    {
+      "source": "/about/where-we-are",
+      "destination": "/about/#where-we-are",
+      "permanent": true
+    },
+    {
+      "source": "/about/where-we-are/",
+      "destination": "/about/#where-we-are",
+      "permanent": true
+    },
+    {
+      "source": "/about/our-team",
+      "destination": "/about/#our-team",
+      "permanent": true
+    },
+    {
+      "source": "/about/our-team/",
+      "destination": "/about/#our-team",
+      "permanent": true
+    },
+    {
+      "source": "/about/what-people-say",
+      "destination": "/about/#what-people-say",
+      "permanent": true
+    },
+    {
+      "source": "/about/what-people-say/",
+      "destination": "/about/#what-people-say",
+      "permanent": true
+    },
+    {
       "source": "/about/news",
       "destination": "/news/",
       "permanent": true
@@ -148,22 +188,22 @@
     },
     {
       "source": "/where-we-are.html",
-      "destination": "/about/where-we-are/",
+      "destination": "/about/#where-we-are",
       "permanent": true
     },
     {
       "source": "/things-to-do.html",
-      "destination": "/about/where-we-are/around-the-valley/",
+      "destination": "/about/#around-the-valley",
       "permanent": true
     },
     {
       "source": "/the-team.html",
-      "destination": "/about/our-team/",
+      "destination": "/about/#our-team",
       "permanent": true
     },
     {
       "source": "/who-we-are.html",
-      "destination": "/about/our-team/",
+      "destination": "/about/#our-team",
       "permanent": true
     },
     {
@@ -173,17 +213,17 @@
     },
     {
       "source": "/testimonials.html",
-      "destination": "/about/what-people-say/",
+      "destination": "/about/#what-people-say",
       "permanent": true
     },
     {
       "source": "/feedback.html",
-      "destination": "/about/what-people-say/",
+      "destination": "/about/#what-people-say",
       "permanent": true
     },
     {
       "source": "/image-gallery--hall-of-fame.html",
-      "destination": "/about/what-people-say/",
+      "destination": "/about/#hall-of-fame",
       "permanent": true
     },
     {

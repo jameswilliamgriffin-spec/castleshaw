@@ -1481,11 +1481,63 @@
    960
   ]
  },
+ "shared/images/team/antonio-amaral.jpg": {
+  "h": 933,
+  "w": 1400,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/team/chiron-turner.jpg": {
+  "h": 1400,
+  "w": 947,
+  "widths": [
+   480,
+   720
+  ]
+ },
+ "shared/images/team/janet-lloyd.jpg": {
+  "h": 1400,
+  "w": 918,
+  "widths": [
+   480,
+   720
+  ]
+ },
  "shared/images/team/joseph-myhill.jpg": {
   "h": 641,
   "w": 640,
   "widths": [
    480
+  ]
+ },
+ "shared/images/team/kate-oregan.jpg": {
+  "h": 1400,
+  "w": 1366,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/team/matthew-allat.jpg": {
+  "h": 1400,
+  "w": 1050,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
+ "shared/images/team/rod-steele-2.jpg": {
+  "h": 1050,
+  "w": 1400,
+  "widths": [
+   480,
+   720,
+   960
   ]
  },
  "shared/images/team/rod-steele.jpg": {

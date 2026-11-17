@@ -1,11 +1,24 @@
-// About the Castleshaw Centre: place, people, standards, reputation and 130 years of history.
-import { PageTop, Band, SectionHead, OnThisPage, Split, Ticks, Ledger, TileLinks, Gallery, Quote, Quotes, People, Timeline, Downloads, LinkList, Callout, CtaBand, SqLink, Btn, TBC, img, gal, shared, OLD } from '../ui/inner/blocks'
+// About the Castleshaw Centre: one page for place, people and reputation, plus accreditation and history.
+import { PageTop, Band, SectionHead, OnThisPage, Split, Ticks, Ledger, Gallery, Quotes, People, Timeline, Downloads, CtaBand, SqLink, TBC, img, gal, OLD } from '../ui/inner/blocks'
 import { href, ADDRESS, W3W } from '../data'
+import { ROOT } from '../lib'
+import STAFF from '../content/staff.json'
 
 const ab = (k = '') => href(`about/${k}`)
 const MAPS = 'https://www.google.com/maps/search/?api=1&query=Castleshaw+Centre+OL3+5LZ'
 
-/* ------------------------------------------------------------------ hub */
+// The staff team, from Sanity or v2/src/content/staff.local.json (scripts/content.mjs).
+// A photo from Sanity is a full address; one from the repository is a path under public/.
+const person = (p) => ({
+  name: p.name, role: p.role, extra: p.about, alt: p.alt || p.name, pos: p.pos || undefined,
+  img: p.src ? (/^https?:/.test(p.src) ? p.src : ROOT + p.src) : null,
+})
+const team = STAFF.people.filter((p) => p.group !== 'part-time').map(person)
+const partTime = STAFF.people.filter((p) => p.group === 'part-time').map(person)
+
+/* ------------------------------------------------------------------ about (one page) */
+// Where we are, the valley, the team and what people say all live here; accreditation and
+// safety, and the history, keep their own pages and are linked from the hero.
 export function Hub({ path }) {
   return (
     <>
@@ -14,8 +27,21 @@ export function Hub({ path }) {
         title="About the Castleshaw Centre"
         lead="Oldham Council's Outdoor and Environmental Education service, in a stone building at the top of the Castleshaw Valley that has welcomed Oldham's children since 1895."
         image={{ src: img('history-building-now'), alt: 'The Castleshaw Centre today, a stone building behind a green field' }}
+        actions={<>
+          <a className="ib ib-ink" href={ab('accreditation/')}>Accreditation</a>
+          <a className="ib ib-line" href={ab('accreditation/') + '#safety'}>Safety</a>
+          <a className="ib ib-line" href={ab('history/')}>Our history</a>
+        </>}
       />
-      <Band>
+      <OnThisPage items={[
+        { id: 'at-a-glance', label: 'At a glance' },
+        { id: 'our-team', label: 'Our team' },
+        { id: 'where-we-are', label: 'Where we are' },
+        { id: 'around-the-valley', label: 'Around the valley' },
+        { id: 'what-people-say', label: 'What people say' },
+        { id: 'hall-of-fame', label: 'Hall of Fame' },
+      ]} />
+      <Band id="at-a-glance">
         <SectionHead eyebrow="About the centre" title="At a glance" />
         <Ledger items={[
           ['1895', 'the year the first Oldham children came to stay'],
@@ -24,41 +50,28 @@ export function Hub({ path }) {
           ['2020', 'an Ambassador Centre for the Peak District National Park'],
         ]} />
       </Band>
-      <Band tone="sky">
-        <SectionHead title="More about us" />
-        <TileLinks items={[
-          { title: 'Where we are', href: ab('where-we-are/'), img: img('valley-reservoir'), text: 'In the South Pennines, at the edge of the Peak District, six miles from Oldham.' },
-          { title: 'Our team', href: ab('our-team/'), img: img('team-matt'), text: 'Tutors, advisers and the people who keep the centre running.' },
-          { title: 'Accreditation and safety', href: ab('accreditation/'), img: img('land-climbing-wall'), text: 'AALA licensed, LOtC Quality Badge and Adventuremark.' },
-          { title: 'What people say', href: ab('what-people-say/'), img: gal('g-6315479'), text: 'Schools, parents, groups and inspectors, plus the Hall of Fame.' },
-          { title: 'Our history', href: ab('history/'), img: img('history-1895'), text: 'From a holiday home for poor children to an outdoor centre.' },
-          { title: 'News', href: href('news/'), img: img('news-roof'), text: 'What has been happening at Castleshaw.' },
-        ]} />
-      </Band>
-      <CtaBand />
-    </>
-  )
-}
 
-/* ------------------------------------------------------------------ where we are */
-export function Where({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        title="Where we are"
-        lead="In the South Pennines, at the edge of the Peak District National Park, about six miles from Oldham town centre."
-        image={{ src: img('valley-reservoir'), alt: 'A reservoir in a green valley below the moors' }}
-        actions={<><a className="ib ib-ink" href={MAPS} rel="noopener">Open in maps</a><a className="ib ib-line" href={`https://what3words.com/${W3W}`} rel="noopener">what3words</a></>}
-      />
-      <Band>
-        <SectionHead eyebrow="About the centre" title="Finding us" />
+      <Band tone="sky" id="our-team">
+        <SectionHead title="Our team">
+          <p>Tutors who hold national governing body awards and, almost all of them, teaching qualifications too, with the office and site team who keep the centre running.</p>
+        </SectionHead>
+        <People items={team} />
+        {partTime.length > 0 && <><h3 className="h3i">Part-time staff</h3><People items={partTime} /></>}
+        {!STAFF.fromSanity && <TBC block>That this team list is current, who is full time and who is part time, and a line on each person&rsquo;s role and specialisms.</TBC>}
+        <p>Rod and Joseph also run Oldham&rsquo;s educational visits advice service. <SqLink href={href('advice-and-guidance/') + '#advisers'}>Our advisers</SqLink></p>
+      </Band>
+
+      <Band id="where-we-are">
+        <SectionHead title="Where we are">
+          <p>In the South Pennines, at the edge of the Peak District National Park, about six miles from Oldham town centre.</p>
+        </SectionHead>
         <div className="cols cols-2">
           <div className="icard">
             <h3>Address</h3>
             <address className="addr">The Castleshaw Centre<br />{ADDRESS.join(', ')}</address>
             <p>what3words: <a href={`https://what3words.com/${W3W}`} rel="noopener">///{W3W}</a></p>
             <p>We are handy for groups from Manchester, Rochdale, Tameside, Huddersfield and Leeds.</p>
+            <p><a className="ib ib-ink" href={MAPS} rel="noopener">Open in maps</a></p>
           </div>
           <div className="icard">
             <h3>Getting here</h3>
@@ -66,30 +79,11 @@ export function Where({ path }) {
           </div>
         </div>
       </Band>
-      <Band tone="sage">
-        <Split image={{ src: img('valley-bridge'), alt: 'A footbridge over a moorland stream in the valley' }} heading="Around the valley">
-          <p>We are surrounded by lanes, footpaths and bridleways with excellent public access, a Roman fort, reservoirs and the open moor.</p>
-          <p><SqLink href={ab('where-we-are/around-the-valley/')}>Walks, rides and places to visit</SqLink></p>
-        </Split>
-      </Band>
-      <CtaBand title="Planning a visit?" />
-    </>
-  )
-}
 
-/* ------------------------------------------------------------------ around the valley */
-export function Valley({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        tone="sage"
-        title="Around the valley"
-        lead="Lanes, footpaths and bridleways, a Roman fort, the Pennine tops and Dovestone Reservoir, all close to the centre."
-        image={{ src: img('valley-obelisk'), alt: 'A group resting at the foot of the war memorial obelisk on the moor' }}
-      />
-      <Band>
-        <SectionHead eyebrow="Where we are" title="Routes and places to visit" />
+      <Band tone="sage" id="around-the-valley">
+        <SectionHead title="Around the valley">
+          <p>Lanes, footpaths and bridleways, a Roman fort, the Pennine tops and Dovestone Reservoir, all close to the centre.</p>
+        </SectionHead>
         <div className="cols cols-3">
           <div className="icard"><h3>Castleshaw Roman Fort</h3><p>The remains of the fort are a short walk from the centre. There are information boards at the site, and more from the Friends of Castleshaw Roman Forts.</p><p><a href="http://www.castleshawarchaeology.co.uk/" rel="noopener">Castleshaw archaeology</a></p></div>
           <div className="icard"><h3>The Castleshaw Quest</h3><p>An adventure walk for younger walkers around the lower Castleshaw reservoir.</p></div>
@@ -98,54 +92,46 @@ export function Valley({ path }) {
           <div className="icard"><h3>Pennine Bridleway and the Diggle Jiggle</h3><p>A 17km mountain bike route on local lanes and bridleways, including the Pennine Bridleway through the Castleshaw Valley.</p><p><a href="http://www.nationaltrail.co.uk/pennine-bridleway/route/try-trail-bike-diggle-jiggle" rel="noopener">Diggle Jiggle (National Trail)</a></p></div>
           <div className="icard"><h3>Dovestone Reservoir</h3><p>A few miles away, and now managed by the RSPB. A favourite for walks and wildlife.</p><p><a href="https://www.rspb.org.uk/days-out/reserves/dove-stone" rel="noopener">Dove Stone (RSPB)</a></p></div>
         </div>
+        <p>Out walking? Most routes cross farmland, so please be considerate, keep dogs on leads and take your litter home. Routes shared by the public, such as those on <a href="https://www.outdooractive.com/en/search/?q=castleshaw" rel="noopener">outdooractive</a>, are not checked by us.</p>
       </Band>
-      <Band tone="sky">
-        <SectionHead title="Out walking?">
-          <p>Most routes cross farmland, so please be considerate, keep dogs on leads and take your litter home. Routes shared by the public, such as those on <a href="https://www.outdooractive.com/en/search/?q=castleshaw" rel="noopener">outdooractive</a>, are not checked by us.</p>
-        </SectionHead>
-      </Band>
-    </>
-  )
-}
 
-/* ------------------------------------------------------------------ team */
-export function Team({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        title="Our team"
-        lead="Tutors who hold national governing body awards and, almost all of them, teaching qualifications too, with the office and site team who keep the centre running."
-        image={{ src: img('team-joseph-2'), alt: 'Joseph Myhill, centre manager, smiling beside a mountain lake' }}
-      />
-      <Band>
-        <SectionHead eyebrow="About the centre" title="Staff" />
-        <People items={[
-          { name: 'Joseph Myhill', role: 'Centre manager', img: img('team-joseph-2'), alt: 'Joseph Myhill' },
-          { name: 'Rod Steele', role: 'Senior tutor', img: shared('team/rod-steele'), alt: 'Rod Steele' },
-          { name: 'Matt O’Grady', role: 'Tutor', img: img('team-matt'), alt: 'Matt O’Grady' },
-          { name: 'Janet Lloyd', role: 'Business support officer', img: img('team-janet'), alt: 'Janet Lloyd' },
-        ]} />
-      </Band>
-      <Band tone="sky">
-        <SectionHead title="Part-time staff" />
-        <People items={[
-          { name: 'Guy Fox-Kelly', img: img('team-guy-fk'), alt: 'Guy Fox-Kelly' },
-          { name: 'Gill Howarth', img: img('team-gill'), alt: 'Gill Howarth' },
-          { name: 'Chiron Turner', img: img('team-chiron'), alt: 'Chiron Turner' },
-          { name: 'Ian Bajorski', img: img('team-ian'), alt: 'Ian Bajorski' },
-          { name: 'Guy Froud', img: img('team-guy-f'), alt: 'Guy Froud' },
-          { name: 'Kate O’Regan', img: img('team-kate'), alt: 'Kate O’Regan' },
-        ]} />
-        <TBC block>That this team list is current, and a line on each person&rsquo;s role and specialisms.</TBC>
-      </Band>
-      <Band tone="sage">
-        <SectionHead title="Educational visits advisers">
-          <p>Rod and Joseph also run Oldham&rsquo;s educational visits advice service.</p>
-          <p><SqLink href={href('advice-and-guidance/') + '#advisers'}>Our advisers</SqLink></p>
+      <Band id="what-people-say">
+        <SectionHead title="What people say">
+          <p>A few words from the schools, families and groups who visit.</p>
         </SectionHead>
+        <Quotes items={[
+          { text: 'I’ve been visiting Castleshaw for 18 years, and this is the best residential experience I have had. The children developed a great deal of confidence and thoroughly enjoyed themselves.', by: 'St Hilda’s Primary, residential' },
+          { text: 'One of the highlights was jumping in puddles! Something that they are often prevented from doing, but because of appropriate outdoor clothing it was not a problem.', by: 'Thorp Primary, Year 1' },
+          { text: 'It is always a time in Year 2 that the children highlight at the end of the year. Thank you!', by: 'Richmond Academy, Year 2 habitats' },
+          { text: 'These children do not get these experiences in day to day life so it is invaluable.', by: 'Yew Tree Community School, Year 5 team building' },
+          { text: 'Excellent trip as always. Very patient with reception children!', by: 'St Annes RC, Greenacres' },
+          { text: 'Absolutely brilliant. Most children would not have got this opportunity with their families.', by: 'Freehold, Year 6 activity residential' },
+          { text: 'Our aims were to build relationships and get to know each other. The course was really effective. It was nice to see students laughing together all day.', by: 'Royton and Crompton, Year 7 team building' },
+          { text: 'Staff provided careful accessible information and took time to build confidence in students. They loved it.', by: 'Visual Impairment Service residential' },
+          { text: 'Best day ever!', by: 'A parent, after the Summer Holiday Club' },
+          { text: 'Excellent venue in a beautiful location. Great communication throughout.', by: 'Manchester Hash House Harriers, accommodation only' },
+        ]} />
+        <p><SqLink href={ab('accreditation/') + '#inspection-reports'}>From our inspection reports</SqLink></p>
       </Band>
-      <CtaBand />
+
+      <Band tone="sky" id="hall-of-fame">
+        <SectionHead title="The Hall of Fame">
+          <p>Drawings, posters and letters sent to us after visits.</p>
+        </SectionHead>
+        <Gallery images={[
+          { src: gal('g-6315479'), alt: 'A painting of hills, a stream and a bridge with the words Thank you Rod' },
+          { src: gal('g-5743290'), alt: 'A hand-made poster: Castleshaw Centre, it is amazing, have a lovely walk with friends, come and see the animals' },
+          { src: gal('g-2127949'), alt: 'A drawing of a green hill with a gateway and the word Castleshaw' },
+          { src: gal('g-3478808'), alt: 'A typed thank-you letter from Year 6 pupils about canoeing, climbing and orienteering' },
+          { src: gal('g-7160946'), alt: 'A colourful crayon drawing of a rainbow over a hill' },
+          { src: gal('g-8159649'), alt: 'A drawing of a goat beside a gate' },
+          { src: gal('g-9879036'), alt: 'A poster titled Castleshaw Weekend, made from photos of caving and climbing' },
+          { src: gal('g-6222095'), alt: 'A handwritten letter decorated with drawings of flowers and animals' },
+          { src: gal('g-5074829'), alt: 'A pencil drawing of a figure on top of a hill' },
+          { src: gal('g-7378642'), alt: 'A handwritten letter on paper with a rainbow border' },
+        ]} />
+      </Band>
+      <CtaBand title="Come and see for yourself" />
     </>
   )
 }
@@ -172,7 +158,7 @@ export function Accreditation({ path }) {
           { title: 'AALA licence', href: OLD + 'r0443_aala_licence_oldham_council_l71687.pdf', meta: 'PDF, 135 KB' },
         ]} />
       </Band>
-      <Band tone="sky">
+      <Band tone="sky" id="inspection-reports">
         <SectionHead title="From our inspection reports" />
         <Quotes items={[
           { text: 'The session observed set a distinct standard in how orienteering can be delivered using a wide array of resources, including IT, to Year 1 primary students.', by: 'LOtC inspection, November 2023' },
@@ -182,82 +168,13 @@ export function Accreditation({ path }) {
           { text: 'The centre staff are not only highly technically qualified, but all of them have some form of educational qualifications.', by: 'LOtC initial inspection, October 2009' },
         ]} />
       </Band>
-      <Band>
+      <Band id="safety">
         <Split image={{ src: img('water-canoe-calm'), alt: 'A lone paddler in a canoe on a calm reservoir at dusk' }} heading="How we keep visits safe">
           <Ticks items={['Every activity is risk assessed by competent staff', 'Instructors hold national governing body awards for the activities they lead', 'Staff-to-participant ratios set for each activity', 'All specialist equipment provided and checked', 'Practice in line with OEAP National Guidance and HSE advice on school trips']} />
           <p><SqLink href={href('activities/plan-your-visit/') + '#group-leaders'}>Information for group leaders</SqLink></p>
         </Split>
       </Band>
       <CtaBand />
-    </>
-  )
-}
-
-/* ------------------------------------------------------------------ what people say */
-export function Say({ path }) {
-  return (
-    <>
-      <PageTop
-        path={path}
-        title="What people say"
-        lead="A few words from the schools, families and groups who visit, and a wall of the drawings and letters children send us afterwards."
-        image={{ src: gal('g-6315479'), alt: 'A child’s painting of hills, a stream and a bridge with the words Thank you Rod', shape: 'soft' }}
-      />
-      <OnThisPage items={[
-        { id: 'primary-schools', label: 'Primary schools' },
-        { id: 'secondary-and-specialist', label: 'Secondary and specialist' },
-        { id: 'families-and-groups', label: 'Families and groups' },
-        { id: 'hall-of-fame', label: 'Hall of Fame' },
-        { id: 'inspection-reports', label: 'Inspection reports' },
-      ]} />
-      <Band id="primary-schools">
-        <SectionHead eyebrow="What people say" title="Primary schools" />
-        <Quotes items={[
-          { text: 'One of the highlights was jumping in puddles! Something that they are often prevented from doing, but because of appropriate outdoor clothing it was not a problem.', by: 'Thorp Primary, Year 1' },
-          { text: 'It is always a time in Year 2 that the children highlight at the end of the year. Thank you!', by: 'Richmond Academy, Year 2 habitats' },
-          { text: 'I’ve been visiting Castleshaw for 18 years, and this is the best residential experience I have had. The children developed a great deal of confidence and thoroughly enjoyed themselves.', by: 'St Hilda’s Primary, residential' },
-          { text: 'These children do not get these experiences in day to day life so it is invaluable.', by: 'Yew Tree Community School, Year 5 team building' },
-          { text: 'Excellent trip as always. Very patient with reception children!', by: 'St Annes RC, Greenacres' },
-          { text: 'Absolutely brilliant. Most children would not have got this opportunity with their families.', by: 'Freehold, Year 6 activity residential' },
-        ]} />
-      </Band>
-      <Band tone="sky" id="secondary-and-specialist">
-        <SectionHead title="Secondary and specialist groups" />
-        <Quotes items={[
-          { text: 'Our aims were to build relationships and get to know each other. The course was really effective. It was nice to see students laughing together all day.', by: 'Royton and Crompton, Year 7 team building' },
-          { text: 'Staff provided careful accessible information and took time to build confidence in students. They loved it.', by: 'Visual Impairment Service residential' },
-        ]} />
-      </Band>
-      <Band tone="sage" id="families-and-groups">
-        <SectionHead title="Families and other groups" />
-        <Quotes items={[
-          { text: 'Best day ever!', by: 'A parent, after the Summer Holiday Club' },
-          { text: 'Excellent venue in a beautiful location. Great communication throughout.', by: 'Manchester Hash House Harriers, accommodation only' },
-        ]} />
-      </Band>
-      <Band id="hall-of-fame">
-        <SectionHead title="The Hall of Fame">
-          <p>Drawings, posters and letters sent to us after visits.</p>
-        </SectionHead>
-        <Gallery images={[
-          { src: gal('g-6315479'), alt: 'A painting of hills, a stream and a bridge with the words Thank you Rod' },
-          { src: gal('g-5743290'), alt: 'A hand-made poster: Castleshaw Centre, it is amazing, have a lovely walk with friends, come and see the animals' },
-          { src: gal('g-2127949'), alt: 'A drawing of a green hill with a gateway and the word Castleshaw' },
-          { src: gal('g-3478808'), alt: 'A typed thank-you letter from Year 6 pupils about canoeing, climbing and orienteering' },
-          { src: gal('g-7160946'), alt: 'A colourful crayon drawing of a rainbow over a hill' },
-          { src: gal('g-8159649'), alt: 'A drawing of a goat beside a gate' },
-          { src: gal('g-9879036'), alt: 'A poster titled Castleshaw Weekend, made from photos of caving and climbing' },
-          { src: gal('g-6222095'), alt: 'A handwritten letter decorated with drawings of flowers and animals' },
-          { src: gal('g-5074829'), alt: 'A pencil drawing of a figure on top of a hill' },
-          { src: gal('g-7378642'), alt: 'A handwritten letter on paper with a rainbow border' },
-        ]} />
-      </Band>
-      <Band tone="paper" id="inspection-reports">
-        <SectionHead title="From our inspection reports" />
-        <Quote big text="The session observed set a distinct standard in how orienteering can be delivered." by="LOtC inspection, November 2023" />
-        <p><SqLink href={ab('accreditation/')}>More from our inspection reports</SqLink></p>
-      </Band>
-      <CtaBand title="Come and see for yourself" />
     </>
   )
 }

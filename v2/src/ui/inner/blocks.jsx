@@ -328,7 +328,7 @@ export function People({ items }) {
       {items.map((p, i) => (
         <li key={p.name}>
           {p.img
-            ? <ShapedImage className="people-img" src={p.img} alt={p.alt || p.name} shape={BLOBS[(i * 2 + 5) % BLOBS.length]} aspect="4/5" width={800} height={1000} pos="50% 25%" />
+            ? <ShapedImage className="people-img" src={p.img} alt={p.alt || p.name} shape={BLOBS[(i * 2 + 5) % BLOBS.length]} aspect="4/5" width={800} height={1000} pos={p.pos || '50% 25%'} />
             : <span className="people-img people-none" aria-hidden="true" />}
           <strong>{p.name}</strong>
           {p.role && <span className="people-role">{p.role}</span>}

@@ -208,7 +208,7 @@ export function Bushcraft({ path }) {
           <div>
             <Callout title="Qualified bushcraft instructors" tone="sky">
               <p>Our tutor Matt completed his NCFE Level 2 Bushcraft Instructor Award in 2023, and with Chiron leads bushcraft sessions for school groups, youth groups and our holiday clubs.</p>
-              <p><SqLink href={href('about/our-team/')}>Meet the team</SqLink></p>
+              <p><SqLink href={href('about/') + '#our-team'}>Meet the team</SqLink></p>
             </Callout>
             <TBC block>The full bushcraft programme.</TBC>
           </div>

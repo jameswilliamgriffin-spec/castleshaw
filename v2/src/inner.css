@@ -152,6 +152,8 @@
 .people { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 2rem 1.5rem; }
 .people li { display: grid; gap: .15rem; }
 .people-img { display: block; margin: 0 0 .7rem; }
+.people + .h3i { margin: var(--s-6, 3rem) 0 var(--s-4, 1.5rem); font: 720 1.35rem/1.2 var(--disp); }
+.people + .h3i + .people + .tbc-block { margin-top: var(--s-5, 2rem); }
 .people-none { aspect-ratio: 4 / 5; background: linear-gradient(180deg, var(--sky) 55%, var(--sage) 55%); -webkit-clip-path: var(--shape-blob-5); clip-path: var(--shape-blob-5); }
 .people strong { font: 720 1.15rem var(--disp); }
 .people-role { font: 560 .92rem var(--disp); color: var(--deep); }

@@ -6,7 +6,7 @@ import { schemaTypes } from './schemas'
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID
 const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
 
-// The editing app for the Castleshaw website. Two areas: News, and Training (courses and dates).
+// The editing app for the Castleshaw website. Three areas: News, Training (courses and dates) and Staff.
 export default defineConfig({
   name: 'castleshaw',
   title: 'Castleshaw Centre website',
@@ -21,6 +21,8 @@ export default defineConfig({
           S.listItem().title('Course dates and prices').schemaType('trainingDate').child(S.documentTypeList('trainingDate').title('Course dates and prices').defaultOrdering([{ field: 'date', direction: 'asc' }])),
           S.listItem().title('Courses').schemaType('trainingCourse').child(S.documentTypeList('trainingCourse').title('Courses').defaultOrdering([{ field: 'order', direction: 'asc' }])),
         ])),
+        S.divider(),
+        S.listItem().title('Staff').schemaType('staffMember').child(S.documentTypeList('staffMember').title('Staff').defaultOrdering([{ field: 'group', direction: 'desc' }, { field: 'order', direction: 'asc' }])),
       ]),
     }),
     visionTool(),

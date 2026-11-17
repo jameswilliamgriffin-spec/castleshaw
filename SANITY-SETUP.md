@@ -1,11 +1,12 @@
-# Editing news and training in Sanity
+# Editing news, training and staff in Sanity
 
-The website reads two things from Sanity when it is built:
+The website reads three things from Sanity when it is built:
 
 - **News stories** (the News page and one page per story)
 - **Training**: the courses, and upcoming course dates and prices
+- **Staff**: the people in "Our team" on the About page
 
-Everything else on the site stays in the code. Until Sanity is connected, the site uses the copies in the repository (`v2/src/content/news/*.md` and `v2/src/content/training.local.json`), so nothing breaks in the meantime. If Sanity can't be reached during a build, the build uses those copies too and says so in the Vercel build log.
+Everything else on the site stays in the code. Until Sanity is connected, the site uses the copies in the repository (`v2/src/content/news/*.md`, `v2/src/content/training.local.json` and `v2/src/content/staff.local.json`), so nothing breaks in the meantime. If Sanity can't be reached during a build, the build uses those copies too and says so in the Vercel build log.
 
 ## One-time setup (about 20 minutes)
 
@@ -19,7 +20,15 @@ Everything else on the site stays in the code. Until Sanity is connected, the si
    npx sanity login
    npm run import
    ```
-   This copies the six news stories (with their photos) and the six training courses into Sanity.
+   This copies the six news stories (with their photos), the six training courses and the staff team (with their photos) into Sanity. Photos are copied from the live site, so deploy the latest version of the website before importing.
+
+   **Already imported news and training before staff moved to Sanity?** Don't run `npm run import` again: it replaces everything, including edits made since. Instead, from `studio/`, run:
+   ```bash
+   node seed/make-import.mjs
+   grep '"_type":"staffMember"' seed/import.ndjson > seed/staff.ndjson
+   npx sanity dataset import seed/staff.ndjson --dataset production --missing
+   ```
+   That adds only the staff, and leaves everything else as it is.
 
 4. **Publish the editing app.** Still in `studio/`:
    ```bash
@@ -35,16 +44,17 @@ Everything else on the site stays in the code. Until Sanity is connected, the si
 
 6. **Rebuild the site when someone presses Publish.**
    - In Vercel → Settings → Git → Deploy Hooks, create a hook called "Sanity" for the `main` branch and copy its URL.
-   - In <https://www.sanity.io/manage> → the project → API → Webhooks, add a webhook: paste that URL, trigger on create, update and delete, filter `_type in ["newsStory", "trainingCourse", "trainingDate"]`, method POST.
+   - In <https://www.sanity.io/manage> → the project → API → Webhooks, add a webhook: paste that URL, trigger on create, update and delete, filter `_type in ["newsStory", "trainingCourse", "trainingDate", "staffMember"]`, method POST.
 
    Now each publish rebuilds the site; changes are live in about a minute.
 
-7. **Invite editors.** <https://www.sanity.io/manage> → the project → Members. On the free plan everyone invited is an Administrator (can edit everything in News and Training).
+7. **Invite editors.** <https://www.sanity.io/manage> → the project → Members. On the free plan everyone invited is an Administrator (can edit everything in News, Training and Staff).
 
 ## For editors
 
 - **News stories:** headline, date (and whether to show the day, the month or just the year), a photo with a short description, and the story. Press **Publish**.
 - **Training → Courses:** the course cards on the Training page. "Position on the page" sets the order.
+- **Staff:** name, job title, whether they show under "Our team" or "Part-time staff", a photo, and an optional line on their specialisms. "Position on the page" sets the order (1 first). After uploading a photo, click the crop icon and drag the circle onto their face, so it stays in view. To take someone off the site, open them and choose **Delete** from the menu beside Publish.
 - **Training → Course dates and prices:** add one entry per date: the course, date, time, where, the two prices, and whether places are available, few, or full. Past dates disappear from the site on their own.
 
 ## Free plan limits that matter

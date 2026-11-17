@@ -24,7 +24,7 @@ export function Contact({ path }) {
               <li><strong>Facebook</strong><a href={FACEBOOK} rel="noopener">Castleshaw Centre on Facebook</a></li>
               <li><strong>24/7 critical incident line</strong>For members of the educational visits advice service with an emergency on a visit: <a href={INCIDENT_HREF}>{INCIDENT}</a></li>
             </ul>
-            <p><SqLink href={href('about/where-we-are/')}>How to find us</SqLink></p>
+            <p><SqLink href={href('about/') + '#where-we-are'}>How to find us</SqLink></p>
           </div>
           <EnquiryForm
             title="Send an enquiry"

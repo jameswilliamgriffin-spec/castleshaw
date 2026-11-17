@@ -1,0 +1,113 @@
+{
+  "fromSanity": false,
+  "people": [
+    {
+      "name": "Joseph Myhill",
+      "role": "Centre manager",
+      "group": "team",
+      "src": "shared/images/site/team-joseph-2.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Rod Steele",
+      "role": "Senior tutor",
+      "group": "team",
+      "src": "shared/images/team/rod-steele-2.jpg",
+      "alt": "",
+      "pos": "78% 40%",
+      "about": ""
+    },
+    {
+      "name": "Matthew Allat",
+      "role": "Technical adviser and tutor",
+      "group": "team",
+      "src": "shared/images/team/matthew-allat.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Antonio Amaral",
+      "role": "Tutor",
+      "group": "team",
+      "src": "shared/images/team/antonio-amaral.jpg",
+      "alt": "",
+      "pos": "55% 30%",
+      "about": ""
+    },
+    {
+      "name": "Chiron Turner",
+      "role": "Tutor",
+      "group": "team",
+      "src": "shared/images/team/chiron-turner.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Kate O’Regan",
+      "role": "Tutor",
+      "group": "team",
+      "src": "shared/images/team/kate-oregan.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Matt O’Grady",
+      "role": "Tutor",
+      "group": "team",
+      "src": "shared/images/site/team-matt.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Janet Lloyd",
+      "role": "Customer and business support officer",
+      "group": "team",
+      "src": "shared/images/team/janet-lloyd.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Guy Fox-Kelly",
+      "role": "",
+      "group": "part-time",
+      "src": "shared/images/site/team-guy-fk.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Gill Howarth",
+      "role": "",
+      "group": "part-time",
+      "src": "shared/images/site/team-gill.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Ian Bajorski",
+      "role": "",
+      "group": "part-time",
+      "src": "shared/images/site/team-ian.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Guy Froud",
+      "role": "",
+      "group": "part-time",
+      "src": "shared/images/site/team-guy-f.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    }
+  ]
+}
