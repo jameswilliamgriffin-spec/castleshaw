@@ -1,5 +1,5 @@
 // Stay and hire: the centre building for residential groups and self-programming groups.
-import { PageTop, Band, SectionHead, OnThisPage, Split, Ticks, Ledger, Gallery, Facilities, Quotes, Downloads, Callout, CtaBand, Btn, TBC, img, OLD, ImageBreak } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Split, Ticks, Ledger, Gallery, Facilities, Quotes, Downloads, Callout, CtaBand, Btn, TBC, img, OLD, ImageBreak } from '../ui/inner/blocks'
 import { href, CONTACT } from '../data'
 
 export function Stay({ path }) {
@@ -12,12 +12,6 @@ export function Stay({ path }) {
         image={{ src: img('stay-front'), alt: 'The front of the Castleshaw Centre, a long stone building beside the lane', shape: 'arch' }}
         actions={<><Btn href={CONTACT}>Check availability</Btn><a className="ib ib-line" href="#facilities">Facilities</a></>}
       />
-      <OnThisPage items={[
-        { id: 'ways-to-book', label: 'Ways to book' },
-        { id: 'facilities', label: 'Facilities' },
-        { id: 'food-and-prices', label: 'Food and prices' },
-        { id: 'what-groups-say', label: 'What groups say' },
-      ]} />
       <Band>
         <SectionHead eyebrow="Stay and hire" title="At a glance" />
         <Ledger items={[

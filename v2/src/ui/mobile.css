@@ -15,7 +15,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highl
 body { overflow-wrap: break-word; }
 img, video { max-width: 100%; }
 :where(a, button, summary, label, input, select, textarea, [role='button'], [role='tab']) { touch-action: manipulation; }
-:where(.subnav a, .otp a, .ft-mail, .ft-sos a, .cta-mail a, .contact-big, address, .j-contact-info) { overflow-wrap: anywhere; }
+:where(.subnav a, .ft-mail, .ft-sos a, .cta-mail a, .contact-big, address, .j-contact-info) { overflow-wrap: anywhere; }
 
 /* single-column grids may shrink below their content's natural width (long emails, long select options) */
 :root:root .contact-grid > * { min-width: 0; }
@@ -23,14 +23,12 @@ img, video { max-width: 100%; }
 /* the header sits below the status bar and the notch */
 :root:root .hd { height: calc(var(--hd-h) + var(--safe-t)); padding-top: var(--safe-t); }
 :root:root .mn-cap { height: calc(var(--hd-h) + var(--safe-t)); margin-bottom: calc(-1 * (var(--hd-h) + var(--safe-t))); }
-:root:root .otp { top: calc(var(--hd-h) + .2rem + var(--safe-t)); }
 :root:root [id] { scroll-margin-top: calc(var(--hd-h) + var(--safe-t) + 1.4rem); }
-:root:root body:has(.otp) [id] { scroll-margin-top: calc(var(--hd-h) + var(--safe-t) + 4.5rem); }
 :root:root .ft { padding-bottom: calc(var(--ft-pad-bottom) + var(--safe-b)); }
 
 /* ---------- touch: pressed states instead of hover ---------- */
 @media (hover: none) {
-  :root:root :where(.b, .ib, .hd-menu, .subnav a, .otp a, .ft-tog, .ft-top, .at-tab, .sp-nav button, .faq summary, .acts-chip, .keep, .pl-opt, .j-sound, .j-call):active { transform: scale(.97); transition: transform .1s; }
+  :root:root :where(.b, .ib, .hd-menu, .subnav a, .ft-tog, .ft-top, .at-tab, .sp-nav button, .faq summary, .acts-chip, .keep, .pl-opt, .j-sound, .j-call):active { transform: scale(.97); transition: transform .1s; }
   :root:root :where(a.icard, .tile, .tl-card, .ib-card, .dl a, .links a):active { transform: scale(.985); transition: transform .12s; }
   :root:root :where(main, footer, .mn) a:active { opacity: .72; }
 }
@@ -46,7 +44,6 @@ img, video { max-width: 100%; }
 
   /* section links and on-this-page chips: 8px between targets */
   :root:root .subnav ul { gap: .5rem; }
-  :root:root .otp ul { gap: .5rem; }
 
   /* footer: 44px targets, 8px apart, 16px text for sentences */
   :root:root .ft-mail, :root:root .ft-sos a, :root:root .ft-small a { display: inline-flex; align-items: center; min-height: 2.75rem; }
@@ -114,8 +111,6 @@ img, video { max-width: 100%; }
 /* ---------- inner pages on phones ---------- */
 @media (max-width: 899px) {
   /* "On this page" label beside its chips, so the row reads differently from the section links */
-  :root:root .otp-label { display: block; max-width: 4.6rem; font-size: .8125rem; line-height: 1.1; letter-spacing: .08em; }
-  :root:root .otp { gap: .6rem; }
   /* kit lists and topic cards: one tap row each; the content opens beneath */
   :root:root .kit { padding: 0 1.25rem; }
   :root:root .tcard { padding-block: 0; }

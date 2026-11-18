@@ -1,5 +1,5 @@
 // About the Castleshaw Centre: one page for place, people and reputation, plus accreditation and history.
-import { PageTop, Band, SectionHead, OnThisPage, Split, Ticks, Ledger, Gallery, Quotes, People, Timeline, Downloads, CtaBand, SqLink, TBC, img, gal, OLD } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Split, Ticks, Ledger, Gallery, Quotes, People, Timeline, Downloads, CtaBand, SqLink, TBC, img, gal, OLD } from '../ui/inner/blocks'
 import { href, ADDRESS, W3W } from '../data'
 import { ROOT } from '../lib'
 import STAFF from '../content/staff.json'
@@ -18,7 +18,7 @@ const partTime = STAFF.people.filter((p) => p.group === 'part-time').map(person)
 
 /* ------------------------------------------------------------------ about (one page) */
 // Where we are, the valley, the team and what people say all live here; accreditation and
-// safety, and the history, keep their own pages and are linked from the hero.
+// safety, and the history, keep their own pages, linked from the hero (so this page has no link bar).
 export function Hub({ path }) {
   return (
     <>
@@ -27,20 +27,13 @@ export function Hub({ path }) {
         title="About the Castleshaw Centre"
         lead="Oldham Council's Outdoor and Environmental Education service, in a stone building at the top of the Castleshaw Valley that has welcomed Oldham's children since 1895."
         image={{ src: img('history-building-now'), alt: 'The Castleshaw Centre today, a stone building behind a green field' }}
+        subnav={false}
         actions={<>
           <a className="ib ib-ink" href={ab('accreditation/')}>Accreditation</a>
           <a className="ib ib-line" href={ab('accreditation/') + '#safety'}>Safety</a>
           <a className="ib ib-line" href={ab('history/')}>Our history</a>
         </>}
       />
-      <OnThisPage items={[
-        { id: 'at-a-glance', label: 'At a glance' },
-        { id: 'our-team', label: 'Our team' },
-        { id: 'where-we-are', label: 'Where we are' },
-        { id: 'around-the-valley', label: 'Around the valley' },
-        { id: 'what-people-say', label: 'What people say' },
-        { id: 'hall-of-fame', label: 'Hall of Fame' },
-      ]} />
       <Band id="at-a-glance">
         <SectionHead eyebrow="About the centre" title="At a glance" />
         <Ledger items={[

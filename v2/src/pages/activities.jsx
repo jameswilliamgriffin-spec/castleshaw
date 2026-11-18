@@ -1,6 +1,6 @@
 // Activities and school visits. Copy is drawn from the centre's own pages
 // (adventurous activities, curriculum, team building, booking, kit lists, testimonials).
-import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, OnThisPage, Btn, TBC, img, shared, OLD, ImageBreak, TopicCard } from '../ui/inner/blocks'
+import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, Btn, TBC, img, shared, OLD, ImageBreak, TopicCard } from '../ui/inner/blocks'
 import { href, PHONE, PHONE_HREF } from '../data'
 
 const at = (k) => href(`activities/${k}/`)
@@ -232,13 +232,6 @@ export function Environment({ path }) {
       >
         <p>We hold the Learning Outside the Classroom Quality Badge and are an Ambassador Centre for the Peak District National Park.</p>
       </PageTop>
-      <OnThisPage items={[
-        { id: 'primary-science', label: 'Primary science' },
-        { id: 'primary-geography', label: 'Primary geography' },
-        { id: 'secondary', label: 'Secondary field studies' },
-        { id: 'what-schools-say', label: 'What schools say' },
-        { id: 'resources', label: 'Free resources' },
-      ]} />
 
       <Band id="primary-science">
         <SectionHead eyebrow="Environmental education" title="Primary science">
@@ -323,12 +316,6 @@ export function History({ path }) {
         lead="A Roman fort a few minutes' walk away, weavers' cottages and mills down the valley, and a Victorian village at the bottom of it. History here is something you can walk to."
         image={{ src: img('roman-shields'), alt: 'Children in Roman helmets with red shields and wooden swords' }}
       />
-      <OnThisPage items={[
-        { id: 'romans', label: 'Romans' },
-        { id: 'local-history', label: 'Local history' },
-        { id: 'secondary-groups', label: 'For secondary groups' },
-        { id: 'what-schools-say', label: 'What schools say' },
-      ]} />
 
       <Band id="romans">
         <Split image={{ src: img('roman-fort-aerial'), alt: 'An aerial photograph showing the outline of the Roman fort in the fields of the Castleshaw Valley' }} shape="soft" heading="Romans: life at a frontier fort">
@@ -436,13 +423,6 @@ export function Plan({ path }) {
         lead="Everything a group leader needs: how booking works, the guides we send you, what to pack, access, and free resources for before and after."
         image={{ src: img('bring-muddy'), alt: 'A smiling child in muddy waterproofs and wellies' }}
       />
-      <OnThisPage items={[
-        { id: 'booking', label: 'Booking' },
-        { id: 'group-leaders', label: 'Group leaders' },
-        { id: 'what-to-bring', label: 'What to bring' },
-        { id: 'access', label: 'Access' },
-        { id: 'resources', label: 'Resources' },
-      ]} />
 
       <Band id="booking">
         <SectionHead title="Booking a visit">

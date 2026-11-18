@@ -175,31 +175,6 @@ export function SqLink({ href: h, children, i = 0, rel }) {
   return <a className="sql sq-host" href={h} rel={rel}><span className="sql-t">{children}<Squiggle i={i} /></span><span className="sql-arr" aria-hidden="true">&rarr;</span></a>
 }
 
-// "On this page": a sticky row of links to a long page's sections, marking the one in view.
-export function OnThisPage({ items }) {
-  const [on, setOn] = useState(items[0]?.id)
-  useEffect(() => {
-    const els = items.map((x) => document.getElementById(x.id)).filter(Boolean)
-    const io = new IntersectionObserver((es) => {
-      const vis = es.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-      if (vis[0]) setOn(vis[0].target.id)
-    }, { rootMargin: '-30% 0px -60% 0px' })
-    els.forEach((el) => io.observe(el))
-    // above the first section, the first item is the current one
-    let raf = 0
-    const top = () => { raf = 0; if (els[0] && els[0].getBoundingClientRect().top > innerHeight * 0.4) setOn(items[0].id) }
-    const onScroll = () => { if (!raf) raf = requestAnimationFrame(top) }
-    addEventListener('scroll', onScroll, { passive: true })
-    return () => { io.disconnect(); removeEventListener('scroll', onScroll); cancelAnimationFrame(raf) }
-  }, [items])
-  return (
-    <nav className="otp" aria-label="On this page">
-      <span className="otp-label">On this page</span>
-      <ul>{items.map((x) => <li key={x.id}><a href={`#${x.id}`} aria-current={on === x.id ? 'location' : undefined}>{x.label}</a></li>)}</ul>
-    </nav>
-  )
-}
-
 export function Intro({ heading, children, aside }) {
   return (
     <div className="intro">
@@ -522,6 +497,7 @@ export function EnquiryForm({ title = 'Send an enquiry', fields, submit = 'Send 
 }
 
 // Hero plus the section's page list, the top of every inner page.
+// subnav={false}: a page whose hero already carries the section's links leaves the link bar out.
 export function PageTop(props) {
-  return <><Hero {...props} /><SubNav path={props.path} /></>
+  return <><Hero {...props} />{props.subnav !== false && <SubNav path={props.path} />}</>
 }
