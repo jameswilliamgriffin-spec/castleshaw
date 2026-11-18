@@ -106,6 +106,8 @@ img, video { max-width: 100%; }
   /* the scroll prompt is a hint, not a feature */
   :root:root .cue-down svg { height: 2rem; }
   :root:root .cue { font-size: .78rem; }
+  :root:root .cue-follow { font-size: 1rem; }
+  :root:root .cue-follow svg { height: 4.6rem; }
 }
 
 /* ---------- inner pages on phones ---------- */

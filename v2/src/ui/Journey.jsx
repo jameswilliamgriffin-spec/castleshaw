@@ -39,6 +39,9 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
   const base = new URL('./video', document.baseURI).href.replace(/\/$/, '')
   const [inView, setInView] = useState(false)
   const [tucked, setTucked] = useState(false)
+  // once the reader starts scrolling the film, the "Keep scrolling" cue leaves the opening words
+  // and follows them, larger, in the bottom right corner
+  const [moved, setMoved] = useState(false)
   useEffect(() => {
     const el = root.current
     const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { rootMargin: '-40% 0px -40% 0px' })
@@ -95,7 +98,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
     }, { rootMargin: '150% 0px' })
     io.observe(el)
 
-    let last = -1, lastT = -1
+    let last = -1, lastT = -1, wasMoved = false
     const clamp = (v) => Math.min(1, Math.max(0, v))
     const update = () => {
       const vh = innerHeight
@@ -127,6 +130,8 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
         o.style.opacity = String(Math.min(ease(a, a + 0.12), 1 - ease(0.7, 0.95)) * 0.9)
       }
       el.style.setProperty('--thr', t.toFixed(3)) }
+      const mv = t > 0.02 || seg > 0
+      if (mv !== wasMoved) { wasMoved = mv; setMoved(mv) }
       const per = 1 / CH.length
       const p = seg === 0 ? ease(0.28, 1) * per * MORPH
         : seg === 1 ? per * MORPH + lp * per * (1 - MORPH)
@@ -198,6 +203,9 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
           {['far', 'water', 'left', 'right', 'near'].map((k) => <path key={k} data-layer={k} d={TH.layers[k].d} fill={TH.layers[k].fill} />)}
           {['far'].map((k) => <path key={k} data-line={k} className="trace" d={TH.layers[k].line} />)}
         </svg>
+        {/* haze over the far hills and a fine grain, laid over the drawing only: both are gone
+            before the film starts to change, so its first frame still matches the drawing */}
+        <div className="thr-haze" /><div className="grain thr-grain" />
         <div className="scrim scrim-left" /><div className="scrim scrim-right" /><div className="scrim scrim-centre" /><div className="scrim scrim-foot" />
         <div className="trail">
           <svg viewBox="0 0 212 52"><path className="trail-all" d={pathD} /><path className="trail-done" d={pathD} />
@@ -218,13 +226,14 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
         )}
         <audio ref={audio} src="./video/ambience.mp3" loop preload="none" onError={() => setHasAudio(false)} />
       </div>
+      <ScrollCue className="cue-follow" label="Keep scrolling" always active={moved && inView && !tucked} />
 
       <div className="j-flow">
         <div className="j-block j-threshold" data-seg="0">
           <div className="j-thr-copy">
             <h2 className="j-thr-h">Same hills.<br />A little less flat.</h2>
             <p>Scroll back up to rewind.</p>
-            <ScrollCue className="cue-thr" label="Keep scrolling" />
+            <ScrollCue className="cue-thr" label="Keep scrolling" always active={!moved} />
           </div>
         </div>
 

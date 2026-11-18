@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 // "Keep scrolling": a few dots walking a hand-drawn trail. It only appears after the
 // reader has been still for a couple of seconds, vanishes the moment they scroll,
 // and only where its section is on screen. orientation: 'down' | 'right'.
+// always: show it whenever it is active and on screen, without waiting for the reader to pause.
 const IDLE_MS = 2000
 const subs = new Set()
 let idle = false, timer = 0, started = false
@@ -20,7 +21,7 @@ const RIGHT = 'M2 6 C 9 2, 13 10, 21 6 S 31 3, 38 6'
 // five points along the trail, top to bottom (mirrored for the sideways version)
 const DOTS = [[4.6, 7], [7.6, 13.5], [5.4, 20.5], [4.8, 27.5], [5.8, 33]]
 
-export default function ScrollCue({ orientation = 'down', label = 'Keep scrolling', active = true, className = '' }) {
+export default function ScrollCue({ orientation = 'down', label = 'Keep scrolling', active = true, always = false, className = '' }) {
   const ref = useRef(null)
   const [isIdle, setIdle] = useState(false)
   const [inView, setInView] = useState(false)
@@ -31,7 +32,7 @@ export default function ScrollCue({ orientation = 'down', label = 'Keep scrollin
     io.observe(ref.current)
     return () => { subs.delete(setIdle); io.disconnect() }
   }, [])
-  const show = isIdle && inView && active
+  const show = (always || isIdle) && inView && active
   const h = orientation === 'down'
   return (
     <div ref={ref} className={`cue cue-${orientation}${show ? ' is-on' : ''} ${className}`} aria-hidden="true">
