@@ -120,8 +120,8 @@
     flex: 1 0 auto; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--mn-gap);
     align-content: center; padding: calc(4.6rem + 3vh) 0 3vh; padding: calc(var(--hd-h, 4.6rem) + var(--safe-t, 0px) + 3svh) 0 calc(3svh + var(--safe-b, 0px));
   }
-  /* Big, but never wrapping: "Courses and clubs" must fit its five columns, and five rows must fit the screen. */
-  .mn-item { --fs: min(clamp(2.75rem, 7vw, 6.5rem), 11.9cqi, 11vh); --fs: min(clamp(2.75rem, 7vw, 6.5rem), 11.9cqi, 11svh); grid-column: 1 / 6; grid-row: var(--row); }
+  /* Big, but never wrapping: "Courses and clubs" must fit its five columns, and all seven rows (six sections and Contact) must fit the screen. */
+  .mn-item { --fs: min(clamp(2.75rem, 7vw, 6.5rem), 11.9cqi, 9.5vh); --fs: min(clamp(2.75rem, 7vw, 6.5rem), 11.9cqi, 9.5svh); grid-column: 1 / 6; grid-row: var(--row); }
   .mn-item:not(.is-on) .mn-link { opacity: var(--mn-dim); }
   .mn-panel { grid-column: 6 / 13; grid-row: 1 / span 5; align-self: start; padding: 1.1rem 0 0 clamp(0rem, 3vw, 4rem); visibility: hidden; transition: visibility 0s .2s; }
   .mn-panel.is-on { visibility: visible; transition: none; }

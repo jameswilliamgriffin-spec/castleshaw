@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { NAV_MAIN, NAV_SECTIONS, PHONE, PHONE_HREF, CONTACT } from '../data'
+import { NAV_SECTIONS, PHONE, PHONE_HREF, CONTACT } from '../data'
 import Button from './Button'
 import { fine, reduced, goTo, ROOT, HOME, ADVICE } from '../lib'
 
@@ -61,9 +61,10 @@ export function Header({ open, setOpen, count, current, grow = false }) {
         ? <a href={HOME} className="hd-logo hd-logo-cut"><picture className="photo"><source type="image/webp" srcSet={`${ROOT}shared/images/logo-cut.webp`} /><img src={`${ROOT}shared/images/logo-cut.png`} alt="Castleshaw Centre home" width="600" height="354" /></picture></a>
         : <a href={HOME} className="hd-logo"><img src={`${ROOT}shared/images/logo.jpg`} alt="Castleshaw Centre home" width="200" height="129" /></a>}
       <nav aria-label="Main" className="hd-nav">
-        {NAV_MAIN.map(([t, h], i) => (
-          <a key={t} href={h} aria-current={current === NAV_SECTIONS[i].key ? 'true' : undefined} className={NAV_SECTIONS[i].key === 'advice' ? 'hd-advice' : undefined}>
-            {t}{NAV_SECTIONS[i].key === 'advice' && <span className="hd-tag">For schools</span>}
+        {/* News stays in the menu and footer; Enquire covers contact */}
+        {NAV_SECTIONS.filter((x) => x.key !== 'news').map((x) => (
+          <a key={x.key} href={x.href} aria-current={current === x.key ? 'true' : undefined} className={x.key === 'advice' ? 'hd-advice' : undefined}>
+            {x.title}{x.key === 'advice' && <span className="hd-tag">For schools</span>}
           </a>
         ))}
       </nav>

@@ -1,11 +1,10 @@
 // About the Castleshaw Centre: one page for place, people and reputation, plus accreditation and history.
 import { PageTop, Band, SectionHead, Split, Ticks, Ledger, Gallery, Quotes, People, Timeline, Downloads, CtaBand, SqLink, TBC, img, gal, OLD } from '../ui/inner/blocks'
-import { href, ADDRESS, W3W } from '../data'
+import { href, ADDRESS, W3W, MAPS } from '../data'
 import { ROOT } from '../lib'
 import STAFF from '../content/staff.json'
 
 const ab = (k = '') => href(`about/${k}`)
-const MAPS = 'https://www.google.com/maps/search/?api=1&query=Castleshaw+Centre+OL3+5LZ'
 
 // The staff team, from Sanity or v2/src/content/staff.local.json (scripts/content.mjs).
 // A photo from Sanity is a full address; one from the repository is a path under public/.

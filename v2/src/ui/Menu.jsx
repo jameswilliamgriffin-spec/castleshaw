@@ -155,6 +155,15 @@ export default function Menu({ open, close, current }) {
             </Fragment>
           )
         })}
+        {/* Contact: a plain link at the end of the list, with no panel of its own */}
+        <div className={`mn-item${!narrow && active === -1 ? ' is-on' : ''}${current === 'contact' ? ' is-current' : ''}`} style={{ '--i': NAV_SECTIONS.length, '--row': NAV_SECTIONS.length + 1 }}>
+          <span className="mn-idx" aria-hidden="true">{String(NAV_SECTIONS.length + 1).padStart(2, '0')}</span>
+          <span className="mn-mask">
+            <a className="mn-link" href={CONTACT} onClick={close} aria-current={current === 'contact' ? 'true' : undefined} onPointerEnter={(e) => { if (e.pointerType === 'mouse') setActive(-1) }} onFocus={() => setActive(-1)}>
+              <span className="mn-word">Contact<MenuSquiggle i={NAV_SECTIONS.length} /></span>
+            </a>
+          </span>
+        </div>
       </nav>
 
       <div className="mn-foot">

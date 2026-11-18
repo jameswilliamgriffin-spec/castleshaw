@@ -10,11 +10,11 @@ export const EMAIL = 'castleshaw.centre@oldham.gov.uk'
 export const INCIDENT = '0161 633 1803'
 export const INCIDENT_HREF = 'tel:+441616331803'
 export const ADDRESS = ['Waterworks Road', 'Delph', 'Oldham', 'OL3 5LZ']
+export const MAPS = 'https://www.google.com/maps/search/?api=1&query=Castleshaw+Centre+OL3+5LZ'
 
 // Navigation, built from the site map in site.mjs. Links are relative to the current page.
 export const href = (path) => HOME + path
 export const ACCESSIBILITY = href('accessibility/')
-export const NAV_MAIN = SECTIONS.map((s) => [s.title, href(s.path)])
 export const NAV_SECTIONS = SECTIONS.map((s) => ({ ...s, href: href(s.path), children: s.children.map((c) => ({ ...c, href: href(c.path) })), footer: (s.footer || s.children).map((c) => ({ ...c, href: href(c.path) })) }))
 export const PRIVACY = href('privacy/')
 export const CONTACT = href('contact/')

@@ -314,6 +314,11 @@
 .contact-list { list-style: none; margin: 1.4rem 0 0; padding: 0; display: grid; gap: 1rem; }
 .contact-list li { padding-top: 1rem; border-top: 1px solid var(--line); }
 .contact-list strong { display: block; font: 680 .92rem var(--disp); color: var(--deep); margin-bottom: .2rem; }
+.contact-addr { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem; }
+.map-btn { display: inline-flex; align-items: center; gap: .35rem; min-height: 2.2rem; padding: 0 .85rem; border-radius: 99px; font: 650 .85rem var(--disp); color: var(--ink); text-decoration: none; box-shadow: inset 0 0 0 1.5px var(--ink); transition: background-color var(--cs-fast), color var(--cs-fast); }
+@media (hover: hover) { .map-btn:hover { background: var(--ink); color: #fff; } }
+.contact-find { margin: 2.2rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.contact-find .sql { font-size: 1.3rem; }
 
 /* news: story cards, and a story page */
 .posts { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.4rem; }

@@ -1,6 +1,6 @@
 // Contact, the privacy notice and the accessibility statement.
 import { PageTop, Band, SectionHead, SqLink, Callout, EnquiryForm, img, OLD } from '../ui/inner/blocks'
-import { href, PHONE, PHONE_HREF, EMAIL, INCIDENT, INCIDENT_HREF, ADDRESS, W3W, FACEBOOK } from '../data'
+import { href, PHONE, PHONE_HREF, EMAIL, INCIDENT, INCIDENT_HREF, ADDRESS, W3W, FACEBOOK, MAPS } from '../data'
 
 export function Contact({ path }) {
   return (
@@ -18,13 +18,13 @@ export function Contact({ path }) {
             <a className="contact-big" href={PHONE_HREF}>{PHONE}</a>
             <ul className="contact-list">
               <li><strong>Email</strong><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
-              <li><strong>Address</strong>The Castleshaw Centre, {ADDRESS.join(', ')}</li>
+              <li><strong>Address</strong><span className="contact-addr">The Castleshaw Centre, {ADDRESS.join(', ')}<a className="map-btn" href={MAPS} target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></svg>Open in Google Maps</a></span></li>
               <li><strong>what3words</strong><a href={`https://what3words.com/${W3W}`} rel="noopener">///{W3W}</a></li>
               <li><strong>Office hours</strong>8.30am to 4.30pm</li>
               <li><strong>Facebook</strong><a href={FACEBOOK} rel="noopener">Castleshaw Centre on Facebook</a></li>
               <li><strong>24/7 critical incident line</strong>For members of the educational visits advice service with an emergency on a visit: <a href={INCIDENT_HREF}>{INCIDENT}</a></li>
             </ul>
-            <p><SqLink href={href('about/') + '#where-we-are'}>How to find us</SqLink></p>
+            <p className="contact-find"><SqLink href={href('about/') + '#where-we-are'}>How to find us</SqLink></p>
           </div>
           <EnquiryForm
             title="Send an enquiry"
