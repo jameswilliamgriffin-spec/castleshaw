@@ -3,7 +3,7 @@
   "people": [
     {
       "name": "Joseph Myhill",
-      "role": "Centre manager",
+      "role": "Outdoor and Environmental Education Service Manager",
       "group": "team",
       "src": "shared/images/site/team-joseph-2.jpg",
       "alt": "",
@@ -20,46 +20,19 @@
       "about": ""
     },
     {
-      "name": "Matthew Allat",
-      "role": "Technical adviser and tutor",
-      "group": "team",
-      "src": "shared/images/team/matthew-allat.jpg",
-      "alt": "",
-      "pos": "",
-      "about": ""
-    },
-    {
-      "name": "Antonio Amaral",
-      "role": "Tutor",
-      "group": "team",
-      "src": "shared/images/team/antonio-amaral.jpg",
-      "alt": "",
-      "pos": "55% 30%",
-      "about": ""
-    },
-    {
-      "name": "Chiron Turner",
-      "role": "Tutor",
-      "group": "team",
-      "src": "shared/images/team/chiron-turner.jpg",
-      "alt": "",
-      "pos": "",
-      "about": ""
-    },
-    {
-      "name": "Kate O’Regan",
-      "role": "Tutor",
-      "group": "team",
-      "src": "shared/images/team/kate-oregan.jpg",
-      "alt": "",
-      "pos": "",
-      "about": ""
-    },
-    {
       "name": "Matt O’Grady",
       "role": "Tutor",
       "group": "team",
       "src": "shared/images/site/team-matt.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Alana Greenhalgh",
+      "role": "Warden",
+      "group": "team",
+      "src": null,
       "alt": "",
       "pos": "",
       "about": ""
@@ -74,8 +47,44 @@
       "about": ""
     },
     {
+      "name": "Matthew Allat",
+      "role": "Technical adviser and tutor",
+      "group": "part-time",
+      "src": "shared/images/team/matthew-allat.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Antonio Amaral",
+      "role": "Tutor",
+      "group": "part-time",
+      "src": "shared/images/team/antonio-amaral.jpg",
+      "alt": "",
+      "pos": "55% 30%",
+      "about": ""
+    },
+    {
+      "name": "Chiron Turner",
+      "role": "Tutor",
+      "group": "part-time",
+      "src": "shared/images/team/chiron-turner.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Kate O’Regan",
+      "role": "Tutor",
+      "group": "part-time",
+      "src": "shared/images/team/kate-oregan.jpg",
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
       "name": "Guy Fox-Kelly",
-      "role": "",
+      "role": "Tutor",
       "group": "part-time",
       "src": "shared/images/site/team-guy-fk.jpg",
       "alt": "",
@@ -84,7 +93,7 @@
     },
     {
       "name": "Gill Howarth",
-      "role": "",
+      "role": "Tutor",
       "group": "part-time",
       "src": "shared/images/site/team-gill.jpg",
       "alt": "",
@@ -92,19 +101,37 @@
       "about": ""
     },
     {
-      "name": "Ian Bajorski",
-      "role": "",
+      "name": "Joshua Moorby",
+      "role": "Tutor",
       "group": "part-time",
-      "src": "shared/images/site/team-ian.jpg",
+      "src": null,
       "alt": "",
       "pos": "",
       "about": ""
     },
     {
-      "name": "Guy Froud",
-      "role": "",
+      "name": "Liz Brown",
+      "role": "Tutor",
       "group": "part-time",
-      "src": "shared/images/site/team-guy-f.jpg",
+      "src": null,
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Les Ford",
+      "role": "Tutor",
+      "group": "part-time",
+      "src": null,
+      "alt": "",
+      "pos": "",
+      "about": ""
+    },
+    {
+      "name": "Luke Sabel",
+      "role": "Tutor",
+      "group": "part-time",
+      "src": null,
       "alt": "",
       "pos": "",
       "about": ""

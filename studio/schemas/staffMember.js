@@ -8,9 +8,10 @@ export default defineType({
   fields: [
     defineField({ name: 'name', title: 'Name', type: 'string', validation: (r) => r.required().max(60) }),
     defineField({ name: 'role', title: 'Job title', type: 'string', description: 'e.g. “Senior tutor”. Leave empty if you’d rather not show one.', validation: (r) => r.max(60) }),
+    // the 'part-time' value is shown as "Tutors"; the stored value is kept so existing records still match
     defineField({
       name: 'group', title: 'Show under', type: 'string', initialValue: 'team',
-      options: { list: [{ title: 'Our team', value: 'team' }, { title: 'Part-time staff', value: 'part-time' }], layout: 'radio', direction: 'horizontal' },
+      options: { list: [{ title: 'Our team', value: 'team' }, { title: 'Tutors', value: 'part-time' }], layout: 'radio', direction: 'horizontal' },
       validation: (r) => r.required(),
     }),
     defineField({
@@ -24,6 +25,6 @@ export default defineType({
   orderings: [{ title: 'Page order', name: 'order', by: [{ field: 'group', direction: 'desc' }, { field: 'order', direction: 'asc' }] }],
   preview: {
     select: { title: 'name', role: 'role', group: 'group', media: 'photo' },
-    prepare: ({ title, role, group, media }) => ({ title, subtitle: [role, group === 'part-time' ? 'Part-time' : null].filter(Boolean).join(' · '), media }),
+    prepare: ({ title, role, group, media }) => ({ title, subtitle: [role, group === 'part-time' ? 'Tutors' : null].filter(Boolean).join(' · '), media }),
   },
 })

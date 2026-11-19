@@ -54,7 +54,7 @@ Everything else on the site stays in the code. Until Sanity is connected, the si
 
 - **News stories:** headline, date (and whether to show the day, the month or just the year), a photo with a short description, and the story. Press **Publish**.
 - **Training → Courses:** the course cards on the Training page. "Position on the page" sets the order.
-- **Staff:** name, job title, whether they show under "Our team" or "Part-time staff", a photo, and an optional line on their specialisms. "Position on the page" sets the order (1 first). After uploading a photo, click the crop icon and drag the circle onto their face, so it stays in view. To take someone off the site, open them and choose **Delete** from the menu beside Publish.
+- **Staff:** name, job title, whether they show under "Our team" or "Tutors", a photo, and an optional line on their specialisms. "Position on the page" sets the order (1 first). After uploading a photo, click the crop icon and drag the circle onto their face, so it stays in view. To take someone off the site, open them and choose **Delete** from the menu beside Publish.
 - **Training → Course dates and prices:** add one entry per date: the course, date, time, where, the two prices, and whether places are available, few, or full. Past dates disappear from the site on their own.
 
 ## Free plan limits that matter

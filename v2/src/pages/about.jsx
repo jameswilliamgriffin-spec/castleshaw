@@ -13,7 +13,8 @@ const person = (p) => ({
   img: p.src ? (/^https?:/.test(p.src) ? p.src : ROOT + p.src) : null,
 })
 const team = STAFF.people.filter((p) => p.group !== 'part-time').map(person)
-const partTime = STAFF.people.filter((p) => p.group === 'part-time').map(person)
+// the 'part-time' group shows as "Tutors" (its stored value is kept, so existing records still match)
+const tutors = STAFF.people.filter((p) => p.group === 'part-time').map(person)
 
 /* ------------------------------------------------------------------ about (one page) */
 // Where we are, the valley, the team and what people say all live here; accreditation and
@@ -48,7 +49,7 @@ export function Hub({ path }) {
           <p>Tutors who hold national governing body awards and, almost all of them, teaching qualifications too, with the office and site team who keep the centre running.</p>
         </SectionHead>
         <People items={team} />
-        {partTime.length > 0 && <><h3 className="h3i">Part-time staff</h3><People items={partTime} /></>}
+        {tutors.length > 0 && <><h3 className="h3i">Tutors</h3><People items={tutors} /></>}
         {!STAFF.fromSanity && <TBC block>That this team list is current, who is full time and who is part time, and a line on each person&rsquo;s role and specialisms.</TBC>}
         <p>Rod and Joseph also run Oldham&rsquo;s educational visits advice service. <SqLink href={href('advice-and-guidance/') + '#advisers'}>Our advisers</SqLink></p>
       </Band>
