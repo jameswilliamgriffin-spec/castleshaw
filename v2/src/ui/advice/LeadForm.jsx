@@ -1,10 +1,9 @@
 import { useRef, useState } from 'react'
-import { PHONE, PHONE_HREF, EMAIL, PRIVACY } from '../../data'
+import { PHONE, PHONE_HREF, PRIVACY } from '../../data'
 import { track } from '../../track'
+import { sendForm, pageName } from '../../send'
 
-// The enquiry and quote form. Posts to VITE_ENQUIRY_ENDPOINT (see api/enquiry.js) when
-// one is configured; until then it runs as a preview and sends nothing.
-const ENDPOINT = import.meta.env.VITE_ENQUIRY_ENDPOINT
+// The enquiry and quote form. Emailed to the centre through Web3Forms (see send.js).
 const ROLES = ['Educational Visits Coordinator (EVC)', 'Head teacher or principal', 'Business manager', 'Visit leader', 'Governor or trustee', 'Youth or community worker', 'Something else']
 const TYPES = ['A quote for the service', 'Training', 'A question about a visit', 'Something else']
 
@@ -32,9 +31,11 @@ export default function LeadForm({ source = 'advice-landing', defaultType = TYPE
     const bot = data.website || Date.now() - started.current < 3000
     setState('sending')
     try {
-      if (ENDPOINT && !bot) {
-        const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...data, source, elapsed: Date.now() - started.current }) })
-        if (!res.ok) throw new Error(String(res.status))
+      if (!bot) {
+        await sendForm({
+          Name: data.name, 'School, college or organisation': data.org, Role: data.role, Email: data.email, Phone: data.phone,
+          'What can we help with?': data.type, Message: data.message, 'Sent from': pageName(),
+        }, { subject: `Visits advice enquiry: ${data.type} (${data.org})`, replyTo: data.email })
       } else {
         await new Promise((r) => setTimeout(r, 700))
       }
@@ -51,7 +52,6 @@ export default function LeadForm({ source = 'advice-landing', defaultType = TYPE
       <div className="lf lf-done" role="status" tabIndex={-1} ref={(el) => el?.focus()}>
         <h3>Thank you. We&rsquo;ve got your enquiry.</h3>
         <p>One of our advisers will reply by email or phone, usually within two working days.</p>
-        {!ENDPOINT && <p className="lf-preview">This site is a preview, so nothing was actually sent. To get in touch today, call <a href={PHONE_HREF}>{PHONE}</a> or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>}
         <button type="button" className="lf-again" onClick={() => { setState('idle'); started.current = Date.now() }}>Send another enquiry</button>
       </div>
     )

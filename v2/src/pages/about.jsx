@@ -1,6 +1,6 @@
 // About the Castleshaw Centre: one page for place, people and reputation, plus accreditation and history.
 import { PageTop, Band, SectionHead, Split, Ticks, Ledger, Gallery, Quotes, People, Timeline, Downloads, CtaBand, SqLink, TBC, img, gal, OLD } from '../ui/inner/blocks'
-import { href, ADDRESS, W3W, MAPS } from '../data'
+import { href, ADDRESS, W3W, MAPS, AALA, AALA_COVERS, LOTC } from '../data'
 import { ROOT } from '../lib'
 import STAFF from '../content/staff.json'
 
@@ -142,8 +142,8 @@ export function Accreditation({ path }) {
       <Band>
         <SectionHead eyebrow="About the centre" title="Licences and awards" />
         <div className="cols cols-3">
-          <div className="icard"><h3>AALA licence</h3><p>Licensed by the Adventure Activities Licensing Authority, part of the Health and Safety Executive, for climbing, watersports and trekking.</p><p>Licence L194369</p></div>
-          <div className="icard"><h3>LOtC Quality Badge</h3><p>The Learning Outside the Classroom Quality Badge, the national award for providers of learning outside the classroom.</p><p>Badge number 101040</p></div>
+          <div className="icard"><h3>AALA licence</h3><p>Licensed by the Adventure Activities Licensing Authority, part of the Health and Safety Executive, for {AALA_COVERS}.</p><p>Licence {AALA}</p></div>
+          <div className="icard"><h3>LOtC Quality Badge</h3><p>The Learning Outside the Classroom Quality Badge, the national award for providers of learning outside the classroom.</p><p>Badge number {LOTC}</p></div>
           <div className="icard"><h3>Adventuremark</h3><p>For adventure activities and age groups outside the scope of AALA licensing, also inspected by the Council for Learning Outside the Classroom.</p></div>
         </div>
         <Downloads items={[

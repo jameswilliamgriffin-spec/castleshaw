@@ -5,7 +5,9 @@ import { Film, filmSource, prefersStills } from '../film'
 import Planner from './Planner'
 import AdviceBand from './AdviceBand'
 import ScrollCue from './ScrollCue'
-import { PHONE, PHONE_HREF, FACEBOOK, QUOTES, href } from '../data'
+import { PHONE, PHONE_HREF, FACEBOOK, QUOTES, href, AALA } from '../data'
+import { sendForm, pageName } from '../send'
+import { track } from '../track'
 
 // The six chapters of the film, in scroll order. `side` is where the words sit.
 const CH = [
@@ -35,7 +37,23 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
   const [stills, setStills] = useState(false)
   const [sound, setSound] = useState(false)
   const [hasAudio, setHasAudio] = useState(true)
-  const [sent, setSent] = useState(false)
+  const [sent, setSent] = useState(false) // false | 'sending' | 'sent' | 'error'
+  // the message form: emailed to the centre through Web3Forms (send.js)
+  const sendMessage = async (e) => {
+    e.preventDefault()
+    const data = new FormData(e.currentTarget)
+    if (data.get('botcheck')) { setSent('sent'); return }
+    setSent('sending')
+    try {
+      await sendForm({ Name: data.get('name'), 'Email or phone': data.get('contact'), Message: data.get('message'), 'Sent from': pageName() },
+        { subject: `Website message from ${data.get('name')}`, replyTo: data.get('contact') })
+      setSent('sent')
+      track('Enquiry sent', { source: 'home' })
+    } catch {
+      setSent('error')
+      track('Enquiry failed', { source: 'home' })
+    }
+  }
   const base = new URL('./video', document.baseURI).href.replace(/\/$/, '')
   const [inView, setInView] = useState(false)
   const [tucked, setTucked] = useState(false)
@@ -264,7 +282,7 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
             <h2 className="j-h">A day on the water</h2>
             <p className="j-lead">Kayaking and canoeing on reservoir water in the hills above Delph.</p>
             <p>First timers start close to the bank, getting a feel for the boat, the paddle and the cold. By the end of the session most groups are racing, rafting up together, or trying to stand up in a canoe without falling in. A few manage it.</p>
-            <p>Every water session runs under our AALA licence for watersports (L194369) and is led by our own instructors, with the boats, paddles and buoyancy aids provided. Bring a full change of clothes and a towel, and something warm for afterwards.</p>
+            <p>Every water session runs under our AALA licence for watersports ({AALA}) and is led by our own instructors, with the boats, paddles and buoyancy aids provided. Bring a full change of clothes and a towel, and something warm for afterwards.</p>
             <a className="j-more" href={href('activities/adventure-on-water/')}>More about adventure on water</a>
           </div>
         </div>
@@ -282,15 +300,17 @@ export default function Journey({ picks, toggle, onEnquire, msg, setMsg }) {
               <p className="j-small">Waterworks Road, Delph, Oldham, OL3 5LZ. <a href={FACEBOOK} rel="noopener">Facebook</a></p>
             </div>
             <div className="j-contact-form">
-              {sent ? (
-                <div className="j-sent" role="status"><strong>Message ready.</strong> This concept form does not send. For a real booking, ring {PHONE}.
-                  <button type="button" className="txt" onClick={() => setSent(false)}>Back to the form</button></div>
+              {sent === 'sent' ? (
+                <div className="j-sent" role="status"><strong>Thank you.</strong> We&rsquo;ve got your message and will reply within a few working days. For anything urgent, ring {PHONE}.
+                  <button type="button" className="txt" onClick={() => setSent(false)}>Send another message</button></div>
               ) : (
-                <form className="j-form" onSubmit={(e) => { e.preventDefault(); setSent(true) }}>
+                <form className="j-form" onSubmit={sendMessage}>
                   <label><span>Name</span><input enterKeyHint="next" name="name" autoComplete="name" required /></label>
                   <label><span>Email or phone</span><input enterKeyHint="next" name="contact" autoComplete="email" required /></label>
-                  <label className="j-wide"><span>Message</span><textarea rows="3" value={msg} onChange={(e) => setMsg(e.target.value)} placeholder="Who is coming, roughly when, and what you would like to do." /></label>
-                  <button type="submit" className="ct-send">Send message</button>
+                  <label className="j-wide"><span>Message</span><textarea name="message" rows="3" value={msg} onChange={(e) => setMsg(e.target.value)} placeholder="Who is coming, roughly when, and what you would like to do." /></label>
+                  <input type="checkbox" name="botcheck" className="form-trap" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+                  {sent === 'error' && <p className="j-fail j-wide" role="alert">Sorry, your message didn&rsquo;t send. Please try again, or ring {PHONE}.</p>}
+                  <button type="submit" className="ct-send" disabled={sent === 'sending'}>{sent === 'sending' ? 'Sending…' : 'Send message'}</button>
                 </form>
               )}
             </div>

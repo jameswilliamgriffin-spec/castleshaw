@@ -1,7 +1,7 @@
 // Activities and school visits. Copy is drawn from the centre's own pages
 // (adventurous activities, curriculum, team building, booking, kit lists, testimonials).
 import { PageTop, Band, Intro, Split, Ticks, Ledger, TileLinks, ActivityList, Gallery, Quote, Quotes, Downloads, LinkList, Kit, Callout, CtaBand, AdviceNote, SqLink, SectionHead, Btn, TBC, img, shared, OLD, ImageBreak, TopicCard } from '../ui/inner/blocks'
-import { href, PHONE, PHONE_HREF } from '../data'
+import { href, PHONE, PHONE_HREF, AALA_COVERS } from '../data'
 
 const at = (k) => href(`activities/${k}/`)
 
@@ -51,7 +51,7 @@ export function Hub({ path }) {
         <Ledger items={[
           ['10,000', 'people of all ages visit each year'],
           ['38', 'beds for residential groups'],
-          ['AALA', 'licensed for climbing, watersports and trekking'],
+          ['AALA', `licensed for ${AALA_COVERS}`],
           ['LOtC', 'Quality Badge for learning outside the classroom'],
         ]} />
       </Band>
@@ -110,7 +110,7 @@ export function Land({ path }) {
       </Band>
       <Band tone="sky">
         <Split image={{ src: img('land-climbing-wall'), alt: 'A smiling climber in a red helmet on the climbing wall' }} heading="Safe, and still adventurous">
-          <p>Every activity at Castleshaw is risk assessed by competent staff. We hold an AALA licence for climbing, watersports and trekking, the Learning Outside the Classroom Quality Badge and Adventuremark accreditation.</p>
+          <p>Every activity at Castleshaw is risk assessed by competent staff. We hold an AALA licence for {AALA_COVERS}, the Learning Outside the Classroom Quality Badge and Adventuremark accreditation.</p>
           <p>Staff-to-student ratios vary between activities for safety reasons. We will talk you through them when you plan your visit.</p>
           <p><SqLink href={href('about/accreditation/')}>Our accreditation and inspection reports</SqLink></p>
         </Split>

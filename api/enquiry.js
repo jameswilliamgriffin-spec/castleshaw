@@ -1,5 +1,8 @@
 // Vercel serverless function: receives the enquiry form and emails it to the centre.
 //
+// NOT IN USE: the forms now send through Web3Forms instead (v2/src/send.js). Kept in case the
+// council later wants enquiries sent from the site's own server (GOV.UK Notify or similar).
+//
 // Not yet live. The site's forms only post here once VITE_ENQUIRY_ENDPOINT=/api/enquiry is
 // set at build time. Until then they run as a preview and send nothing.
 //

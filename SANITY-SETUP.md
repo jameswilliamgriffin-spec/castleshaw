@@ -1,10 +1,11 @@
-# Editing news, training and staff in Sanity
+# Editing news, training, staff and accreditation in Sanity
 
-The website reads three things from Sanity when it is built:
+The website reads four things from Sanity when it is built:
 
 - **News stories** (the News page and one page per story)
 - **Training**: the courses, and upcoming course dates and prices
 - **Staff**: the people in "Our team" on the About page
+- **Accreditation**: the AALA licence number, what it covers, and the LOtC Quality Badge number
 
 Everything else on the site stays in the code. Until Sanity is connected, the site uses the copies in the repository (`v2/src/content/news/*.md`, `v2/src/content/training.local.json` and `v2/src/content/staff.local.json`), so nothing breaks in the meantime. If Sanity can't be reached during a build, the build uses those copies too and says so in the Vercel build log.
 
@@ -44,7 +45,7 @@ Everything else on the site stays in the code. Until Sanity is connected, the si
 
 6. **Rebuild the site when someone presses Publish.**
    - In Vercel → Settings → Git → Deploy Hooks, create a hook called "Sanity" for the `main` branch and copy its URL.
-   - In <https://www.sanity.io/manage> → the project → API → Webhooks, add a webhook: paste that URL, trigger on create, update and delete, filter `_type in ["newsStory", "trainingCourse", "trainingDate", "staffMember"]`, method POST.
+   - In <https://www.sanity.io/manage> → the project → API → Webhooks, add a webhook: paste that URL, trigger on create, update and delete, filter `_type in ["newsStory", "trainingCourse", "trainingDate", "staffMember", "accreditation"]`, method POST.
 
    Now each publish rebuilds the site; changes are live in about a minute.
 
@@ -55,6 +56,7 @@ Everything else on the site stays in the code. Until Sanity is connected, the si
 - **News stories:** headline, date (and whether to show the day, the month or just the year), a photo with a short description, and the story. Press **Publish**.
 - **Training → Courses:** the course cards on the Training page. "Position on the page" sets the order.
 - **Staff:** name, job title, whether they show under "Our team" or "Tutors", a photo, and an optional line on their specialisms. "Position on the page" sets the order (1 first). After uploading a photo, click the crop icon and drag the circle onto their face, so it stays in view. To take someone off the site, open them and choose **Delete** from the menu beside Publish.
+- **Accreditation:** one record with the AALA licence number, what the licence covers (it finishes the sentence "Licensed by AALA for …"), and the LOtC Quality Badge number. They appear in the footer of every page, on the Accreditation page, on the advice page, in the homepage film and on the Activities pages, so one change updates them all.
 - **Training → Course dates and prices:** add one entry per date: the course, date, time, where, the two prices, and whether places are available, few, or full. Past dates disappear from the site on their own.
 
 ## Free plan limits that matter

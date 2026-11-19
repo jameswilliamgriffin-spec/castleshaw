@@ -5,6 +5,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { PAGES } from '../../site.mjs'
 import { href, PHONE, PHONE_HREF, EMAIL, CONTACT } from '../../data'
 import { ROOT, HOME, ridge } from '../../lib'
+import { sendForm, pageName } from '../../send'
+import { track } from '../../track'
 import { Picture, slot, Photo } from './Slot'
 import M from '../../content/imagery.json'
 import { Squiggle, Contours, useReveal } from '../Squiggle'
@@ -460,20 +462,38 @@ export function AdviceNote() {
   )
 }
 
-// A concept form: shows the layout and fields, sends nothing.
+// The enquiry form on inner pages: emailed to the centre through Web3Forms (send.js).
+// A hidden "botcheck" box catches most spam bots; Web3Forms drops anything with it ticked.
 export function EnquiryForm({ title = 'Send an enquiry', fields, submit = 'Send enquiry', note }) {
-  const [sent, setSent] = useState(false)
-  if (sent) {
+  const [state, setState] = useState('idle') // idle | sending | sent | error
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    const data = new FormData(e.currentTarget)
+    if (data.get('botcheck')) { setState('sent'); return }
+    setState('sending')
+    try {
+      await sendForm({
+        ...Object.fromEntries(fields.map((f) => [f.label, data.get(f.name)])),
+        'Sent from': pageName(),
+      }, { subject: `Website enquiry: ${data.get('about') || title}${data.get('name') ? ' from ' + data.get('name') : ''}`, replyTo: data.get('email') })
+      setState('sent')
+      track('Enquiry sent', { source: location.pathname })
+    } catch {
+      setState('error')
+      track('Enquiry failed', { source: location.pathname })
+    }
+  }
+  if (state === 'sent') {
     return (
       <div className="form form-sent" role="status">
-        <h3>Thanks, your enquiry is ready.</h3>
-        <p>This website is a design concept, so nothing was sent. To get in touch today, call <a href={PHONE_HREF}>{PHONE}</a> or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
-        <button type="button" className="txt" onClick={() => setSent(false)}>Back to the form</button>
+        <h3>Thank you. We&rsquo;ve got your enquiry.</h3>
+        <p>We usually reply within a few working days. For anything urgent, call <a href={PHONE_HREF}>{PHONE}</a>.</p>
+        <button type="button" className="txt" onClick={() => setState('idle')}>Send another enquiry</button>
       </div>
     )
   }
   return (
-    <form className="form" onSubmit={(e) => { e.preventDefault(); setSent(true) }}>
+    <form className="form" onSubmit={onSubmit}>
       <h3>{title}</h3>
       {fields.map((f) => (
         <label key={f.name} className={f.half ? 'half' : ''}>
@@ -490,7 +510,9 @@ export function EnquiryForm({ title = 'Send an enquiry', fields, submit = 'Send 
           )}
         </label>
       ))}
-      <button type="submit" className="ib ib-moss">{submit}</button>
+      <input type="checkbox" name="botcheck" className="form-trap" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+      {state === 'error' && <p className="form-fail" role="alert">Sorry, your enquiry didn&rsquo;t send. Please try again, or call <a href={PHONE_HREF}>{PHONE}</a> or email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>}
+      <button type="submit" className="ib ib-moss" disabled={state === 'sending'}>{state === 'sending' ? 'Sending…' : submit}</button>
       {note && <p className="form-note">{note}</p>}
     </form>
   )

@@ -1,4 +1,4 @@
-// The site's editable content: news stories, training courses and dates, and the staff team.
+// The site's editable content: news stories, training courses and dates, the staff team, and the accreditation numbers.
 // With SANITY_PROJECT_ID set (in Vercel, or a local .env), it is read from Sanity at build time;
 // otherwise from the files in the repository (v2/src/content/news/*.md, training.local.json, staff.local.json).
 // Either way it is written to v2/src/content/news.json, training.json and staff.json, which the site reads.
@@ -35,6 +35,7 @@ function localNews(v2) {
 }
 const localTraining = (v2) => JSON.parse(readFileSync(resolve(v2, 'src/content/training.local.json'), 'utf8'))
 // photo: a path under public/ (the page adds the way back to the site root)
+const localAccreditation = (v2) => JSON.parse(readFileSync(resolve(v2, 'src/content/accreditation.local.json'), 'utf8'))
 const localStaff = (v2) => JSON.parse(readFileSync(resolve(v2, 'src/content/staff.local.json'), 'utf8'))
   .map((p) => ({ name: p.name, role: p.role || '', group: p.group || 'team', src: p.photo || null, alt: p.alt || '', pos: p.pos || '', about: p.about || '' }))
 
@@ -98,6 +99,9 @@ async function sanityStaff() {
   })
 }
 
+// The licence and badge numbers: one record, with a fixed id.
+const sanityAccreditation = () => groq(`*[_id == "accreditation"][0]{ aala, aalaCovers, lotc }`)
+
 /* ---------- write what the site reads ---------- */
 export async function buildContent(v2) {
   let news, training, staff, source = 'repository files', staffSource = 'repository files'
@@ -129,6 +133,15 @@ export async function buildContent(v2) {
     }
   }
   staff ||= localStaff(v2)
+  // accreditation: any field missing in Sanity keeps the repository's value
+  let acc = localAccreditation(v2), accSource = 'repository files'
+  if (process.env.SANITY_PROJECT_ID) {
+    try {
+      const row = await sanityAccreditation()
+      if (row) { acc = { ...acc, ...Object.fromEntries(Object.entries(row).filter(([, v]) => v)) }; accSource = `Sanity (${process.env.SANITY_PROJECT_ID})` }
+    } catch (e) { console.warn(`\n!! content: could not read accreditation from Sanity (${e.message}). Using the repository's numbers.\n`) }
+  }
+  writeFileSync(resolve(v2, 'src/content/accreditation.json'), JSON.stringify(acc, null, 2) + '\n')
   news ||= localNews(v2)
   training ||= localTraining(v2)
   news.sort((a, b) => String(b.date).localeCompare(String(a.date)))
@@ -137,6 +150,6 @@ export async function buildContent(v2) {
   writeFileSync(resolve(v2, 'src/content/training.json'), JSON.stringify(training, null, 2) + '\n')
   // fromSanity: the team list is the centre's own, so the page drops its "To confirm" note
   writeFileSync(resolve(v2, 'src/content/staff.json'), JSON.stringify({ fromSanity: staffSource !== 'repository files', people: staff }, null, 2) + '\n')
-  console.log(`content: ${news.length} news stories, ${training.courses.length} courses, ${training.dates.length} course dates, from ${source}; ${staff.length} staff, from ${staffSource}`)
+  console.log(`content: ${news.length} news stories, ${training.courses.length} courses, ${training.dates.length} course dates, from ${source}; ${staff.length} staff, from ${staffSource}; accreditation from ${accSource}`)
   return news
 }

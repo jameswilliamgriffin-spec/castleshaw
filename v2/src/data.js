@@ -1,5 +1,6 @@
 import { HOME, ROOT } from './lib'
 import { SECTIONS } from './site.mjs'
+import ACC from './content/accreditation.json'
 
 export const PHONE = '0161 770 8595'
 export const PHONE_HREF = 'tel:+441617708595'
@@ -10,6 +11,11 @@ export const EMAIL = 'castleshaw.centre@oldham.gov.uk'
 export const INCIDENT = '0161 633 1803'
 export const INCIDENT_HREF = 'tel:+441616331803'
 export const ADDRESS = ['Waterworks Road', 'Delph', 'Oldham', 'OL3 5LZ']
+// Licence and badge numbers: edited in Sanity (Accreditation), written by scripts/content.mjs.
+// Every page that shows them reads them from here, so one change updates the whole site.
+export const AALA = ACC.aala
+export const AALA_COVERS = ACC.aalaCovers
+export const LOTC = ACC.lotc
 export const MAPS = 'https://www.google.com/maps/search/?api=1&query=Castleshaw+Centre+OL3+5LZ'
 
 // Navigation, built from the site map in site.mjs. Links are relative to the current page.

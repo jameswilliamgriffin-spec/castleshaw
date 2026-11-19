@@ -1498,6 +1498,15 @@
    720
   ]
  },
+ "shared/images/team/guy-fox-kelly.jpg": {
+  "h": 1250,
+  "w": 999,
+  "widths": [
+   480,
+   720,
+   960
+  ]
+ },
  "shared/images/team/janet-lloyd.jpg": {
   "h": 1400,
   "w": 918,
@@ -1513,6 +1522,14 @@
    480
   ]
  },
+ "shared/images/team/joshua-moorby.jpg": {
+  "h": 960,
+  "w": 768,
+  "widths": [
+   480,
+   720
+  ]
+ },
  "shared/images/team/kate-oregan.jpg": {
   "h": 1400,
   "w": 1366,
@@ -1520,6 +1537,13 @@
    480,
    720,
    960
+  ]
+ },
+ "shared/images/team/les-ford.jpg": {
+  "h": 770,
+  "w": 616,
+  "widths": [
+   480
   ]
  },
  "shared/images/team/matthew-allat.jpg": {

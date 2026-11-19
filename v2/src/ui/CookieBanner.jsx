@@ -3,22 +3,24 @@ import { PRIVACY } from '../data'
 import './cookie-banner.css'
 
 // A minimal cookie banner. The site needs no cookies to work, so the banner only exists
-// once visitor statistics are switched on: set VITE_GA_ID (a Google Analytics measurement ID)
-// in Vercel. Statistics load only after "Accept"; the choice is remembered on this device,
+// once visitor statistics are switched on. STATS_ID is the Google Analytics measurement ID
+// (G-…); VITE_GA_ID in Vercel overrides it. Empty: no banner and no statistics.
+// Statistics load only after "Accept"; the choice is remembered on this device,
 // and "Cookie settings" in the footer reopens the banner.
-export const STATS_ID = import.meta.env.VITE_GA_ID
+export const STATS_ID = import.meta.env.VITE_GA_ID || ''
 const KEY = 'cs-cookies'
 const read = () => { try { return localStorage.getItem(KEY) } catch { return null } }
 const save = (v) => { try { localStorage.setItem(KEY, v) } catch { /* private mode: ask again next time */ } }
 
 function loadStats() {
-  if (window.gtag || !STATS_ID) return
+  if (window.__csStats || !STATS_ID) return
+  window.__csStats = true
   window.dataLayer = window.dataLayer || []
   window.gtag = function gtag() { window.dataLayer.push(arguments) }
-  window.gtag('js', new Date())
-  window.gtag('config', STATS_ID, { anonymize_ip: true })
   const s = document.createElement('script')
   s.async = true
+  window.gtag('js', new Date())
+  window.gtag('config', STATS_ID, { anonymize_ip: true })
   s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(STATS_ID)}`
   document.head.appendChild(s)
 }

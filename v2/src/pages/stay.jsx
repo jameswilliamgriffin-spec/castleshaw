@@ -1,5 +1,5 @@
 // Stay and hire: the centre building for residential groups and self-programming groups.
-import { PageTop, Band, SectionHead, Split, Ticks, Ledger, Gallery, Facilities, Quotes, Downloads, Callout, CtaBand, Btn, TBC, img, OLD, ImageBreak } from '../ui/inner/blocks'
+import { PageTop, Band, SectionHead, Split, Ticks, Ledger, Gallery, Facilities, Quotes, Downloads, Callout, CtaBand, Btn, img, OLD, ImageBreak } from '../ui/inner/blocks'
 import { href, CONTACT } from '../data'
 
 export function Stay({ path }) {
@@ -77,13 +77,10 @@ export function Stay({ path }) {
           <div className="icard">
             <h3>Food</h3>
             <p>The kitchen is equipped for groups to cater for themselves, and the centre can also provide catering for groups who stay.</p>
-            <TBC block>Which meals we can provide, and at what cost.</TBC>
           </div>
           <div className="icard">
             <h3>Prices and availability</h3>
             <p>Call or email with your dates and group size and we will check availability.</p>
-            <p><TBC>Prices per night, per person or for the whole building, and any minimum stay</TBC></p>
-            <p><TBC>Venue hire for meetings and away days, and day rates for the classroom and yurt</TBC></p>
           </div>
         </div>
         <Callout title="Before you arrive" tone="sky">

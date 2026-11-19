@@ -86,7 +86,7 @@
       "name": "Guy Fox-Kelly",
       "role": "Tutor",
       "group": "part-time",
-      "src": "shared/images/site/team-guy-fk.jpg",
+      "src": "shared/images/team/guy-fox-kelly.jpg",
       "alt": "",
       "pos": "",
       "about": ""
@@ -104,7 +104,7 @@
       "name": "Joshua Moorby",
       "role": "Tutor",
       "group": "part-time",
-      "src": null,
+      "src": "shared/images/team/joshua-moorby.jpg",
       "alt": "",
       "pos": "",
       "about": ""
@@ -122,7 +122,7 @@
       "name": "Les Ford",
       "role": "Tutor",
       "group": "part-time",
-      "src": null,
+      "src": "shared/images/team/les-ford.jpg",
       "alt": "",
       "pos": "",
       "about": ""

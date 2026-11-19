@@ -645,3 +645,7 @@ html.is-loading { overflow: hidden; }
 /* stacked: the visit plan link sits centred under the button (inline-flex keeps the column as wide as the button) */
 @media (min-width: 900px) and (max-width: 1439px) { .hero-cta { display: inline-flex; flex-direction: column; align-items: center; gap: .9rem; } }
 @media (min-width: 1440px) { .hero-cta { flex-wrap: nowrap; } }
+
+/* message forms: the spam trap stays out of sight; a failed send reads as an alert */
+.form-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.j-fail { margin: 0; padding: .6rem .8rem; border-radius: .6rem; background: #fde8e4; color: #8a2a17; font-size: .92rem; }

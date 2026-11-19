@@ -68,7 +68,7 @@ export function Privacy({ path }) {
 
           <Sec id="cookies" title="Cookies">
             <p>A cookie is a small file a website saves on your device. This website doesn&rsquo;t need any cookies to work.</p>
-            <p>If we use visitor statistics to see which pages are useful, we will ask first, with a short message at the bottom of the page. Statistics cookies are only set if you choose &ldquo;Accept&rdquo;, and you can change your mind at any time using &ldquo;Cookie settings&rdquo; at the bottom of every page.</p>
+            <p>We use Google Analytics to see which pages are useful. We ask first, with a short message at the bottom of the page. These statistics cookies are only set if you choose &ldquo;Accept&rdquo;, and you can change your mind at any time using &ldquo;Cookie settings&rdquo; at the bottom of every page.</p>
           </Sec>
 
           <Sec id="who" title="Who this notice covers">

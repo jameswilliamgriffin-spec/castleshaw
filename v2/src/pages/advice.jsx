@@ -13,7 +13,7 @@ import { ROOT, ridge } from '../lib'
 import { track } from '../track'
 import { useMemo } from 'react'
 import '../advice-landing.css'
-import { href, PHONE, PHONE_HREF, EMAIL, INCIDENT, INCIDENT_HREF } from '../data'
+import { href, PHONE, PHONE_HREF, EMAIL, INCIDENT, INCIDENT_HREF, AALA, LOTC } from '../data'
 
 const av = (k = '') => href(`advice-and-guidance/${k}`)
 const QUOTE = av() + '#quote'
@@ -208,7 +208,7 @@ export function Landing({ path }) {
           <figure className="al-inspect">
             <blockquote>&ldquo;Extraordinary.&rdquo;</blockquote>
             <figcaption>How a Council for Learning Outside the Classroom inspector described our practice on our most recent inspection.</figcaption>
-            <p className="al-inspect-meta">40+ years of combined adviser experience. LOtC Quality Badge 101040. AALA licence L194369.</p>
+            <p className="al-inspect-meta">40+ years of combined adviser experience. LOtC Quality Badge {LOTC}. AALA licence {AALA}.</p>
           </figure>
         </Reveal>
       </Band>

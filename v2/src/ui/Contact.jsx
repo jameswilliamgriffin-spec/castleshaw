@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import CookieBanner, { STATS_ID, openCookieSettings } from './CookieBanner'
-import { PHONE, PHONE_HREF, FACEBOOK, NAV_SECTIONS, PRIVACY, ACCESSIBILITY, CONTACT, EMAIL, ADDRESS, INCIDENT, INCIDENT_HREF } from '../data'
+import { PHONE, PHONE_HREF, FACEBOOK, NAV_SECTIONS, PRIVACY, ACCESSIBILITY, CONTACT, EMAIL, ADDRESS, INCIDENT, INCIDENT_HREF, AALA, AALA_COVERS, LOTC } from '../data'
 import { ridge, ROOT, HOME, reduced } from '../lib'
 import { Squiggle, useReveal } from './Squiggle'
 import './footer.css'
@@ -115,7 +115,7 @@ export function Footer() {
       </div>
 
       <div className="ft-bar rv" style={{ '--k': 5 }}>
-        <p className="ft-cred">LOtC Quality Badge 101040. Licensed by AALA for climbing, watersports and trekking. Adventuremark accredited.</p>
+        <p className="ft-cred">LOtC Quality Badge {LOTC}. Licensed by AALA for {AALA_COVERS}, licence {AALA}. Adventuremark accredited.</p>
         <p className="ft-note">Homepage design concept. Photographs, drawings and quoted words belong to the Castleshaw Centre and the people who sent them.</p>
         <div className="ft-row">
           <span className="ft-copy">&copy; Oldham Council {new Date().getFullYear()}</span>
